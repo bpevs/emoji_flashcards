@@ -125,6 +125,11 @@ html {
   background-color: #e5e7eb;
 }
 
-[dir="rtl"] .textCongregation{ text-align: right; }
-[dir="rtl"] .textTitle { text-align: left; }
+.emoji-row {
+  cursor: pointer;
+}
+
+.emoji-row:hover {
+  background-color: white;
+}
 

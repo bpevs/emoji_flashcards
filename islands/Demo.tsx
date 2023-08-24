@@ -1,29 +1,26 @@
 import type { Signal } from "@preact/signals";
 import { Button } from "../components/Button.tsx";
 import { useEffect } from "preact/hooks";
-import { supermemo, SuperMemoGrade, SuperMemoItem } from "supermemo";
 import { useComputed, useSignal } from "@preact/signals";
-
-function practice(flashcard: Flashcard, grade: SuperMemoGrade): Flashcard {
-  const { interval, repetition, efactor } = supermemo(flashcard, grade);
-  const now = new Date();
-
-  const dueDate = now.setDate(now.getDate() + interval).toISOString();
-  return { ...flashcard, interval, repetition, efactor, dueDate };
-}
 
 interface DemoProps {
   count: Signal<number>;
 }
 
+const languages = {
+  "en": "English 💊💸",
+  "zh": "Chinese 🐼",
+  "es": "Spanish 💃"
+}
+
 export default function Demo(props: DemoProps) {
-  const currLang = useSignal("en_us");
+  const currLang = useSignal("en");
   const currSet = useSignal([]);
 
   useEffect(async () => {
     const charSetResp = await fetch(`/data/${currLang.value}.json`);
-    const charSet = await charSetResp.json();
-
+    const charSet = (await charSetResp.json()).cards;
+    console.log(charSet)
     const cards = [];
     Object.keys(charSet).forEach((category) => {
       Object.keys(charSet[category]).forEach((emojis) => {
@@ -68,9 +65,11 @@ export default function Demo(props: DemoProps) {
             currLang.value = e.target.value;
           }}
         >
-          <option value="en_us">English</option>
-          <option value="cn_tw">Chinese (Taiwan)</option>
-          <option value="es_es">Spanish (Spain)</option>
+          {
+            Object.keys(languages).map(lang => (
+              <option value={lang}>{languages[lang]}</option>
+            ))
+          }
         </select>
       </div>
       <div
@@ -103,16 +102,23 @@ export default function Demo(props: DemoProps) {
           {flipButton}
         </div>
       </div>
-      <button>Download the {currLang.value} Anki deck!</button>
+      <button>
+        Download the {languages[currLang.value]} Anki deck!
+        </button>
 
       <table>
         <tr>
+          <th></th>
           <th>Emoji</th>
           <th>Translation</th>
         </tr>
-        {currSet.value.map(({ emojis, back }) => {
+        {currSet.value.map(({ emojis, back }, index) => {
           return (
-            <tr>
+            <tr
+              class="emoji-row"
+              onClick={() => { currCardIndex.value = index }}
+            >
+              <td>{index}</td>
               <td>{emojis}</td>
               <td dir="auto">{back.join(" ")}</td>
             </tr>
