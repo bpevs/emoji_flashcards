@@ -124,3 +124,7 @@ html {
 .hover:bg-gray-200:hover {
   background-color: #e5e7eb;
 }
+
+[dir="rtl"] .textCongregation{ text-align: right; }
+[dir="rtl"] .textTitle { text-align: left; }
+
