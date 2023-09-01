@@ -1,1 +1,1 @@
-console.log("script is running")
+console.log('script is running')

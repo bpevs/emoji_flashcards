@@ -1,0 +1,60 @@
+{
+  "data": {
+    /* ANIMALS */
+    "🐶": {
+      "text": "dog",
+      "pos": "noun",
+      "category": "animal"
+    },
+    "🐈": {
+      "text": "cat",
+      "pos": "noun",
+      "category": "animal"
+    },
+    "🐟": {
+      "text": "fish",
+      "pos": "noun",
+      "category": "animal"
+    },
+    "🐦": {
+      "text": "bird",
+      "pos": "noun",
+      "category": "animal"
+    },
+    "🐮": {
+      "text": "cow",
+      "pos": "noun",
+      "category": "animal"
+    },
+    "🐷": {
+      "text": "pig",
+      "pos": "noun",
+      "category": "animal"
+    },
+    "🐭": {
+      "text": "mouse",
+      "pos": "noun",
+      "category": "animal"
+    },
+    "🐴": {
+      "text": "horse",
+      "pos": "noun",
+      "category": "animal"
+    },
+    "🐛🐞🐝": {
+      "text": "bug (insect)",
+      "pos": "noun",
+      "category": "animal"
+    },
+    "🪽": {
+      "text": "wing",
+      "pos": "noun",
+      "category": "animal"
+    },
+    "🦊🐰🐶🐷": {
+      "text": "animal",
+      "pos": "noun",
+      "category": "animal"
+    }
+  }
+}
