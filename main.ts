@@ -14,7 +14,6 @@ async function handleHttp(conn: Deno.Conn) {
   const httpConn = Deno.serveHttp(conn)
   for await (const requestEvent of httpConn) {
     const url = new URL(requestEvent.request.url)
-    const filepath = decodeURIComponent(url.pathname)
 
     let file
     try {

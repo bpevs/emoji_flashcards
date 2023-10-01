@@ -7,14 +7,7 @@
 //......If a translation does not exist, translate via API
 //......If key does not exist in en_US, delete
 //...If base extension exist, append
-
-import { readJson } from 'std/fs/mod.ts'
-import type {
-  CompactLanguageFile,
-  ExtensionFile,
-  LanguageFile,
-  Source,
-} from './interfaces.ts'
+import type { CompactLanguageFile, LanguageFile, Source } from './interfaces.ts'
 import { translate } from './translate.ts'
 import plugins from './plugins/mod.ts'
 
@@ -92,9 +85,12 @@ async function generateTranslations() {
     }
 
     if (stringsToTranslate.length) {
-      const translatedStrings = await translate(stringsToTranslate, targetLanguage)
+      const translatedStrings = await translate(
+        stringsToTranslate,
+        targetLanguage,
+      )
       let index = 0
-      for (const [stringKey, item] of Object.entries(source.strings)) {
+      for (const [stringKey] of Object.entries(source.strings)) {
         if (!language.strings[stringKey]) {
           language.strings[stringKey] = translatedStrings[index]
           index++
@@ -145,9 +141,9 @@ function toCompactLanguageFile(
 
   const data = {}
 
-  for (let emoji in languageFile.data) {
+  for (const emoji in languageFile.data) {
     const item = languageFile.data[emoji]
-    const values = columns.map((column) => item[columns])
+    const values = columns.map((column) => item[column])
     values.unshift(item.text)
     if (!data[item.category]) data[item.category] = {}
     data[item.category][emoji] = values
@@ -160,7 +156,7 @@ function toCompactLanguageFile(
   }
 }
 
-const replacer = (k, v) => (v instanceof Array) ? JSON.stringify(v) : v
+const replacer = (_, v) => (v instanceof Array) ? JSON.stringify(v) : v
 function prettyPrintArray(json) {
   if (typeof json === 'string') json = JSON.parse(json)
 
