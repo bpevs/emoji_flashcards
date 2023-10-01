@@ -1,7 +1,15 @@
 {
   "strings": {
     "title": "Emoji Language Flashcards",
-    "description": "Downloadable emoji flashcards to learn many languages"
+    "description": "Downloadable emoji flashcards to learn many languages",
+
+    "switch-language": "Switch Language",
+    "download": "Download",
+
+    "en-US": "English",
+    "en-ES": "Spanish",
+    "ja-JP": "Japanese",
+    "zh-CN": "Chinese"
   },
   "data": {
     "🐶": {

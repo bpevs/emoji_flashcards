@@ -1,4 +1,14 @@
 {
+  "strings": {
+    "title": "Fichas de idiomas emoji",
+    "description": "Fichas emoji descargables para aprender muchos idiomas",
+    "switch-language": "Cambiar de idioma",
+    "download": "Descargar",
+    "en-US": "Inglés",
+    "en-ES": "Español",
+    "ja-JP": "Japonés",
+    "zh-CN": "Chino"
+  },
   "columns": ["text"],
   "data": {
     "number": {
