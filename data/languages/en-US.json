@@ -1,4 +1,5 @@
 {
+  "name": "en-US",
   "strings": {
     "title": "Emoji Language Flashcards",
     "description": "Downloadable emoji flashcards to learn many languages",
@@ -7,7 +8,8 @@
     "en-US": "English",
     "es-ES": "Spanish",
     "ja-JP": "Japanese",
-    "zh-CN": "Chinese"
+    "zh-CN": "Chinese",
+    "open-source": "Emoji Flashcards is free and open-source"
   },
   "columns": ["text"],
   "data": {

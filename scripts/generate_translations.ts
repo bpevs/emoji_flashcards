@@ -7,7 +7,12 @@
 //......If a translation does not exist, translate via API
 //......If key does not exist in en_US, delete
 //...If base extension exist, append
-import type { CompactLanguageFile, LanguageFile, Source } from './interfaces.ts'
+import type {
+  CompactLanguageFile,
+  LanguageFile,
+  SourceFile,
+  TranslationData,
+} from './interfaces.ts'
 import { translate } from './translate.ts'
 import plugins from './plugins/mod.ts'
 
@@ -19,7 +24,7 @@ generateTranslations()
 
 async function generateTranslations() {
   const sourceRaw = await Deno.readTextFile(SOURCE_JSON_PATH)
-  const source: Source = JSON.parse(sourceRaw)
+  const source: SourceFile = JSON.parse(sourceRaw)
 
   const targetLanguages = Array.from(Deno.readDirSync(LANGUAGES_DIR))
     .filter(({ name }) => LANGUAGE_FILE_REGEX.test(name))
@@ -31,7 +36,7 @@ async function generateTranslations() {
     const languageFilePath = `${LANGUAGES_DIR}/${targetLanguage}.json`
     const languageRaw = await Deno.readTextFile(languageFilePath)
     const compactLanguage: CompactLanguageFile = JSON.parse(languageRaw)
-    const language = fromCompactLanguageFile(compactLanguage)
+    const language: LanguageFile = fromCompactLanguageFile(compactLanguage)
 
     if (!language.data) language.data = {}
 
@@ -106,7 +111,7 @@ async function generateTranslations() {
     }
 
     const compactFile = toCompactLanguageFile(language)
-    const updatedLanguageJSON = prettyPrintArray(compactFile, null, 2)
+    const updatedLanguageJSON = prettyPrintCompactFile(compactFile)
     await Deno.writeTextFile(languageFilePath, updatedLanguageJSON)
   }
 }
@@ -114,13 +119,13 @@ async function generateTranslations() {
 function fromCompactLanguageFile(
   compactFile: CompactLanguageFile,
 ): LanguageFile {
-  const data = {}
+  const data: TranslationData = {}
 
   const categoryNames = Object.keys(compactFile.data)
   categoryNames.forEach((category) => {
     const emojis = Object.keys(compactFile.data[category])
     emojis.forEach((emoji) => {
-      data[emoji] = { category }
+      data[emoji] = { category, text: compactFile.data[category][emoji][0] }
       compactFile.columns.forEach((column, index) => {
         data[emoji][column] = compactFile.data[category][emoji][index]
       })
@@ -128,6 +133,7 @@ function fromCompactLanguageFile(
   })
 
   return {
+    name: compactFile.name,
     strings: compactFile.strings,
     data,
   }
@@ -139,7 +145,11 @@ function toCompactLanguageFile(
   const columns = Object.keys(languageFile.data['🐶'])
     .filter((key) => key !== 'category' && key !== 'text') || []
 
-  const data = {}
+  const data: {
+    [category: string]: {
+      [emoji: string]: string[]
+    }
+  } = {}
 
   for (const emoji in languageFile.data) {
     const item = languageFile.data[emoji]
@@ -150,14 +160,18 @@ function toCompactLanguageFile(
   }
 
   return {
+    name: languageFile.name,
     strings: languageFile.strings,
     columns: ['text', ...columns],
     data,
   }
 }
 
-const replacer = (_, v) => (v instanceof Array) ? JSON.stringify(v) : v
-function prettyPrintArray(json) {
+// deno-lint-ignore no-explicit-any
+const replacer = (_: any, v: any) =>
+  (v instanceof Array) ? JSON.stringify(v) : v
+
+function prettyPrintCompactFile(json: CompactLanguageFile): string {
   if (typeof json === 'string') json = JSON.parse(json)
 
   return JSON.stringify(json, replacer, 2)

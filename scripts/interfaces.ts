@@ -1,24 +1,24 @@
-interface Translation {
+export interface Translation {
   text: string
   category: string
-  hint?: string
+  [name: string]: string
 }
 
-interface TranslationData {
+export interface TranslationData {
   [emoji: string]: Translation
 }
 
-interface InterfaceStrings {
+export interface InterfaceStrings {
   [key: string]: string
 }
 
-interface LanguageFile {
+export interface LanguageFile {
   name: string
   strings: InterfaceStrings
   data: TranslationData
 }
 
-interface CompactLanguageFile {
+export interface CompactLanguageFile {
   name: string
   strings: InterfaceStrings
   columns: string[]
@@ -29,17 +29,21 @@ interface CompactLanguageFile {
   }
 }
 
-interface ExtensionFile {
-  strings: InterfaceStrings
+export interface ExtensionFile {
+  name: string
   data: TranslationData
-  [extensionName: string]: {
-    name: string
-    description: string
-    data: TranslationData
+  strings: InterfaceStrings
+  extensions: {
+    [extensionName: string]: {
+      name: string
+      description: string
+      data: TranslationData
+    }
   }
 }
 
-interface SourceFile {
+export interface SourceFile {
+  strings: InterfaceStrings
   data: {
     [emoji: string]: {
       text: string

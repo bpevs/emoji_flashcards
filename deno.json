@@ -16,6 +16,11 @@
   },
   "tasks": {
     "start": "deno run --allow-net --allow-read --watch main.ts",
-    "translate": "deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read=data,node_modules,.env,.env.defaults,.env.example scripts/generate_translations.ts"
+    "test": "deno fmt && deno lint && deno task check",
+    "translate": "deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read=data,node_modules,.env,.env.defaults,.env.example scripts/generate_translations.ts",
+    "check": "deno task check:translate",
+    "check:translate": "deno check scripts/generate_translations.ts",
+    "check:server": "deno check scripts/main.ts",
+    "check:client": "deno check scripts/public.js"
   }
 }

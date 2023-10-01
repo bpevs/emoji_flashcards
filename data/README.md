@@ -105,21 +105,23 @@ If a key exists in source.json, but not the language file, it will be translated
     "🍺": { "text": "cervesa", "category": "beverages" }
   },
 
-  "gender-extension": {
-    "name": "Modify with gender",
-    "description": "Adds definite articles",
-    "data": {
-      "🍺": { "text": "una cervesa", "category": "beverages" }
-    }
-  },
+  "extensions": {
+    "gender-extension": {
+      "name": "Modify with gender",
+      "description": "Adds definite articles",
+      "data": {
+        "🍺": { "text": "una cervesa", "category": "beverages" }
+      }
+    },
 
-  "subject-extension": {
-    "name": "Add Subject",
-    "description": "Adds verb subjects",
-    "data": {
-      "😮🍔 (🙋)": { "text": "como", "category": "verbs" },
-      "😮🍔 (🫵)": { "text": "comes", "category": "verbs" },
-      "😮🍔 (👉🧍)": { "text": "come", "category": "verbs" }
+    "subject-extension": {
+      "name": "Add Subject",
+      "description": "Adds verb subjects",
+      "data": {
+        "😮🍔 (🙋)": { "text": "como", "category": "verbs" },
+        "😮🍔 (🫵)": { "text": "comes", "category": "verbs" },
+        "😮🍔 (👉🧍)": { "text": "come", "category": "verbs" }
+      }
     }
   }
 }
