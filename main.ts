@@ -1,30 +1,58 @@
-/*
- * Serve the emoji_flashcards website
- */
-import { join } from 'https://deno.land/std@0.200.0/path/posix.ts'
+import {
+  Application,
+  Router,
+  send,
+} from 'https://deno.land/x/oak@v11.1.0/mod.ts'
+import { Handlebars } from 'https://deno.land/x/handlebars@v0.9.0/mod.ts'
 
-const server = Deno.listen({ port: 8080 })
-console.log('File server running on http://localhost:8080/')
+const STATIC_DIR_PATH = '/'
+const STATIC_DIR = './public'
 
-for await (const conn of server) {
-  handleHttp(conn).catch(console.error)
+const handle = new Handlebars({
+  helpers: {
+    select: function (selected, options) {
+      return options.fn(this).replace(
+        new RegExp(' value="' + selected + '"'),
+        '$& selected="selected"',
+      )
+    },
+  },
+})
+const router = new Router()
+
+const langMap = {
+  'ja': 'ja-JP',
+  'en': 'en-US',
+  'es': 'es-ES',
+  'zh': 'zh-CN',
 }
 
-async function handleHttp(conn: Deno.Conn) {
-  const httpConn = Deno.serveHttp(conn)
-  for await (const requestEvent of httpConn) {
-    const url = new URL(requestEvent.request.url)
+router.get('/', async (context) => {
+  const lang = context.request.url.searchParams.get('lang')
+  const langCode = langMap[lang] || langMap['en']
+  const langURL = `data/languages/${langCode}.json`
 
-    let file
-    try {
-      const filepath = join('./www', decodeURIComponent(url.pathname))
-      const fileData = await Deno.stat(filepath)
-      if (!fileData.isFile) throw new Error('Not a file')
-      file = await Deno.open(filepath, { read: true })
-    } catch {
-      file = await Deno.open('./www/index.html', { read: true })
-    }
+  const langFile = JSON.parse(await Deno.readTextFile(langURL))
 
-    await requestEvent.respondWith(new Response(file.readable))
+  context.response.body = await handle.renderView('index', {
+    lang: langCode.split('-')[0],
+    langCode: langCode,
+    ...langFile.strings,
+  })
+})
+
+const app = new Application()
+
+app.use(router.routes())
+app.use(router.allowedMethods())
+
+app.use(async (ctx, next) => {
+  if (!ctx.request.url.pathname.startsWith(STATIC_DIR_PATH)) {
+    next()
+    return
   }
-}
+  const filePath = ctx.request.url.pathname.replace(STATIC_DIR_PATH, '')
+  await send(ctx, filePath, { root: STATIC_DIR })
+})
+
+await app.listen({ port: 8000 })
