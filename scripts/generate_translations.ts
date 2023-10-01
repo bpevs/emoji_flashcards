@@ -42,6 +42,19 @@ async function generateTranslations() {
 
     if (!language.data) language.data = {}
 
+    console.info(`Language (${targetLanguage}):`)
+
+    const stringsToTranslate = []
+
+    for (const stringKey in source.strings) {
+      if (!language?.strings[stringKey]) {
+        stringsToTranslate.push(source.strings[stringKey])
+      }
+    }
+
+    console.info(`Website Strings to translate:`)
+    console.info(stringsToTranslate)
+
     // If translation doesn't exist in target language JSON, translate and add
     const textsToTranslate = []
 
@@ -51,7 +64,7 @@ async function generateTranslations() {
       }
     }
 
-    console.info(`Texts to translate (${targetLanguage}):`)
+    console.info(`Texts to translate:`)
     console.info(textsToTranslate)
 
     if (textsToTranslate.length) {
@@ -73,6 +86,17 @@ async function generateTranslations() {
           } else {
             language.data[emoji] = data
           }
+          index++
+        }
+      }
+    }
+
+    if (stringsToTranslate.length) {
+      const translatedStrings = await translate(stringsToTranslate, targetLanguage)
+      let index = 0
+      for (const [stringKey, item] of Object.entries(source.strings)) {
+        if (!language.strings[stringKey]) {
+          language.strings[stringKey] = translatedStrings[index]
           index++
         }
       }
@@ -108,7 +132,7 @@ function fromCompactLanguageFile(
   })
 
   return {
-    strings: compactFile.string,
+    strings: compactFile.strings,
     data,
   }
 }
