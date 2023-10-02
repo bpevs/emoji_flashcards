@@ -1,5 +1,6 @@
-export interface SourceData {
+export interface TranslatedSourceData {
   text: string
+  translatedText: string
   category: string
   pos: string
 }
@@ -44,17 +45,6 @@ export interface ExtensionFile {
       name: string
       description: string
       data: TranslationData
-    }
-  }
-}
-
-export interface SourceFile {
-  strings: InterfaceStrings
-  data: {
-    [emoji: string]: {
-      text: string
-      pos: string
-      category: string
     }
   }
 }

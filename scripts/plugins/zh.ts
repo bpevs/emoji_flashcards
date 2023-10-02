@@ -1,4 +1,4 @@
-import type { SourceData } from '../interfaces.ts'
+import type { TranslatedSourceData } from '../interfaces.ts'
 import pinyin from 'npm:chinese-to-pinyin'
 
 interface LangData {
@@ -8,13 +8,13 @@ interface LangData {
 }
 
 export default function (
-  { text, category }: SourceData,
+  { translatedText, category }: TranslatedSourceData,
   existing: LangData,
 ): LangData | null {
   if (existing) return null
   return {
-    text,
+    text: translatedText,
     category,
-    pinyin: pinyin(text) || '',
+    pinyin: pinyin(translatedText) || '',
   }
 }

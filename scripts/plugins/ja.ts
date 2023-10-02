@@ -1,4 +1,4 @@
-import type { SourceData } from '../interfaces.ts'
+import type { TranslatedSourceData } from '../interfaces.ts'
 
 import Kuroshiro from 'npm:kuroshiro'
 import KuromojiAnalyzer from 'npm:kuroshiro-analyzer-kuromoji'
@@ -13,13 +13,13 @@ interface LangData {
 }
 
 export default async function (
-  { text, category }: SourceData,
+  { translatedText, category }: TranslatedSourceData,
   existing: LangData,
 ): Promise<LangData | null> {
   if (existing) return null
   return {
-    text,
+    text: translatedText,
     category,
-    romaji: (await kuroshiro.convert(text, { to: 'romaji' })) || '',
+    romaji: (await kuroshiro.convert(translatedText, { to: 'romaji' })) || '',
   }
 }

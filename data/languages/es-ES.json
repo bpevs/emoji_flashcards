@@ -253,6 +253,14 @@
       "📰🗞️": ["el periódico", ""],
       "✏️": ["el lápiz", ""],
       "🖋️": ["la pluma", ""]
+    },
+    "verbs": {
+      "🏃‍♂️ / 🏃‍♀️": ["correr", "yo corro, tú corres, él corre"],
+      "🚶‍♂️ / 🚶‍♀️": ["caminar", "yo camino, tú caminas, él camina"],
+      "🗣️": ["hablar", "yo hablo, tú hablas, él habla"],
+      "🗣️👂": ["escuchar", "yo escucho, tú escuchas, él escucha"],
+      "😮🍽️🍔": ["comer", "yo como, tú comes, él come"],
+      "😮🥤": ["(beber", "Yo bebo, tú bebes, él bebe"]
     }
   }
 }

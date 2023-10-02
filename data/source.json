@@ -2,1093 +2,264 @@
   "strings": {
     "title": "Emoji Language Flashcards",
     "description": "Downloadable emoji flashcards to learn many languages",
-
     "switch-language": "Switch Language",
     "download": "Download",
     "open-source": "Emoji Flashcards is free and open-source",
-
     "en-US": "English",
     "es-ES": "Spanish",
     "ja-JP": "Japanese",
     "zh-CN": "Chinese"
   },
+  "columns": ["text", "pos"],
   "data": {
-    "🐶": {
-      "text": "dog",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🐈": {
-      "text": "cat",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🐟": {
-      "text": "fish",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🐦": {
-      "text": "bird",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🐮": {
-      "text": "cow",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🐷": {
-      "text": "pig",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🐭": {
-      "text": "mouse",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🐴": {
-      "text": "horse",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🐛🐞🐝": {
-      "text": "bug (insect)",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🪽": {
-      "text": "wing",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🦊🐰🐶🐷": {
-      "text": "animal",
-      "pos": "noun",
-      "category": "animal"
-    },
-    "🍎🍊🍌": {
-      "text": "fruit",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🥒🥦🥬": {
-      "text": "vegetable",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍎": {
-      "text": "apple",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🧅": {
-      "text": "onion",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍅": {
-      "text": "tomato",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍌": {
-      "text": "banana",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍊": {
-      "text": "orange",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🌽": {
-      "text": "corn",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🥔": {
-      "text": "potato",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍋": {
-      "text": "lemon",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍞🥖": {
-      "text": "bread",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🥚🍳": {
-      "text": "egg",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🥩": {
-      "text": "beef",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍖": {
-      "text": "meat",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🐖🥓": {
-      "text": "pork",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🐓🍗": {
-      "text": "chicken",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🥗": {
-      "text": "salad",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍲": {
-      "text": "soup",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍚": {
-      "text": "rice",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍝": {
-      "text": "noodles",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🧀": {
-      "text": "cheese",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍭🍬🎂": {
-      "text": "sugar",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🧊": {
-      "text": "ice",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🧂": {
-      "text": "salt",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🥞🌅": {
-      "text": "breakfast",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍱☀️": {
-      "text": "lunch",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🍔🌙": {
-      "text": "dinner",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🔪": {
-      "text": "knife",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🥄": {
-      "text": "spoon",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🥛🍺": {
-      "text": "cup",
-      "pos": "noun",
-      "category": "food"
-    },
-    "🔵": {
-      "text": "blue",
-      "pos": "adjective",
-      "category": "color"
-    },
-    "⚪️": {
-      "text": "white",
-      "pos": "adjective",
-      "category": "color"
-    },
-    "⚫️": {
-      "text": "black",
-      "pos": "adjective",
-      "category": "color"
-    },
-    "🔴": {
-      "text": "red",
-      "pos": "adjective",
-      "category": "color"
-    },
-    "🟡": {
-      "text": "yellow",
-      "pos": "adjective",
-      "category": "color"
-    },
-    "🟤": {
-      "text": "brown",
-      "pos": "adjective",
-      "category": "color"
-    },
-    "🟠": {
-      "text": "orange",
-      "pos": "adjective",
-      "category": "color"
-    },
-    "🟣": {
-      "text": "purple",
-      "pos": "adjective",
-      "category": "color"
-    },
-    "🟢": {
-      "text": "green",
-      "pos": "adjective",
-      "category": "color"
-    },
-    "🎨": {
-      "text": "color",
-      "pos": "noun",
-      "category": "color"
-    },
-    "👁️": {
-      "text": "eye",
-      "pos": "noun",
-      "category": "body"
-    },
-    "👅": {
-      "text": "tongue",
-      "pos": "noun",
-      "category": "body"
-    },
-    "👄": {
-      "text": "lips",
-      "pos": "noun",
-      "category": "body"
-    },
-    "🦷": {
-      "text": "tooth",
-      "pos": "noun",
-      "category": "body"
-    },
-    "🧠": {
-      "text": "brain",
-      "pos": "noun",
-      "category": "body"
-    },
-    "👃": {
-      "text": "nose",
-      "pos": "noun",
-      "category": "body"
-    },
-    "👂": {
-      "text": "ear",
-      "pos": "noun",
-      "category": "body"
-    },
-    "🦶": {
-      "text": "foot",
-      "pos": "noun",
-      "category": "body"
-    },
-    "🦵": {
-      "text": "leg",
-      "pos": "noun",
-      "category": "body"
-    },
-    "🫁": {
-      "text": "lungs",
-      "pos": "noun",
-      "category": "body"
-    },
-    "🫀": {
-      "text": "heart",
-      "pos": "noun",
-      "category": "body"
-    },
-    "💪": {
-      "text": "arm",
-      "pos": "noun",
-      "category": "body"
-    },
-    "🖐️": {
-      "text": "hand",
-      "pos": "noun",
-      "category": "body"
-    },
-    "💀🦴": {
-      "text": "bone",
-      "pos": "noun",
-      "category": "body"
-    },
-    "🩸🅰️🅱️🆎🅾️": {
-      "text": "blood",
-      "pos": "noun",
-      "category": "body"
-    },
-    "🚂": {
-      "text": "train",
-      "pos": "noun",
-      "category": "transportation"
-    },
-    "✈️": {
-      "text": "plane",
-      "pos": "noun",
-      "category": "transportation"
-    },
-    "🚗": {
-      "text": "car",
-      "pos": "noun",
-      "category": "transportation"
-    },
-    "🚚": {
-      "text": "truck",
-      "pos": "noun",
-      "category": "transportation"
-    },
-    "🚲": {
-      "text": "bicycle",
-      "pos": "noun",
-      "category": "transportation"
-    },
-    "🚎": {
-      "text": "bus",
-      "pos": "noun",
-      "category": "transportation"
-    },
-    "⛵️": {
-      "text": "boat",
-      "pos": "noun",
-      "category": "transportation"
-    },
-    "🚕": {
-      "text": "taxi",
-      "pos": "noun",
-      "category": "transportation"
-    },
-    "⛽️🛢️": {
-      "text": "gasoline",
-      "pos": "noun",
-      "category": "transportation"
-    },
-
-    "🏙️": {
-      "text": "city",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🏠": {
-      "text": "house",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🏢🏠": {
-      "text": "apartment",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🛣️": {
-      "text": "street/road",
-      "pos": "noun",
-      "category": "places"
-    },
-    "✈️🏢": {
-      "text": "airport",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🚉": {
-      "text": "train station",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🚌🛑": {
-      "text": "bus stop",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🌉": {
-      "text": "bridge",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🏨🏩": {
-      "text": "hotel",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🧑‍🍳🍗🏢": {
-      "text": "restaurant",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🌾🐄🚜👨‍🌾": {
-      "text": "farm",
-      "pos": "noun",
-      "category": "places"
-    },
-    "👩‍⚖️🏛️": {
-      "text": "court",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🏫": {
-      "text": "school",
-      "pos": "noun",
-      "category": "places"
-    },
-    "💼🏢": {
-      "text": "office",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🛏️🚪": {
-      "text": "room",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🏘️": {
-      "text": "town",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🎓🏫": {
-      "text": "university",
-      "pos": "noun",
-      "category": "places"
-    },
-    "💃🪩🕺🏢": {
-      "text": "club",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🍻🏢": {
-      "text": "bar",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🛝🌳": {
-      "text": "park",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🛍️🏪": {
-      "text": "store/shop",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🎭🏛️": {
-      "text": "theater",
-      "pos": "noun",
-      "category": "places"
-    },
-    "📚🏛️": {
-      "text": "library",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🏥": {
-      "text": "hospital",
-      "pos": "noun",
-      "category": "places"
-    },
-    "⛪️": {
-      "text": "church",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🛒🏢": {
-      "text": "market",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🇱🇾🇺🇸🇨🇳🇮🇹": {
-      "text": "country",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🏢": {
-      "text": "building",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🏦": {
-      "text": "bank",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🏤🏣": {
-      "text": "post office",
-      "pos": "noun",
-      "category": "places"
-    },
-    "📍": {
-      "text": "location",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🏧": {
-      "text": "ATM",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🚾": {
-      "text": "restroom",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🅿️": {
-      "text": "parking",
-      "pos": "noun",
-      "category": "places"
-    },
-    "🛗": {
-      "text": "elevator",
-      "pos": "noun",
-      "category": "places"
-    },
-    "1️⃣": {
-      "text": "one",
-      "pos": "noun",
-      "category": "number"
-    },
-    "2️⃣": {
-      "text": "two",
-      "pos": "noun",
-      "category": "number"
-    },
-    "3️⃣": {
-      "text": "three",
-      "pos": "noun",
-      "category": "number"
-    },
-    "4️⃣": {
-      "text": "four",
-      "pos": "noun",
-      "category": "number"
-    },
-    "5️⃣": {
-      "text": "five",
-      "pos": "noun",
-      "category": "number"
-    },
-    "6️⃣": {
-      "text": "six",
-      "pos": "noun",
-      "category": "number"
-    },
-    "7️⃣": {
-      "text": "seven",
-      "pos": "noun",
-      "category": "number"
-    },
-    "8️⃣": {
-      "text": "eight",
-      "pos": "noun",
-      "category": "number"
-    },
-    "9️⃣": {
-      "text": "nine",
-      "pos": "noun",
-      "category": "number"
-    },
-    "🔟": {
-      "text": "ten",
-      "pos": "noun",
-      "category": "number"
-    },
-    "11": {
-      "text": "eleven",
-      "pos": "noun",
-      "category": "number"
-    },
-    "12": {
-      "text": "twelve",
-      "pos": "noun",
-      "category": "number"
-    },
-    "13": {
-      "text": "thirteen",
-      "pos": "noun",
-      "category": "number"
-    },
-    "14": {
-      "text": "fourteen",
-      "pos": "noun",
-      "category": "number"
-    },
-    "15": {
-      "text": "fifteen",
-      "pos": "noun",
-      "category": "number"
-    },
-    "16": {
-      "text": "sixteen",
-      "pos": "noun",
-      "category": "number"
-    },
-    "17": {
-      "text": "seventeen",
-      "pos": "noun",
-      "category": "number"
-    },
-    "18": {
-      "text": "eighteen",
-      "pos": "noun",
-      "category": "number"
-    },
-    "19": {
-      "text": "ninteen",
-      "pos": "noun",
-      "category": "number"
-    },
-    "20": {
-      "text": "twenty",
-      "pos": "noun",
-      "category": "number"
-    },
-    "21": {
-      "text": "twenty-one",
-      "pos": "noun",
-      "category": "number"
-    },
-    "30": {
-      "text": "thirty",
-      "pos": "noun",
-      "category": "number"
-    },
-    "31": {
-      "text": "thirty-one",
-      "pos": "noun",
-      "category": "number"
-    },
-    "40": {
-      "text": "fourty",
-      "pos": "noun",
-      "category": "number"
-    },
-    "41": {
-      "text": "fourty-one",
-      "pos": "noun",
-      "category": "number"
-    },
-    "50": {
-      "text": "fifty",
-      "pos": "noun",
-      "category": "number"
-    },
-    "51": {
-      "text": "fifty-one",
-      "pos": "noun",
-      "category": "number"
-    },
-    "60": {
-      "text": "sixty",
-      "pos": "noun",
-      "category": "number"
-    },
-    "61": {
-      "text": "sixty-one",
-      "pos": "noun",
-      "category": "number"
-    },
-    "70": {
-      "text": "seventy",
-      "pos": "noun",
-      "category": "number"
-    },
-    "71": {
-      "text": "seventy-one",
-      "pos": "noun",
-      "category": "number"
-    },
-    "80": {
-      "text": "eighty",
-      "pos": "noun",
-      "category": "number"
-    },
-    "81": {
-      "text": "eighty-one",
-      "pos": "noun",
-      "category": "number"
-    },
-    "90": {
-      "text": "ninety",
-      "pos": "noun",
-      "category": "number"
-    },
-    "91": {
-      "text": "ninety-one",
-      "pos": "noun",
-      "category": "number"
-    },
-    "💯": {
-      "text": "hundred",
-      "pos": "noun",
-      "category": "number"
-    },
-    "101": {
-      "text": "one-hundred and one",
-      "pos": "noun",
-      "category": "number"
-    },
-    "111": {
-      "text": "one-hundred and eleven",
-      "pos": "noun",
-      "category": "number"
-    },
-    "200": {
-      "text": "two-hundred",
-      "pos": "noun",
-      "category": "number"
-    },
-    "1,000": {
-      "text": "thousand",
-      "pos": "noun",
-      "category": "number"
-    },
-    "10,000": {
-      "text": "ten-thousand",
-      "pos": "noun",
-      "category": "number"
-    },
-    "1,000,000": {
-      "text": "million",
-      "pos": "noun",
-      "category": "number"
-    },
-    "🥇": {
-      "text": "first",
-      "pos": "noun",
-      "category": "number"
-    },
-    "🥈": {
-      "text": "second",
-      "pos": "noun",
-      "category": "number"
-    },
-    "🥉": {
-      "text": "third",
-      "pos": "noun",
-      "category": "number"
-    },
-    "#️⃣🔢": {
-      "text": "number",
-      "pos": "noun",
-      "category": "number"
-    },
-    "🍺": {
-      "text": "beer",
-      "pos": "noun",
-      "category": "drink"
-    },
-    "🍷": {
-      "text": "wine",
-      "pos": "noun",
-      "category": "drink"
-    },
-    "🫖🧋🍵": {
-      "text": "tea",
-      "pos": "noun",
-      "category": "drink"
-    },
-    "☕️": {
-      "text": "coffee",
-      "pos": "noun",
-      "category": "drink"
-    },
-    "💧🚰": {
-      "text": "water",
-      "pos": "noun",
-      "category": "drink"
-    },
-    "🥛": {
-      "text": "milk",
-      "pos": "noun",
-      "category": "drink"
-    },
-    "🧋🥛🍷🧉🍸": {
-      "text": "beverage",
-      "pos": "noun",
-      "category": "drink"
-    },
-
-    "📱": {
-      "text": "cellphone",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "📷": {
-      "text": "camera",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "📸🌅": {
-      "text": "photo",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "🎙️": {
-      "text": "microphone",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "💻": {
-      "text": "computer",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "💳": {
-      "text": "credit card",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "💰 (🚫💳)": {
-      "text": "cash",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "🪪🆔": {
-      "text": "id card",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "🧾": {
-      "text": "receipt",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "🛍️": {
-      "text": "bag (shopping bag)",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "📰🗞️": {
-      "text": "newspaper",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "✏️": {
-      "text": "pencil",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "🖋️": {
-      "text": "pen",
-      "pos": "noun",
-      "category": "objects"
-    },
-    "1/7 🗓️": {
-      "text": "sunday",
-      "pos": "noun",
-      "category": "days_of_the_week"
-    },
-    "2/7 🗓️": {
-      "text": "monday",
-      "pos": "noun",
-      "category": "days_of_the_week"
-    },
-    "3/7 🗓️": {
-      "text": "tuesday",
-      "pos": "noun",
-      "category": "days_of_the_week"
-    },
-    "4/7 🗓️": {
-      "text": "wednesday",
-      "pos": "noun",
-      "category": "days_of_the_week"
-    },
-    "5/7 🗓️": {
-      "text": "thursday",
-      "pos": "noun",
-      "category": "days_of_the_week"
-    },
-    "6/7 🗓️": {
-      "text": "friday",
-      "pos": "noun",
-      "category": "days_of_the_week"
-    },
-    "7/7 🗓️": {
-      "text": "saturday",
-      "pos": "noun",
-      "category": "days_of_the_week"
-    },
-    "1/12 🗓️": {
-      "text": "January",
-      "pos": "noun",
-      "category": "months"
-    },
-    "2/12 🗓️": {
-      "text": "February",
-      "pos": "noun",
-      "category": "months"
-    },
-    "3/12 🗓️": {
-      "text": "March",
-      "pos": "noun",
-      "category": "months"
-    },
-    "4/12 🗓️": {
-      "text": "April",
-      "pos": "noun",
-      "category": "months"
-    },
-    "5/12 🗓️": {
-      "text": "May",
-      "pos": "noun",
-      "category": "months"
-    },
-    "6/12 🗓️": {
-      "text": "June",
-      "pos": "noun",
-      "category": "months"
-    },
-    "7/12 🗓️": {
-      "text": "July",
-      "pos": "noun",
-      "category": "months"
-    },
-    "8/12 🗓️": {
-      "text": "August",
-      "pos": "noun",
-      "category": "months"
-    },
-    "9/12 🗓️": {
-      "text": "September",
-      "pos": "noun",
-      "category": "months"
-    },
-    "10/12 🗓️": {
-      "text": "October",
-      "pos": "noun",
-      "category": "months"
-    },
-    "11/12 🗓️": {
-      "text": "November",
-      "pos": "noun",
-      "category": "months"
-    },
-    "12/12 🗓️": {
-      "text": "December",
-      "pos": "noun",
-      "category": "months"
-    },
-    "🌷🗓️": {
-      "text": "spring",
-      "pos": "noun",
-      "category": "seasons"
-    },
-    "☀️🗓️": {
-      "text": "summer",
-      "pos": "noun",
-      "category": "seasons"
-    },
-    "🍂🗓️": {
-      "text": "fall",
-      "pos": "noun",
-      "category": "seasons"
-    },
-    "❄️🗓️": {
-      "text": "winter",
-      "pos": "noun",
-      "category": "seasons"
-    },
-    "🌷☀️🍂❄️🗓️": {
-      "text": "season",
-      "pos": "noun",
-      "category": "seasons"
-    },
-    "YYYY 🗓️": {
-      "text": "year",
-      "pos": "noun",
-      "category": "time"
-    },
-    "MM 🗓️": {
-      "text": "month",
-      "pos": "noun",
-      "category": "time"
-    },
-    "WW 🗓️": {
-      "text": "week",
-      "pos": "noun",
-      "category": "time"
-    },
-    "DD 🗓️": {
-      "text": "day",
-      "pos": "noun",
-      "category": "time"
-    },
-    "HH 🕒": {
-      "text": "hour",
-      "pos": "noun",
-      "category": "time"
-    },
-    "MM 🕒": {
-      "text": "minute",
-      "pos": "noun",
-      "category": "time"
-    },
-    "SS 🕒": {
-      "text": "second",
-      "pos": "noun",
-      "category": "time"
-    },
-    "🌅 🕙": {
-      "text": "morning",
-      "pos": "noun",
-      "category": "time"
-    },
-    "☀️ 🕐": {
-      "text": "afternoon",
-      "pos": "noun",
-      "category": "time"
-    },
-    "🌇 🕣": {
-      "text": "evening",
-      "pos": "noun",
-      "category": "time"
-    },
-    "🌙 🕙": {
-      "text": "night",
-      "pos": "noun",
-      "category": "time"
-    },
-    "🕦": {
-      "text": "time",
-      "pos": "noun",
-      "category": "time"
-    },
-    "☝️☀️": {
-      "text": "today",
-      "pos": "noun",
-      "category": "time"
-    },
-    "⏭️☀️": {
-      "text": "tomorrow",
-      "pos": "noun",
-      "category": "time"
-    },
-    "⏮️☀️": {
-      "text": "yesterday",
-      "pos": "noun",
-      "category": "time"
+    "number": {
+      "11": ["eleven", "noun"],
+      "12": ["twelve", "noun"],
+      "13": ["thirteen", "noun"],
+      "14": ["fourteen", "noun"],
+      "15": ["fifteen", "noun"],
+      "16": ["sixteen", "noun"],
+      "17": ["seventeen", "noun"],
+      "18": ["eighteen", "noun"],
+      "19": ["ninteen", "noun"],
+      "20": ["twenty", "noun"],
+      "21": ["twenty-one", "noun"],
+      "30": ["thirty", "noun"],
+      "31": ["thirty-one", "noun"],
+      "40": ["fourty", "noun"],
+      "41": ["fourty-one", "noun"],
+      "50": ["fifty", "noun"],
+      "51": ["fifty-one", "noun"],
+      "60": ["sixty", "noun"],
+      "61": ["sixty-one", "noun"],
+      "70": ["seventy", "noun"],
+      "71": ["seventy-one", "noun"],
+      "80": ["eighty", "noun"],
+      "81": ["eighty-one", "noun"],
+      "90": ["ninety", "noun"],
+      "91": ["ninety-one", "noun"],
+      "101": ["one-hundred and one", "noun"],
+      "111": ["one-hundred and eleven", "noun"],
+      "200": ["two-hundred", "noun"],
+      "1️⃣": ["one", "noun"],
+      "2️⃣": ["two", "noun"],
+      "3️⃣": ["three", "noun"],
+      "4️⃣": ["four", "noun"],
+      "5️⃣": ["five", "noun"],
+      "6️⃣": ["six", "noun"],
+      "7️⃣": ["seven", "noun"],
+      "8️⃣": ["eight", "noun"],
+      "9️⃣": ["nine", "noun"],
+      "🔟": ["ten", "noun"],
+      "💯": ["hundred", "noun"],
+      "1,000": ["thousand", "noun"],
+      "10,000": ["ten-thousand", "noun"],
+      "1,000,000": ["million", "noun"],
+      "🥇": ["first", "noun"],
+      "🥈": ["second", "noun"],
+      "🥉": ["third", "noun"],
+      "#️⃣🔢": ["number", "noun"]
+    },
+    "animal": {
+      "🐶": ["dog", "noun"],
+      "🐈": ["cat", "noun"],
+      "🐟": ["fish", "noun"],
+      "🐦": ["bird", "noun"],
+      "🐮": ["cow", "noun"],
+      "🐷": ["pig", "noun"],
+      "🐭": ["mouse", "noun"],
+      "🐴": ["horse", "noun"],
+      "🐛🐞🐝": ["bug (insect)", "noun"],
+      "🪽": ["wing", "noun"],
+      "🦊🐰🐶🐷": ["animal", "noun"]
+    },
+    "food": {
+      "🍎🍊🍌": ["fruit", "noun"],
+      "🥒🥦🥬": ["vegetable", "noun"],
+      "🍎": ["apple", "noun"],
+      "🧅": ["onion", "noun"],
+      "🍅": ["tomato", "noun"],
+      "🍌": ["banana", "noun"],
+      "🍊": ["orange", "noun"],
+      "🌽": ["corn", "noun"],
+      "🥔": ["potato", "noun"],
+      "🍋": ["lemon", "noun"],
+      "🍞🥖": ["bread", "noun"],
+      "🥚🍳": ["egg", "noun"],
+      "🥩": ["beef", "noun"],
+      "🍖": ["meat", "noun"],
+      "🐖🥓": ["pork", "noun"],
+      "🐓🍗": ["chicken", "noun"],
+      "🥗": ["salad", "noun"],
+      "🍲": ["soup", "noun"],
+      "🍚": ["rice", "noun"],
+      "🍝": ["noodles", "noun"],
+      "🧀": ["cheese", "noun"],
+      "🍭🍬🎂": ["sugar", "noun"],
+      "🧊": ["ice", "noun"],
+      "🧂": ["salt", "noun"],
+      "🥞🌅": ["breakfast", "noun"],
+      "🍱☀️": ["lunch", "noun"],
+      "🍔🌙": ["dinner", "noun"],
+      "🔪": ["knife", "noun"],
+      "🥄": ["spoon", "noun"],
+      "🥛🍺": ["cup", "noun"]
+    },
+    "color": {
+      "🔵": ["blue", "adjective"],
+      "⚪️": ["white", "adjective"],
+      "⚫️": ["black", "adjective"],
+      "🔴": ["red", "adjective"],
+      "🟡": ["yellow", "adjective"],
+      "🟤": ["brown", "adjective"],
+      "🟠": ["orange", "adjective"],
+      "🟣": ["purple", "adjective"],
+      "🟢": ["green", "adjective"],
+      "🎨": ["color", "noun"]
+    },
+    "body": {
+      "👁️": ["eye", "noun"],
+      "👅": ["tongue", "noun"],
+      "👄": ["lips", "noun"],
+      "🦷": ["tooth", "noun"],
+      "🧠": ["brain", "noun"],
+      "👃": ["nose", "noun"],
+      "👂": ["ear", "noun"],
+      "🦶": ["foot", "noun"],
+      "🦵": ["leg", "noun"],
+      "🫁": ["lungs", "noun"],
+      "🫀": ["heart", "noun"],
+      "💪": ["arm", "noun"],
+      "🖐️": ["hand", "noun"],
+      "💀🦴": ["bone", "noun"],
+      "🩸🅰️🅱️🆎🅾️": ["blood", "noun"]
+    },
+    "transportation": {
+      "🚂": ["train", "noun"],
+      "✈️": ["plane", "noun"],
+      "🚗": ["car", "noun"],
+      "🚚": ["truck", "noun"],
+      "🚲": ["bicycle", "noun"],
+      "🚎": ["bus", "noun"],
+      "⛵️": ["boat", "noun"],
+      "🚕": ["taxi", "noun"],
+      "⛽️🛢️": ["gasoline", "noun"]
+    },
+    "places": {
+      "🏙️": ["city", "noun"],
+      "🏠": ["house", "noun"],
+      "🏢🏠": ["apartment", "noun"],
+      "🛣️": ["street/road", "noun"],
+      "✈️🏢": ["airport", "noun"],
+      "🚉": ["train station", "noun"],
+      "🚌🛑": ["bus stop", "noun"],
+      "🌉": ["bridge", "noun"],
+      "🏨🏩": ["hotel", "noun"],
+      "🧑‍🍳🍗🏢": ["restaurant", "noun"],
+      "🌾🐄🚜👨‍🌾": ["farm", "noun"],
+      "👩‍⚖️🏛️": ["court", "noun"],
+      "🏫": ["school", "noun"],
+      "💼🏢": ["office", "noun"],
+      "🛏️🚪": ["room", "noun"],
+      "🏘️": ["town", "noun"],
+      "🎓🏫": ["university", "noun"],
+      "💃🪩🕺🏢": ["club", "noun"],
+      "🍻🏢": ["bar", "noun"],
+      "🛝🌳": ["park", "noun"],
+      "🛍️🏪": ["store/shop", "noun"],
+      "🎭🏛️": ["theater", "noun"],
+      "📚🏛️": ["library", "noun"],
+      "🏥": ["hospital", "noun"],
+      "⛪️": ["church", "noun"],
+      "🛒🏢": ["market", "noun"],
+      "🇱🇾🇺🇸🇨🇳🇮🇹": ["country", "noun"],
+      "🏢": ["building", "noun"],
+      "🏦": ["bank", "noun"],
+      "🏤🏣": ["post office", "noun"],
+      "📍": ["location", "noun"],
+      "🏧": ["ATM", "noun"],
+      "🚾": ["restroom", "noun"],
+      "🅿️": ["parking", "noun"],
+      "🛗": ["elevator", "noun"]
+    },
+    "drink": {
+      "🍺": ["beer", "noun"],
+      "🍷": ["wine", "noun"],
+      "🫖🧋🍵": ["tea", "noun"],
+      "☕️": ["coffee", "noun"],
+      "💧🚰": ["water", "noun"],
+      "🥛": ["milk", "noun"],
+      "🧋🥛🍷🧉🍸": ["beverage", "noun"]
+    },
+    "objects": {
+      "📱": ["cellphone", "noun"],
+      "📷": ["camera", "noun"],
+      "📸🌅": ["photo", "noun"],
+      "🎙️": ["microphone", "noun"],
+      "💻": ["computer", "noun"],
+      "💳": ["credit card", "noun"],
+      "💰 (🚫💳)": ["cash", "noun"],
+      "🪪🆔": ["id card", "noun"],
+      "🧾": ["receipt", "noun"],
+      "🛍️": ["bag (shopping bag)", "noun"],
+      "📰🗞️": ["newspaper", "noun"],
+      "✏️": ["pencil", "noun"],
+      "🖋️": ["pen", "noun"]
+    },
+    "days_of_the_week": {
+      "1/7 🗓️": ["sunday", "noun"],
+      "2/7 🗓️": ["monday", "noun"],
+      "3/7 🗓️": ["tuesday", "noun"],
+      "4/7 🗓️": ["wednesday", "noun"],
+      "5/7 🗓️": ["thursday", "noun"],
+      "6/7 🗓️": ["friday", "noun"],
+      "7/7 🗓️": ["saturday", "noun"]
+    },
+    "months": {
+      "1/12 🗓️": ["January", "noun"],
+      "2/12 🗓️": ["February", "noun"],
+      "3/12 🗓️": ["March", "noun"],
+      "4/12 🗓️": ["April", "noun"],
+      "5/12 🗓️": ["May", "noun"],
+      "6/12 🗓️": ["June", "noun"],
+      "7/12 🗓️": ["July", "noun"],
+      "8/12 🗓️": ["August", "noun"],
+      "9/12 🗓️": ["September", "noun"],
+      "10/12 🗓️": ["October", "noun"],
+      "11/12 🗓️": ["November", "noun"],
+      "12/12 🗓️": ["December", "noun"]
+    },
+    "seasons": {
+      "🌷🗓️": ["spring", "noun"],
+      "☀️🗓️": ["summer", "noun"],
+      "🍂🗓️": ["fall", "noun"],
+      "❄️🗓️": ["winter", "noun"],
+      "🌷☀️🍂❄️🗓️": ["season", "noun"]
+    },
+    "time": {
+      "YYYY 🗓️": ["year", "noun"],
+      "MM 🗓️": ["month", "noun"],
+      "WW 🗓️": ["week", "noun"],
+      "DD 🗓️": ["day", "noun"],
+      "HH 🕒": ["hour", "noun"],
+      "MM 🕒": ["minute", "noun"],
+      "SS 🕒": ["second", "noun"],
+      "🌅 🕙": ["morning", "noun"],
+      "☀️ 🕐": ["afternoon", "noun"],
+      "🌇 🕣": ["evening", "noun"],
+      "🌙 🕙": ["night", "noun"],
+      "🕦": ["time", "noun"],
+      "☝️☀️": ["today", "noun"],
+      "⏭️☀️": ["tomorrow", "noun"],
+      "⏮️☀️": ["yesterday", "noun"]
+    },
+    "verbs": {
+      "🏃‍♂️ / 🏃‍♀️": ["run", "verb"],
+      "🚶‍♂️ / 🚶‍♀️": ["walk", "verb"],
+      "🗣️": ["talk", "verb"],
+      "🗣️👂": ["listen", "verb"],
+      "😮🍽️🍔": ["eat", "verb"],
+      "😮🥤": ["drink", "verb"]
     }
   }
 }

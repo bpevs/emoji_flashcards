@@ -10,7 +10,6 @@
 import type {
   CompactLanguageFile,
   LanguageFile,
-  SourceFile,
   TranslationData,
 } from './interfaces.ts'
 import { translate } from './translate.ts'
@@ -24,7 +23,7 @@ generateTranslations()
 
 async function generateTranslations() {
   const sourceRaw = await Deno.readTextFile(SOURCE_JSON_PATH)
-  const source: SourceFile = JSON.parse(sourceRaw)
+  const source: LanguageFile = fromCompactLanguageFile(JSON.parse(sourceRaw))
 
   const targetLanguages = Array.from(Deno.readDirSync(LANGUAGES_DIR))
     .filter(({ name }) => LANGUAGE_FILE_REGEX.test(name))
@@ -84,9 +83,9 @@ async function generateTranslations() {
 
       let index = 0
       for (const [emojiKey, item] of Object.entries(source.data)) {
-        const sourceData = {
+        const translatedData = {
           text: item.text,
-          translated: translatedTexts[index],
+          translatedText: translatedTexts[index],
           category: item.category,
           pos: item.pos,
         }
@@ -95,14 +94,15 @@ async function generateTranslations() {
         const plugin = plugins[targetLanguage] || plugins[shortLang]
 
         if (plugin) {
-          const next = await plugin(sourceData, language.data[emojiKey])
-          if (next) language.data[emojiKey] = next
-
-          index++
+          const next = await plugin(translatedData, language.data[emojiKey])
+          if (next) {
+            language.data[emojiKey] = next
+            index++
+          }
         } else if (!language.data[emojiKey]) {
           language.data[emojiKey] = {
-            text: sourceData.translated,
-            category: sourceData.category,
+            text: translatedData.translatedText,
+            category: translatedData.category,
           }
           index++
         }

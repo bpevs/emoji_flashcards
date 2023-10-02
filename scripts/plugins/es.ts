@@ -1,4 +1,4 @@
-import type { SourceData } from '../interfaces.ts'
+import type { TranslatedSourceData } from '../interfaces.ts'
 import { translate } from '../translate.ts'
 
 interface LangData {
@@ -8,13 +8,13 @@ interface LangData {
 }
 
 export default async function (
-  { text, category, pos }: SourceData,
+  { text, translatedText, category, pos }: TranslatedSourceData,
   existing: LangData,
 ): Promise<LangData | null> {
   if (existing) return null
 
   let hint = ''
-  let nextText = text
+  let nextText = translatedText
 
   if (
     pos === 'noun' &&
@@ -25,11 +25,11 @@ export default async function (
   } else if (!hint && pos === 'verb') {
     const [nextTextResp, hintResp] = await translate([
       `(to) ${text}`,
-      `${text}ing, I ${text}, you ${text}, he ${text}`,
+      `I ${text}, you ${text}, he ${text}`,
     ], 'es')
     nextText = nextTextResp.replace(/\(.*\)\s/, '')
     hint = hintResp || ''
   }
-  console.log({ text: nextText, category, hint })
+
   return { text: nextText, category, hint }
 }
