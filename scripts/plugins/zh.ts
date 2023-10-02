@@ -1,18 +1,20 @@
+import type { SourceData } from '../interfaces.ts'
 import pinyin from 'npm:chinese-to-pinyin'
 
-interface Response {
+interface LangData {
   text: string
   category: string
   pinyin: string
 }
 
-export default function ({ text, category }: {
-  text: string
-  category: string
-}): Response {
-  const data: Response = { text, category, pinyin: '' }
+export default function (
+  { text, category }: SourceData,
+  existing: LangData,
+): LangData | null {
+  if (existing) return null
   return {
-    ...data,
+    text,
+    category,
     pinyin: pinyin(text) || '',
   }
 }

@@ -152,6 +152,7 @@
   "npm": {
     "specifiers": {
       "chinese-to-pinyin": "chinese-to-pinyin@1.3.1",
+      "fluent-ffmpeg": "fluent-ffmpeg@2.1.2",
       "kuroshiro": "kuroshiro@1.2.0",
       "kuroshiro-analyzer-kuromoji": "kuroshiro-analyzer-kuromoji@1.1.0"
     },
@@ -174,6 +175,17 @@
       },
       "doublearray@0.0.2": {
         "integrity": "sha512-aw55FtZzT6AmiamEj2kvmR6BuFqvYgKZUkfQ7teqVRNqD5UE0rw8IeW/3gieHNKQ5sPuDKlljWEn4bzv5+1bHw==",
+        "dependencies": {}
+      },
+      "fluent-ffmpeg@2.1.2": {
+        "integrity": "sha512-IZTB4kq5GK0DPp7sGQ0q/BWurGHffRtQQwVkiqDgeO6wYJLLV5ZhgNOQ65loZxxuPMKZKZcICCUnaGtlxBiR0Q==",
+        "dependencies": {
+          "async": "async@2.6.4",
+          "which": "which@1.3.1"
+        }
+      },
+      "isexe@2.0.0": {
+        "integrity": "sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==",
         "dependencies": {}
       },
       "kuromoji@0.1.2": {
@@ -203,6 +215,12 @@
       "regenerator-runtime@0.14.0": {
         "integrity": "sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==",
         "dependencies": {}
+      },
+      "which@1.3.1": {
+        "integrity": "sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==",
+        "dependencies": {
+          "isexe": "isexe@2.0.0"
+        }
       },
       "zlibjs@0.3.1": {
         "integrity": "sha512-+J9RrgTKOmlxFSDHo0pI1xM6BLVUv+o0ZT9ANtCxGkjIVCCUdx9alUF8Gm+dGLKbkkkidWIHFDZHDMpfITt4+w==",

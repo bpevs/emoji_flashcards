@@ -1,3 +1,9 @@
+export interface SourceData {
+  text: string
+  category: string
+  pos: string
+}
+
 export interface Translation {
   text: string
   category: string

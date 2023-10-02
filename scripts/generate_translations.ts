@@ -53,6 +53,20 @@ async function generateTranslations() {
     console.info(`Website Strings to translate:`)
     console.info(stringsToTranslate)
 
+    if (stringsToTranslate.length) {
+      const translatedStrings = await translate(
+        stringsToTranslate,
+        targetLanguage,
+      )
+      let index = 0
+      for (const [stringKey] of Object.entries(source.strings)) {
+        if (!language.strings[stringKey]) {
+          language.strings[stringKey] = translatedStrings[index]
+          index++
+        }
+      }
+    }
+
     // If translation doesn't exist in target language JSON, translate and add
     const textsToTranslate = []
 
@@ -69,35 +83,27 @@ async function generateTranslations() {
       const translatedTexts = await translate(textsToTranslate, targetLanguage)
 
       let index = 0
-      for (const [emoji, item] of Object.entries(source.data)) {
-        if (!language.data[emoji]) {
-          const data = {
-            text: translatedTexts[index],
-            category: item.category,
-          }
-          if (plugins[targetLanguage]) {
-            language.data[emoji] = await plugins[targetLanguage](data)
-          } else if (plugins[targetLanguage.split('-')[0]]) {
-            language.data[emoji] = await plugins[targetLanguage.split('-')[0]](
-              data,
-            )
-          } else {
-            language.data[emoji] = data
-          }
-          index++
+      for (const [emojiKey, item] of Object.entries(source.data)) {
+        const sourceData = {
+          text: item.text,
+          translated: translatedTexts[index],
+          category: item.category,
+          pos: item.pos,
         }
-      }
-    }
 
-    if (stringsToTranslate.length) {
-      const translatedStrings = await translate(
-        stringsToTranslate,
-        targetLanguage,
-      )
-      let index = 0
-      for (const [stringKey] of Object.entries(source.strings)) {
-        if (!language.strings[stringKey]) {
-          language.strings[stringKey] = translatedStrings[index]
+        const shortLang = targetLanguage.split('-')[0]
+        const plugin = plugins[targetLanguage] || plugins[shortLang]
+
+        if (plugin) {
+          const next = await plugin(sourceData, language.data[emojiKey])
+          if (next) language.data[emojiKey] = next
+
+          index++
+        } else if (!language.data[emojiKey]) {
+          language.data[emojiKey] = {
+            text: sourceData.translated,
+            category: sourceData.category,
+          }
           index++
         }
       }
