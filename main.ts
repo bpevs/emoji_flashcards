@@ -5,6 +5,11 @@ import {
 } from 'https://deno.land/x/oak@v11.1.0/mod.ts'
 import { Handlebars } from 'https://deno.land/x/handlebars@v0.9.0/mod.ts'
 
+const STATIC_DIR_PATH = '/'
+const STATIC_DIR = './public'
+const DATA_DIR_PATH = '/data'
+const DATA_DIR = './data'
+
 const handle = new Handlebars({
   helpers: {
     select: function (selected, options) {
