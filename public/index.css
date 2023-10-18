@@ -1,5 +1,11 @@
-.switch-language {
+.switch-user-language {
   position: fixed;
   top: 10px;
   right: 10px;
+}
+
+#cards {
+  max-height: 600px;
+  overflow: scroll;
+  border: 2px solid black;
 }

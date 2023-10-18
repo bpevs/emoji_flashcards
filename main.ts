@@ -7,6 +7,8 @@ import { Handlebars } from 'https://deno.land/x/handlebars@v0.9.0/mod.ts'
 
 const STATIC_DIR_PATH = '/'
 const STATIC_DIR = './public'
+const DATA_DIR_PATH = '/data'
+const DATA_DIR = './data'
 
 const handle = new Handlebars({
   helpers: {
@@ -47,12 +49,15 @@ app.use(router.routes())
 app.use(router.allowedMethods())
 
 app.use(async (ctx, next) => {
-  if (!ctx.request.url.pathname.startsWith(STATIC_DIR_PATH)) {
-    next()
-    return
+  const pathname = ctx.request.url.pathname
+  if (pathname.toLowerCase().startsWith(DATA_DIR_PATH)) {
+    const filePath = pathname.replace(DATA_DIR_PATH, '')
+    await send(ctx, filePath, { root: DATA_DIR })
+  } else {
+    const filePath = pathname.replace(STATIC_DIR_PATH, '')
+    await send(ctx, filePath, { root: STATIC_DIR })
   }
-  const filePath = ctx.request.url.pathname.replace(STATIC_DIR_PATH, '')
-  await send(ctx, filePath, { root: STATIC_DIR })
 })
 
+console.log('localhost:8000')
 await app.listen({ port: 8000 })
