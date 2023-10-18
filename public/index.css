@@ -1,11 +1,78 @@
+* {
+  font-family: sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.description {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.download-label {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .switch-user-language {
   position: fixed;
   top: 10px;
   right: 10px;
 }
 
+.switch-card-language {
+  text-align: center;
+}
+
 #cards {
   max-height: 600px;
   overflow: scroll;
   border: 2px solid black;
+}
+
+.card-wrapper {
+  margin: 50px;
+  text-align: center;
+}
+
+.card {
+  margin: 10px auto 10px auto;
+  border: 4px solid black;
+  border-radius: 20px;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card h1 {
+  margin: 10px;
+  font-weight: bold;
+  font-size: 4em;
+}
+
+button {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+table {
+  margin: auto;
+  text-align: center;
+}
+
+.emoji-row {
+  cursor: pointer;
+}
+
+.emoji-row:hover,
+.emoji-row.selected {
+  background-color: rgba(0, 0, 0, 0.1);
 }

@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "std/": "https://deno.land/std@0.200.0/",
+    "solid-js": "npm:solid-js",
+    "solid-js/web": "npm:solid-js/web",
+    "motion": "npm:motion",
+    "@motion/solid": "npm:@motionone/solid"
+  }
+}

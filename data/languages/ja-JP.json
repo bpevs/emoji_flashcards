@@ -4,12 +4,13 @@
     "title": "絵文字フラッシュカード",
     "description": "ダウンロード可能な絵文字フラッシュカードで様々な言語を学ぼう",
     "switch-language": "言語を切り替える",
-    "download": "ダウンロード",
     "en-US": "英語",
     "es-ES": "スペイン語",
     "ja-JP": "日本語",
     "zh-CN": "中国語",
-    "open-source": "絵文字フラッシュカードはフリーでオープンソースです。"
+    "open-source": "絵文字フラッシュカードはフリーでオープンソースです。",
+    "download-for": "Ankiフラッシュカードをダウンロード...",
+    "download": "ダウンロード"
   },
   "columns": ["text", "romaji"],
   "data": {

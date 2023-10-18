@@ -4,12 +4,13 @@
     "title": "Emoji Language Flashcards",
     "description": "Downloadable emoji flashcards to learn many languages",
     "switch-language": "Switch Language",
-    "download": "Download",
     "en-US": "English",
     "es-ES": "Spanish",
     "ja-JP": "Japanese",
     "zh-CN": "Chinese",
-    "open-source": "Emoji Flashcards is free and open-source"
+    "open-source": "Emoji Flashcards is free and open-source",
+    "download-for": "Download Anki Flashcards for...",
+    "download": "download"
   },
   "columns": ["text"],
   "data": {

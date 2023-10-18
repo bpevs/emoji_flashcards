@@ -4,12 +4,13 @@
     "title": "Fichas de idiomas emoji",
     "description": "Fichas emoji descargables para aprender muchos idiomas",
     "switch-language": "Cambiar de idioma",
-    "download": "Descargar",
     "en-US": "Inglés",
     "es-ES": "Español",
     "ja-JP": "Japonés",
     "zh-CN": "Chino",
-    "open-source": "Emoji Flashcards es gratuito y de código abierto"
+    "open-source": "Emoji Flashcards es gratuito y de código abierto",
+    "download-for": "Descargar Anki Flashcards para...",
+    "download": "Descargar"
   },
   "columns": ["text", "hint"],
   "data": {
@@ -260,7 +261,7 @@
       "🗣️": ["hablar", "yo hablo, tú hablas, él habla"],
       "🗣️👂": ["escuchar", "yo escucho, tú escuchas, él escucha"],
       "😮🍽️🍔": ["comer", "yo como, tú comes, él come"],
-      "😮🥤": ["(beber", "Yo bebo, tú bebes, él bebe"]
+      "😮🥤": ["beber", "Yo bebo, tú bebes, él bebe"]
     }
   }
 }

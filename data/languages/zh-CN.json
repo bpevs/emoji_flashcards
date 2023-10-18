@@ -4,12 +4,13 @@
     "title": "表情符号语言卡片",
     "description": "下载表情符号卡片，学习多种语言",
     "switch-language": "切换语言",
-    "download": "下载",
     "en-US": "英语",
     "es-ES": "西班牙语",
     "ja-JP": "日语",
     "zh-CN": "中文",
-    "open-source": "Emoji Flashcards 免费开源"
+    "open-source": "Emoji Flashcards 免费开源",
+    "download-for": "下载 Anki Flashcards for...",
+    "download": "下载"
   },
   "columns": ["text", "pinyin"],
   "data": {

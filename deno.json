@@ -15,7 +15,7 @@
     "std/": "https://deno.land/std@0.200.0/"
   },
   "tasks": {
-    "start": "deno run --allow-net --allow-read --watch main.ts",
+    "start": "deno run --allow-net --allow-read --allow-run --allow-env --watch=main.ts,index.tsx main.ts",
     "test": "deno fmt && deno lint && deno task check",
     "translate": "deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read=data,node_modules,.env,.env.defaults,.env.example scripts/generate_translations.ts",
     "build:audio": "deno run --allow-read --allow-write utilities/encode.ts",
