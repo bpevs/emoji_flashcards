@@ -9,8 +9,10 @@
     "ja-JP": "Japonés",
     "zh-CN": "Chino",
     "open-source": "Emoji Flashcards es gratuito y de código abierto",
-    "download-for": "Descargar Anki Flashcards para...",
-    "download": "Descargar"
+    "download-for": "Descargar Anki Flashcards para",
+    "download": "Descargar",
+    "next": "siguiente",
+    "show-answer": "mostrar respuesta"
   },
   "columns": ["text", "hint"],
   "data": {

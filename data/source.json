@@ -8,8 +8,10 @@
     "es-ES": "Spanish",
     "ja-JP": "Japanese",
     "zh-CN": "Chinese",
-    "download-for": "Download Anki Flashcards for...",
-    "download": "download"
+    "download-for": "Download Anki Flashcards for",
+    "download": "download",
+    "next": "next",
+    "show answer": "show answer"
   },
   "columns": ["text", "pos"],
   "data": {

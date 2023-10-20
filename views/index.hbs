@@ -17,8 +17,6 @@
   </select>
 </div>
 
-<div class="download-label">{{download-for}}</div>
-
 <div class="switch-card-language">
   <select
     name="switch-card-language"
@@ -31,8 +29,19 @@
     <option value="zh-CN">{{zh-CN}}</option>
     {{/select}}
   </select>
-  <button id="download">{{download}}</button>
 </div>
 
-
 <div id="app"></div>
+
+<noscript>
+  <p class="no-js">
+    The Demo requires Javascript, but you can still download the flashcards for Anki
+  </p>
+</noscript>
+
+<div class="switch-card-language">
+  {{download-for}}
+  <button id="download">
+    <span>{{cardDisplayLang}}<span>
+  </button>
+</div>

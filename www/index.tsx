@@ -13,19 +13,23 @@ const selectUserLanguage = document.getElementById('switch-user-language')
 const selectCardLanguage = document.getElementById('switch-card-language')
 const downloadButton = document.getElementById('download')
 
-const cardLang = (new URL(document.location)).searchParams.get('card')
+const params = (new URL(document.location)).searchParams
+const cardLangParam = params.get('card')
+const userLangParam = params.get('lang')
 
-const [cardLangCode, setCardLangCode] = createSignal(
-  langMap[cardLang] || cardLang || 'en-US',
+const [cardLangCode] = createSignal(
+  langMap[cardLangParam] || cardLangParam || 'en-US',
+)
+const [userLangCode] = createSignal(
+  langMap[userLangParam] || userLangParam || 'en-US',
 )
 
-const [lang, { refetch }] = createResource(
-  cardLangCode,
-  async (code) => (await fetchLanguage(code)),
-)
+const [cardLang] = createResource(cardLangCode, (code) => fetchLanguage(code))
+const [userLang] = createResource(userLangCode, (code) => fetchLanguage(code))
 
-const data = () => (lang() || {}).data
-const columns = () => ((lang() || {})?.columns || [])
+const data = () => (cardLang() || {}).data
+const columns = () => ((cardLang() || {})?.columns || [])
+const strings = () => ((userLang() || {})?.strings || [])
 
 const emojis = () => {
   if (!data()) return []
@@ -136,20 +140,21 @@ function App() {
             <h1>{currAnswer()}</h1>
             {currOther().map((item) => <h2>{item}</h2>)}
           </div>
+          <button
+            style='position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%)'
+            disabled={currIndex() === emojis().length}
+            onClick={() => {
+              if (isFlipped()) {
+                setCurrIndex(Math.min(emojis().length, currIndex() + 1))
+                setFlipped(false)
+              } else {
+                setFlipped(true)
+              }
+            }}
+          >
+            {isFlipped() ? strings()?.next : strings()?.['show-answer']}
+          </button>
         </div>
-        <button
-          disabled={currIndex() === emojis().length}
-          onClick={() => {
-            if (isFlipped()) {
-              setCurrIndex(Math.min(emojis().length, currIndex() + 1))
-              setFlipped(false)
-            } else {
-              setFlipped(true)
-            }
-          }}
-        >
-          {isFlipped() ? 'next card' : 'show answer'}
-        </button>
       </div>
 
       {

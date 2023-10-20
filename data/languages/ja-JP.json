@@ -9,8 +9,10 @@
     "ja-JP": "日本語",
     "zh-CN": "中国語",
     "open-source": "絵文字フラッシュカードはフリーでオープンソースです。",
-    "download-for": "Ankiフラッシュカードをダウンロード...",
-    "download": "ダウンロード"
+    "download-for": "Ankiフラッシュカードをダウンロード",
+    "download": "ダウンロード",
+    "next": "次",
+    "show-answer": "答えを示す"
   },
   "columns": ["text", "romaji"],
   "data": {

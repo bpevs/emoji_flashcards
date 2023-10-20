@@ -1,14 +1,19 @@
-import {
-  Application,
-  Router,
-  send,
-} from 'https://deno.land/x/oak@v11.1.0/mod.ts'
-import { Handlebars } from 'https://deno.land/x/handlebars@v0.9.0/mod.ts'
+import { Application, Router, send } from 'oak'
+import { Handlebars } from 'handlebars'
+import { resolve } from 'std/path/mod.ts'
+import * as esbuild from 'esbuild'
+import { denoPlugins } from 'esbuild-deno-loader'
+import { solidPlugin } from 'npm:esbuild-plugin-solid'
 
 const STATIC_DIR_PATH = '/'
-const STATIC_DIR = './public'
+const STATIC_DIR = './www'
 const DATA_DIR_PATH = '/data'
 const DATA_DIR = './data'
+
+const [denoResolver, denoLoader] = [...denoPlugins({
+  nodeModulesDir: true,
+  configPath: resolve('./deno.json'),
+})]
 
 const handle = new Handlebars({
   helpers: {
@@ -30,20 +35,44 @@ const langMap = {
 }
 
 router.get('/', async (context) => {
-  const lang = context.request.url.searchParams.get('lang')
-  const langCode = langMap[lang] || langMap['en']
+  const langParam = context.request.url.searchParams.get('lang')
+  const langCode = langMap[langParam] || langMap['en']
   const langURL = `data/languages/${langCode}.json`
   const langFile = JSON.parse(await Deno.readTextFile(langURL))
 
   const cardLang = context.request.url.searchParams.get('card')
   const cardLangCode = langMap[cardLang] || langMap['en']
+  const lang = langCode.split('-')[0]
+  const cardDisplayLang = langFile.strings[cardLangCode]
 
   context.response.body = await handle.renderView('index', {
-    lang: langCode.split('-')[0],
-    langCode: langCode,
-    cardLangCode: cardLangCode,
+    lang,
+    langCode,
+    cardLangCode,
+    cardDisplayLang,
     ...langFile.strings,
   })
+})
+
+router.get('/index.js', async (context) => {
+  await esbuild.build({
+    plugins: [
+      denoResolver,
+      solidPlugin({
+        solid: { moduleName: 'npm:solid-js/web' },
+      }),
+      denoLoader,
+    ],
+    entryPoints: ['./www/index.tsx'],
+    outfile: './www/index.js',
+    bundle: true,
+    platform: 'browser',
+    format: 'esm',
+    target: ['chrome99', 'safari15'],
+    treeShaking: true,
+  })
+  await esbuild.stop()
+  context.response.body = await Deno.readTextFile('./www/index.js')
 })
 
 const app = new Application()

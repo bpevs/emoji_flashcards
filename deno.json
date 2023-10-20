@@ -12,7 +12,16 @@
     "exclude": ["components/markup"]
   },
   "imports": {
-    "std/": "https://deno.land/std@0.200.0/"
+    "std/": "https://deno.land/std@0.200.0/",
+    "oak": "https://deno.land/x/oak@v11.1.0/mod.ts",
+    "handlebars": "https://deno.land/x/handlebars@v0.9.0/mod.ts",
+    "esbuild": "https://deno.land/x/esbuild@v0.14.51/mod.js",
+    "esbuild-deno-loader": "https://deno.land/x/esbuild_deno_loader@0.8.1/mod.ts",
+
+    "solid-js": "npm:solid-js",
+    "solid-js/web": "npm:solid-js/web",
+    "motion": "npm:motion",
+    "@motion/solid": "npm:@motionone/solid"
   },
   "tasks": {
     "start": "deno run --allow-net --allow-read --allow-run --allow-env --watch=main.ts,index.tsx main.ts",
