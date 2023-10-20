@@ -48,7 +48,7 @@ router.get('/', async (context) => {
 })
 
 router.get('/index.js', async (context) => {
-  const env = await load()
+  const env = await load({ allowEmptyValues: true })
   if (env['LOCAL'] === 'true') {
     context.response.body = await build(false)
   } else {
