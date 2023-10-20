@@ -2,9 +2,7 @@ import * as esbuild from 'esbuild'
 import { denoPlugins } from 'esbuild-deno-loader'
 import { solidPlugin } from 'npm:esbuild-plugin-solid'
 import { resolve } from 'std/path/mod.ts'
-import { load } from 'std/dotenv/mod.ts'
 
-const env = await load()
 const solid = { solid: { moduleName: 'npm:solid-js/web' } }
 
 export default async function build(shouldWrite) {
