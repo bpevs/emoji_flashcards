@@ -55,19 +55,22 @@ router.get('/', async (context) => {
 })
 
 router.get('/index.js', async (context) => {
-  const solid = { solid: { moduleName: 'npm:solid-js/web' } }
-  const result = await esbuild.build({
-    plugins: [denoResolver, solidPlugin(solid), denoLoader],
-    entryPoints: ['./www/index.tsx'],
-    outfile: '.',
-    bundle: true,
-    platform: 'browser',
-    format: 'esm',
-    target: ['chrome99', 'safari15'],
-    treeShaking: true,
-    write: false,
-  })
-  await esbuild.stop()
+  try {
+    const solid = { solid: { moduleName: 'npm:solid-js/web' } }
+    const result = await esbuild.build({
+      plugins: [denoResolver, solidPlugin(solid), denoLoader],
+      entryPoints: ['./www/index.tsx'],
+      outfile: '.',
+      bundle: true,
+      platform: 'browser',
+      format: 'esm',
+      target: ['chrome99', 'safari15'],
+      treeShaking: true,
+      write: false,
+    })
+  } finally {
+    await esbuild.stop()
+  }
   context.response.body = result.outputFiles[0].text
 })
 
