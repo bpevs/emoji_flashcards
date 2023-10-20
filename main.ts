@@ -49,7 +49,7 @@ router.get('/', async (context) => {
 
 router.get('/index.js', async (context) => {
   const env = await load({ allowEmptyValues: true })
-  if (env['LOCAL'] === 'true') {
+  if (env['LOCAL']) {
     context.response.body = await build(false)
   } else {
     context.response.body = await Deno.readTextFile('./www/index.js')

@@ -7,7 +7,7 @@ const solid = { solid: { moduleName: 'npm:solid-js/web' } }
 
 export default async function build(shouldWrite) {
   const [denoResolver, denoLoader] = [...denoPlugins({
-    portable: true,
+    nodeModulesDir: true,
     configPath: resolve('./deno.json'),
   })]
 

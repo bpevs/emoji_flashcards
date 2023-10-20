@@ -1,6 +1,6 @@
 import { render } from 'solid-js/web'
 import { createEffect, createResource, createSignal, For, Show } from 'solid-js'
-// import { onKeyStroke } from 'solid-js/use'
+import { onKeyStroke } from 'solidjs-use'
 
 const langMap = {
   'ja': 'ja-JP',
@@ -114,20 +114,22 @@ function App() {
     setFlipped(true)
   })
 
-  // onKeyStroke(['ArrowLeft'], (e) => {
-  //   e.preventDefault()
-  //   setCurrIndex(Math.max(0, currIndex() - 1))
-  // })
+  onKeyStroke(['ArrowLeft'], (e) => {
+    console.log('la')
+    e.preventDefault()
+    setCurrIndex(Math.max(0, currIndex() - 1))
+  })
 
-  // onKeyStroke(['ArrowRight', ' '], (e) => {
-  //   e.preventDefault()
-  //   if (isFlipped()) {
-  //     setCurrIndex(Math.min(emojis().length, currIndex() + 1))
-  //     setFlipped(false)
-  //   } else {
-  //     setFlipped(true)
-  //   }
-  // })
+  console.log('la')
+  onKeyStroke(['ArrowRight', ' '], (e) => {
+    e.preventDefault()
+    if (isFlipped()) {
+      setCurrIndex(Math.min(emojis().length, currIndex() + 1))
+      setFlipped(false)
+    } else {
+      setFlipped(true)
+    }
+  })
 
   return (
     <div>
