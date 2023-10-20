@@ -19,7 +19,7 @@
 
     "solid-js": "npm:solid-js",
     "solid-js/web": "npm:solid-js/web",
-    "solid-js/use": "npm:solidjs-use",
+    "solid-js/use": "https://esm.sh/solidjs-use@2.3.0",
     "motion": "npm:motion",
     "motion/solid": "npm:@motionone/solid"
   },

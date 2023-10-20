@@ -11,7 +11,7 @@ const DATA_DIR_PATH = '/data'
 const DATA_DIR = './data'
 
 const [denoResolver, denoLoader] = [...denoPlugins({
-  nodeModulesDir: true,
+  portable: true,
   configPath: resolve('./deno.json'),
 })]
 
