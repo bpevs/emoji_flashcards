@@ -1,19 +1,12 @@
 import { Application, Router, send } from 'oak'
 import { Handlebars } from 'handlebars'
-import { resolve } from 'std/path/mod.ts'
-import * as esbuild from 'esbuild'
-import { denoPlugins } from 'esbuild-deno-loader'
-import { solidPlugin } from 'npm:esbuild-plugin-solid'
+import { load } from 'std/dotenv/mod.ts'
+import build from './shared/build.ts'
 
 const STATIC_DIR_PATH = '/'
 const STATIC_DIR = './www'
 const DATA_DIR_PATH = '/data'
 const DATA_DIR = './data'
-
-const [denoResolver, denoLoader] = [...denoPlugins({
-  portable: true,
-  configPath: resolve('./deno.json'),
-})]
 
 const handle = new Handlebars({
   helpers: {
@@ -55,23 +48,12 @@ router.get('/', async (context) => {
 })
 
 router.get('/index.js', async (context) => {
-  try {
-    const solid = { solid: { moduleName: 'npm:solid-js/web' } }
-    const result = await esbuild.build({
-      plugins: [denoResolver, solidPlugin(solid), denoLoader],
-      entryPoints: ['./www/index.tsx'],
-      outfile: '.',
-      bundle: true,
-      platform: 'browser',
-      format: 'esm',
-      target: ['chrome99', 'safari15'],
-      treeShaking: true,
-      write: false,
-    })
-  } finally {
-    await esbuild.stop()
+  const env = await load()
+  if (env['LOCAL'] === 'true') {
+    context.response.body = await build(false)
+  } else {
+    context.response.body = await Deno.readTextFile('./www/index.js')
   }
-  context.response.body = result.outputFiles[0].text
 })
 
 const app = new Application()
