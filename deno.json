@@ -8,14 +8,7 @@
   "fmt": {
     "proseWrap": "never",
     "singleQuote": true,
-    "semiColons": false,
-    "exclude": ["www/index.js"]
-  },
-  "lint": {
-    "exclude": ["www/index.js"]
-  },
-  "test": {
-    "exclude": ["www/index.js"]
+    "semiColons": false
   },
   "imports": {
     "std/": "https://deno.land/std@0.200.0/",
