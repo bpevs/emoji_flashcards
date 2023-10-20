@@ -9,7 +9,13 @@
     "proseWrap": "never",
     "singleQuote": true,
     "semiColons": false,
-    "exclude": ["components/markup"]
+    "exclude": ["www/index.js"]
+  },
+  "lint": {
+    "exclude": ["www/index.js"]
+  },
+  "test": {
+    "exclude": ["www/index.js"]
   },
   "imports": {
     "std/": "https://deno.land/std@0.200.0/",
@@ -20,8 +26,9 @@
 
     "solid-js": "npm:solid-js",
     "solid-js/web": "npm:solid-js/web",
+    "solid-js/use": "npm:solidjs-use",
     "motion": "npm:motion",
-    "@motion/solid": "npm:@motionone/solid"
+    "motion/solid": "npm:@motionone/solid"
   },
   "tasks": {
     "start": "deno run --allow-net --allow-read --allow-run --allow-env --watch=main.ts,index.tsx main.ts",

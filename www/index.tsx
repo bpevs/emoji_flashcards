@@ -1,6 +1,6 @@
 import { render } from 'solid-js/web'
 import { createEffect, createResource, createSignal, For, Show } from 'solid-js'
-import { onKeyStroke } from 'npm:solidjs-use'
+import { onKeyStroke } from 'solid-js/use'
 
 const langMap = {
   'ja': 'ja-JP',
@@ -33,7 +33,7 @@ const strings = () => ((userLang() || {})?.strings || [])
 
 const emojis = () => {
   if (!data()) return []
-  let categories = Object.keys(data()).sort()
+  const categories = Object.keys(data()).sort()
   return categories.map((category) => {
     return Object.keys(data()[category])
       .map((emoji) => [emoji, category, ...(data()[category][emoji])])
@@ -63,11 +63,9 @@ downloadButton.onclick = function () {
 }
 
 function download(filename, text) {
-  var element = document.createElement('a')
-  element.setAttribute(
-    'href',
-    'data:text/plain;charset=utf-8,' + encodeURIComponent(text),
-  )
+  const element = document.createElement('a')
+  const data = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text)
+  element.setAttribute('href', data)
   element.setAttribute('download', filename)
 
   element.style.display = 'none'

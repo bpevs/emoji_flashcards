@@ -80,7 +80,7 @@ const app = new Application()
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-app.use(async (ctx, next) => {
+app.use(async (ctx) => {
   const pathname = ctx.request.url.pathname
   if (pathname.toLowerCase().startsWith(DATA_DIR_PATH)) {
     const filePath = pathname.replace(DATA_DIR_PATH, '')
