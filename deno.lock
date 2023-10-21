@@ -1,8 +1,14 @@
 {
-  "version": "2",
+  "version": "3",
   "packages": {
     "specifiers": {
-      "npm:esbuild-plugin-solid": "npm:esbuild-plugin-solid@0.5.0_esbuild@0.19.5_solid-js@1.8.3_@babel+core@7.23.2"
+      "npm:@ffmpeg/ffmpeg": "npm:@ffmpeg/ffmpeg@0.12.7",
+      "npm:@ffmpeg/util": "npm:@ffmpeg/util@0.12.1",
+      "npm:chinese-to-pinyin": "npm:chinese-to-pinyin@1.3.1",
+      "npm:esbuild-plugin-solid": "npm:esbuild-plugin-solid@0.5.0_esbuild@0.19.5_solid-js@1.8.3_@babel+core@7.23.2",
+      "npm:fluent-ffmpeg": "npm:fluent-ffmpeg@2.1.2",
+      "npm:kuroshiro": "npm:kuroshiro@1.2.0",
+      "npm:kuroshiro-analyzer-kuromoji": "npm:kuroshiro-analyzer-kuromoji@1.1.0"
     },
     "npm": {
       "@ampproject/remapping@2.2.1": {
@@ -242,6 +248,12 @@
           "@babel/plugin-transform-typescript": "@babel/plugin-transform-typescript@7.22.15_@babel+core@7.23.2"
         }
       },
+      "@babel/runtime@7.23.2": {
+        "integrity": "sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==",
+        "dependencies": {
+          "regenerator-runtime": "regenerator-runtime@0.14.0"
+        }
+      },
       "@babel/template@7.22.15": {
         "integrity": "sha512-QPErUVm4uyJa60rkI73qneDacvdvzxshT3kksGqlGWYdOTIUOwJ7RDUL8sGqslY1uXWSL6xMFKEXDS3ox2uF0w==",
         "dependencies": {
@@ -361,6 +373,20 @@
         "integrity": "sha512-czTrygUsB/jlM8qEW5MD8bgYU2Xg14lo6kBDXW6HdxKjh8M5PzETGiSHaz9MtbXBYDloHNUAUW2tMiKW4KM9Mw==",
         "dependencies": {}
       },
+      "@ffmpeg/ffmpeg@0.12.7": {
+        "integrity": "sha512-Uw9h1tNU4/Q4YRrgBKvnKiH5gpL+nl8h4HRfvSK0K93MqVOan6Qs3Lj82l9i1qj6xQLPramXw0Wl6g65W4pfnA==",
+        "dependencies": {
+          "@ffmpeg/types": "@ffmpeg/types@0.12.2"
+        }
+      },
+      "@ffmpeg/types@0.12.2": {
+        "integrity": "sha512-NJtxwPoLb60/z1Klv0ueshguWQ/7mNm106qdHkB4HL49LXszjhjCCiL+ldHJGQ9ai2Igx0s4F24ghigy//ERdA==",
+        "dependencies": {}
+      },
+      "@ffmpeg/util@0.12.1": {
+        "integrity": "sha512-10jjfAKWaDyb8+nAkijcsi9wgz/y26LOc1NKJradNMyCIl6usQcBbhkjX5qhALrSBcOy6TOeksunTYa+a03qNQ==",
+        "dependencies": {}
+      },
       "@jridgewell/gen-mapping@0.3.3": {
         "integrity": "sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==",
         "dependencies": {
@@ -393,6 +419,16 @@
         "dependencies": {
           "color-convert": "color-convert@1.9.3"
         }
+      },
+      "async@2.6.4": {
+        "integrity": "sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==",
+        "dependencies": {
+          "lodash": "lodash@4.17.21"
+        }
+      },
+      "async@3.2.4": {
+        "integrity": "sha512-iAB+JbDEGXhyIUavoDl9WP/Jj106Kz9DEn1DPgYw5ruDn0e3Wgi3sKFm55sASdGBNOQB8F59d9qQ7deqrHA8wQ==",
+        "dependencies": {}
       },
       "babel-plugin-jsx-dom-expressions@0.37.2_@babel+core@7.23.2": {
         "integrity": "sha512-u3VKB+On86cYSLAbw9j0m0X8ZejL4MR7oG7TRlrMQ/y1mauR/ZpM2xkiOPZEUlzHLo1GYGlTdP9s5D3XuA6iSQ==",
@@ -433,6 +469,10 @@
           "supports-color": "supports-color@5.5.0"
         }
       },
+      "chinese-to-pinyin@1.3.1": {
+        "integrity": "sha512-QGB9HmbMLh726Aj3QKB5NcjKDgKn5NCLMz8rmPfKuU5FgwmF4NT2ULh5/2G6Z0pWBcagtKBS08ymaJcYSvbbQg==",
+        "dependencies": {}
+      },
       "color-convert@1.9.3": {
         "integrity": "sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==",
         "dependencies": {
@@ -456,6 +496,10 @@
         "dependencies": {
           "ms": "ms@2.1.2"
         }
+      },
+      "doublearray@0.0.2": {
+        "integrity": "sha512-aw55FtZzT6AmiamEj2kvmR6BuFqvYgKZUkfQ7teqVRNqD5UE0rw8IeW/3gieHNKQ5sPuDKlljWEn4bzv5+1bHw==",
+        "dependencies": {}
       },
       "electron-to-chromium@1.4.562": {
         "integrity": "sha512-kMGVZLP65O2/oH7zzaoIA5hcr4/xPYO6Sa83FrIpWcd7YPPtSlxqwxTd8lJIwKxaiXM6FGsYK4ukyJ40XkW7jg==",
@@ -506,6 +550,13 @@
         "integrity": "sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==",
         "dependencies": {}
       },
+      "fluent-ffmpeg@2.1.2": {
+        "integrity": "sha512-IZTB4kq5GK0DPp7sGQ0q/BWurGHffRtQQwVkiqDgeO6wYJLLV5ZhgNOQ65loZxxuPMKZKZcICCUnaGtlxBiR0Q==",
+        "dependencies": {
+          "async": "async@3.2.4",
+          "which": "which@1.3.1"
+        }
+      },
       "gensync@1.0.0-beta.2": {
         "integrity": "sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==",
         "dependencies": {}
@@ -522,6 +573,10 @@
         "integrity": "sha512-DV5Ln36z34NNTDgnz0EWGBLZENelNAtkiFA4kyNOG2tDI6Mz1uSWiq1wAKdyjnJwyDiDO7Fa2SO1CTxPXL8VxA==",
         "dependencies": {}
       },
+      "isexe@2.0.0": {
+        "integrity": "sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==",
+        "dependencies": {}
+      },
       "js-tokens@4.0.0": {
         "integrity": "sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==",
         "dependencies": {}
@@ -532,6 +587,30 @@
       },
       "json5@2.2.3": {
         "integrity": "sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==",
+        "dependencies": {}
+      },
+      "kuromoji@0.1.2": {
+        "integrity": "sha512-V0dUf+C2LpcPEXhoHLMAop/bOht16Dyr+mDiIE39yX3vqau7p80De/koFqpiTcL1zzdZlc3xuHZ8u5gjYRfFaQ==",
+        "dependencies": {
+          "async": "async@2.6.4",
+          "doublearray": "doublearray@0.0.2",
+          "zlibjs": "zlibjs@0.3.1"
+        }
+      },
+      "kuroshiro-analyzer-kuromoji@1.1.0": {
+        "integrity": "sha512-BSJFhpsQdPwfFLfjKxfLA9iL+/PC6LCR9vgwgb5Jc7jZwk9ilX8SAV6CwhAQZY611tiuhbB52ONYKDO8hgY1bA==",
+        "dependencies": {
+          "kuromoji": "kuromoji@0.1.2"
+        }
+      },
+      "kuroshiro@1.2.0": {
+        "integrity": "sha512-yBGCK9oDOY3LGZ/KXaN9m7ADcAuSczOR2FoMRYwHLUlis3/o/uxdMVROAjENFO0NQJgALhIdWxI/vIBVrMCk9w==",
+        "dependencies": {
+          "@babel/runtime": "@babel/runtime@7.23.2"
+        }
+      },
+      "lodash@4.17.21": {
+        "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
         "dependencies": {}
       },
       "lru-cache@5.1.1": {
@@ -550,6 +629,10 @@
       },
       "picocolors@1.0.0": {
         "integrity": "sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==",
+        "dependencies": {}
+      },
+      "regenerator-runtime@0.14.0": {
+        "integrity": "sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==",
         "dependencies": {}
       },
       "semver@6.3.1": {
@@ -589,13 +672,29 @@
         "integrity": "sha512-hGdgQozCsQJMyfK5urgFcWEqsSSrK63Awe0t/IMR0bZ0QMtnuaiHzThW81guu3qx9abLi99NEuiaN6P9gVYsNg==",
         "dependencies": {}
       },
+      "which@1.3.1": {
+        "integrity": "sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==",
+        "dependencies": {
+          "isexe": "isexe@2.0.0"
+        }
+      },
       "yallist@3.1.1": {
         "integrity": "sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==",
+        "dependencies": {}
+      },
+      "zlibjs@0.3.1": {
+        "integrity": "sha512-+J9RrgTKOmlxFSDHo0pI1xM6BLVUv+o0ZT9ANtCxGkjIVCCUdx9alUF8Gm+dGLKbkkkidWIHFDZHDMpfITt4+w==",
         "dependencies": {}
       }
     }
   },
+  "redirects": {
+    "https://cdn.skypack.dev/@ffmpeg/core": "https://cdn.skypack.dev/-/@ffmpeg/core@v0.12.4-ckEVFAXYqHJ9KEkXCMkW/dist=es2019,mode=imports/optimized/@ffmpeg/core.js",
+    "https://cdn.skypack.dev/@ffmpeg/ffmpeg": "https://cdn.skypack.dev/-/@ffmpeg/ffmpeg@v0.12.7-W6e9zj2SGbTBbdOhrD9s/dist=es2019,mode=imports/optimized/@ffmpeg/ffmpeg.js"
+  },
   "remote": {
+    "https://cdn.skypack.dev/-/@ffmpeg/core@v0.12.4-ckEVFAXYqHJ9KEkXCMkW/dist=es2019,mode=imports/optimized/@ffmpeg/core.js": "9ca7b538b5e7b3c3eb767b9bffb0687a37a7e2da5f926b13be50dfec9ae4e76c",
+    "https://cdn.skypack.dev/-/@ffmpeg/ffmpeg@v0.12.7-W6e9zj2SGbTBbdOhrD9s/dist=es2019,mode=imports/optimized/@ffmpeg/ffmpeg.js": "ce0c83734263ba967c194404780e10702f2ada537178469ff66727295e6f43d9",
     "https://deno.land/std@0.110.0/_util/assert.ts": "2f868145a042a11d5ad0a3c748dcf580add8a0dbc0e876eaa0026303a5488f58",
     "https://deno.land/std@0.110.0/_util/os.ts": "dfb186cc4e968c770ab6cc3288bd65f4871be03b93beecae57d657232ecffcac",
     "https://deno.land/std@0.110.0/fs/_util.ts": "f2ce811350236ea8c28450ed822a5f42a0892316515b1cd61321dec13569c56b",

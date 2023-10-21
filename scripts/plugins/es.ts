@@ -1,5 +1,5 @@
-import type { TranslatedSourceData } from '../interfaces.ts'
-import { translate } from '../translate.ts'
+import type { TranslatedSourceData } from '../../shared/interfaces.ts'
+import { translate } from '../../shared/translate.ts'
 
 interface LangData {
   text: string

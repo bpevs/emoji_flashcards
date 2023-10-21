@@ -1,59 +1,49 @@
 import { Application, Router, send } from 'oak'
 import { Handlebars } from 'handlebars'
 import { load } from 'std/dotenv/mod.ts'
+
 import build from './shared/build.ts'
+import {
+  CARD_PARAM,
+  DATA_PATH,
+  DEFAULT_LANG,
+  DEFAULT_LANG_MAP,
+  STATIC_PATH,
+  USER_PARAM,
+} from './shared/constants_shared.ts'
+import { DATA_DIR, STATIC_DIR } from './shared/constants_server.ts'
 
-const STATIC_DIR_PATH = '/'
-const STATIC_DIR = './www'
-const DATA_DIR_PATH = '/data'
-const DATA_DIR = './data'
-
-const handle = new Handlebars({
-  helpers: {
-    select: function (selected, options) {
-      return options.fn(this).replace(
-        new RegExp(' value="' + selected + '"'),
-        '$& selected="selected"',
-      )
-    },
-  },
-})
-const router = new Router()
-
-const langMap = {
-  'ja': 'ja-JP',
-  'en': 'en-US',
-  'es': 'es-ES',
-  'zh': 'zh-CN',
+function select(selected, options) {
+  const findOptionValue = new RegExp(' value="' + selected + '"')
+  return options.fn(this).replace(findOptionValue, '$& selected="selected"')
 }
 
-router.get('/', async (context) => {
-  const langParam = context.request.url.searchParams.get('lang')
-  const langCode = langMap[langParam] || langMap['en']
-  const langURL = `data/languages/${langCode}.json`
-  const langFile = JSON.parse(await Deno.readTextFile(langURL))
+const handle = new Handlebars({ helpers: { select } })
+const router = new Router()
 
-  const cardLang = context.request.url.searchParams.get('card')
-  const cardLangCode = langMap[cardLang] || langMap['en']
-  const lang = langCode.split('-')[0]
-  const cardDisplayLang = langFile.strings[cardLangCode]
+router.get('/', async (context) => {
+  const userLangParam = context.request.url.searchParams.get(USER_PARAM)
+  const cardLangParam = context.request.url.searchParams.get(CARD_PARAM)
+
+  const userLangCode = DEFAULT_LANG_MAP[userLangParam] || DEFAULT_LANG
+  const cardLangCode = DEFAULT_LANG_MAP[cardLangParam] || DEFAULT_LANG
+
+  const userLangURL = `data/languages/${userLangCode}.json`
+  const userLangFile = JSON.parse(await Deno.readTextFile(userLangURL))
 
   context.response.body = await handle.renderView('index', {
-    lang,
-    langCode,
+    userLangCode,
     cardLangCode,
-    cardDisplayLang,
-    ...langFile.strings,
+    cardDisplayLangStr: userLangFile.strings[cardLangCode],
+    ...userLangFile.strings,
   })
 })
 
 router.get('/index.js', async (context) => {
   const env = await load({ allowEmptyValues: true })
-  if (env['LOCAL']) {
-    context.response.body = await build(false)
-  } else {
-    context.response.body = await Deno.readTextFile('./www/index.js')
-  }
+  context.response.body = env['LOCAL']
+    ? await build(false)
+    : await Deno.readTextFile('./www/index.js')
 })
 
 const app = new Application()
@@ -63,13 +53,12 @@ app.use(router.allowedMethods())
 
 app.use(async (ctx) => {
   const pathname = ctx.request.url.pathname
-  if (pathname.toLowerCase().startsWith(DATA_DIR_PATH)) {
-    const filePath = pathname.replace(DATA_DIR_PATH, '')
-    await send(ctx, filePath, { root: DATA_DIR })
-  } else {
-    const filePath = pathname.replace(STATIC_DIR_PATH, '')
-    await send(ctx, filePath, { root: STATIC_DIR })
-  }
+  const isDataPath = pathname.toLowerCase().startsWith(DATA_PATH)
+  await send(
+    ctx,
+    pathname.replace(isDataPath ? DATA_PATH : STATIC_PATH, ''),
+    { root: isDataPath ? DATA_DIR : STATIC_DIR },
+  )
 })
 
 console.log('localhost:8000')

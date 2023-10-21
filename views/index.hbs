@@ -8,7 +8,7 @@
     name="switch-user-language"
     id="switch-user-language"
   >
-    {{#select langCode}}
+    {{#select userLangCode}}
     <option value="en-US">English</option>
     <option value="es-ES">Español</option>
     <option value="ja-JP">日本語</option>
@@ -42,6 +42,6 @@
 <div class="switch-card-language">
   {{download-for}}
   <button id="download">
-    <span>{{cardDisplayLang}}<span>
+    <span>{{cardDisplayLangStr}}<span>
   </button>
 </div>

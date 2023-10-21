@@ -1,4 +1,4 @@
-import type { TranslatedSourceData } from '../interfaces.ts'
+import type { TranslatedSourceData } from '../../shared/interfaces.ts'
 
 import Kuroshiro from 'npm:kuroshiro'
 import KuromojiAnalyzer from 'npm:kuroshiro-analyzer-kuromoji'

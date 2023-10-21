@@ -1,18 +1,20 @@
-// Read source.json as "source of truth" of emoji set
-// For each source.json emoji (and temp cache the key as a set)
-
-// For eacn other base file...
-//...Loop through existing set
-//......If a translation is pre-existing, skip
-//......If a translation does not exist, translate via API
-//......If key does not exist in en_US, delete
-//...If base extension exist, append
+/**
+ * Read source.json as "source of truth" of emoji set
+ * For each source.json emoji (and temp cache the key as a set)
+ *
+ * For eacn other base file...
+ *   Loop through existing set
+ *      If a translation is pre-existing, skip
+ *      If a translation does not exist, translate via API
+ *      If key does not exist in en_US, delete
+ *   If base extension exist, append
+ */
 import type {
   CompactLanguageFile,
   LanguageFile,
   TranslationData,
-} from './interfaces.ts'
-import { translate } from './translate.ts'
+} from '../shared/interfaces.ts'
+import { translate } from '../shared/translate.ts'
 import plugins from './plugins/mod.ts'
 
 const SOURCE_JSON_PATH = 'data/source.json'

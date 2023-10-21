@@ -1,4 +1,4 @@
-import { TranslatedSourceData } from '../interfaces.ts'
+import { TranslatedSourceData } from '../../shared/interfaces.ts'
 
 import es from './es.ts'
 import ja from './ja.ts'
