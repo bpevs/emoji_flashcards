@@ -7,7 +7,7 @@ import {
   setUserLangCodeParam,
   userLangCodeParam,
 } from './utilities/params.ts'
-import downloadTSV from './utilities/downloadTSV.ts'
+import downloadTSV from './utilities/download_tsv.ts'
 
 const selectUserLanguage = document.getElementById('switch-user-language')
 const selectCardLanguage = document.getElementById('switch-card-language')

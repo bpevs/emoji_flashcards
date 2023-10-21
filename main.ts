@@ -1,7 +1,6 @@
 import { Application, Router, send } from 'oak'
 import { Handlebars } from 'handlebars'
 import { load } from 'std/dotenv/mod.ts'
-
 import build from './shared/build.ts'
 import {
   CARD_PARAM,
@@ -13,13 +12,16 @@ import {
 } from './shared/constants_shared.ts'
 import { DATA_DIR, STATIC_DIR } from './shared/constants_server.ts'
 
-function select(selected, options) {
-  const findOptionValue = new RegExp(' value="' + selected + '"')
-  return options.fn(this).replace(findOptionValue, '$& selected="selected"')
-}
-
-const handle = new Handlebars({ helpers: { select } })
 const router = new Router()
+const handle = new Handlebars({
+  baseDir: 'www/views',
+  helpers: {
+    select(selected, options) {
+      const findOptionValue = new RegExp(' value="' + selected + '"')
+      return options.fn(this).replace(findOptionValue, '$& selected="selected"')
+    },
+  },
+})
 
 router.get('/', async (context) => {
   const userLangParam = context.request.url.searchParams.get(USER_PARAM)
@@ -50,7 +52,6 @@ const app = new Application()
 
 app.use(router.routes())
 app.use(router.allowedMethods())
-
 app.use(async (ctx) => {
   const pathname = ctx.request.url.pathname
   const isDataPath = pathname.toLowerCase().startsWith(DATA_PATH)
