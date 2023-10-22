@@ -1,0 +1,54 @@
+import { join } from 'std/path/mod.ts'
+import type { CompactLanguageFile, LanguageFile } from '../shared/interfaces.ts'
+import {
+  fromCompactLanguageFile,
+  prettyPrintCompactFile,
+  toCompactLanguageFile,
+} from '../shared/data_access_utilities.ts'
+import { AUDIO_DIR, LANGUAGES_DIR, SOURCE_FILE } from './constants_server.ts'
+
+const LANGUAGE_FILE_REGEX = /^[a-z]{2,3}(-[A-Z]{2})?\.json$/
+const AUDIO_FILE_REGEX = /.*\.mp3$/
+
+/**
+ * For use in server and scripts, get and set data
+ */
+export function listLanguages() {
+  return Array.from(Deno.readDirSync(LANGUAGES_DIR))
+    .filter(({ name }) => LANGUAGE_FILE_REGEX.test(name))
+    .map((file) => file.name.replace('.json', ''))
+}
+
+export function listAudioFiles(language: string) {
+  return Array.from(Deno.readDirSync(join(AUDIO_DIR, language)))
+    .filter(({ name }) => AUDIO_FILE_REGEX.test(name))
+    .map((file) => file.name.replace('.mp3', ''))
+}
+
+export async function readLanguageFile(
+  locale: string,
+  extensionCodes: string[] = [],
+): LanguageFile {
+  const text = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale}.json`)
+  const compactLanguage: CompactLanguageFile = JSON.parse(text)
+  const languageFile = fromCompactLanguageFile(compactLanguage)
+  if (!languageFile.data) languageFile.data = {}
+  if (extensionCodes.length) console.log('do extension stuff')
+  return languageFile
+}
+
+export async function readSourceFile(): LanguageFile {
+  const text = await Deno.readTextFile(SOURCE_FILE)
+  const compactLanguage: CompactLanguageFile = JSON.parse(text)
+  return fromCompactLanguageFile(compactLanguage)
+}
+
+export async function writeLanguageFile(
+  locale: string,
+  languageFile: LanguageFile,
+): Promise<void> {
+  const compactFile = toCompactLanguageFile(languageFile)
+  const updatedLanguageJSON = prettyPrintCompactFile(compactFile)
+  const filePath = `${LANGUAGES_DIR}/${locale}.json`
+  await Deno.writeTextFile(filePath, updatedLanguageJSON)
+}

@@ -129,10 +129,18 @@ If a key exists in source.json, but not the language file, it will be translated
 
 ### Audio
 
-Still need to sort out where this will be stored (not in this repo, for size concerns). Expect general TTS to be pulled from [Forvo](https://api.forvo.com/) or generated via [Google TTS](https://cloud.google.com/text-to-speech). Maybe at some point, we can replace our own audio.
+For size reasons, audio is not included in this git repo (audio is generated into `data/audio`, but is ignored for commits)
 
-Audio will be saved with a filename format like: `{language-region-code}[-extension-name]_{emoji-key}.mp3`
+Audio for now is generated using [play.ht](https://play.ht/text-to-speech-api/)
 
-Example: `en-US_📏🐜.mp3` `en-US-merica_📏🐜.mp3`
+It is generated into the directory:
 
-Name will be parsed to be valid urls, so we don't really care about keys with awkward text entities, but the name could look weird.
+`data/audio/{language-region-code}/{language-region-code}/`
+
+With a filename format of:
+
+`{language-region-code}_[extension-name]_{emoji-key}.mp3`
+
+Example FileNames: `en-US_📏🐜.mp3` `en-US_merica-units_📏🐜.mp3`
+
+Name will be parsed to be valid urls, so we don't really care about keys with awkward text entities. The only restriction is disallowing `_` in plugin names, since we use it for splitting entity names.

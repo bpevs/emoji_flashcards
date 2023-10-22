@@ -5,4 +5,6 @@ import { resolve } from 'std/path/mod.ts'
 export const DATA_DIR = resolve('./data')
 export const LANGUAGES_DIR = resolve('./data/languages')
 export const EXTENSIONS_DIR = resolve('./data/extensions')
+export const AUDIO_DIR = resolve('./data/audio')
 export const STATIC_DIR = resolve('./www')
+export const SOURCE_FILE = resolve('data/source.json')
