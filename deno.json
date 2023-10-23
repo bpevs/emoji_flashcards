@@ -35,7 +35,7 @@
     "test": "deno fmt && deno lint && deno task check",
     "build": "deno run --allow-net --allow-read --allow-run --allow-env --allow-write scripts/build.ts",
     "gen:translations": "(deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read scripts/generate_translations.ts) && deno fmt",
-    "gen:audio": "deno run --allow-net --allow-env --allow-read --allow-write scripts/generate_audio.ts",
+    "gen:audio": "deno run --allow-net --allow-env --allow-read --allow-write --allow-run scripts/generate_audio.ts",
     "check": "deno task check:translate",
     "check:translate": "deno check scripts/generate_translations.ts",
     "check:server": "deno check scripts/main.ts",

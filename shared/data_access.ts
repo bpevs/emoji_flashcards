@@ -13,22 +13,30 @@ const AUDIO_FILE_REGEX = /.*\.mp3$/
 /**
  * For use in server and scripts, get and set data
  */
-export function listLanguages() {
-  return Array.from(Deno.readDirSync(LANGUAGES_DIR))
-    .filter(({ name }) => LANGUAGE_FILE_REGEX.test(name))
-    .map((file) => file.name.replace('.json', ''))
+export function listLanguages(): string[] {
+  try {
+    return Array.from(Deno.readDirSync(LANGUAGES_DIR))
+      .filter(({ name }) => LANGUAGE_FILE_REGEX.test(name))
+      .map((file) => file.name.replace('.json', ''))
+  } catch {
+    return []
+  }
 }
 
-export function listAudioFiles(language: string) {
-  return Array.from(Deno.readDirSync(join(AUDIO_DIR, language)))
-    .filter(({ name }) => AUDIO_FILE_REGEX.test(name))
-    .map((file) => file.name.replace('.mp3', ''))
+export function listAudioFiles(language: string): string[] {
+  try {
+    return Array.from(Deno.readDirSync(join(AUDIO_DIR, language)))
+      .filter(({ name }) => AUDIO_FILE_REGEX.test(name))
+      .map((file) => file.name.replace('.mp3', ''))
+  } catch {
+    return []
+  }
 }
 
 export async function readLanguageFile(
   locale: string,
   extensionCodes: string[] = [],
-): LanguageFile {
+): Promise<LanguageFile> {
   const text = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale}.json`)
   const compactLanguage: CompactLanguageFile = JSON.parse(text)
   const languageFile = fromCompactLanguageFile(compactLanguage)
@@ -37,7 +45,7 @@ export async function readLanguageFile(
   return languageFile
 }
 
-export async function readSourceFile(): LanguageFile {
+export async function readSourceFile(): Promise<LanguageFile> {
   const text = await Deno.readTextFile(SOURCE_FILE)
   const compactLanguage: CompactLanguageFile = JSON.parse(text)
   return fromCompactLanguageFile(compactLanguage)

@@ -93,29 +93,6 @@
       "💀🦴": ["el hueso", ""],
       "🩸🅰️🅱️🆎🅾️": ["la sangre", ""]
     },
-    "days_of_the_week": {
-      "1/7 🗓️": ["domingo", ""],
-      "2/7 🗓️": ["lunes", ""],
-      "3/7 🗓️": ["martes", ""],
-      "4/7 🗓️": ["miércoles", ""],
-      "5/7 🗓️": ["jueves", ""],
-      "6/7 🗓️": ["viernes", ""],
-      "7/7 🗓️": ["sábado", ""]
-    },
-    "months": {
-      "1/12 🗓️": ["Enero", ""],
-      "2/12 🗓️": ["Febrero", ""],
-      "3/12 🗓️": ["Marzo", ""],
-      "4/12 🗓️": ["Abril", ""],
-      "5/12 🗓️": ["Mayo", ""],
-      "6/12 🗓️": ["Junio", ""],
-      "7/12 🗓️": ["Julio", ""],
-      "8/12 🗓️": ["Agosto", ""],
-      "9/12 🗓️": ["Septiembre", ""],
-      "10/12 🗓️": ["Octubre", ""],
-      "11/12 🗓️": ["Noviembre", ""],
-      "12/12 🗓️": ["diciembre", ""]
-    },
     "seasons": {
       "🌷🗓️": ["primavera", ""],
       "☀️🗓️": ["verano", ""],
@@ -258,12 +235,35 @@
       "🖋️": ["la pluma", ""]
     },
     "verbs": {
-      "🏃‍♂️ / 🏃‍♀️": ["correr", "yo corro, tú corres, él corre"],
-      "🚶‍♂️ / 🚶‍♀️": ["caminar", "yo camino, tú caminas, él camina"],
+      "🏃‍♂️🏃‍♀️": ["correr", "yo corro, tú corres, él corre"],
+      "🚶‍♂️🚶‍♀️": ["caminar", "yo camino, tú caminas, él camina"],
       "🗣️": ["hablar", "yo hablo, tú hablas, él habla"],
       "🗣️👂": ["escuchar", "yo escucho, tú escuchas, él escucha"],
       "😮🍽️🍔": ["comer", "yo como, tú comes, él come"],
       "😮🥤": ["beber", "Yo bebo, tú bebes, él bebe"]
+    },
+    "days_of_the_week": {
+      "WW-0 🗓️": ["domingo", ""],
+      "WW-1 🗓️": ["lunes", ""],
+      "WW-2 🗓️": ["martes", ""],
+      "WW-3 🗓️": ["miércoles", ""],
+      "WW-4 🗓️": ["jueves", ""],
+      "WW-5 🗓️": ["viernes", ""],
+      "WW-6 🗓️": ["sábado", ""]
+    },
+    "months": {
+      "MM-01 🗓️": ["Enero", ""],
+      "MM-02 🗓️": ["Febrero", ""],
+      "MM-03 🗓️": ["Marzo", ""],
+      "MM-04 🗓️": ["Abril", ""],
+      "MM-05 🗓️": ["Mayo", ""],
+      "MM-06 🗓️": ["Junio", ""],
+      "MM-07 🗓️": ["Julio", ""],
+      "MM-08 🗓️": ["Agosto", ""],
+      "MM-09 🗓️": ["Septiembre", ""],
+      "MM-10 🗓️": ["Octubre", ""],
+      "MM-11 🗓️": ["Noviembre", ""],
+      "MM-12 🗓️": ["Diciembre", ""]
     }
   }
 }

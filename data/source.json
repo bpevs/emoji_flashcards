@@ -210,27 +210,27 @@
       "🖋️": ["pen", "noun"]
     },
     "days_of_the_week": {
-      "1/7 🗓️": ["sunday", "noun"],
-      "2/7 🗓️": ["monday", "noun"],
-      "3/7 🗓️": ["tuesday", "noun"],
-      "4/7 🗓️": ["wednesday", "noun"],
-      "5/7 🗓️": ["thursday", "noun"],
-      "6/7 🗓️": ["friday", "noun"],
-      "7/7 🗓️": ["saturday", "noun"]
+      "WW-0 🗓️": ["sunday", "noun"],
+      "WW-1 🗓️": ["monday", "noun"],
+      "WW-2 🗓️": ["tuesday", "noun"],
+      "WW-3 🗓️": ["wednesday", "noun"],
+      "WW-4 🗓️": ["thursday", "noun"],
+      "WW-5 🗓️": ["friday", "noun"],
+      "WW-6 🗓️": ["saturday", "noun"]
     },
     "months": {
-      "1/12 🗓️": ["January", "noun"],
-      "2/12 🗓️": ["February", "noun"],
-      "3/12 🗓️": ["March", "noun"],
-      "4/12 🗓️": ["April", "noun"],
-      "5/12 🗓️": ["May", "noun"],
-      "6/12 🗓️": ["June", "noun"],
-      "7/12 🗓️": ["July", "noun"],
-      "8/12 🗓️": ["August", "noun"],
-      "9/12 🗓️": ["September", "noun"],
-      "10/12 🗓️": ["October", "noun"],
-      "11/12 🗓️": ["November", "noun"],
-      "12/12 🗓️": ["December", "noun"]
+      "MM-01 🗓️": ["January", "noun"],
+      "MM-02 🗓️": ["February", "noun"],
+      "MM-03 🗓️": ["March", "noun"],
+      "MM-04 🗓️": ["April", "noun"],
+      "MM-05 🗓️": ["May", "noun"],
+      "MM-06 🗓️": ["June", "noun"],
+      "MM-07 🗓️": ["July", "noun"],
+      "MM-08 🗓️": ["August", "noun"],
+      "MM-09 🗓️": ["September", "noun"],
+      "MM-10 🗓️": ["October", "noun"],
+      "MM-11 🗓️": ["November", "noun"],
+      "MM-12 🗓️": ["December", "noun"]
     },
     "seasons": {
       "🌷🗓️": ["spring", "noun"],
@@ -257,8 +257,8 @@
       "⏮️☀️": ["yesterday", "noun"]
     },
     "verbs": {
-      "🏃‍♂️ / 🏃‍♀️": ["run", "verb"],
-      "🚶‍♂️ / 🚶‍♀️": ["walk", "verb"],
+      "🏃‍♂️🏃‍♀️": ["run", "verb"],
+      "🚶‍♂️🚶‍♀️": ["walk", "verb"],
       "🗣️": ["talk", "verb"],
       "🗣️👂": ["listen", "verb"],
       "😮🍽️🍔": ["eat", "verb"],
