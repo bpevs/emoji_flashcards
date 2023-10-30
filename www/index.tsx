@@ -50,8 +50,10 @@ async function fetchLanguage(langCode = 'en-US') {
 }
 
 function App() {
+  let audioPlayer
   const [currIndex, setCurrIndex] = createSignal(0)
-  const [isFlipped, setFlipped] = createSignal(true)
+  const [isFlipped, setFlipped] = createSignal(false)
+
   const [showCards, setShowCards] = createSignal(false)
 
   const currEmoji = () => emojis()[currIndex()]?.[0]
@@ -66,13 +68,13 @@ function App() {
   const goNextIndex = (e) => {
     e.preventDefault()
     if (isFlipped()) setCurrIndex(Math.min(emojis().length, currIndex() + 1))
+    else if (audioPlayer) audioPlayer.play()
     setFlipped(!isFlipped())
   }
 
   createEffect(function defaultState() {
     data()
     setCurrIndex(0)
-    setFlipped(true)
   })
 
   onKeyStroke(['ArrowLeft'], goPrevIndex)
@@ -83,16 +85,32 @@ function App() {
       <div class='card'>
         <h1>{currEmoji()}</h1>
         <div style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
-          <h1>{currAnswer()}</h1>
+          <audio
+            ref={audioPlayer}
+            type='audio/mpeg'
+            src={`https://static.bpev.me/emoji/audio/${cardLangCode()}/${currAnswer()}.mp3`}
+          />
+          <h1>
+            {currAnswer()}
+          </h1>
           {currHints().map((item) => <h2>{item}</h2>)}
         </div>
-        <button
-          style='position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%)'
-          disabled={currIndex() === emojis().length}
-          onClick={goNextIndex}
-        >
-          {isFlipped() ? strings()?.next : strings()?.['show-answer']}
-        </button>
+        <div style='position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%)'>
+          <button
+            disabled={currIndex() === emojis().length}
+            onClick={goNextIndex}
+          >
+            {isFlipped() ? strings()?.next : strings()?.['show-answer']}
+          </button>
+          <Show when={isFlipped() && audioPlayer}>
+            <button
+              style='border: 0; background: none; cursor: pointer;'
+              onClick={() => audioPlayer.play()}
+            >
+              🔉
+            </button>
+          </Show>
+        </div>
       </div>
     </div>
   )

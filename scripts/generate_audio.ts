@@ -43,6 +43,9 @@ for (const idx in ids) {
   await writeTranslationAudioFiles(audioUrl, language, emojis)
 }
 
+console.log('COMPLETE!')
+Deno.exit(0)
+
 async function generateTranscriptionIds(
   languageCode: string,
   emojisByCategory: { [category: string]: Translation[] },
@@ -166,7 +169,11 @@ async function writeTranslationAudioFiles(
   while (match) {
     const [_, nextSilenceStartS, nextSilenceEndS] = match
     const nextSilenceStartMS = Math.round(1000 * parseFloat(nextSilenceStartS))
-    const nextSilenceEndMS = Math.round(1000 * parseFloat(nextSilenceEndS))
+
+    // 0.1 is so we don't clip the beginning of the audio gen
+    const nextSilenceEndMS = Math.round(
+      1000 * (parseFloat(nextSilenceEndS) - 0.1),
+    )
 
     console.log(translations[count])
 

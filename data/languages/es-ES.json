@@ -1,5 +1,6 @@
 {
   "name": "es-ES",
+  "audio_id": "es-ES-AlvaroNeural",
   "strings": {
     "title": "Fichas de idiomas emoji",
     "description": "Fichas emoji descargables para aprender muchos idiomas",
@@ -177,7 +178,7 @@
       "🏙️": ["la ciudad", ""],
       "🏠": ["la casa", ""],
       "🏢🏠": ["el apartamento", ""],
-      "🛣️": ["la calle/carretera", ""],
+      "🛣️": ["la calle", ""],
       "✈️🏢": ["el aeropuerto", ""],
       "🚉": ["la estación de tren", ""],
       "🚌🛑": ["la parada de autobús", ""],

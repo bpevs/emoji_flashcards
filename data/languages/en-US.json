@@ -1,6 +1,6 @@
 {
   "name": "en-US",
-  "audio_id": "en-US-JennyNeural",
+  "audio_id": "en-US-DavisNeural",
   "strings": {
     "title": "Emoji Language Flashcards",
     "description": "Downloadable emoji flashcards to learn many languages",
@@ -154,7 +154,7 @@
       "🏙️": ["city"],
       "🏠": ["house"],
       "🏢🏠": ["apartment"],
-      "🛣️": ["street/road"],
+      "🛣️": ["street"],
       "✈️🏢": ["airport"],
       "🚉": ["train station"],
       "🚌🛑": ["bus stop"],
@@ -171,7 +171,7 @@
       "💃🪩🕺🏢": ["club"],
       "🍻🏢": ["bar"],
       "🛝🌳": ["park"],
-      "🛍️🏪": ["store/shop"],
+      "🛍️🏪": ["store"],
       "🎭🏛️": ["theater"],
       "📚🏛️": ["library"],
       "🏥": ["hospital"],
