@@ -5,63 +5,109 @@ import { listAudioFiles, readLanguageFile } from '../shared/data_access.ts'
 import { AUDIO_DIR } from '../shared/constants_server.ts'
 import { join } from 'std/path/mod.ts'
 import { writeAll } from 'std/streams/write_all.ts'
+import poll from '../shared/poll_url.ts'
 
 const MAX_NOISE_LEVEL = -40
-const MIN_SILENCE_LENGTH = 0.1
-const DETECT_STR =
-  `silencedetect=noise=${MAX_NOISE_LEVEL}dB:d=${MIN_SILENCE_LENGTH}`
+const SILENCE_SPLIT = 1
+const SILENCE_REQUEST = 2
+const DETECT_STR = `silencedetect=noise=${MAX_NOISE_LEVEL}dB:d=${SILENCE_SPLIT}`
 const MATCH_SILENCE = /silence_start: ([\w\.]+)[\s\S]+?silence_end: ([\w\.]+)/g
 
 const env = await load()
 
-await generateAudioFiles('zh-CN')
+const [language, inputCategoryId] = Deno.args
 
-async function generateAudioFiles(language: string) {
-  const languageFile = await readLanguageFile(language)
+const { data, audio_id } = await readLanguageFile(language)
+const existingAudioFiles = listAudioFiles(language)
 
-  const existingAudioFiles = listAudioFiles(language)
-  const translations = Object.keys(languageFile.data)
-    .filter((key) => !existingAudioFiles.includes(key))
-    .map((key) => ({ key, ...languageFile.data[key] }))
+const emojisByCategory: { [category: string]: Translation[] } = {}
 
-  const sourceURL = await generateSourceAudioFile(language, translations)
-
-  console.log('source audio: ', sourceURL)
-
-  const downloadedSourcePath = await downloadSourceFile(sourceURL)
-
-  console.log('source audio saved: ', downloadedSourcePath)
-
-  await writeTranslationAudioFiles(downloadedSourcePath, language, translations)
+for (const key in data) {
+  const { category, text } = data[key]
+  if (existingAudioFiles.includes(text)) continue
+  if (!emojisByCategory[category]) emojisByCategory[category] = []
+  emojisByCategory[category].push({ key, ...data[key] })
 }
 
-async function generateSourceAudioFile(
+console.log(language, audio_id, Object.keys(emojisByCategory))
+
+const ids = await generateTranscriptionIds(language, emojisByCategory, audio_id)
+
+console.log('source audio id: ', JSON.stringify(ids))
+
+for (const idx in ids) {
+  const { categoryId, transcriptionId } = ids[idx]
+  const emojis = emojisByCategory[categoryId]
+  const audioUrl = await downloadSourceFile(transcriptionId)
+  console.log('source audio saved: ', audioUrl)
+  await writeTranslationAudioFiles(audioUrl, language, emojis)
+}
+
+async function generateTranscriptionIds(
   languageCode: string,
-  translations: Translation[],
-) {
+  emojisByCategory: { [category: string]: Translation[] },
+  audio_id?: string,
+): Promise<{ categoryId: string; transcriptionId: string }[]> {
   PlayHT.init({ apiKey: env['PLAYHT_API_KEY'], userId: env['PLAYHT_USER_ID'] })
 
-  const [voice] = await PlayHT.listVoices({
-    gender: 'female',
-    voiceEngine: ['Standard'],
+  const voiceEngine: PlayHT.VoiceEngine[] = ['Standard']
+  const settings = {
+    quality: 'high',
     languageCode: [languageCode],
-  })
+  }
 
-  const translationString = translations.map(({ text }) => text).join(', ')
+  let voice: { id: string }
 
-  const response = await PlayHT.generate(translationString, {
-    voiceEngine: 'Standard', //voice.voiceEngine,
-    voiceId: voice.id,
-    speed: 1,
-  })
-  return response.audioUrl
+  if (audio_id) {
+    const voices = await PlayHT.listVoices(settings)
+    voice = voices.find(({ id }) => id === audio_id) || { id: '' }
+  } else {
+    const voices = await PlayHT.listVoices({ voiceEngine, ...settings })
+    voice = voices[0] || { id: '' }
+  }
+
+  return await Promise.all(
+    Object.keys(emojisByCategory)
+      .filter((categoryId) => {
+        if (inputCategoryId) return categoryId === inputCategoryId
+        return true
+      })
+      .map(async (categoryId) => ({
+        categoryId,
+        transcriptionId: (await requestSSMLAudio(
+          `<speak><p>${
+            (emojisByCategory[categoryId] || [])
+              .map(({ text }: Translation) => text)
+              .join(`, <break time="${SILENCE_REQUEST}s"/> `)
+          }</p></speak>`,
+          voice.id,
+        )).transcriptionId,
+      })),
+  )
 }
 
-async function downloadSourceFile(url: string) {
-  const response = await fetch(url)
+function requestSSMLAudio(ssml: string, voice: string) {
+  return fetch('https://api.play.ht/api/v1/convert/', {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+      AUTHORIZATION: env['PLAYHT_API_KEY'],
+      'X-USER-ID': env['PLAYHT_USER_ID'],
+    },
+    body: JSON.stringify({
+      ssml: [ssml],
+      voice,
+    }),
+  }).then((res) => res.json())
+}
 
-  const fileName = new URL(url).pathname.slice(1)
-  const filePath = join('./data/tmp', fileName)
+async function downloadSourceFile(transcriptionId: string) {
+  const audioResults = await getAudioResults(transcriptionId)
+  console.log(audioResults)
+  const response = await fetch(audioResults.audioUrl)
+
+  const filePath = join('./data/tmp', transcriptionId)
 
   const file = await Deno.open(filePath, { create: true, write: true })
 
@@ -71,10 +117,29 @@ async function downloadSourceFile(url: string) {
   return filePath
 }
 
-/**
- *  1. Splits a joined translation audio clip
- *  2. Writes files for each translation, naming appropriately
- */
+function getAudioResults(transcriptionId: string) {
+  return poll<{ audioUrl: string; converted: boolean }>(
+    `https://api.play.ht/api/v1/articleStatus?transcriptionId=${transcriptionId}`,
+    {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        AUTHORIZATION: env['PLAYHT_API_KEY'],
+        'X-USER-ID': env['PLAYHT_USER_ID'],
+      },
+    },
+    {
+      retryLimit: 3,
+      timeBetweenPolls: 10_000,
+      predicate: ({ converted }) => converted, // "Transcription completed"
+    },
+  )
+}
+
+// /**
+//  *  1. Splits a joined translation audio clip
+//  *  2. Writes files for each translation, naming appropriately
+//  */
 async function writeTranslationAudioFiles(
   sourceURL: string,
   languageCode: string,
@@ -102,7 +167,10 @@ async function writeTranslationAudioFiles(
     const [_, nextSilenceStartS, nextSilenceEndS] = match
     const nextSilenceStartMS = Math.round(1000 * parseFloat(nextSilenceStartS))
     const nextSilenceEndMS = Math.round(1000 * parseFloat(nextSilenceEndS))
-    const name = translations[count].key
+
+    console.log(translations[count])
+
+    const name = translations[count].text
     count = count + 1
 
     const outFile = join(audioDirLocation, name + '.mp3')
@@ -117,5 +185,18 @@ async function writeTranslationAudioFiles(
     clipStartMS = nextSilenceEndMS
     match = MATCH_SILENCE.exec(detectSilenceOutput)
   }
+
+  // last file
+  const name = translations[count].text
+  count = count + 1
+
+  const outFile = join(audioDirLocation, name + '.mp3')
+  const seek = Math.max(0, clipStartMS) + 'ms'
+  const convert = new Deno.Command('ffmpeg', {
+    stdout: 'piped',
+    args: ['-ss', seek, '-i', sourceURL, '-c:a', 'copy', outFile],
+  })
+  await convert.output()
+
   console.log(translations.length, count)
 }

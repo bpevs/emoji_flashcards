@@ -22,6 +22,7 @@ export function fromCompactLanguageFile(
 
   return {
     name: compactFile.name,
+    audio_id: compactFile.audio_id,
     strings: compactFile.strings,
     data,
   }
@@ -49,6 +50,7 @@ export function toCompactLanguageFile(
 
   return {
     name: languageFile.name,
+    audio_id: languageFile.audio_id,
     strings: languageFile.strings,
     columns: ['text', ...columns],
     data,
