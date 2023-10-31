@@ -114,10 +114,14 @@ function App() {
           </div>
         </div>
       </div>
+
       <link
         rel='stylesheet'
         href='https://unpkg.com/keyboard-css@1.2.4/dist/css/main.min.css'
       />
+      <div style='text-align: center;'>
+        {strings()['use-keys']}
+      </div>
       <div style='text-align: center;'>
         <button class='kbc-button kbc-button-xs' data-keyboard-key=' '>
           space
