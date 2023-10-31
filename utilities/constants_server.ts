@@ -1,4 +1,4 @@
-// Constants that are used onlu in server and in scripts
+// Constants that are used onlu in server and in tasks
 import { resolve } from 'std/path/mod.ts'
 
 // Absolute paths of directories (for server)

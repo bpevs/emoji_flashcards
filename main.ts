@@ -1,7 +1,7 @@
 import { Application, Router, send } from 'oak'
 import { Handlebars } from 'handlebars'
 import { load } from 'std/dotenv/mod.ts'
-import build from './shared/build.ts'
+import build from './utilities/build.ts'
 import {
   DATA_PATH,
   DEFAULT_LANG,
@@ -9,8 +9,8 @@ import {
   NOTE_PARAM,
   STATIC_PATH,
   USER_PARAM,
-} from './shared/constants_shared.ts'
-import { DATA_DIR, STATIC_DIR } from './shared/constants_server.ts'
+} from './utilities/constants_shared.ts'
+import { DATA_DIR, STATIC_DIR } from './utilities/constants_server.ts'
 
 const router = new Router()
 const handle = new Handlebars({

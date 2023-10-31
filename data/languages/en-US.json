@@ -1,6 +1,10 @@
 {
   "name": "en-US",
   "audio_id": "en-US-DavisNeural",
+  "model_id": 38095404,
+  "deck_id": 38095404,
+  "locale_code": "en-US",
+  "language_code": "en",
   "strings": {
     "title": "Emoji Language Flashcards",
     "description": "Downloadable emoji flashcards to learn many languages",

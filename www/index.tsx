@@ -86,7 +86,7 @@ function App() {
           <audio
             ref={audioPlayer}
             type='audio/mpeg'
-            src={`https://static.bpev.me/emoji/audio/${noteLangCode()}/${currAnswer()}.mp3`}
+            src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/emoji_${noteLangCode()}_${currAnswer()}.mp3`}
           />
           <h1>
             {currAnswer()}

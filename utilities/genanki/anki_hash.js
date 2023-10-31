@@ -11,7 +11,7 @@ const BASE91_TABLE = [
   '~',
 ]
 
-export default function ankiHash(fields) {
+export function ankiHash(fields) {
   const str = fields.join('__')
 
   const msgUint8 = new TextEncoder().encode(str)

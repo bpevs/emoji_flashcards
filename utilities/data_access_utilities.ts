@@ -23,6 +23,11 @@ export function fromCompactLanguageFile(
   return {
     name: compactFile.name,
     audio_id: compactFile.audio_id,
+    model_id: compactFile.model_id,
+    deck_id: compactFile.deck_id,
+    pronunciation_key: compactFile.pronunciation_key,
+    locale_code: compactFile.locale_code,
+    language_code: compactFile.language_code,
     strings: compactFile.strings,
     data,
   }
@@ -51,6 +56,11 @@ export function toCompactLanguageFile(
   return {
     name: languageFile.name,
     audio_id: languageFile.audio_id,
+    model_id: languageFile.model_id,
+    deck_id: languageFile.deck_id,
+    locale_code: languageFile.locale_code,
+    language_code: languageFile.language_code,
+    pronunciation_key: languageFile.pronunciation_key,
     strings: languageFile.strings,
     columns: ['text', ...columns],
     data,

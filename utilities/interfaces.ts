@@ -23,12 +23,22 @@ export interface LanguageFile {
   name: string
   strings: InterfaceStrings
   data: TranslationData
-  audio_id?: string
+  model_id: number
+  deck_id: number
+  locale_code: string
+  language_code: string
+  audio_id: string
+  pronunciation_key?: string
 }
 
 export interface CompactLanguageFile {
   name: string
-  audio_id?: string
+  model_id: number
+  deck_id: number
+  locale_code: string
+  language_code: string
+  pronunciation_key?: string
+  audio_id: string
   strings: InterfaceStrings
   columns: string[]
   data: {

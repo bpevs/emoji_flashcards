@@ -1,5 +1,5 @@
-import type { TranslatedSourceData } from '../../shared/interfaces.ts'
-import pinyin from 'npm:chinese-to-pinyin'
+import type { TranslatedSourceData } from '../../utilities/interfaces.ts'
+import pinyin from 'chinese-to-pinyin'
 
 interface LangData {
   text: string

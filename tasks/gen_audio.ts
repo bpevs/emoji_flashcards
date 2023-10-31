@@ -1,11 +1,11 @@
-import * as PlayHT from 'npm:playht'
-import type { Translation } from '../shared/interfaces.ts'
+import * as PlayHT from 'playht'
+import type { Translation } from '../utilities/interfaces.ts'
 import { load } from 'std/dotenv/mod.ts'
-import { listAudioFiles, readLanguageFile } from '../shared/data_access.ts'
-import { GEN_DIR } from '../shared/constants_server.ts'
+import { listAudioFiles, readLanguageFile } from '../utilities/data_access.ts'
+import { GEN_DIR } from '../utilities/constants_server.ts'
 import { join } from 'std/path/mod.ts'
 import { writeAll } from 'std/streams/write_all.ts'
-import poll from '../shared/poll_url.ts'
+import poll from '../utilities/poll_url.ts'
 
 const MAX_NOISE_LEVEL = -40
 const SILENCE_SPLIT = 1

@@ -1,4 +1,4 @@
-import * as PlayHT from 'npm:playht'
+import * as PlayHT from 'playht'
 import { load } from 'std/dotenv/mod.ts'
 
 const env = await load()

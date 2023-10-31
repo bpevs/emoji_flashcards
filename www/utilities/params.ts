@@ -3,7 +3,7 @@ import {
   DEFAULT_LANG_MAP,
   NOTE_PARAM,
   USER_PARAM,
-} from '../../shared/constants_shared.ts'
+} from '../../utilities/constants_shared.ts'
 
 const params = (new URL(document.location)).searchParams
 const noteLangParam = params.get(NOTE_PARAM)

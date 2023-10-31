@@ -1,21 +1,15 @@
 {
-  "tasks": {
-    "dev": "deno run -A main.ts --dev",
-    "start": "deno run -A main.ts",
-    "check": "deno check main.ts && deno check scripts/generate.ts",
-    "generate": "deno run -A generate.ts"
-  },
   "fmt": {
     "proseWrap": "never",
     "singleQuote": true,
     "semiColons": false,
-    "exclude": ["www/index.js", "**/sha256.js"]
+    "exclude": ["www/index.js"]
   },
   "lint": {
-    "exclude": ["www/index.js", "**/sha256.js"]
+    "exclude": ["www/index.js"]
   },
   "test": {
-    "exclude": ["www/index.js", "*(/sha256.js"]
+    "exclude": ["www/index.js"]
   },
   "imports": {
     "std/": "https://deno.land/std@0.200.0/",
@@ -24,6 +18,13 @@
     "esbuild": "https://deno.land/x/esbuild@v0.14.51/mod.js",
     "esbuild-deno-loader": "https://deno.land/x/esbuild_deno_loader@0.8.1/mod.ts",
 
+    "playht": "npm:playht",
+    "kuroshiro": "npm:kuroshiro",
+    "kuroshiro-analyzer-kuromoji": "npm:kuroshiro-analyzer-kuromoji",
+    "chinese-to-pinyin": "npm:chinese-to-pinyin",
+    "sql.js": "npm:sql.js",
+    "jszip": "npm:jszip",
+
     "solid-js": "npm:solid-js",
     "solid-js/web": "npm:solid-js/web",
     "solidjs-use": "npm:solidjs-use",
@@ -31,17 +32,18 @@
     "motion/solid": "npm:@motionone/solid"
   },
   "tasks": {
+    "build": "deno run --allow-net --allow-read --allow-run --allow-env --allow-write tasks/build.ts",
+    "check": "deno task check:text && deno task check:audio && deno task check:anki",
+    "check:anki": "deno check tasks/gen_anki.ts",
+    "check:audio": "deno check tasks/gen_audio.ts",
+    "check:client": "deno check tasks/public.js",
+    "check:main": "deno check tasks/main.ts",
+    "check:text": "deno check tasks/gen_text.ts",
+    "gen:text": "(deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read tasks/gen_text.ts) && deno fmt",
+    "gen:anki": "deno run --allow-write=data --allow-read tasks/gen_anki.ts",
+    "gen:audio": "deno run --allow-net --allow-env --allow-read --allow-write --allow-run tasks/gen_audio.ts",
+    "list:voices": "deno run --node-modules-dir --allow-env --allow-net --allow-read tasks/list_voices.ts",
     "start": "deno run --allow-write --allow-net --allow-read --allow-run --allow-env --watch=main.ts,index.tsx main.ts",
-    "test": "deno fmt && deno lint && deno task check",
-    "build": "deno run --allow-net --allow-read --allow-run --allow-env --allow-write scripts/build.ts",
-    "gen:text": "(deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read scripts/generate_text.ts) && deno fmt",
-    "gen:anki": "deno run --allow-write=data --allow-read scripts/generate_anki.ts",
-    "gen:audio": "deno run --allow-net --allow-env --allow-read --allow-write --allow-run scripts/generate_audio.ts",
-    "list:voices": "deno run --node-modules-dir --allow-env --allow-net --allow-read scripts/list_voices.ts",
-    "check": "deno task check:translate && deno task check:audio",
-    "check:audio": "deno check scripts/generate_audio.ts",
-    "check:translate": "deno check scripts/generate_translations.ts",
-    "check:server": "deno check scripts/main.ts",
-    "check:client": "deno check scripts/public.js"
+    "test": "deno fmt && deno lint && deno task check"
   }
 }

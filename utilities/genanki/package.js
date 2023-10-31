@@ -1,6 +1,6 @@
+import initSqlJs from 'sql.js'
+import JSZip from 'jszip'
 import { defaultConf, defaultDeck, defaultDeckConf } from './constants.ts'
-import initSqlJs from 'npm:sql.js'
-import JSZip from 'npm:jszip'
 import { APKG_SCHEMA } from './apkg.js'
 
 export class Package {
@@ -15,10 +15,6 @@ export class Package {
 
   addMedia(data, name) {
     this.media.push({ name, data })
-  }
-
-  addMediaFile(filename, name = null) {
-    this.media.push({ name: name || filename, filename })
   }
 
   async writeToFile(filename) {
@@ -38,14 +34,9 @@ export class Package {
 
     const media_info = {}
 
-    this.media.forEach((m, i) => {
-      if (m.filename != null) {
-        zip.file(i.toString(), m.filename)
-      } else {
-        zip.file(i.toString(), m.data)
-      }
-
-      media_info[i] = m.name
+    this.media.forEach((media, idx) => {
+      zip.file(idx.toString(), media.data)
+      media_info[idx] = media.name
     })
 
     zip.file('media', JSON.stringify(media_info))
@@ -64,17 +55,14 @@ export class Package {
     // AnkiDroid failed to import subdeck, So add a Default deck
     decks['1'] = { ...defaultDeck, id: 1, name: 'Default' }
 
-    this.decks.forEach((d) => {
-      d.notes.forEach((n) => models[n.model.props.id] = n.model.props)
-      decks[d.id] = {
-        ...defaultDeck,
-        id: d.id,
-        name: d.name,
-        desc: d.desc,
-      }
+    this.decks.forEach(({ id, name, notes, desc }) => {
+      notes.forEach(({ model }) => models[model.props.id] = model.props)
+      decks[id] = { ...defaultDeck, id, name, desc }
     })
 
-    const col = [
+    db.prepare(`INSERT INTO col
+         (id, crt, mod, scm, ver, dty, usn, ls, conf, models, decks, dconf, tags)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run([
       null, // id
       (+now / 1000) | 0, // crt
       +now, // mod
@@ -88,11 +76,7 @@ export class Package {
       JSON.stringify(decks), // decks
       JSON.stringify({ 1: { id: 1, ...defaultDeckConf } }), // dconf
       JSON.stringify({}), // tags
-    ]
-
-    db.prepare(`INSERT INTO col
-         (id, crt, mod, scm, ver, dty, usn, ls, conf, models, decks, dconf, tags)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(col)
+    ])
 
     const insert_notes = db.prepare(
       `INSERT INTO notes (id, guid, mid, mod, usn, tags, flds, sfld, csum, flags, data) 

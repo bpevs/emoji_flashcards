@@ -1,6 +1,10 @@
 {
   "name": "zh-CN",
   "audio_id": "zh-CN-XiaoxiaoNeural",
+  "model_id": 29503198,
+  "deck_id": 29503198,
+  "locale_code": "zh-CN",
+  "language_code": "zh",
   "strings": {
     "title": "表情符号语言卡片",
     "description": "下载表情符号卡片，学习多种语言",

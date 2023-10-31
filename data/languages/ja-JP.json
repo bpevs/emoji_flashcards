@@ -1,6 +1,10 @@
 {
   "name": "ja-JP",
   "audio_id": "ja-JP-NanamiNeural",
+  "model_id": 22751404,
+  "deck_id": 22751404,
+  "locale_code": "ja-JP",
+  "language_code": "ja",
   "pronunciation_key": "romaji",
   "strings": {
     "title": "絵文字フラッシュカード",

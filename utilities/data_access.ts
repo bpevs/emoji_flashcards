@@ -1,17 +1,20 @@
 import { join } from 'std/path/mod.ts'
-import type { CompactLanguageFile, LanguageFile } from '../shared/interfaces.ts'
+import type {
+  CompactLanguageFile,
+  LanguageFile,
+} from '../utilities/interfaces.ts'
 import {
   fromCompactLanguageFile,
   prettyPrintCompactFile,
   toCompactLanguageFile,
-} from '../shared/data_access_utilities.ts'
+} from '../utilities/data_access_utilities.ts'
 import { GEN_DIR, LANGUAGES_DIR, SOURCE_FILE } from './constants_server.ts'
 
 const LANGUAGE_FILE_REGEX = /^[a-z]{2,3}(-[A-Z]{2})?\.json$/
 const AUDIO_FILE_REGEX = /.*\.mp3$/
 
 /**
- * For use in server and scripts, get and set data
+ * For use in server and tasks, get and set data
  */
 export function listLanguages(): string[] {
   try {
@@ -36,7 +39,7 @@ export function listAudioFiles(language: string): string[] {
 export async function readCompactLanguageFile(
   locale: string,
   extensionCodes: string[] = [],
-): Promise<LanguageFile> {
+): Promise<CompactLanguageFile> {
   const text = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale}.json`)
   const compactLanguage: CompactLanguageFile = JSON.parse(text)
   if (extensionCodes.length) console.log('do extension stuff')

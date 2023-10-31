@@ -14,11 +14,12 @@ import {
   readLanguageFile,
   readSourceFile,
   writeLanguageFile,
-} from '../shared/data_access.ts'
-import { translate } from '../shared/translate.ts'
+} from '../utilities/data_access.ts'
+import { translate } from '../utilities/translate.ts'
 import plugins from '../data/plugins/mod.ts'
 
-generateAllTranslations()
+await generateAllTranslations()
+Deno.exit(0)
 
 async function generateAllTranslations() {
   const sourceFile = await readSourceFile()

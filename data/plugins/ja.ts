@@ -1,7 +1,7 @@
-import type { TranslatedSourceData } from '../../shared/interfaces.ts'
+import type { TranslatedSourceData } from '../../utilities/interfaces.ts'
 
-import Kuroshiro from 'npm:kuroshiro'
-import KuromojiAnalyzer from 'npm:kuroshiro-analyzer-kuromoji'
+import Kuroshiro from 'kuroshiro'
+import KuromojiAnalyzer from 'kuroshiro-analyzer-kuromoji'
 
 const kuroshiro = new (Kuroshiro.default)()
 await kuroshiro.init(new KuromojiAnalyzer())

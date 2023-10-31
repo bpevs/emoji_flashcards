@@ -1,6 +1,10 @@
 {
   "name": "es-ES",
   "audio_id": "es-ES-AlvaroNeural",
+  "model_id": 2744815,
+  "deck_id": 2744815,
+  "locale_code": "es-ES",
+  "language_code": "es",
   "strings": {
     "title": "Fichas de idiomas emoji",
     "description": "Fichas emoji descargables para aprender muchos idiomas",
