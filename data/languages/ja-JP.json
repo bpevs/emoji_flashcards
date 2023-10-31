@@ -18,7 +18,10 @@
     "download-for": "Ankiフラッシュカードをダウンロード",
     "download": "ダウンロード",
     "next": "次",
-    "show-answer": "答えを示す"
+    "show-answer": "答えを示す",
+    "no-js": "このデモにはJavascriptが必要ですが、Anki用フラッシュカードをダウンロードすることはできます。",
+    "try-me": "私を試してみて",
+    "use-keys": "キーでナビゲートしてください："
   },
   "columns": ["text", "romaji"],
   "data": {

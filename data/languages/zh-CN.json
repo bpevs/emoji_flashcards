@@ -17,7 +17,10 @@
     "download-for": "下载 Anki Flashcards for",
     "download": "下载",
     "next": "下一个",
-    "show-answer": "显示答案"
+    "show-answer": "显示答案",
+    "no-js": "此演示需要使用 Javascript，但您仍可下载 Anki 闪存卡",
+    "try-me": "试试看",
+    "use-keys": "使用按键导航："
   },
   "columns": ["text", "pinyin"],
   "data": {

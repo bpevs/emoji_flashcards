@@ -8,6 +8,7 @@ import {
 const params = (new URL(document.location)).searchParams
 const noteLangParam = params.get(NOTE_PARAM)
 const userLangParam = params.get(USER_PARAM)
+export const idxParam = parseInt(params.get('idx') || 0)
 
 export const noteLangCodeParam = DEFAULT_LANG_MAP[noteLangParam] ||
   noteLangParam || DEFAULT_LANG

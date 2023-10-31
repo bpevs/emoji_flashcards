@@ -1,21 +1,19 @@
 import { render } from 'solid-js/web'
 import { createEffect, createResource, createSignal, For, Show } from 'solid-js'
-import { onKeyStroke } from 'solidjs-use'
+import { onKeyDown, onKeyStroke, onKeyUp } from 'solidjs-use'
 import {
+  idxParam,
   noteLangCodeParam,
   setNoteLangCodeParam,
   setUserLangCodeParam,
   userLangCodeParam,
 } from './utilities/params.ts'
-import downloadTSV from './utilities/download_tsv.ts'
 
-const selectUserLanguage = document.getElementById('switch-user-language')
-const selectNoteLanguage = document.getElementById('switch-note-language')
-const downloadButton = document.getElementById('download')
+const selectUserLanguage = document.getElementById('user-lang')
+const selectNoteLanguage = document.getElementById('note-lang')
 
 selectUserLanguage.onchange = setUserLangCodeParam
 selectNoteLanguage.onchange = setNoteLangCodeParam
-downloadButton.onclick = () => downloadTSV(`${noteLangCode()}.tsv`, langToTSV())
 
 const [noteLangCode] = createSignal(noteLangCodeParam)
 const [userLangCode] = createSignal(userLangCodeParam)
@@ -36,22 +34,13 @@ const emojis = () => {
   }).flat(1)
 }
 
-function langToTSV() {
-  let str = ['emoji', 'category', ...columns()].join('\t') + '\n'
-  emojis().forEach(([emoji, category, ...other]) => {
-    const sub = [emoji, category, ...other].join('\t')
-    str += `${sub}\n`
-  })
-  return str
-}
-
 async function fetchLanguage(langCode = 'en-US') {
   return await (await fetch(`/data/languages/${langCode}.json`)).json()
 }
 
 function App() {
   let audioPlayer
-  const [currIndex, setCurrIndex] = createSignal(0)
+  const [currIndex, setCurrIndex] = createSignal(idxParam || 0)
   const [isFlipped, setFlipped] = createSignal(false)
 
   const currEmoji = () => emojis()[currIndex()]?.[0]
@@ -70,47 +59,77 @@ function App() {
     setFlipped(!isFlipped())
   }
 
-  createEffect(function defaultState() {
-    data()
-    setCurrIndex(0)
+  onKeyStroke(['ArrowLeft'], goPrevIndex, { dedupe: false })
+  onKeyStroke(['ArrowRight', ' '], goNextIndex, { dedupe: false })
+
+  onKeyDown((ev) => {
+    const key = ev.key
+    const element = document.querySelector('[data-keyboard-key="' + key + '"]')
+    if (element) element.classList.add('active')
   })
 
-  onKeyStroke(['ArrowLeft'], goPrevIndex)
-  onKeyStroke(['ArrowRight', ' '], goNextIndex)
+  onKeyUp((ev) => {
+    const key = ev.key
+    const element = document.querySelector('[data-keyboard-key="' + key + '"]')
+    if (element) element.classList.remove('active')
+  })
+
+  createEffect(() => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('idx', currIndex() || 0)
+    window.history.replaceState(null, null, url)
+  })
 
   return (
-    <div class='note-wrapper'>
-      <div class='note'>
-        <h1>{currEmoji()}</h1>
-        <div style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
-          <audio
-            ref={audioPlayer}
-            type='audio/mpeg'
-            src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/emoji_${noteLangCode()}_${currAnswer()}.mp3`}
-          />
-          <h1>
-            {currAnswer()}
-          </h1>
-          {currHints().map((item) => <h2>{item}</h2>)}
-        </div>
-        <div style='position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%)'>
-          <button
-            disabled={currIndex() === emojis().length}
-            onClick={goNextIndex}
-          >
-            {isFlipped() ? strings()?.next : strings()?.['show-answer']}
-          </button>
-          <Show when={isFlipped() && audioPlayer}>
+    <>
+      <div class='note-wrapper'>
+        <div class='note'>
+          <h1>{currEmoji()}</h1>
+          <div style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
+            <audio
+              ref={audioPlayer}
+              type='audio/mpeg'
+              src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/emoji_${noteLangCode()}_${currAnswer()}.mp3`}
+            />
+            <h1>
+              {currAnswer()}
+            </h1>
+            {currHints().map((item) => <h2>{item}</h2>)}
+          </div>
+          <div style='position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%)'>
             <button
-              style='border: 0; background: none; cursor: pointer;'
-              onClick={() => audioPlayer.play()}
+              disabled={currIndex() === emojis().length}
+              onClick={goNextIndex}
             >
-              🔉
+              {isFlipped() ? strings()?.next : strings()?.['show-answer']}
             </button>
-          </Show>
+            <Show when={isFlipped() && audioPlayer}>
+              <button
+                style='border: 0; background: none; cursor: pointer;'
+                onClick={() => audioPlayer.play()}
+              >
+                🔊
+              </button>
+            </Show>
+          </div>
         </div>
       </div>
-    </div>
+      <link
+        rel='stylesheet'
+        href='https://unpkg.com/keyboard-css@1.2.4/dist/css/main.min.css'
+      />
+      <div style='text-align: center;'>
+        <button class='kbc-button kbc-button-xs' data-keyboard-key=' '>
+          space
+        </button>
+        <button class='kbc-button kbc-button-xs' data-keyboard-key='ArrowLeft'>
+          ◀︎
+        </button>
+        <button class='kbc-button kbc-button-xs' data-keyboard-key='ArrowRight'>
+          ▶︎
+        </button>
+      </div>
+    </>
   )
 }
 

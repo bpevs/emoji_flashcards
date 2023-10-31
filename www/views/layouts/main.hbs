@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{lang}}">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>{{title}}</title>
-   <meta name="description" content="{{description}}">
-   <link rel="stylesheet" href="/index.css">
- </head>
- <body>
-   <div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}">
+    <link rel="stylesheet" href="/index.css">
+    <style>
+      #fallback-go { display: none; }
+      .no-script #fallback-go { display: inline-block; }
+    </style>
+  </head>
+  <body class="no-script">
+    <div>
      {{{body}}}
-   </div>
-   <script src="/index.js"></script>
- </body>
+    </div>
+    <script src="/index.js"></script>
+    <script>document.body.classList.remove('no-script');</script>
+  </body>
 </html>

@@ -11,6 +11,9 @@
     "download-for": "Download Anki Flashcards for",
     "download": "download",
     "next": "next",
+    "no-js": "This demo requires Javascript, but you can still download the flashcards for Anki",
+    "use-keys": "Use your keys to navigate:",
+    "try-me": "Try Me!",
     "show-answer": "show answer"
   },
   "columns": ["text", "pos"],
