@@ -2,7 +2,7 @@ import * as PlayHT from 'npm:playht'
 import type { Translation } from '../shared/interfaces.ts'
 import { load } from 'std/dotenv/mod.ts'
 import { listAudioFiles, readLanguageFile } from '../shared/data_access.ts'
-import { AUDIO_DIR } from '../shared/constants_server.ts'
+import { GEN_DIR } from '../shared/constants_server.ts'
 import { join } from 'std/path/mod.ts'
 import { writeAll } from 'std/streams/write_all.ts'
 import poll from '../shared/poll_url.ts'
@@ -15,16 +15,20 @@ const MATCH_SILENCE = /silence_start: ([\w\.]+)[\s\S]+?silence_end: ([\w\.]+)/g
 
 const env = await load()
 
+function getAudioFilename(language: string, text: string) {
+  return `emoji_${language}_${text}`
+}
+
 const [language, inputCategoryId] = Deno.args
 
-const { data, audio_id } = await readLanguageFile(language)
+const { data, audio_id, pronunciation_key } = await readLanguageFile(language)
 const existingAudioFiles = listAudioFiles(language)
 
 const emojisByCategory: { [category: string]: Translation[] } = {}
 
 for (const key in data) {
   const { category, text } = data[key]
-  if (existingAudioFiles.includes(text)) continue
+  if (existingAudioFiles.includes(getAudioFilename(language, text))) continue
   if (!emojisByCategory[category]) emojisByCategory[category] = []
   emojisByCategory[category].push({ key, ...data[key] })
 }
@@ -80,7 +84,10 @@ async function generateTranscriptionIds(
         transcriptionId: (await requestSSMLAudio(
           `<speak><p>${
             (emojisByCategory[categoryId] || [])
-              .map(({ text }: Translation) => text)
+              .map((translation: Translation) => {
+                if (pronunciation_key) return translation[pronunciation_key]
+                return translation.text
+              })
               .join(`, <break time="${SILENCE_REQUEST}s"/> `)
           }</p></speak>`,
           voice.id,
@@ -148,7 +155,7 @@ async function writeTranslationAudioFiles(
   languageCode: string,
   translations: Translation[],
 ) {
-  const audioDirLocation = join(AUDIO_DIR, languageCode)
+  const audioDirLocation = join(GEN_DIR, languageCode, 'audio')
 
   try {
     await Deno.mkdir(audioDirLocation, { recursive: true })
@@ -182,7 +189,9 @@ async function writeTranslationAudioFiles(
 
     const outFile = join(audioDirLocation, name + '.mp3')
     const seek = Math.max(0, clipStartMS) + 'ms'
-    const len = nextSilenceStartMS - clipStartMS + 'ms'
+
+    // 0.1 to maintain length after shifting nextSilenceEndMS
+    const len = nextSilenceStartMS - (clipStartMS + 0.1) + 'ms'
 
     const convert = new Deno.Command('ffmpeg', {
       stdout: 'piped',

@@ -35,24 +35,24 @@ body {
   right: 10px;
 }
 
-.switch-card-language {
+.switch-note-language {
   text-align: center;
 }
 
-#cards {
+#notes {
   max-height: 600px;
   overflow: scroll;
   border: 2px solid black;
 }
 
-.card-wrapper {
+.note-wrapper {
   margin: 20px 0 50px 0;
   text-align: center;
   display: flex;
   justify-content: center;
 }
 
-.card {
+.note {
   background-color: white;
   margin: 10px auto 10px auto;
   border: 4px solid black;
@@ -68,7 +68,7 @@ body {
   min-width: 220px;
 }
 
-.card h1 {
+.note h1 {
   margin: 5px;
   font-weight: bold;
   font-size: 3em;

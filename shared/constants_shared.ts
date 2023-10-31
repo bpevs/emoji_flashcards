@@ -4,8 +4,8 @@ export const LANGUAGES_PATH = '/data/languages'
 export const EXTENSIONS_PATH = '/data/extensions'
 export const STATIC_PATH = '/'
 
-export const USER_PARAM = 'user'
-export const CARD_PARAM = 'card'
+export const USER_PARAM = 'user-lang'
+export const NOTE_PARAM = 'note-lang'
 
 export const DEFAULT_LANG = 'en-US'
 

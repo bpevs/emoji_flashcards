@@ -5,7 +5,7 @@ import {
   prettyPrintCompactFile,
   toCompactLanguageFile,
 } from '../shared/data_access_utilities.ts'
-import { AUDIO_DIR, LANGUAGES_DIR, SOURCE_FILE } from './constants_server.ts'
+import { GEN_DIR, LANGUAGES_DIR, SOURCE_FILE } from './constants_server.ts'
 
 const LANGUAGE_FILE_REGEX = /^[a-z]{2,3}(-[A-Z]{2})?\.json$/
 const AUDIO_FILE_REGEX = /.*\.mp3$/
@@ -25,12 +25,22 @@ export function listLanguages(): string[] {
 
 export function listAudioFiles(language: string): string[] {
   try {
-    return Array.from(Deno.readDirSync(join(AUDIO_DIR, language)))
+    return Array.from(Deno.readDirSync(join(GEN_DIR, language, 'audio')))
       .filter(({ name }) => AUDIO_FILE_REGEX.test(name))
       .map((file) => file.name.replace('.mp3', ''))
   } catch {
     return []
   }
+}
+
+export async function readCompactLanguageFile(
+  locale: string,
+  extensionCodes: string[] = [],
+): Promise<LanguageFile> {
+  const text = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale}.json`)
+  const compactLanguage: CompactLanguageFile = JSON.parse(text)
+  if (extensionCodes.length) console.log('do extension stuff')
+  return compactLanguage
 }
 
 export async function readLanguageFile(

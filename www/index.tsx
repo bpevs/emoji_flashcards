@@ -2,29 +2,29 @@ import { render } from 'solid-js/web'
 import { createEffect, createResource, createSignal, For, Show } from 'solid-js'
 import { onKeyStroke } from 'solidjs-use'
 import {
-  cardLangCodeParam,
-  setCardLangCodeParam,
+  noteLangCodeParam,
+  setNoteLangCodeParam,
   setUserLangCodeParam,
   userLangCodeParam,
 } from './utilities/params.ts'
 import downloadTSV from './utilities/download_tsv.ts'
 
 const selectUserLanguage = document.getElementById('switch-user-language')
-const selectCardLanguage = document.getElementById('switch-card-language')
+const selectNoteLanguage = document.getElementById('switch-note-language')
 const downloadButton = document.getElementById('download')
 
 selectUserLanguage.onchange = setUserLangCodeParam
-selectCardLanguage.onchange = setCardLangCodeParam
-downloadButton.onclick = () => downloadTSV(`${cardLangCode()}.tsv`, langToTSV())
+selectNoteLanguage.onchange = setNoteLangCodeParam
+downloadButton.onclick = () => downloadTSV(`${noteLangCode()}.tsv`, langToTSV())
 
-const [cardLangCode] = createSignal(cardLangCodeParam)
+const [noteLangCode] = createSignal(noteLangCodeParam)
 const [userLangCode] = createSignal(userLangCodeParam)
 
-const [cardLang] = createResource(cardLangCode, (code) => fetchLanguage(code))
+const [noteLang] = createResource(noteLangCode, (code) => fetchLanguage(code))
 const [userLang] = createResource(userLangCode, (code) => fetchLanguage(code))
 
-const data = () => (cardLang() || {}).data
-const columns = () => ((cardLang() || {})?.columns || [])
+const data = () => (noteLang() || {}).data
+const columns = () => ((noteLang() || {})?.columns || [])
 const strings = () => ((userLang() || {})?.strings || [])
 
 const emojis = () => {
@@ -54,8 +54,6 @@ function App() {
   const [currIndex, setCurrIndex] = createSignal(0)
   const [isFlipped, setFlipped] = createSignal(false)
 
-  const [showCards, setShowCards] = createSignal(false)
-
   const currEmoji = () => emojis()[currIndex()]?.[0]
   const currAnswer = () => emojis()[currIndex()]?.[2]
   const currHints = () => (emojis()[currIndex()] || []).slice(3)
@@ -81,14 +79,14 @@ function App() {
   onKeyStroke(['ArrowRight', ' '], goNextIndex)
 
   return (
-    <div class='card-wrapper'>
-      <div class='card'>
+    <div class='note-wrapper'>
+      <div class='note'>
         <h1>{currEmoji()}</h1>
         <div style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
           <audio
             ref={audioPlayer}
             type='audio/mpeg'
-            src={`https://static.bpev.me/emoji/audio/${cardLangCode()}/${currAnswer()}.mp3`}
+            src={`https://static.bpev.me/emoji/audio/${noteLangCode()}/${currAnswer()}.mp3`}
           />
           <h1>
             {currAnswer()}

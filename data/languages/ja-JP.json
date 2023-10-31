@@ -1,6 +1,7 @@
 {
   "name": "ja-JP",
   "audio_id": "ja-JP-NanamiNeural",
+  "pronunciation_key": "romaji",
   "strings": {
     "title": "絵文字フラッシュカード",
     "description": "ダウンロード可能な絵文字フラッシュカードで様々な言語を学ぼう",

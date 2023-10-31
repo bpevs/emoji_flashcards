@@ -3,10 +3,10 @@ import { Handlebars } from 'handlebars'
 import { load } from 'std/dotenv/mod.ts'
 import build from './shared/build.ts'
 import {
-  CARD_PARAM,
   DATA_PATH,
   DEFAULT_LANG,
   DEFAULT_LANG_MAP,
+  NOTE_PARAM,
   STATIC_PATH,
   USER_PARAM,
 } from './shared/constants_shared.ts'
@@ -25,18 +25,18 @@ const handle = new Handlebars({
 
 router.get('/', async (context) => {
   const userLangParam = context.request.url.searchParams.get(USER_PARAM)
-  const cardLangParam = context.request.url.searchParams.get(CARD_PARAM)
+  const noteLangParam = context.request.url.searchParams.get(NOTE_PARAM)
 
   const userLangCode = DEFAULT_LANG_MAP[userLangParam] || DEFAULT_LANG
-  const cardLangCode = DEFAULT_LANG_MAP[cardLangParam] || DEFAULT_LANG
+  const noteLangCode = DEFAULT_LANG_MAP[noteLangParam] || DEFAULT_LANG
 
   const userLangURL = `data/languages/${userLangCode}.json`
   const userLangFile = JSON.parse(await Deno.readTextFile(userLangURL))
 
   context.response.body = await handle.renderView('index', {
     userLangCode,
-    cardLangCode,
-    cardDisplayLangStr: userLangFile.strings[cardLangCode],
+    noteLangCode,
+    noteDisplayLangStr: userLangFile.strings[noteLangCode],
     ...userLangFile.strings,
   })
 })

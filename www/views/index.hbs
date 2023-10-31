@@ -17,12 +17,12 @@
   </select>
 </div>
 
-<div class="switch-card-language">
+<div class="switch-note-language">
   <select
-    name="switch-card-language"
-    id="switch-card-language"
+    name="switch-note-language"
+    id="switch-note-language"
   >
-    {{#select cardLangCode}}
+    {{#select noteLangCode}}
     <option value="en-US">{{en-US}}</option>
     <option value="es-ES">{{es-ES}}</option>
     <option value="ja-JP">{{ja-JP}}</option>
@@ -39,9 +39,9 @@
   </p>
 </noscript>
 
-<div class="switch-card-language">
+<div class="switch-note-language">
   {{download-for}}
-  <button id="download">
-    <span>{{cardDisplayLangStr}}<span>
-  </button>
+  <a id="download" href="https://static.bpev.me/flashcards/{{userLangCode}}">
+    <span>{{noteDisplayLangStr}}<span>
+  </a>
 </div>

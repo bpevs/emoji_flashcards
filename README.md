@@ -6,9 +6,9 @@ Emoji Language Flashcards are a set of emoji-translation-mp3 pairings that can b
 
 Our data is able to be formatted into Anki tsv files. These will be generated and cached on the fly by updated our data json files with the user's language (for categories).
 
-### Card Template
+### Note Template
 
-We will also have a card template. Each data point has 3 different types of card:
+We will also have a note template. Each data point has 3 different types of note:
 
 1. Audio only (+ hidden hint)
 2. Emoji only (No hint available)

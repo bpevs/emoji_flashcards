@@ -1,19 +1,19 @@
 import { For, Show } from 'solid-js'
 
-export default function CardsTable(
-  { showCards, setShowCards, currIndex, setCurrIndex, emojis, columns },
+export default function NotesTable(
+  { showNotes, setShowNotes, currIndex, setCurrIndex, emojis, columns },
 ) {
   <>
     <div style='text-align:center;'>
       <a
         style='cursor: pointer; text-decoration: underline;'
-        onClick={() => setShowCards(!showCards())}
+        onClick={() => setShowNotes(!showNotes())}
       >
-        {showCards() ? 'Hide' : 'Show All Cards'}
+        {showNotes() ? 'Hide' : 'Show All Cards'}
       </a>
     </div>
 
-    <Show when={showCards()}>
+    <Show when={showNotes()}>
       <table>
         <Row>
           <For each={columns()}>

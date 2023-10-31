@@ -71,7 +71,7 @@ If a key exists in source.json, but not the language file, it will be translated
       /* A broad "anything goes" field that is hidden until clicked */
       /* This example is pinyin. Another might be gender for es or fr nouns */
       "hint": "gǒu"
-      /* Audio location is in card data, but is applied at DL runtime */
+      /* Audio location is in note data, but is applied at DL runtime */
     }
   }
 }
@@ -129,18 +129,18 @@ If a key exists in source.json, but not the language file, it will be translated
 
 ### Audio
 
-For size reasons, audio is not included in this git repo (audio is generated into `data/audio`, but is ignored for commits)
+For size reasons, audio is not included in this git repo (audio is generated into `data/gen`, but is ignored for commits). However, it is recommended to start with the latest generated files, since you'll run through all your text-to-speech credits real fast. You can download the latest `gen` directory from `https://static.bpev.me/flashcards/gen.zip`
 
-Audio for now is generated using [play.ht](https://play.ht/text-to-speech-api/)
+Audio is currently generated using [play.ht](https://play.ht/text-to-speech-api/)
 
 It is generated into the directory:
 
-`data/audio/{language-region-code}/{language-region-code}/`
+`data/gen/{language-region-code}/audio/`
 
 With a filename format of:
 
-`{language-region-code}_[extension-name]_{emoji-key}.mp3`
+`{text}.mp3`
 
-Example FileNames: `en-US_📏🐜.mp3` `en-US_merica-units_📏🐜.mp3`
+Examples: `data/gen/zh-CN/audio/狗.mp3` `data/gen/ja-JP/audio/貓.mp3`
 
 Name will be parsed to be valid urls, so we don't really care about keys with awkward text entities. The only restriction is disallowing `_` in plugin names, since we use it for splitting entity names.

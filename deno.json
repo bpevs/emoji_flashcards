@@ -9,13 +9,13 @@
     "proseWrap": "never",
     "singleQuote": true,
     "semiColons": false,
-    "exclude": ["www/index.js"]
+    "exclude": ["www/index.js", "**/sha256.js"]
   },
   "lint": {
-    "exclude": ["www/index.js"]
+    "exclude": ["www/index.js", "**/sha256.js"]
   },
   "test": {
-    "exclude": ["www/index.js"]
+    "exclude": ["www/index.js", "*(/sha256.js"]
   },
   "imports": {
     "std/": "https://deno.land/std@0.200.0/",
@@ -34,7 +34,8 @@
     "start": "deno run --allow-write --allow-net --allow-read --allow-run --allow-env --watch=main.ts,index.tsx main.ts",
     "test": "deno fmt && deno lint && deno task check",
     "build": "deno run --allow-net --allow-read --allow-run --allow-env --allow-write scripts/build.ts",
-    "gen:text": "(deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read scripts/generate_translations.ts) && deno fmt",
+    "gen:text": "(deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read scripts/generate_text.ts) && deno fmt",
+    "gen:anki": "deno run --allow-write=data --allow-read scripts/generate_anki.ts",
     "gen:audio": "deno run --allow-net --allow-env --allow-read --allow-write --allow-run scripts/generate_audio.ts",
     "list:voices": "deno run --node-modules-dir --allow-env --allow-net --allow-read scripts/list_voices.ts",
     "check": "deno task check:translate && deno task check:audio",
