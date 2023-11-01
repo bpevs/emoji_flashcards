@@ -16,7 +16,7 @@ const MATCH_SILENCE = /silence_start: ([\w\.]+)[\s\S]+?silence_end: ([\w\.]+)/g
 const env = await load()
 
 function getAudioFilename(language: string, text: string) {
-  return `emoji_${language}_${text}`
+  return `emoji_${language}_${text.replace(/\s/g, '-')}.mp3`
 }
 
 const [language, inputCategoryId] = Deno.args
@@ -28,7 +28,9 @@ const emojisByCategory: { [category: string]: Translation[] } = {}
 
 for (const key in data) {
   const { category, text } = data[key]
-  if (existingAudioFiles.includes(getAudioFilename(language, text))) continue
+  if (
+    existingAudioFiles.has(getAudioFilename(language, text).normalize('NFC'))
+  ) continue
   if (!emojisByCategory[category]) emojisByCategory[category] = []
   emojisByCategory[category].push({ key, ...data[key] })
 }
@@ -184,10 +186,10 @@ async function writeTranslationAudioFiles(
 
     console.log(translations[count])
 
-    const name = translations[count].text
+    const name = getAudioFilename(language, translations[count].text)
     count = count + 1
 
-    const outFile = join(audioDirLocation, name + '.mp3')
+    const outFile = join(audioDirLocation, name)
     const seek = Math.max(0, clipStartMS) + 'ms'
 
     // 0.1 to maintain length after shifting nextSilenceEndMS
@@ -203,10 +205,10 @@ async function writeTranslationAudioFiles(
   }
 
   // last file
-  const name = translations[count].text
+  const name = getAudioFilename(language, translations[count].text)
   count = count + 1
 
-  const outFile = join(audioDirLocation, name + '.mp3')
+  const outFile = join(audioDirLocation, name)
   const seek = Math.max(0, clipStartMS) + 'ms'
   const convert = new Deno.Command('ffmpeg', {
     stdout: 'piped',

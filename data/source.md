@@ -9,7 +9,6 @@
 | 🎆🎉🍾🥂                          | Happy New Year!           |
 | 🎉👏                              | Congratulations!          |
 | 🤷                                | I don't know.             |
-| 1️⃣⏳                               | I need a moment.          |
 | 🚶‍♂️🔜                             | I'm on my way.            |
 | 👀👋⌚️                            | See you later!            |
 | 🍀🤞                              | Good luck!                |

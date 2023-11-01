@@ -26,14 +26,12 @@ export function listLanguages(): string[] {
   }
 }
 
-export function listAudioFiles(language: string): string[] {
-  try {
-    return Array.from(Deno.readDirSync(join(GEN_DIR, language, 'audio')))
-      .filter(({ name }) => AUDIO_FILE_REGEX.test(name))
-      .map((file) => file.name.replace('.mp3', ''))
-  } catch {
-    return []
-  }
+export function listAudioFiles(language: string): Set<string> {
+  const items: Set<string> = new Set()
+  Array.from(Deno.readDirSync(join(GEN_DIR, language, 'audio')))
+    .filter(({ name }) => AUDIO_FILE_REGEX.test(name))
+    .forEach((file) => items.add(file.name.normalize('NFC')))
+  return items
 }
 
 export async function readCompactLanguageFile(
