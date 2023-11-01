@@ -22,7 +22,10 @@ The only prerequisite to running Emoji Flashcards is [Deno](https://deno.com/man
 
 ### Navigating this Repository
 
-It's fairly straightforward. [data](./data) is where all the language-specific stuff is; translations, extensions, plugins, templates (note: for filesize constraints, audio and anki decks are generated here, but not stored). [www](./www) is where the website is stored, except for the entrypoint, [main.ts](./main.ts). [tasks](./tasks) contains all the build and translation scripts, and [utilities](./utilities) is basically just all the logic shared between the scripts, website, and plugins.
+- [data](./data) is where all the language-specific stuff is; translations, extensions, plugins, templates (note: for filesize constraints, audio and anki decks are generated here, but not stored).
+- [main.ts](./main.ts) is the entrypoint for the website. All the other website code is stored in [www](./www).
+- [tasks](./tasks) contains all the non-website scripts (every `deno task xxx` command)
+- [utilities](./utilities) is all the logic shared between the scripts, website, and plugins.
 
 ## Other Similar Resources
 
