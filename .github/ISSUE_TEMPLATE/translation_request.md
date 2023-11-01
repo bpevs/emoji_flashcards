@@ -7,9 +7,7 @@ assignees: ''
 
 ---
 
-
-**Describe the update(s)**
-A clear and concise description of what should be updated
+**Describe the update(s)** A clear and concise description of what should be updated
 
 **List any update(s) by language code (the filename of the change)**
 
@@ -20,5 +18,4 @@ A clear and concise description of what should be updated
 - zh-TW
   - 🧀 (fix): 起司
 
-**Additional context**
-Add any other context about the request here.
+**Additional context** Add any other context about the request here.
