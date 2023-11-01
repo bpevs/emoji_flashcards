@@ -8,6 +8,8 @@ You are looking at the entire Emoji Flashcards project! All our documentation, w
 
 "Emoji Flashcards" is a tool to help generate [Anki](https://apps.ankiweb.net) flashcards from emoji/text/audio pairings. These emoji flashcards are meant to be used at the beginning of language learning, in order to give some confidence in vocabulary and act as a supplement for additional more language-specific learning. These are not intended to be a list of "most common words", but rather are a list of pictographic words that are hopefully fairly translatable across many languages and cultures. This is **NOT** a flashcard studying app in itself.
 
+![A Generated Anki Flashcard](./screenshots/answer.png)
+
 ### Running Emoji Flashcards
 
 The only prerequisite to running Emoji Flashcards is [Deno](https://deno.com/manual/getting_started/installation). There are also a few optional requirements, which are needed for specific tasks.
