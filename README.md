@@ -1,5 +1,12 @@
 # Emoji Language Flashcards
 
+**NOTE:**
+
+You do **NOT** need to be a software developer in order to help improve Emoji Flashcards!
+
+
+## About
+
 Emoji Language Flashcards are a set of emoji-translation-mp3 pairings that can be used to learn language vocabulary. Emoji Flashcards are meant to be used at the beginning of language learning, in order to give some confidence in vocabulary and to act as a supplement for additional more language-specific learning. These are not intended to be a list of "most common words", but rather are a list of pictographic words that are hopefully fairly translatable across many languages and cultures.
 
 ## Anki Deck
