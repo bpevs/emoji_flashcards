@@ -1,3 +1,9 @@
+/*
+ * [genanki]{@link https://github.com/kerrickstaley/genanki}
+ * @copyright Copyright (c) Kerrick Staley 2021
+ * @license The MIT License
+ */
+
 export const APKG_SCHEMA = `
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
