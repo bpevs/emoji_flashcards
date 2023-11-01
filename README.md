@@ -27,10 +27,11 @@ The only prerequisite to running Emoji Flashcards is [Deno](https://deno.com/man
 - [tasks](./tasks) contains all the non-website scripts (every `deno task xxx` command)
 - [utilities](./utilities) is all the logic shared between the scripts, website, and plugins.
 
-## Inspired By
+## Inspired by...
 
 - [Unicode Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html)
 - [Frequency Lists](https://en.m.wiktionary.org/wiki/Wiktionary:Frequency_lists/English)
 - [Gabriel Wyner's "625 Words"](https://fluent-forever.com/wp-content/uploads/2014/05/625-List-Thematic.pdf)
 - [HSK (漢語水平考試)](https://mandarinbean.com/new-hsk-vocabulary/)
 - [genanki](https://github.com/kerrickstaley/genanki)
+- [Chineasy](https://www.chineasy.com)
