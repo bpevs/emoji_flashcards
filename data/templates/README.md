@@ -8,4 +8,4 @@ Each Anki note has 3 different types of cards:
 
 The answer will always show all of Audio, Emoji, Text, and Hint:
 
-![answer](../..//screenshots/answer.png)
+![answer](../../www/screenshots/answer.png)

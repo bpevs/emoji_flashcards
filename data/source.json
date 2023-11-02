@@ -14,7 +14,8 @@
     "no-js": "This demo requires Javascript, but you can still download the flashcards for Anki",
     "use-keys": "Use your keys to navigate:",
     "try-me": "Try Me!",
-    "show-answer": "show answer"
+    "show-answer": "show answer",
+    "footer": "We are Open-Source! You can help us fix our translations!"
   },
   "columns": ["text", "pos"],
   "data": {

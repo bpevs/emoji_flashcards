@@ -4,6 +4,7 @@
   "model_id": 22751404,
   "deck_id": 22751404,
   "locale_code": "ja-JP",
+  "locale_flag": "🇯🇵",
   "language_code": "ja",
   "pronunciation_key": "romaji",
   "strings": {
@@ -21,7 +22,8 @@
     "show-answer": "答えを示す",
     "no-js": "このデモにはJavascriptが必要ですが、Anki用フラッシュカードをダウンロードすることはできます。",
     "try-me": "私を試してみて",
-    "use-keys": "キーでナビゲートしてください："
+    "use-keys": "キーでナビゲートしてください：",
+    "footer": "私たちはオープンソースです！翻訳の修正にご協力ください！"
   },
   "columns": ["text", "romaji"],
   "data": {

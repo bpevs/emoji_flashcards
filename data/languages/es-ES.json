@@ -4,6 +4,7 @@
   "model_id": 2744815,
   "deck_id": 2744815,
   "locale_code": "es-ES",
+  "locale_flag": "🇪🇸",
   "language_code": "es",
   "strings": {
     "title": "Fichas de idiomas emoji",
@@ -20,7 +21,8 @@
     "show-answer": "mostrar respuesta",
     "no-js": "Esta demo requiere Javascript, pero puedes descargar las flashcards para Anki",
     "try-me": "Póngame a prueba",
-    "use-keys": "Utiliza las teclas para navegar:"
+    "use-keys": "Utiliza las teclas para navegar:",
+    "footer": "¡Somos Open-Source! ¡Puedes ayudarnos a corregir nuestras traducciones!"
   },
   "columns": ["text", "hint"],
   "data": {

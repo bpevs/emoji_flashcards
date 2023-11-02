@@ -4,6 +4,7 @@
   "model_id": 38095404,
   "deck_id": 38095404,
   "locale_code": "en-US",
+  "locale_flag": "🇺🇸",
   "language_code": "en",
   "strings": {
     "title": "Emoji Language Flashcards",
@@ -20,7 +21,8 @@
     "show-answer": "show answer",
     "no-js": "This demo requires Javascript, but you can still download the flashcards for Anki",
     "try-me": "Try Me!",
-    "use-keys": "Use your keys to navigate:"
+    "use-keys": "Use your keys to navigate:",
+    "footer": "We are Open-Source! You can help us fix our translations!"
   },
   "columns": ["text"],
   "data": {

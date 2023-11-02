@@ -28,6 +28,7 @@ export interface LanguageFile {
   locale_code: string
   language_code: string
   audio_id: string
+  locale_flag?: string
   pronunciation_key?: string
 }
 
@@ -37,6 +38,7 @@ export interface CompactLanguageFile {
   deck_id: number
   locale_code: string
   language_code: string
+  locale_flag?: string
   pronunciation_key?: string
   audio_id: string
   strings: InterfaceStrings

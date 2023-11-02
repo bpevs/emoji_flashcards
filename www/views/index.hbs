@@ -1,59 +1,71 @@
-<h1 class="title">{{title}}</h1>
-<p class="description">{{description}}</p>
+<content>
+  <h1 class="title">{{title}}</h1>
+  <p class="description">{{description}}</p>
 
-<div class="user-lang">
-  <form action="/" method="GET">
-    <label for="user">🌐</label>
-    <select
-      name="user"
-      id="user-lang"
-    >
-      {{#select userLangCode}}
-      <option value="en-US">English</option>
-      <option value="es-ES">Español</option>
-      <option value="ja-JP">日本語</option>
-      <option value="zh-CN">中文</option>
-      {{/select}}
-    </select>
-    <input type="hidden" name="card" value="{{noteLangCode}}" />
-    <input id="fallback-go" type="submit" value="Go" />
-  </form>
-</div>
+  <div class="user-lang">
+    <form action="/" method="GET">
+      <label for="user">🌐</label>
+      <select
+        name="user"
+        id="user-lang"
+      >
+        {{#select userLangCode}}
+        <option value="en-US">English</option>
+        <option value="es-ES">Español</option>
+        <option value="ja-JP">日本語</option>
+        <option value="zh-CN">中文</option>
+        {{/select}}
+      </select>
+      <input type="hidden" name="card" value="{{noteLangCode}}" />
+      <input id="fallback-go" type="submit" value="Go" />
+    </form>
+  </div>
 
-<div class="note-lang">
-  <form action="/" method="GET">
-    <input type="hidden" name="user" value="{{userLangCode}}" />
-    <label for="card">{{try-me}} ➔</label>
-    <select
-      name="card"
-      id="note-lang"
-    >
-      {{#select noteLangCode}}
-      <option value="en-US">{{en-US}}</option>
-      <option value="es-ES">{{es-ES}}</option>
-      <option value="ja-JP">{{ja-JP}}</option>
-      <option value="zh-CN">{{zh-CN}}</option>
-      {{/select}}
-    </select>
-    <input id="fallback-go" type="submit" value="Go" />
-  </form>
-</div>
+  <div class="note-lang">
+    <form action="/" method="GET">
+      <input type="hidden" name="user" value="{{userLangCode}}" />
+      <label for="card">{{try-me}} ➔</label>
+      <select
+        name="card"
+        id="note-lang"
+      >
+        {{#select noteLangCode}}
+        <option value="en-US">{{en-US}}</option>
+        <option value="es-ES">{{es-ES}}</option>
+        <option value="ja-JP">{{ja-JP}}</option>
+        <option value="zh-CN">{{zh-CN}}</option>
+        {{/select}}
+      </select>
+      <input id="fallback-go" type="submit" value="Go" />
+    </form>
+  </div>
 
-<div id="app"></div>
+  <div id="app"></div>
 
-<noscript>
-  <p class="no-js">
-    <div class="note-wrapper">
-      <div class="note">
-        {{no-js}}
+  <noscript>
+    <p class="no-js">
+      <div class="note-wrapper">
+        <div class="note">
+          {{no-js}}
+        </div>
       </div>
-    </div>
-  </p>
-</noscript>
+    </p>
+  </noscript>
 
-<div class="note-lang">
-  {{download-for}}
-  <a download id="download" href="https://static.bpev.me/flashcards/{{userLangCode}}/deck.apkg">
-    <button>{{noteDisplayLangStr}}</button>
+  <div class="note-lang">
+    {{download-for}}
+    <a download id="download" href="https://static.bpev.me/flashcards/{{userLangCode}}/deck.apkg">
+      {{noteFlag}}{{noteDisplayLangStr}}
+    </a>
+  </div>
+</content>
+
+<footer>
+  <a href="https://github.com/bpevs/emoji_flashcards">
+    <img src="/icons/github-mark.png" height="25px" />
   </a>
-</div>
+  <a href="https://discord.gg/m9WGM2QWBK">
+    <img src="/icons/discord-mark-black.png" height="20px" />
+  </a>
+  <div>{{footer}}</div>
+</footer>

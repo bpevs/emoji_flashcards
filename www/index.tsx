@@ -59,17 +59,15 @@ function App() {
     setFlipped(!isFlipped())
   }
 
-  onKeyStroke(['ArrowLeft'], goPrevIndex, { dedupe: false })
-  onKeyStroke(['ArrowRight', ' '], goNextIndex, { dedupe: false })
+  onKeyStroke(['ArrowLeft'], goPrevIndex, { dedupe: true })
+  onKeyStroke(['ArrowRight', ' '], goNextIndex, { dedupe: true })
 
-  onKeyDown((ev) => {
-    const key = ev.key
+  onKeyDown(({ key }) => {
     const element = document.querySelector('[data-keyboard-key="' + key + '"]')
     if (element) element.classList.add('active')
   })
 
-  onKeyUp((ev) => {
-    const key = ev.key
+  onKeyUp(({ key }) => {
     const element = document.querySelector('[data-keyboard-key="' + key + '"]')
     if (element) element.classList.remove('active')
   })
@@ -84,52 +82,62 @@ function App() {
     <>
       <div class='note-wrapper'>
         <div class='note'>
-          <h1>{currEmoji()}</h1>
+          <Show when={!isFlipped()}>
+            <h1 style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'>
+              {currEmoji()}
+            </h1>
+          </Show>
           <div style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
+            <h1>{currEmoji()}</h1>
             <audio
               ref={audioPlayer}
               type='audio/mpeg'
               src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/emoji_${noteLangCode()}_${currAnswer()}.mp3`}
             />
             <h1>
-              {currAnswer()}
-            </h1>
-            {currHints().map((item) => <h2>{item}</h2>)}
-          </div>
-          <div style='position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%)'>
-            <button
-              disabled={currIndex() === emojis().length}
-              onClick={goNextIndex}
-            >
-              {isFlipped() ? strings()?.next : strings()?.['show-answer']}
-            </button>
-            <Show when={isFlipped() && audioPlayer}>
-              <button
-                style='border: 0; background: none; cursor: pointer;'
-                onClick={() => audioPlayer.play()}
-              >
+              <span style='font-size: 0.5em; vertical-align: super; visibility: hidden; padding: 2px 6px 3px 6px;'>
                 🔊
-              </button>
+              </span>
+              {currAnswer()}
+              <Show when={isFlipped() && audioPlayer}>
+                <button
+                  style='border: 0; background: none; cursor: pointer; font-size: 0.5em; vertical-align: super;'
+                  onClick={() => audioPlayer.play()}
+                >
+                  🔊
+                </button>
+              </Show>
+            </h1>
+            <Show when={currHints().filter((item) => item?.length).length}>
             </Show>
+            {currHints().map((item) => <h2>{item}</h2>)}
           </div>
         </div>
       </div>
 
-      <link
-        rel='stylesheet'
-        href='https://unpkg.com/keyboard-css@1.2.4/dist/css/main.min.css'
-      />
       <div style='text-align: center;'>
-        {strings()['use-keys']}
-      </div>
-      <div style='text-align: center;'>
-        <button class='kbc-button kbc-button-xs' data-keyboard-key=' '>
-          space
-        </button>
-        <button class='kbc-button kbc-button-xs' data-keyboard-key='ArrowLeft'>
+        <button
+          class='kbc-button kbc-button-xs'
+          data-keyboard-key='ArrowLeft'
+          disabled={currIndex() === 0}
+          onClick={goPrevIndex}
+        >
           ◀︎
         </button>
-        <button class='kbc-button kbc-button-xs' data-keyboard-key='ArrowRight'>
+        <button
+          class='kbc-button kbc-button-xs'
+          data-keyboard-key=' '
+          disabled={currIndex() === emojis().length}
+          onClick={goNextIndex}
+        >
+          {isFlipped() ? strings()?.next : strings()?.['show-answer']}
+        </button>
+        <button
+          class='kbc-button kbc-button-xs'
+          data-keyboard-key='ArrowRight'
+          disabled={currIndex() === emojis().length}
+          onClick={goNextIndex}
+        >
           ▶︎
         </button>
       </div>

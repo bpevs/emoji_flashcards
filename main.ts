@@ -25,17 +25,19 @@ const handle = new Handlebars({
 
 router.get('/', async (context) => {
   const userLangParam = context.request.url.searchParams.get(USER_PARAM)
-  const noteLangParam = context.request.url.searchParams.get(NOTE_PARAM)
-
   const userLangCode = DEFAULT_LANG_MAP[userLangParam] || DEFAULT_LANG
-  const noteLangCode = DEFAULT_LANG_MAP[noteLangParam] || DEFAULT_LANG
-
   const userLangURL = `data/languages/${userLangCode}.json`
   const userLangFile = JSON.parse(await Deno.readTextFile(userLangURL))
+
+  const noteLangParam = context.request.url.searchParams.get(NOTE_PARAM)
+  const noteLangCode = DEFAULT_LANG_MAP[noteLangParam] || DEFAULT_LANG
+  const noteLangURL = `data/languages/${noteLangCode}.json`
+  const noteLangFile = JSON.parse(await Deno.readTextFile(noteLangURL))
 
   context.response.body = await handle.renderView('index', {
     userLangCode,
     noteLangCode,
+    noteFlag: noteLangFile.locale_flag,
     noteDisplayLangStr: userLangFile.strings[noteLangCode],
     ...userLangFile.strings,
   })
