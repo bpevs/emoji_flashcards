@@ -22,7 +22,7 @@
     "no-js": "此演示需要使用 Javascript，但您仍可下载 Anki 闪存卡",
     "try-me": "试试看",
     "use-keys": "使用按键导航：",
-    "footer": "我们是开源的！您可以帮助我们修正翻译！"
+    "footer": "我们是开源的！您可以帮助我们改进翻译！"
   },
   "columns": ["text", "pinyin"],
   "data": {

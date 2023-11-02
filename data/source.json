@@ -15,7 +15,7 @@
     "use-keys": "Use your keys to navigate:",
     "try-me": "Try Me!",
     "show-answer": "show answer",
-    "footer": "We are Open-Source! You can help us fix our translations!"
+    "footer": "We are Open-Source! You can help us improve our translations!"
   },
   "columns": ["text", "pos"],
   "data": {
