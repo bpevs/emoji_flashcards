@@ -10,6 +10,7 @@ import {
 const params = (new URL(document.location)).searchParams
 const [userLangCode] = createSignal(params.get(USER_PARAM) || DEFAULT_LANG)
 const [noteLangCode] = createSignal(params.get(NOTE_PARAM) || DEFAULT_LANG)
+const initialIndex = parseInt(params.get('idx') || 0)
 
 function setParam(key, value) {
   const goto = new URL(document.location)
@@ -35,9 +36,7 @@ const [data] = createResource(
 
 function App() {
   let audioPlayer
-  const [currIndex, setCurrIndex] = createSignal(
-    parseInt(params.get('idx')) || 0,
-  )
+  const [currIndex, setCurrIndex] = createSignal(initialIndex || 0)
   const [isFlipped, setFlipped] = createSignal(false)
 
   const currEmoji = () => data().notes[currIndex()]?.[0]
@@ -51,9 +50,10 @@ function App() {
 
   const goNextIndex = (e) => {
     e.preventDefault()
-    if (currIndex() >= data().notes.length) return
+    const nextIndex = Math.min(data().notes.length, currIndex() + 1)
+    if (nextIndex >= data().notes.length) return
     if (isFlipped()) {
-      setCurrIndex(Math.min(data().notes.length, currIndex() + 1))
+      setCurrIndex(nextIndex)
     } else if (audioPlayer) audioPlayer.play()
     setFlipped(!isFlipped())
   }
@@ -102,7 +102,7 @@ function App() {
         </div>
       </div>
 
-      <div style='text-align: center;'>
+      <div style='text-align: center; user-select: none;'>
         <button
           class='kbc-button kbc-button-xs'
           data-keyboard-key='ArrowLeft'
@@ -114,7 +114,7 @@ function App() {
         <button
           class='kbc-button kbc-button-xs'
           data-keyboard-key=' '
-          disabled={currIndex() >= data().notes.length}
+          disabled={currIndex() >= (data().notes.length - 1)}
           onClick={goNextIndex}
         >
           {isFlipped() ? data().strings.next : data().strings['show-answer']}
@@ -122,11 +122,31 @@ function App() {
         <button
           class='kbc-button kbc-button-xs'
           data-keyboard-key='ArrowRight'
-          disabled={currIndex() === data().notes.length}
+          disabled={currIndex() >= (data().notes.length - 1)}
           onClick={goNextIndex}
         >
           ▶
         </button>
+      </div>
+      <div style='text-align: center; padding-top: 10px;'>
+        <Show when={data().notes.length}>
+          <select
+            name='current-note'
+            value={currIndex()}
+            onChange={(e) => {
+              const index = parseInt(e.currentTarget.value)
+              if (index >= 0 && index < data().notes.length) {
+                setCurrIndex(index)
+                setFlipped(false)
+              }
+            }}
+          >
+            {/*todo: <optgroup> */}
+            <For each={data().notes}>
+              {(emoji, index) => <option value={index()}>{emoji[0]}</option>}
+            </For>
+          </select>
+        </Show>
       </div>
     </>
   )
