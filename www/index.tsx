@@ -2,50 +2,47 @@ import { render } from 'solid-js/web'
 import { createEffect, createResource, createSignal, For, Show } from 'solid-js'
 import { onKeyDown, onKeyStroke, onKeyUp } from 'solidjs-use'
 import {
-  idxParam,
-  noteLangCodeParam,
-  setNoteLangCodeParam,
-  setUserLangCodeParam,
-  userLangCodeParam,
-} from './utilities/params.ts'
+  DEFAULT_LANG,
+  NOTE_PARAM,
+  USER_PARAM,
+} from '../utilities/constants_shared.ts'
 
-const selectUserLanguage = document.getElementById('user-lang')
-const selectNoteLanguage = document.getElementById('note-lang')
+const params = (new URL(document.location)).searchParams
+const [userLangCode] = createSignal(params.get(USER_PARAM) || DEFAULT_LANG)
+const [noteLangCode] = createSignal(params.get(NOTE_PARAM) || DEFAULT_LANG)
 
-selectUserLanguage.onchange = setUserLangCodeParam
-selectNoteLanguage.onchange = setNoteLangCodeParam
-
-const [noteLangCode] = createSignal(noteLangCodeParam)
-const [userLangCode] = createSignal(userLangCodeParam)
-
-const [noteLang] = createResource(noteLangCode, (code) => fetchLanguage(code))
-const [userLang] = createResource(userLangCode, (code) => fetchLanguage(code))
-
-const data = () => (noteLang() || {}).data
-const columns = () => ((noteLang() || {})?.columns || [])
-const strings = () => ((userLang() || {})?.strings || [])
-
-const emojis = () => {
-  if (!data()) return []
-  const categories = Object.keys(data()).sort()
-  return categories.map((category) => {
-    return Object.keys(data()[category])
-      .map((emoji) => [emoji, category, ...(data()[category][emoji])])
-  }).flat(1)
+function setParam(key, value) {
+  const goto = new URL(document.location)
+  goto.searchParams.set(key, value)
+  window.location = goto
 }
 
-async function fetchLanguage(langCode = 'en-US') {
-  return await (await fetch(`/data/languages/${langCode}.json`)).json()
+document.getElementById('user-lang').onchange = function () {
+  setParam(USER_PARAM, this.value)
 }
+document.getElementById('note-lang').onchange = function () {
+  setParam(NOTE_PARAM, this.value)
+}
+
+const [data] = createResource(
+  () => [userLangCode(), noteLangCode()],
+  async ([userLang, noteLang]) => {
+    const response = await fetch(`/api/user/${userLang}/note/${noteLang}`)
+    return response.json()
+  },
+  { initialValue: { strings: {}, notes: [] } },
+)
 
 function App() {
   let audioPlayer
-  const [currIndex, setCurrIndex] = createSignal(idxParam || 0)
+  const [currIndex, setCurrIndex] = createSignal(
+    parseInt(params.get('idx')) || 0,
+  )
   const [isFlipped, setFlipped] = createSignal(false)
 
-  const currEmoji = () => emojis()[currIndex()]?.[0]
-  const currAnswer = () => emojis()[currIndex()]?.[2]
-  const currHints = () => (emojis()[currIndex()] || []).slice(3)
+  const currEmoji = () => data().notes[currIndex()]?.[0]
+  const currAnswer = () => data().notes[currIndex()]?.[2]
+  const currHints = () => (data().notes[currIndex()] || []).slice(3)
 
   const goPrevIndex = (e) => {
     e.preventDefault()
@@ -54,20 +51,19 @@ function App() {
 
   const goNextIndex = (e) => {
     e.preventDefault()
-    if (currIndex() >= emojis().length) return
-    if (isFlipped()) setCurrIndex(Math.min(emojis().length, currIndex() + 1))
-    else if (audioPlayer) audioPlayer.play()
+    if (currIndex() >= data().notes.length) return
+    if (isFlipped()) {
+      setCurrIndex(Math.min(data().notes.length, currIndex() + 1))
+    } else if (audioPlayer) audioPlayer.play()
     setFlipped(!isFlipped())
   }
 
   onKeyStroke(['ArrowLeft'], goPrevIndex, { dedupe: true })
   onKeyStroke(['ArrowRight', ' '], goNextIndex, { dedupe: true })
-
   onKeyDown(({ key }) => {
     const element = document.querySelector('[data-keyboard-key="' + key + '"]')
     if (element) element.classList.add('active')
   })
-
   onKeyUp(({ key }) => {
     const element = document.querySelector('[data-keyboard-key="' + key + '"]')
     if (element) element.classList.remove('active')
@@ -85,11 +81,13 @@ function App() {
         <div class='note' onClick={goNextIndex}>
           <h1 class='question'>{currEmoji()}</h1>
           <div>
-            <audio
-              ref={audioPlayer}
-              type='audio/mpeg'
-              src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/emoji_${noteLangCode()}_${currAnswer()}.mp3`}
-            />
+            <Show when={noteLangCode() && currAnswer()}>
+              <audio
+                ref={audioPlayer}
+                type='audio/mpeg'
+                src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/emoji_${noteLangCode()}_${currAnswer()}.mp3`}
+              />
+            </Show>
             <div class='answer'>
               <h1 style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
                 {currAnswer()}
@@ -111,23 +109,23 @@ function App() {
           disabled={currIndex() <= 0}
           onClick={goPrevIndex}
         >
-          ◀︎
+          ◀
         </button>
         <button
           class='kbc-button kbc-button-xs'
           data-keyboard-key=' '
-          disabled={currIndex() >= emojis().length}
+          disabled={currIndex() >= data().notes.length}
           onClick={goNextIndex}
         >
-          {isFlipped() ? strings()?.next : strings()?.['show-answer']}
+          {isFlipped() ? data().strings.next : data().strings['show-answer']}
         </button>
         <button
           class='kbc-button kbc-button-xs'
           data-keyboard-key='ArrowRight'
-          disabled={currIndex() === emojis().length}
+          disabled={currIndex() === data().notes.length}
           onClick={goNextIndex}
         >
-          ▶︎
+          ▶
         </button>
       </div>
     </>
