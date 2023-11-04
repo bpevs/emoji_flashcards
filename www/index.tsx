@@ -11,29 +11,50 @@ import {
   NOTE_PARAM,
   USER_PARAM,
 } from '../utilities/constants_shared.ts'
-
-const params = (new URL(document.location)).searchParams
-const [userLangCode] = createSignal(params.get(USER_PARAM) || DEFAULT_LANG)
-const [noteLangCode] = createSignal(params.get(NOTE_PARAM) || DEFAULT_LANG)
-const initialIndex = parseInt(params.get('idx') || 0)
+import locales from '../data/locales.js'
 
 const touchDevice = 'ontouchstart' in document.documentElement
+const navigator = useNavigatorLanguage()
 
-// const navigator = useNavigatorLanguage()
-// console.log(navigator.language())
+const browserLang = () =>
+  locales.find((locale) => locale.locale_code === navigator.language())
+
+const params = (new URL(document.location)).searchParams
+const [userLangCode, setUserLangCode] = createSignal(
+  params.get(USER_PARAM) || browserLang()?.locale_code || DEFAULT_LANG,
+)
+
+const randomLang = () => {
+  const noUserLang = locales.filter((l) => l.locale_code !== userLangCode())
+  return noUserLang[Math.floor(Math.random() * noUserLang.length)]
+}
+
+const [noteLangCode, setNoteLangCode] = createSignal(
+  params.get(NOTE_PARAM) || randomLang().locale_code,
+)
 
 function setParam(key, value) {
   const goto = new URL(document.location)
   goto.searchParams.set(key, value)
-  window.location = goto
+  window.history.replaceState(null, null, goto)
 }
 
 document.getElementById('user-lang').onchange = function () {
-  setParam(USER_PARAM, this.value)
+  const goto = new URL(document.location)
+  goto.searchParams.set(USER_PARAM, this.value)
+  window.location = goto
 }
+
 document.getElementById('note-lang').onchange = function () {
-  setParam(NOTE_PARAM, this.value)
+  setNoteLangCode(this.value)
 }
+
+createEffect(() => {
+  document.getElementById('note-lang').value = noteLangCode()
+  setParam(NOTE_PARAM, noteLangCode())
+})
+
+const initialIndex = parseInt(params.get('i') || 0)
 
 const [data] = createResource(
   () => [userLangCode(), noteLangCode()],
@@ -80,9 +101,7 @@ function App() {
   })
 
   createEffect(() => {
-    const url = new URL(window.location.href)
-    url.searchParams.set('idx', currIndex() || 0)
-    window.history.replaceState(null, null, url)
+    setParam('i', currIndex() || 0)
   })
 
   return (

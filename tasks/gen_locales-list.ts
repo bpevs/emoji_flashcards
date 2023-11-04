@@ -16,6 +16,6 @@ const results = locales.map(async (locale_code: string) => {
 })
 
 Deno.writeTextFile(
-  join(DATA_DIR, 'locales.json'),
-  JSON.stringify(await Promise.all(results), null, 2),
+  join(DATA_DIR, 'locales.js'),
+  `export default ${JSON.stringify(await Promise.all(results), null, 2)}\n`,
 )

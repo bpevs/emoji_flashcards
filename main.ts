@@ -12,6 +12,7 @@ import {
   STATIC_PATH,
   USER_PARAM,
 } from './utilities/constants_shared.ts'
+import locales from './data/locales.js'
 
 const port = 8000
 const router = new Router()
@@ -38,8 +39,6 @@ async function getWebsiteData(userLangParam, noteLangParam): {
 
   const noteURL = `data/languages/${noteLangCode}.json`
   const { data, locale_flag } = JSON.parse(await Deno.readTextFile(noteURL))
-
-  const locales = JSON.parse(await Deno.readTextFile(`data/locales.json`))
 
   const categories = Object.keys(data).sort()
   const notes = categories.map((category: string) => {
