@@ -11,7 +11,7 @@ const BASE91_TABLE = [
   '~',
 ]
 
-export function ankiHash(fields) {
+export function ankiHash(fields: string[]): string {
   const str = fields.join('__')
 
   const msgUint8 = new TextEncoder().encode(str)
@@ -27,7 +27,7 @@ export function ankiHash(fields) {
   // convert to the weird base91 format that Anki uses
   const rv_reversed = []
   while (hash_int > 0) {
-    rv_reversed.push(BASE91_TABLE[hash_int % 91n])
+    rv_reversed.push(BASE91_TABLE[Number(hash_int % 91n)])
     hash_int = hash_int / 91n
   }
 

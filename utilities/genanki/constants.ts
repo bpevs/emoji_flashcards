@@ -72,7 +72,10 @@ export const defaultDeckConf = {
   usn: 0,
 }
 
-export const defaultDeck: {
+export interface DeckProps {
+  id: number
+  name: string
+
   newToday: [number, number]
   revToday: [number, number]
   lrnToday: [number, number]
@@ -84,7 +87,12 @@ export const defaultDeck: {
   collapsed: boolean
   extendNew: number
   extendRev: number
-} = {
+}
+
+export const defaultDeck: DeckProps = {
+  id: 0,
+  name: '',
+
   newToday: [0, 0], // currentDay, count
   revToday: [0, 0],
   lrnToday: [0, 0],

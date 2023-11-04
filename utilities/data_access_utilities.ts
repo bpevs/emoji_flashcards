@@ -4,6 +4,10 @@ import type {
   TranslationData,
 } from './interfaces.ts'
 
+export function getAudioFilename(language: string, text: string) {
+  return `emoji_${language}_${text.replace(/\s/g, '-')}.mp3`
+}
+
 export function fromCompactLanguageFile(
   compactFile: CompactLanguageFile,
 ): LanguageFile {

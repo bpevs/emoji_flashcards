@@ -1,4 +1,5 @@
 import { GEN_DIR } from '../utilities/constants_server.ts'
+import { Translation } from '../utilities/interfaces.ts'
 import {
   listLanguages,
   readCompactLanguageFile,
@@ -7,6 +8,7 @@ import {
 import { join } from 'std/path/mod.ts'
 import { ankiHash, Deck, Model, Package } from '../utilities/genanki/mod.ts'
 import templates from '../data/templates/mod.ts'
+import { getAudioFilename } from '../utilities/data_access_utilities.ts'
 
 listLanguages().forEach(async (lang: string) => {
   const languageFile = await readLanguageFile(lang)
@@ -33,24 +35,23 @@ listLanguages().forEach(async (lang: string) => {
     tmpls: templates[languageFile.language_code] || [],
   })
 
-  const deck = new Deck(languageFile.deck_id, `${languageFile.name} Emoji`)
+  const deck = new Deck(
+    languageFile.deck_id,
+    `${languageFile.name} Emoji Flashcards`,
+  )
   const pkg = new Package()
 
   const notePromises = Object.keys(languageFile.data)
     .map((key) => ({ ...languageFile.data[key], key }))
-    .map(async ({ category, key, text, ...other }) => {
-      const audioFilename = `emoji_${lang}_${text}.mp3`
-      const fields = [
-        key,
-        text,
-        `[sound:${audioFilename}]`,
-      ].concat(
-        hintColumnNames.map((key: string) => other[key]),
-      )
+    .map(async ({ category, key, text, ...other }: Translation) => {
+      const audioFilename = getAudioFilename(lang, text)
+
+      const fieldValues = [key, text, `[sound:${audioFilename}]`]
+        .concat(hintColumnNames.map((key: string) => other[key]))
 
       // Stable note guid based on locale + emoji
       const guid = ankiHash([lang, key])
-      deck.addNote(model.createNote(fields, [category], guid))
+      deck.addNote(model.createNote(fieldValues, [category], guid))
 
       const audioLocation = join(GEN_DIR, lang, 'audio', audioFilename)
       const fileBytes = await Deno.readFile(audioLocation)

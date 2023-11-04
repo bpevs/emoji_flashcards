@@ -1,11 +1,9 @@
-import { Note } from './note.js'
-
 export interface Template {
   name: string
   qfmt: string // question template
   afmt: string // answer template
-  ord?: number | null
-  did?: number | null // deckId
+  ord?: number
+  did?: number // deckId
   bqfmt?: string
   bafmt?: string
 }
@@ -20,101 +18,131 @@ export interface Field {
   media: { name: string; data: string }[]
 }
 
-const defaultField: Field = {
-  name: '',
-  ord: null,
-  sticky: false,
-  rtl: false,
-  font: 'Arial',
-  size: 20,
-  media: [],
-}
-
-const defaultModel = {
-  sortf: 0, // sort field
-  did: 1, // deck id
-  latexPre: `\\documentclass[12pt]{article}
- \\special{papersize=3in,5in}
- \\usepackage[utf8]{inputenc}
- \\usepackage{amssymb,amsmath}
- \\pagestyle{empty}
- \\setlength{\\parindent}{0in}
- \\begin{document}`,
-  latexPost: '\\end{document}',
-  mod: 0, // modification time
-  usn: 0, // unsure, something to do with sync?
-  vers: [], // seems to be unused
-  type: 0,
-  css: `.card {
-  font-family: arial;
-  font-size: 20px;
-  text-align: center;
-  color: black;
-  background-color: white;
- }`,
-  tags: [],
-  flds: [],
-}
-
-const defaultTemplate: Template = {
-  name: '',
-  ord: null,
-  qfmt: '',
-  afmt: '',
-  did: null,
-  bqfmt: '',
-  bafmt: '',
+export interface ModelProps {
+  id: number
+  sortf: number // sort field
+  did: number // deck id
+  latexPre: string
+  latexPost: string
+  mod: number // modification time
+  usn: number // unsure, something to do with sync?
+  vers: [] // seems to be unused
+  type: number
+  css: string
+  tags: string[]
+  name: string
+  flds: Array<{ name: string }>
+  tmpls: Template[]
+  req: Array<[
+    number, // Card order
+    'any' | 'all', // Are ALL fields required, or just any?
+    number[], // Required Fields, by ord
+  ]>
 }
 
 export class Model {
-  props = defaultModel
-  fieldNameToOrder = {}
+  props: ModelProps
 
-  constructor(props) {
+  constructor({ id, did = 1, name, ...props }: Partial<ModelProps>) {
+    if (id == null) throw new Error('missing id')
+    if (name == null) throw new Error('missing name')
+
+    const flds = (props.flds || [])
+      .map((field: Partial<Field>, ord) => ({
+        name: field.name || '',
+        ord,
+        sticky: field.sticky || false,
+        rtl: field.rtl || false,
+        font: field.font || 'Arial',
+        size: field.size || 20,
+        media: field.media || [],
+      }))
+
+    const tmpls = (props.tmpls || [])
+      .map((tmpl: Partial<Template>, ord): Template => ({
+        name: '',
+        qfmt: '',
+        afmt: '',
+        bqfmt: '',
+        bafmt: '',
+        ord,
+        did,
+        ...tmpl,
+      }))
+
     this.props = {
-      ...this.props,
+      id: id || 0,
+      name: name || '',
+      css: `.card {
+        font-family: arial;
+        font-size: 20px;
+        text-align: center;
+        color: black;
+        background-color: white;
+      }`,
+      did,
+      latexPre: `\\documentclass[12pt]{article}
+       \\special{papersize=3in,5in}
+       \\usepackage[utf8]{inputenc}
+       \\usepackage{amssymb,amsmath}
+       \\pagestyle{empty}
+       \\setlength{\\parindent}{0in}
+       \\begin{document}`,
+      latexPost: '\\end{document}',
+      sortf: 0,
+      tags: [],
+      type: 0,
+      usn: 0,
+      vers: [],
+      req: [],
       ...props,
-      flds: props.flds.map((field: Field, idx: number) => ({
-        ...defaultField,
-        ord: idx,
-        ...field,
-      })),
-      tmpls: props.tmpls.map((template: Template, idx: number) => ({
-        ...defaultTemplate,
-        ord: idx,
-        did: props.did || null,
-        ...template,
-      })),
-      mod: new Date().getTime(),
+      flds,
+      tmpls,
+      mod: new Date().getTime() || 0,
     }
-    this.props.flds.forEach((field: Field) => {
-      this.fieldNameToOrder[field.name] = field.ord
-    })
   }
 
-  createNote(
-    fields: string[],
+  createNote(fieldValues: string[], tags: string[] = [], guid: string) {
+    const { flds, name } = this.props
+    if (fieldValues.length !== flds.length) {
+      throw new Error(
+        `Expected ${flds.length} fields for model '${name}' but got ${fieldValues.length}`,
+      )
+    }
+    return new Note(this, fieldValues, tags, guid)
+  }
+}
+
+export class Note {
+  model: Model
+  fields: string[]
+  tags: string[]
+  guid: string
+
+  constructor(
+    model: Model,
+    fields: string[] = [],
     tags: string[] = [],
-    guid: string | null = null,
+    guid: string,
   ) {
-    if (Array.isArray(fields)) {
-      if (fields.length !== this.props.flds.length) {
-        throw new Error(
-          `Expected ${this.props.flds.length} fields for model '${this.props.name}' but got ${fields.length}`,
-        )
-      }
-      return new Note(this, fields, tags, guid)
+    this.model = model
+    this.fields = fields
+    this.tags = tags
+    this.guid = guid
+  }
+
+  get cards() {
+    const isEmpty = (fld: string) => !fld || fld.toString().trim().length === 0
+
+    const rv = []
+
+    for (const req of this.model.props.req) {
+      const [card_ord, any_or_all, required_field_ords] = req
+      const operation = any_or_all === 'any' ? 'some' : 'every'
+      const predicate = (ord: number) => !isEmpty(this.fields[ord])
+      if (required_field_ords[operation](predicate)) rv.push(card_ord)
     }
 
-    const fields_list: Field[] = []
-
-    Object.keys(fields).forEach((field_name) => {
-      const ord = this.fieldNameToOrder[field_name]
-      if (ord == null) {
-        throw new Error(`Field '${field_name}' does not exist in the model`)
-      }
-      fields_list[ord] = fields[field_name]
-    })
-    return new Note(this, fields_list, tags, guid)
+    return rv
   }
 }

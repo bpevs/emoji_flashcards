@@ -14,7 +14,7 @@
  * @license AGPL-3.0 License
  */
 
-export * from './deck.js'
+export * from './deck.ts'
 export * from './model.ts'
-export * from './package.js'
-export * from './anki_hash.js'
+export * from './package.ts'
+export * from './anki_hash.ts'

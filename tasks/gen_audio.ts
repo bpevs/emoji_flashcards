@@ -2,6 +2,7 @@ import * as PlayHT from 'playht'
 import type { Translation } from '../utilities/interfaces.ts'
 import { load } from 'std/dotenv/mod.ts'
 import { listAudioFiles, readLanguageFile } from '../utilities/data_access.ts'
+import { getAudioFilename } from '../utilities/data_access_utilities.ts'
 import { GEN_DIR } from '../utilities/constants_server.ts'
 import { join } from 'std/path/mod.ts'
 import { writeAll } from 'std/streams/write_all.ts'
@@ -14,10 +15,6 @@ const DETECT_STR = `silencedetect=noise=${MAX_NOISE_LEVEL}dB:d=${SILENCE_SPLIT}`
 const MATCH_SILENCE = /silence_start: ([\w\.]+)[\s\S]+?silence_end: ([\w\.]+)/g
 
 const env = await load()
-
-function getAudioFilename(language: string, text: string) {
-  return `emoji_${language}_${text.replace(/\s/g, '-')}.mp3`
-}
 
 const [language, inputCategoryId] = Deno.args
 
