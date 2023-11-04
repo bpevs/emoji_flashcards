@@ -8,21 +8,20 @@
   "language_code": "en",
   "strings": {
     "title": "Emoji Language Flashcards",
+    "description": "Downloadable Anki flashcards for",
     "switch-language": "Switch Language",
     "en-US": "English",
     "es-ES": "Spanish",
     "ja-JP": "Japanese",
     "zh-CN": "Chinese",
     "open-source": "Emoji Flashcards is free and open-source",
-    "download-for": "Download Anki Flashcards for",
-    "download": "download",
     "next": "next",
     "show-answer": "show answer",
     "no-js": "This demo requires Javascript, but you can still download the flashcards for Anki",
-    "try-me": "Try Me!",
     "use-keys": "Use your keys to navigate:",
-    "description": "Downloadable Anki flashcards for learning languages!",
-    "footer": "We are Open-Source! You can help us improve our translations by joining us on Github or Discord."
+    "footer": "We are Open-Source! You can help us improve our translations by joining us on Github or Discord.",
+    "try-me": "Or choose another language!",
+    "download": "Download flashcards"
   },
   "columns": ["text"],
   "data": {

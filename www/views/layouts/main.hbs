@@ -63,7 +63,6 @@
 
       content {
         flex-grow: 1;
-        padding-bottom: 50px;
       }
 
       .no-js {
@@ -78,25 +77,12 @@
       .description {
         text-align: center;
         margin-top: 20px;
-        margin-bottom: 50px;
-      }
-
-      .download-label {
-        font-weight: bold;
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
       }
 
       .user-lang {
         position: absolute;
         top: 10px;
         right: 10px;
-      }
-
-      .note-lang {
-        margin-top: 50px;
-        text-align: center;
       }
 
       #notes {
@@ -106,7 +92,7 @@
       }
 
       .note-wrapper {
-        margin: 20px 0 10px 0;
+        margin: 20px 0 0 0;
         text-align: center;
         display: flex;
         justify-content: center;
@@ -168,16 +154,26 @@
         background-color: rgba(0, 0, 0, 0.1);
       }
 
-      #download {
-        cursor: pointer;
+      .download {
+        padding-bottom: 40px;
+        text-align: center;
+      }
+
+      .download a {
         color: black;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .download a span  {
         font-weight: bold;
+        text-decoration: underline;
         text-underline-offset: 4px;
         text-decoration-thickness: 2px;
         text-decoration-style: wavy;
       }
 
-      #download:hover {
+      .download a:hover {
         color: blue;
       }
     </style>

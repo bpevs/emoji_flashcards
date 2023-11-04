@@ -1,6 +1,11 @@
 import { render } from 'solid-js/web'
 import { createEffect, createResource, createSignal, For, Show } from 'solid-js'
-import { onKeyDown, onKeyStroke, onKeyUp } from 'solidjs-use'
+import {
+  onKeyDown,
+  onKeyStroke,
+  onKeyUp,
+  useNavigatorLanguage,
+} from 'solidjs-use'
 import {
   DEFAULT_LANG,
   NOTE_PARAM,
@@ -11,6 +16,11 @@ const params = (new URL(document.location)).searchParams
 const [userLangCode] = createSignal(params.get(USER_PARAM) || DEFAULT_LANG)
 const [noteLangCode] = createSignal(params.get(NOTE_PARAM) || DEFAULT_LANG)
 const initialIndex = parseInt(params.get('idx') || 0)
+
+const touchDevice = 'ontouchstart' in document.documentElement
+
+// const navigator = useNavigatorLanguage()
+// console.log(navigator.language())
 
 function setParam(key, value) {
   const goto = new URL(document.location)
@@ -115,32 +125,36 @@ function App() {
         </div>
       </div>
 
-      <div style='text-align: center; user-select: none;'>
-        <button
-          class='kbc-button kbc-button-xs'
-          data-keyboard-key='ArrowLeft'
-          disabled={currIndex() <= 0}
-          onClick={goPrevIndex}
-        >
-          ◀
-        </button>
-        <button
-          class='kbc-button kbc-button-xs'
-          data-keyboard-key=' '
-          disabled={currIndex() >= (data().notes.length - 1)}
-          onClick={goNextIndex}
-        >
-          space
-        </button>
-        <button
-          class='kbc-button kbc-button-xs'
-          data-keyboard-key='ArrowRight'
-          disabled={currIndex() >= (data().notes.length - 1)}
-          onClick={goNextIndex}
-        >
-          ▶
-        </button>
-      </div>
+      {/* Touch device probably won't use keyboard? */}
+      <Show when={!touchDevice}>
+        <div style='text-align: center; user-select: none;'>
+          <p>{data().strings['use-keys']}</p>
+          <button
+            class='kbc-button kbc-button-xs'
+            data-keyboard-key='ArrowLeft'
+            disabled={currIndex() <= 0}
+            onClick={goPrevIndex}
+          >
+            ◀
+          </button>
+          <button
+            class='kbc-button kbc-button-xs'
+            data-keyboard-key=' '
+            disabled={currIndex() >= (data().notes.length - 1)}
+            onClick={goNextIndex}
+          >
+            space
+          </button>
+          <button
+            class='kbc-button kbc-button-xs'
+            data-keyboard-key='ArrowRight'
+            disabled={currIndex() >= (data().notes.length - 1)}
+            onClick={goNextIndex}
+          >
+            ▶
+          </button>
+        </div>
+      </Show>
       <div style='text-align: center; padding-top: 10px;'>
         <Show when={data().notes.length}>
           <select

@@ -8,21 +8,20 @@
   "language_code": "es",
   "strings": {
     "title": "Fichas de idiomas emoji",
+    "description": "Fichas Anki descargables para",
     "switch-language": "Cambiar de idioma",
     "en-US": "Inglés",
     "es-ES": "Español",
     "ja-JP": "Japonés",
     "zh-CN": "Chino",
     "open-source": "Emoji Flashcards es gratuito y de código abierto",
-    "download-for": "Descargar Anki Flashcards para",
-    "download": "Descargar",
     "next": "siguiente",
     "show-answer": "mostrar respuesta",
     "no-js": "Esta demo requiere Javascript, pero puedes descargar las flashcards para Anki",
-    "try-me": "Póngame a prueba",
     "use-keys": "Utiliza las teclas para navegar:",
-    "description": "¡Fichas Anki descargables para aprender idiomas!",
-    "footer": "¡Somos de código abierto! Puedes ayudarnos a mejorar nuestras traducciones uniéndote a nosotros en Github o Discord."
+    "footer": "¡Somos de código abierto! Puedes ayudarnos a mejorar nuestras traducciones uniéndote a nosotros en Github o Discord.",
+    "try-me": "O elija otro idioma.",
+    "download": "Descargar flashcards"
   },
   "columns": ["text", "hint"],
   "data": {

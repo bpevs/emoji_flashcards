@@ -1,37 +1,33 @@
+<div class="user-lang">
+  <form action="/" method="GET">
+    <label for="user">🌐</label>
+    <select
+      name="user"
+      id="user-lang"
+    >
+      {{#select userLangCode}}
+        {{#each locales}}
+          <option value="{{this.locale_code}}">
+            {{this.locale_flag}} {{this.native_name}}
+          </option>
+        {{/each}}
+      {{/select}}
+    </select>
+    <input type="hidden" name="card" value="{{noteLangCode}}" />
+    <noscript>
+      <input id="fallback-go" type="submit" value="Go" />
+    </noscript>
+  </form>
+</div>
+
 <content>
   <h1 class="title">{{strings.title}}</h1>
-  <p class="description">{{strings.description}}</p>
 
-  <div class="user-lang">
-    <form action="/" method="GET">
-      <label for="user">🌐</label>
-      <select
-        name="user"
-        id="user-lang"
-      >
-        {{#select userLangCode}}
-          {{#each locales}}
-            <option value="{{this.locale_code}}">
-              {{this.locale_flag}} {{this.native_name}}
-            </option>
-          {{/each}}
-        {{/select}}
-      </select>
-      <input type="hidden" name="card" value="{{noteLangCode}}" />
-      <noscript>
-        <input id="fallback-go" type="submit" value="Go" />
-      </noscript>
-    </form>
-  </div>
-
-  <div class="note-lang">
+  <div class="description">
     <form action="/" method="GET">
       <input type="hidden" name="user" value="{{userLangCode}}" />
-      <label for="card">{{strings.try-me}} ➔</label>
-      <select
-        name="card"
-        id="note-lang"
-      >
+      <label for="card">{{strings.description}}</label>
+      <select name="card" id="note-lang">
         {{#select noteLangCode}}
           {{#each locales}}
             <option value="{{this.locale_code}}">
@@ -46,6 +42,12 @@
     </form>
   </div>
 
+  <p class="download">
+    <a download href="https://static.bpev.me/flashcards/{{userLangCode}}/deck.apkg">
+      <span>{{flag}} {{strings.download}}</span>
+    </a>
+  </p>
+
   <div id="app">
     <p class="no-js">
       <div class="note-wrapper">
@@ -57,14 +59,9 @@
       </div>
     </p>
   </div>
-
-  <div class="note-lang">
-    {{strings.download-for}}
-    <a download id="download" href="https://static.bpev.me/flashcards/{{userLangCode}}/deck.apkg">
-      {{flag}} {{lookup strings noteLangCode}}
-    </a>
-  </div>
 </content>
+
+
 
 <footer>
   <a href="https://github.com/bpevs/emoji_flashcards">
