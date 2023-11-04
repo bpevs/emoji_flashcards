@@ -8,7 +8,7 @@ const solid = { solid: { moduleName: 'npm:solid-js/web' } }
 export default async function build(shouldWrite) {
   const [denoResolver, denoLoader] = [...denoPlugins({
     nodeModulesDir: true,
-    configPath: resolve('./deno.json'),
+    configPath: resolve('./deno.client.json'),
   })]
 
   const result = await esbuild.build({

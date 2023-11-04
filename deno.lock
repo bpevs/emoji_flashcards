@@ -1,5 +1,5 @@
 {
-  "version": "2",
+  "version": "3",
   "packages": {
     "specifiers": {
       "npm:@ffmpeg/ffmpeg": "npm:@ffmpeg/ffmpeg@0.12.7",
@@ -12,6 +12,8 @@
       "npm:kuroshiro-analyzer-kuromoji": "npm:kuroshiro-analyzer-kuromoji@1.1.0",
       "npm:mkanki": "npm:mkanki@1.1.0",
       "npm:playht": "npm:playht@0.9.3",
+      "npm:solid-js": "npm:solid-js@1.8.3",
+      "npm:solidjs-use": "npm:solidjs-use@2.3.0",
       "npm:sql.js": "npm:sql.js@1.8.0"
     },
     "npm": {
@@ -477,6 +479,16 @@
         "integrity": "sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==",
         "dependencies": {}
       },
+      "@solidjs-use/shared@2.3.0": {
+        "integrity": "sha512-xuPNzZ9fwigkmYXTO+a8kaT45XQCPt6jVlyiDDYCD9NRZheRJOZWiUcVjYHzjececbWTctcY8NFdsXVyxARHKg==",
+        "dependencies": {
+          "@solidjs-use/solid-to-vue": "@solidjs-use/solid-to-vue@2.3.0"
+        }
+      },
+      "@solidjs-use/solid-to-vue@2.3.0": {
+        "integrity": "sha512-I2onRwzdYl2eq20M3hcTkVIeYq4hNoBpHvRJB9yzoyXRDSyp7R2glIbvdBzpsXqnTvX7HJhB2KePfxYXFvyJxw==",
+        "dependencies": {}
+      },
       "@tokenizer/token@0.3.0": {
         "integrity": "sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==",
         "dependencies": {}
@@ -486,6 +498,10 @@
         "dependencies": {
           "undici-types": "undici-types@5.25.3"
         }
+      },
+      "@types/web-bluetooth@0.0.16": {
+        "integrity": "sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==",
+        "dependencies": {}
       },
       "ansi-regex@5.0.1": {
         "integrity": "sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==",
@@ -1179,6 +1195,13 @@
         "dependencies": {
           "csstype": "csstype@3.1.2",
           "seroval": "seroval@0.11.6"
+        }
+      },
+      "solidjs-use@2.3.0": {
+        "integrity": "sha512-ZyH2jiUSQU+5S5vd8zyvqz9X2ikhMjJhDeh/TjRzjLDJlZ1RuZaMxdM+jGsrJxo3X/xBW9kDpYNONXs6wYrQCQ==",
+        "dependencies": {
+          "@solidjs-use/shared": "@solidjs-use/shared@2.3.0",
+          "@types/web-bluetooth": "@types/web-bluetooth@0.0.16"
         }
       },
       "sql.js@1.8.0": {

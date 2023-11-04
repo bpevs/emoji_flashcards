@@ -19,7 +19,7 @@ const navigator = useNavigatorLanguage()
 const browserLang = () =>
   locales.find((locale) => locale.locale_code === navigator.language())
 
-const params = (new URL(document.location)).searchParams
+const params = (new URL(document.location.toString())).searchParams
 const [userLangCode, setUserLangCode] = createSignal(
   params.get(USER_PARAM) || browserLang()?.locale_code || DEFAULT_LANG,
 )
@@ -33,28 +33,38 @@ const [noteLangCode, setNoteLangCode] = createSignal(
   params.get(NOTE_PARAM) || randomLang().locale_code,
 )
 
-function setParam(key, value) {
-  const goto = new URL(document.location)
+function setParam(key: string, value: string) {
+  const goto = new URL(document.location.toString())
   goto.searchParams.set(key, value)
-  window.history.replaceState(null, null, goto)
+  window.history.replaceState(null, '', goto)
 }
 
-document.getElementById('user-lang').onchange = function () {
-  const goto = new URL(document.location)
-  goto.searchParams.set(USER_PARAM, this.value)
-  window.location = goto
+const noteSelector = document.getElementById('note-lang')
+if (noteSelector) {
+  noteSelector.onchange = function () {
+    const selector = (this as HTMLSelectElement).value
+    if (selector) setNoteLangCode(selector)
+  }
 }
 
-document.getElementById('note-lang').onchange = function () {
-  setNoteLangCode(this.value)
+const userSelector = document.getElementById('user-lang')
+if (userSelector) {
+  userSelector.onchange = function () {
+    const selector = (this as HTMLSelectElement).value
+    if (selector) {
+      const goto = new URL(document.location.toString())
+      goto.searchParams.set(USER_PARAM, selector)
+      window.location.assign(goto)
+    }
+  }
 }
 
 createEffect(() => {
-  document.getElementById('note-lang').value = noteLangCode()
+  if (noteSelector) (noteSelector as HTMLSelectElement).value = noteLangCode()
   setParam(NOTE_PARAM, noteLangCode())
 })
 
-const initialIndex = parseInt(params.get('i') || 0)
+const initialIndex = parseInt(params.get('i') || '0')
 
 const [data] = createResource(
   () => [userLangCode(), noteLangCode()],
@@ -66,20 +76,26 @@ const [data] = createResource(
 )
 
 function App() {
-  let audioPlayer
+  let audioPlayer: HTMLAudioElement
   const [currIndex, setCurrIndex] = createSignal(initialIndex || 0)
   const [isFlipped, setFlipped] = createSignal(false)
 
   const currEmoji = () => data().notes[currIndex()]?.[0]
   const currAnswer = () => data().notes[currIndex()]?.[2]
   const currHints = () => (data().notes[currIndex()] || []).slice(3)
+  const hasHints = () =>
+    currHints()
+      .filter((item: string) => item?.length).length
+  const hintComponents = () =>
+    currHints()
+      .map((item: string) => <h2>{item}</h2>)
 
-  const goPrevIndex = (e) => {
+  const goPrevIndex = (e: Event) => {
     e.preventDefault()
     setCurrIndex(() => Math.max(0, currIndex() - 1))
   }
 
-  const goNextIndex = (e) => {
+  const goNextIndex = (e: Event) => {
     e.preventDefault()
     const nextIndex = Math.min(data().notes.length, currIndex() + 1)
     if (nextIndex >= data().notes.length) return
@@ -91,17 +107,17 @@ function App() {
 
   onKeyStroke(['ArrowLeft'], goPrevIndex, { dedupe: true })
   onKeyStroke(['ArrowRight', ' '], goNextIndex, { dedupe: true })
-  onKeyDown(({ key }) => {
+  onKeyDown(true, ({ key }) => {
     const element = document.querySelector('[data-keyboard-key="' + key + '"]')
     if (element) element.classList.add('active')
   })
-  onKeyUp(({ key }) => {
+  onKeyUp(true, ({ key }) => {
     const element = document.querySelector('[data-keyboard-key="' + key + '"]')
     if (element) element.classList.remove('active')
   })
 
   createEffect(() => {
-    setParam('i', currIndex() || 0)
+    setParam('i', String(currIndex() || 0))
   })
 
   return (
@@ -112,8 +128,7 @@ function App() {
           <div>
             <Show when={noteLangCode() && currAnswer()}>
               <audio
-                ref={audioPlayer}
-                type='audio/mpeg'
+                ref={(ref) => audioPlayer = ref}
                 src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/emoji_${noteLangCode()}_${currAnswer()}.mp3`}
               />
             </Show>
@@ -135,9 +150,7 @@ function App() {
                 {currAnswer()}
               </h1>
               <div style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
-                <Show when={currHints().filter((item) => item?.length).length}>
-                  {currHints().map((item) => <h2>{item}</h2>)}
-                </Show>
+                <Show when={hasHints()}>{hintComponents()}</Show>
               </div>
             </div>
           </div>
@@ -199,6 +212,7 @@ function App() {
 }
 
 const app = document.getElementById('app')
-app.innerHTML = ''
-
-render(() => <App />, document.getElementById('app'))
+if (app) {
+  app.innerHTML = ''
+  render(() => <App />, app)
+}

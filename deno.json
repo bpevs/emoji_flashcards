@@ -23,22 +23,17 @@
     "kuroshiro-analyzer-kuromoji": "npm:kuroshiro-analyzer-kuromoji",
     "chinese-to-pinyin": "npm:chinese-to-pinyin",
     "sql.js": "npm:sql.js",
-    "jszip": "npm:jszip",
-
-    "solid-js": "npm:solid-js",
-    "solid-js/web": "npm:solid-js/web",
-    "solidjs-use": "npm:solidjs-use",
-    "motion": "npm:motion",
-    "motion/solid": "npm:@motionone/solid"
+    "jszip": "npm:jszip"
   },
   "tasks": {
     "build": "deno run --allow-net --allow-read --allow-run --allow-env --allow-write tasks/build.ts",
-    "check": "deno task check:text && deno task check:audio && deno task check:anki",
+    "check": "deno task check:text && deno task check:audio && deno task check:anki && deno task check:www",
     "check:anki": "deno check tasks/gen_anki.ts",
     "check:audio": "deno check tasks/gen_audio.ts",
     "check:client": "deno check tasks/public.js",
     "check:main": "deno check tasks/main.ts",
     "check:text": "deno check tasks/gen_text.ts",
+    "check:www": "deno check www/index.tsx --config='deno.client.json'",
     "gen:text": "(deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read tasks/gen_text.ts) && deno fmt",
     "gen:anki": "deno run --allow-write=data --allow-read tasks/gen_anki.ts",
     "gen:audio": "deno run --allow-net --allow-env --allow-read --allow-write --allow-run tasks/gen_audio.ts",
