@@ -8,7 +8,6 @@
   "language_code": "es",
   "strings": {
     "title": "Fichas de idiomas emoji",
-    "description": "Fichas emoji descargables para aprender muchos idiomas",
     "switch-language": "Cambiar de idioma",
     "en-US": "Inglés",
     "es-ES": "Español",
@@ -22,7 +21,8 @@
     "no-js": "Esta demo requiere Javascript, pero puedes descargar las flashcards para Anki",
     "try-me": "Póngame a prueba",
     "use-keys": "Utiliza las teclas para navegar:",
-    "footer": "Somos de código abierto Puede ayudarnos a mejorar nuestras traducciones."
+    "description": "¡Fichas Anki descargables para aprender idiomas!",
+    "footer": "¡Somos de código abierto! Puedes ayudarnos a mejorar nuestras traducciones uniéndote a nosotros en Github o Discord."
   },
   "columns": ["text", "hint"],
   "data": {

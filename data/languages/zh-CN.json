@@ -8,7 +8,6 @@
   "language_code": "zh",
   "strings": {
     "title": "表情符号语言卡片",
-    "description": "下载表情符号卡片，学习多种语言",
     "switch-language": "切换语言",
     "en-US": "英语",
     "es-ES": "西班牙语",
@@ -22,7 +21,8 @@
     "no-js": "此演示需要使用 Javascript，但您仍可下载 Anki 闪存卡",
     "try-me": "试试看",
     "use-keys": "使用按键导航：",
-    "footer": "我们是开源的！您可以帮助我们改进翻译！"
+    "description": "可下载的 Anki 语言学习卡片！",
+    "footer": "我们是开源的！您可以在 Github 或 Discord 上加入我们，帮助我们改进翻译。"
   },
   "columns": ["text", "pinyin"],
   "data": {

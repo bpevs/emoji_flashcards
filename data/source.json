@@ -1,7 +1,7 @@
 {
   "strings": {
     "title": "Emoji Language Flashcards",
-    "description": "Downloadable emoji flashcards to learn many languages",
+    "description": "Downloadable Anki flashcards for learning languages!",
     "switch-language": "Switch Language",
     "open-source": "Emoji Flashcards is free and open-source",
     "en-US": "English",
@@ -15,7 +15,7 @@
     "use-keys": "Use your keys to navigate:",
     "try-me": "Try Me!",
     "show-answer": "show answer",
-    "footer": "We are Open-Source! You can help us improve our translations!"
+    "footer": "We are Open-Source! You can help us improve our translations by joining us on Github or Discord."
   },
   "columns": ["text", "pos"],
   "data": {

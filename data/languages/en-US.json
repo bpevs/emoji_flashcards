@@ -8,7 +8,6 @@
   "language_code": "en",
   "strings": {
     "title": "Emoji Language Flashcards",
-    "description": "Downloadable emoji flashcards to learn many languages",
     "switch-language": "Switch Language",
     "en-US": "English",
     "es-ES": "Spanish",
@@ -22,7 +21,8 @@
     "no-js": "This demo requires Javascript, but you can still download the flashcards for Anki",
     "try-me": "Try Me!",
     "use-keys": "Use your keys to navigate:",
-    "footer": "We are Open-Source! You can help us improve our translations!"
+    "description": "Downloadable Anki flashcards for learning languages!",
+    "footer": "We are Open-Source! You can help us improve our translations by joining us on Github or Discord."
   },
   "columns": ["text"],
   "data": {

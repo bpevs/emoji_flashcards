@@ -89,6 +89,19 @@ function App() {
               />
             </Show>
             <div class='answer'>
+              <h3
+                style={`
+                visibility: ${isFlipped() ? 'hidden' : 'visible'};
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, 50%);
+                opacity: 0.7;
+                cursor: pointer;
+              `}
+              >
+                {data().strings['show-answer']}
+              </h3>
               <h1 style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
                 {currAnswer()}
               </h1>
@@ -117,7 +130,7 @@ function App() {
           disabled={currIndex() >= (data().notes.length - 1)}
           onClick={goNextIndex}
         >
-          {isFlipped() ? data().strings.next : data().strings['show-answer']}
+          space
         </button>
         <button
           class='kbc-button kbc-button-xs'

@@ -5,15 +5,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{title}}</title>
     <meta name="description" content="{{description}}">
-    <link rel="stylesheet" href="/index.css">
     <link
       rel='stylesheet'
       href='https://unpkg.com/keyboard-css@1.2.4/dist/css/main.min.css'
     />
     <link rel="icon" type="image/png" href="/icons/favicon.png">
     <style>
+      * {
+        font-family: sans-serif;
+      }
+
+      html, body {
+        box-sizing: border-box;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
       #fallback-go { display: none; }
       .no-script #fallback-go { display: inline-block; }
+
+      #wrapper {
+        box-sizing: border-box;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        background: #a18cd1;
+        background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+      }
+
+      footer {
+        flex-grow: 0;
+        flex-shrink: 0;
+        padding: 10px;
+        background-color: rgba(256, 256, 256, 0.4);
+        box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+        display: flex;
+        align-items: center;
+      }
+
+      footer a {
+        vertical-align: middle;
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px;
+      }
+
+      footer a:hover {
+        opacity: 0.8;
+      }
+
+      footer div {
+        padding: 10px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      content {
+        flex-grow: 1;
+        padding-bottom: 50px;
+      }
+
+      .no-js {
+        text-align: center;
+      }
+
+      .title {
+        text-align: center;
+        margin: 50px 0 0 0;
+      }
+
+      .description {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+
+      .download-label {
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .user-lang {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      .note-lang {
+        margin-top: 50px;
+        text-align: center;
+      }
+
+      #notes {
+        max-height: 600px;
+        overflow: scroll;
+        border: 2px solid black;
+      }
+
+      .note-wrapper {
+        margin: 20px 0 10px 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      .note {
+        user-select: none;
+        background-color: rgba(256, 256, 256, 0.3);
+        box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+        margin: 10px auto 10px auto;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 400px;
+        max-height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        padding: 0 0 0 0;
+        min-width: 100px;
+        cursor: pointer;
+        overflow: hidden;
+      }
+
+      .question {
+        margin: 0;
+        font-weight: bold;
+        font-size: 3em;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        background-color: rgba(256, 256, 256, 0.3);
+      }
+
+      .answer {
+        margin: 0 auto 0 auto;
+        display: inline-block;
+        width: 100%;
+        border-top: 1px dotted rgba(0, 0, 0, 0.3);
+        padding-top: 20px;
+        padding-bottom: 50px;
+      }
+
+      button {
+        font-weight: bold;
+        font-size: 1em;
+      }
+
+      table {
+        margin: auto;
+        text-align: center;
+      }
+
+      .emoji-row {
+        cursor: pointer;
+      }
+
+      .emoji-row:hover,
+      .emoji-row.selected {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+
+      #download {
+        cursor: pointer;
+        color: black;
+        font-weight: bold;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
+        text-decoration-style: wavy;
+      }
+
+      #download:hover {
+        color: blue;
+      }
     </style>
   </head>
   <body class="no-script">

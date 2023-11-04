@@ -9,7 +9,6 @@
   "pronunciation_key": "romaji",
   "strings": {
     "title": "絵文字フラッシュカード",
-    "description": "ダウンロード可能な絵文字フラッシュカードで様々な言語を学ぼう",
     "switch-language": "言語を切り替える",
     "en-US": "英語",
     "es-ES": "スペイン語",
@@ -23,7 +22,8 @@
     "no-js": "このデモにはJavascriptが必要ですが、Anki用フラッシュカードをダウンロードすることはできます。",
     "try-me": "私を試してみて",
     "use-keys": "キーでナビゲートしてください：",
-    "footer": "私たちはオープンソースです！翻訳の改善にご協力ください！"
+    "description": "言語学習のためのダウンロード可能なAnkiフラッシュカード！",
+    "footer": "私たちはオープンソースです！GithubまたはDiscordに参加して、翻訳の改善にご協力ください。"
   },
   "columns": ["text", "romaji"],
   "data": {
