@@ -3,7 +3,7 @@ import { Handlebars } from 'handlebars'
 import { load } from 'std/dotenv/mod.ts'
 import build from './utilities/build.ts'
 import select from './www/helpers/select.ts'
-import { TranslationData } from './utilities/interfaces.ts'
+import { EmojiDataMap } from './utilities/interfaces.ts'
 import { DATA_DIR, STATIC_DIR } from './utilities/constants_server.ts'
 import {
   DATA_PATH,
@@ -22,7 +22,7 @@ async function getWebsiteData(userLangParam, noteLangParam): {
   userLangParam: string
   noteLangParam: string
   strings: { [name: string]: string }
-  data: TranslationData
+  data: EmojiDataMap
   locales: Array<{
     language_code: string
     locale_code: string

@@ -11,28 +11,21 @@ export interface Translation {
   [name: string]: string
 }
 
-export interface TranslationData {
-  [emoji: string]: Translation
+export interface EmojiDataMap {
+  [emojiKey: string]: Translation
 }
 
 export interface InterfaceStrings {
   [key: string]: string
 }
 
-export interface LanguageFile {
-  name: string
-  strings: InterfaceStrings
-  data: TranslationData
-  model_id: number
-  deck_id: number
-  locale_code: string
-  language_code: string
-  audio_id: string
-  locale_flag?: string
-  pronunciation_key?: string
+export interface LanguageFileData {
+  [category: string]: {
+    [emoji: string]: string[]
+  }
 }
 
-export interface CompactLanguageFile {
+export interface LanguageFile {
   name: string
   model_id: number
   deck_id: number
@@ -43,20 +36,31 @@ export interface CompactLanguageFile {
   audio_id: string
   strings: InterfaceStrings
   columns: string[]
-  data: { [category: string]: { [emoji: string]: string[] } }
+  data: LanguageFileData
+}
+
+export interface ExtendedLanguageFile {
+  name: string
+  strings: InterfaceStrings
+  data: EmojiDataMap
+  model_id: number
+  deck_id: number
+  locale_code: string
+  language_code: string
+  audio_id: string
+  locale_flag?: string
+  pronunciation_key?: string
 }
 
 export interface ExtensionFile {
   name: string
-  data: { [category: string]: { [emoji: string]: string[] } }
+  data: LanguageFileData
   strings: InterfaceStrings
   extensions: {
     [extensionName: string]: {
       name: string
       description: string
-      data: {
-        [category: string]: { [emoji: string]: string[] }
-      }
+      data: LanguageFileData
     }
   }
 }

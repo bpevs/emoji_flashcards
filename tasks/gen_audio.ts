@@ -1,5 +1,4 @@
 import * as PlayHT from 'playht'
-import type { Translation } from '../utilities/interfaces.ts'
 import { load } from 'std/dotenv/mod.ts'
 import { listAudioFiles, readLanguageFile } from '../utilities/data_access.ts'
 import { getAudioFilename } from '../utilities/data_access_utilities.ts'
@@ -18,22 +17,25 @@ const env = await load()
 
 const [language, inputCategoryId] = Deno.args
 
-const { data, audio_id, pronunciation_key } = await readLanguageFile(
-  language,
-  true,
-)
+const lang = await readLanguageFile(language, true)
+const { audio_id, columns, pronunciation_key } = lang
+const pronunciationKeyIndex = columns.indexOf(pronunciation_key || '') || 0
+
+const emojisByCategory = lang.data
 const existingAudioFiles = listAudioFiles(language)
 
-const emojisByCategory: { [category: string]: Translation[] } = {}
-
-for (const key in data) {
-  const { category, text } = data[key]
-  if (
-    existingAudioFiles.has(getAudioFilename(language, text).normalize('NFC'))
-  ) continue
-  if (!emojisByCategory[category]) emojisByCategory[category] = []
-  emojisByCategory[category].push({ key, ...data[key] })
-}
+Object.keys(emojisByCategory).forEach((category) => {
+  Object.keys(emojisByCategory[category])
+    .forEach((emoji) => {
+      const text = emojisByCategory[category][emoji][0]
+      const fileName = getAudioFilename(language, text)
+      const alreadyExists = existingAudioFiles.has(fileName)
+      if (alreadyExists) delete emojisByCategory[category][emoji]
+    })
+  if (!Object.keys(emojisByCategory[category]).length) {
+    delete emojisByCategory[category]
+  }
+})
 
 console.log(language, audio_id, Object.keys(emojisByCategory))
 
@@ -54,7 +56,7 @@ Deno.exit(0)
 
 async function generateTranscriptionIds(
   languageCode: string,
-  emojisByCategory: { [category: string]: Translation[] },
+  emojisByCategory: { [category: string]: { [emojiKey: string]: string[] } },
   audio_id?: string,
 ): Promise<{ categoryId: string; transcriptionId: string }[]> {
   PlayHT.init({ apiKey: env['PLAYHT_API_KEY'], userId: env['PLAYHT_USER_ID'] })
@@ -85,10 +87,11 @@ async function generateTranscriptionIds(
         categoryId,
         transcriptionId: (await requestSSMLAudio(
           `<speak><p>${
-            (emojisByCategory[categoryId] || [])
-              .map((translation: Translation) => {
-                if (pronunciation_key) return translation[pronunciation_key]
-                return translation.text
+            Object.keys(emojisByCategory[categoryId])
+              .map((emojiId: string) => {
+                const emoji = emojisByCategory[categoryId][emojiId]
+                if (pronunciation_key) return emoji[pronunciationKeyIndex]
+                return emoji[0]
               })
               .join(`, <break time="${SILENCE_REQUEST}s"/> `)
           }</p></speak>`,
@@ -155,8 +158,10 @@ function getAudioResults(transcriptionId: string) {
 async function writeTranslationAudioFiles(
   sourceURL: string,
   languageCode: string,
-  translations: Translation[],
+  emojis: { [emojiKey: string]: string[] },
 ) {
+  const names = Object.keys(emojis)
+    .map((emoji) => emojis[emoji][0])
   const audioDirLocation = join(GEN_DIR, languageCode, 'audio')
 
   try {
@@ -184,9 +189,9 @@ async function writeTranslationAudioFiles(
       1000 * (parseFloat(nextSilenceEndS) - 0.1),
     )
 
-    console.log(translations[count])
+    console.log(emojis[count])
 
-    const name = getAudioFilename(language, translations[count].text)
+    const name = getAudioFilename(language, names[count])
     count = count + 1
 
     const outFile = join(audioDirLocation, name)
@@ -205,7 +210,7 @@ async function writeTranslationAudioFiles(
   }
 
   // last file
-  const name = getAudioFilename(language, translations[count].text)
+  const name = getAudioFilename(language, names[count])
   count = count + 1
 
   const outFile = join(audioDirLocation, name)
@@ -216,5 +221,5 @@ async function writeTranslationAudioFiles(
   })
   await convert.output()
 
-  console.log(translations.length, count)
+  console.log(names.length, count)
 }

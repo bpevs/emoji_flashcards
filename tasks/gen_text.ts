@@ -1,13 +1,18 @@
 /**
- * Read source.json as "source of truth" of emoji set
- * For each source.json emoji (and temp cache the key as a set)
+ * This script is for generating translations to new words: basically, it
+ * pre-populates our `languages` files via translation APIs. It is expected
+ * that some of the translations will be inaccurate, and will be corrected by
+ * hand. Do not use this for extensions; those should be done purely by-hand,
+ * since they should be used for individual translations anyways.
  *
- * For eacn other base file...
+ * Reads source.json as "source of truth" of emoji set.
+ * For each `source.json`` emoji...
+ *
+ * Look at each language's base file...
  *   Loop through existing set
  *      If a translation is pre-existing, skip
  *      If a translation does not exist, translate via API
  *      If key does not exist in en_US, delete
- *   If base extension exist, append
  */
 import {
   listLanguages,
@@ -15,6 +20,10 @@ import {
   readSourceFile,
   writeLanguageFile,
 } from '../utilities/data_access.ts'
+import {
+  getDataAndColumnsFromEmojiDataMap,
+  getEmojiDataMap,
+} from '../utilities/data_access_utilities.ts'
 import { translate } from '../utilities/translate.ts'
 import plugins from '../data/plugins/mod.ts'
 
@@ -23,6 +32,8 @@ Deno.exit(0)
 
 async function generateAllTranslations() {
   const sourceFile = await readSourceFile()
+  const sourceEmojiDataMap = getEmojiDataMap(sourceFile)
+
   const languages = listLanguages()
 
   console.info('languages: ', languages)
@@ -58,11 +69,12 @@ async function generateAllTranslations() {
     }
 
     // If translation doesn't exist in target languageFile JSON, translate and add
-    const textsToTranslate = []
+    const textsToTranslate: string[] = []
+    const emojiDataMap = getEmojiDataMap(languageFile)
 
-    for (const emojiKey in sourceFile.data) {
-      if (!languageFile.data[emojiKey]) {
-        textsToTranslate.push(sourceFile.data[emojiKey].text)
+    for (const emojiKey in sourceEmojiDataMap) {
+      if (!emojiDataMap[emojiKey]) {
+        textsToTranslate.push(sourceEmojiDataMap[emojiKey].text)
       }
     }
 
@@ -73,7 +85,7 @@ async function generateAllTranslations() {
       const translatedTexts = await translate(textsToTranslate, language)
 
       let index = 0
-      for (const [emojiKey, item] of Object.entries(sourceFile.data)) {
+      for (const [emojiKey, item] of Object.entries(sourceEmojiDataMap)) {
         const translatedData = {
           text: item.text,
           translatedText: translatedTexts[index],
@@ -85,13 +97,13 @@ async function generateAllTranslations() {
         const plugin = plugins[language] || plugins[shortLang]
 
         if (plugin) {
-          const next = await plugin(translatedData, languageFile.data[emojiKey])
+          const next = await plugin(translatedData, emojiDataMap[emojiKey])
           if (next) {
-            languageFile.data[emojiKey] = next
+            emojiDataMap[emojiKey] = next
             index++
           }
-        } else if (!languageFile.data[emojiKey]) {
-          languageFile.data[emojiKey] = {
+        } else if (!emojiDataMap[emojiKey]) {
+          emojiDataMap[emojiKey] = {
             text: translatedData.translatedText,
             category: translatedData.category,
           }
@@ -101,12 +113,15 @@ async function generateAllTranslations() {
     }
 
     // Delete keys from target JSON that do not exist in source.json
-    for (const emojiKey in languageFile.data) {
-      if (!sourceFile.data[emojiKey]) {
-        delete languageFile.data[emojiKey]
-      }
+    for (const emojiKey in emojiDataMap) {
+      if (!sourceEmojiDataMap[emojiKey]) delete emojiDataMap[emojiKey]
     }
 
-    await writeLanguageFile(language, languageFile)
+    const [columns, data] = getDataAndColumnsFromEmojiDataMap(emojiDataMap)
+    await writeLanguageFile(language, {
+      ...languageFile,
+      columns,
+      data,
+    })
   }
 }

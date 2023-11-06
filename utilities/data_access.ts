@@ -1,14 +1,6 @@
 import { join } from 'std/path/mod.ts'
-import type {
-  CompactLanguageFile,
-  ExtensionFile,
-  LanguageFile,
-} from '../utilities/interfaces.ts'
-import {
-  fromCompactLanguageFile,
-  prettyPrintCompactFile,
-  toCompactLanguageFile,
-} from '../utilities/data_access_utilities.ts'
+import type { ExtensionFile, LanguageFile } from '../utilities/interfaces.ts'
+import { prettyPrintCompactFile } from '../utilities/data_access_utilities.ts'
 import {
   EXTENSIONS_DIR,
   GEN_DIR,
@@ -40,13 +32,13 @@ export function listAudioFiles(language: string): Set<string> {
   return items
 }
 
-export async function readCompactLanguageFile(
+export async function readLanguageFile(
   locale: string,
   includeExtensions = false,
   extensionCodes: string[] = [],
-): Promise<CompactLanguageFile> {
+): Promise<LanguageFile> {
   const text = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale}.json`)
-  const languageFile: CompactLanguageFile = JSON.parse(text)
+  const languageFile: LanguageFile = JSON.parse(text)
   if (includeExtensions) {
     try {
       const text = await Deno.readTextFile(`${EXTENSIONS_DIR}/${locale}.json`)
@@ -71,33 +63,18 @@ export async function readCompactLanguageFile(
   return languageFile
 }
 
-export async function readLanguageFile(
-  locale: string,
-  includeExtensions = false,
-  extensionCodes: string[] = [],
-): Promise<LanguageFile> {
-  const compactLanguage: CompactLanguageFile = await readCompactLanguageFile(
-    locale,
-    includeExtensions,
-    extensionCodes,
-  )
-  const languageFile = fromCompactLanguageFile(compactLanguage)
-  if (!languageFile.data) languageFile.data = {}
-  return languageFile
-}
-
 export async function readSourceFile(): Promise<LanguageFile> {
   const text = await Deno.readTextFile(SOURCE_FILE)
-  const compactLanguage: CompactLanguageFile = JSON.parse(text)
-  return fromCompactLanguageFile(compactLanguage)
+  const languageFile: LanguageFile = JSON.parse(text)
+  return languageFile
 }
 
 export async function writeLanguageFile(
   locale: string,
   languageFile: LanguageFile,
 ): Promise<void> {
-  const compactFile = toCompactLanguageFile(languageFile)
-  const updatedLanguageJSON = prettyPrintCompactFile(compactFile)
-  const filePath = `${LANGUAGES_DIR}/${locale}.json`
-  await Deno.writeTextFile(filePath, updatedLanguageJSON)
+  await Deno.writeTextFile(
+    `${LANGUAGES_DIR}/${locale}.json`,
+    prettyPrintCompactFile(languageFile),
+  )
 }
