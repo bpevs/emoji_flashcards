@@ -1,6 +1,7 @@
 import { join } from 'std/path/mod.ts'
 import type {
   CompactLanguageFile,
+  ExtensionFile,
   LanguageFile,
 } from '../utilities/interfaces.ts'
 import {
@@ -8,7 +9,12 @@ import {
   prettyPrintCompactFile,
   toCompactLanguageFile,
 } from '../utilities/data_access_utilities.ts'
-import { GEN_DIR, LANGUAGES_DIR, SOURCE_FILE } from './constants_server.ts'
+import {
+  EXTENSIONS_DIR,
+  GEN_DIR,
+  LANGUAGES_DIR,
+  SOURCE_FILE,
+} from './constants_server.ts'
 
 const LANGUAGE_FILE_REGEX = /^[a-z]{2,3}(-[A-Z]{2})?\.json$/
 const AUDIO_FILE_REGEX = /.*\.mp3$/
@@ -36,23 +42,47 @@ export function listAudioFiles(language: string): Set<string> {
 
 export async function readCompactLanguageFile(
   locale: string,
+  includeExtensions = false,
   extensionCodes: string[] = [],
 ): Promise<CompactLanguageFile> {
   const text = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale}.json`)
-  const compactLanguage: CompactLanguageFile = JSON.parse(text)
-  if (extensionCodes.length) console.log('do extension stuff')
-  return compactLanguage
+  const languageFile: CompactLanguageFile = JSON.parse(text)
+  if (includeExtensions) {
+    try {
+      const text = await Deno.readTextFile(`${EXTENSIONS_DIR}/${locale}.json`)
+      const extensionFile: ExtensionFile = JSON.parse(text)
+      const extensions = [extensionFile.data]
+        .concat(extensionCodes.map((n) => extensionFile.extensions[n].data))
+
+      extensions.forEach((extension) => {
+        Object.keys(extension).forEach((categoryName) => {
+          Object.keys(extensionFile.data[categoryName]).forEach((key) => {
+            if (!languageFile.data[categoryName]) {
+              languageFile.data[categoryName] = {}
+            }
+            languageFile.data[categoryName][key] = extension[categoryName][key]
+          })
+        })
+      })
+    } catch (e) {
+      console.warn('extension file failed loading', e)
+    }
+  }
+  return languageFile
 }
 
 export async function readLanguageFile(
   locale: string,
+  includeExtensions = false,
   extensionCodes: string[] = [],
 ): Promise<LanguageFile> {
-  const text = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale}.json`)
-  const compactLanguage: CompactLanguageFile = JSON.parse(text)
+  const compactLanguage: CompactLanguageFile = await readCompactLanguageFile(
+    locale,
+    includeExtensions,
+    extensionCodes,
+  )
   const languageFile = fromCompactLanguageFile(compactLanguage)
   if (!languageFile.data) languageFile.data = {}
-  if (extensionCodes.length) console.log('do extension stuff')
   return languageFile
 }
 

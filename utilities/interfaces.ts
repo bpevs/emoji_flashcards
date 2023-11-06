@@ -43,22 +43,20 @@ export interface CompactLanguageFile {
   audio_id: string
   strings: InterfaceStrings
   columns: string[]
-  data: {
-    [category: string]: {
-      [emoji: string]: string[]
-    }
-  }
+  data: { [category: string]: { [emoji: string]: string[] } }
 }
 
 export interface ExtensionFile {
   name: string
-  data: TranslationData
+  data: { [category: string]: { [emoji: string]: string[] } }
   strings: InterfaceStrings
   extensions: {
     [extensionName: string]: {
       name: string
       description: string
-      data: TranslationData
+      data: {
+        [category: string]: { [emoji: string]: string[] }
+      }
     }
   }
 }

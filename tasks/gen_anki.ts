@@ -11,7 +11,7 @@ import templates from '../data/templates/mod.ts'
 import { getAudioFilename } from '../utilities/data_access_utilities.ts'
 
 listLanguages().forEach(async (lang: string) => {
-  const languageFile = await readLanguageFile(lang)
+  const languageFile = await readLanguageFile(lang, true)
   const { columns } = await readCompactLanguageFile(lang)
   const hintColumnNames = columns.slice(1)
   const fields = [

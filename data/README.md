@@ -1,3 +1,15 @@
+# Data
+
+This is where we store all our language-specific files! All the translations are available here! The things that are not available here (due to their filesize) are our audio files and Anki decks.
+
+## How You Can Contribute
+
+The main things to note are:
+
+1. If you want to fix a translation for **ONLY ONE LANGUAGE**, update [`/languages/{your-lang-here}.json`](./languages)
+2. If you want to ADD new words to **ONLY ONE LANGUAGE**, update [`/extensions/{your-lang-here}.json`](./extensions).
+3. If you want to add a new word to **ALL languages**, make your change in [`source.json`](./source.json).
+
 ## Language Data Files Spec
 
 Language data is stored in JSON in the `languages` directory. `extensions` of the same name and file format can be used to "extend" specific languages with words that may be useful in those languages. `root.json` is the file we source in order to power the `generate` script. Basically, we update this in order to make changes to all langues (ala, add an emoji). It mostly matches `en-US`, but with additional properties that could be useful for better tuning or sorting of translations (part of speech, additional tags, etc).
@@ -59,19 +71,11 @@ If a key exists in source.json, but not the language file, it will be translated
     "ch-ZH": "中文 （台灣）"
   },
 
-  /* Map of all emoji data, keyed by emoji to enforce one-of-a-kind */
+  "columns": ["text", "pinyin"],
+
   "data": {
-    "🐶": {
-      "text": "dog", /* Translated text */
-
-      /* Data: Category Key */
-      /* Category keys are translated to user-language at DL runtime */
-      "category": "animal",
-
-      /* A broad "anything goes" field that is hidden until clicked */
-      /* This example is pinyin. Another might be gender for es or fr nouns */
-      "hint": "gǒu"
-      /* Audio location is in note data, but is applied at DL runtime */
+    "animal": {
+      "🐶": ["狗", "gǒu"]
     }
   }
 }
@@ -79,20 +83,26 @@ If a key exists in source.json, but not the language file, it will be translated
 
 #### Extension Files
 
+Extension files inherit the strings and columns of their parents.
+
 ```jsonc
 {
-  /* Matches Language File. These changes are always applied to this lang*/
-  "strings": {},
   "data": {
-    "👋": { "text": "你好!", "category": "phrases", "hint": "nĭ hăo" }
+    "phrases": {
+      /* Extension files inherit the column definitions of their parent */
+      "👋": ["你好", "nĭ hăo"]
+    }
   },
 
   /* Multiple options can be stacked and applied. These are optional */
-  "formal-extension": {
-    "name": "Formal Modifications",
-    "description": "Use more formal versions of words",
-    "data": {
-      "👋": { "text": "您好", "category": "phrases", "hint": "nín hăo" }
+  "extensions": {
+    "formal": {
+      "name": "Formal Modifications",
+      "description": "Use more formal versions of words",
+      "data": {
+        /* If applied, this named extension would override the `你好` above */
+        "👋": ["您好", "nín hăo"]
+      }
     }
   }
 }
@@ -100,9 +110,10 @@ If a key exists in source.json, but not the language file, it will be translated
 
 ```jsonc
 {
-  "strings": {},
   "data": {
-    "🍺": { "text": "cervesa", "category": "beverages" }
+    "beverages": {
+      "🍺": ["cervesa", ""]
+    }
   },
 
   "extensions": {
@@ -110,17 +121,21 @@ If a key exists in source.json, but not the language file, it will be translated
       "name": "Modify with gender",
       "description": "Adds definite articles",
       "data": {
-        "🍺": { "text": "una cervesa", "category": "beverages" }
+        "beverages": {
+          "🍺": ["una cervesa", ""]
+        }
       }
     },
 
     "subject-extension": {
-      "name": "Add Subject",
+      "name": "Add Subjects to verbs",
       "description": "Adds verb subjects",
       "data": {
-        "😮🍔 (🙋)": { "text": "como", "category": "verbs" },
-        "😮🍔 (🫵)": { "text": "comes", "category": "verbs" },
-        "😮🍔 (👉🧍)": { "text": "come", "category": "verbs" }
+        "verbs": {
+          "😮🍔 (🙋)": ["como"],
+          "😮🍔 (🫵)": ["comes"],
+          "😮🍔 (👉🧍)": ["come"]
+        }
       }
     }
   }

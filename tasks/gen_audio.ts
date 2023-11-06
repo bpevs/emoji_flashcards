@@ -18,7 +18,10 @@ const env = await load()
 
 const [language, inputCategoryId] = Deno.args
 
-const { data, audio_id, pronunciation_key } = await readLanguageFile(language)
+const { data, audio_id, pronunciation_key } = await readLanguageFile(
+  language,
+  true,
+)
 const existingAudioFiles = listAudioFiles(language)
 
 const emojisByCategory: { [category: string]: Translation[] } = {}

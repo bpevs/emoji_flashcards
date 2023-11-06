@@ -1,26 +1,12 @@
 {
-  "extension.merica": {
-    "name": "American Words",
-    "data": {
-      "📏🦶": {
-        "text": "foot"
-      },
-      "📏🐜": {
-        "text": "inch",
-        "audio": "en-US-merica_📏🐜.mp3"
-      },
-      "📏⛽️": {
-        "text": "liter",
-        "audio": "en-US-merica_📏⛽️.json"
-      },
-      "💵": {
-        "text": "dollar",
-        "audio": "en-US-merica_💵.json"
-      },
-      "$10": {
-        "text": "ten dollars",
-        "audio": "en-US-merica_$10.json"
-      }
+  "data": {
+    "money": {
+      "💵": ["dollar"]
+    },
+    "measure": {
+      "📏🦶": ["foot"],
+      "📏🐜": ["inch"],
+      "📏⛽️": ["gallon"]
     }
   }
 }
