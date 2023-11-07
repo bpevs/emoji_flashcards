@@ -26,6 +26,7 @@ export interface LanguageFileData {
 }
 
 export interface LanguageFile {
+  version: string
   name: string
   model_id: number
   deck_id: number
@@ -39,20 +40,8 @@ export interface LanguageFile {
   data: LanguageFileData
 }
 
-export interface ExtendedLanguageFile {
-  name: string
-  strings: InterfaceStrings
-  data: EmojiDataMap
-  model_id: number
-  deck_id: number
-  locale_code: string
-  language_code: string
-  audio_id: string
-  locale_flag?: string
-  pronunciation_key?: string
-}
-
 export interface ExtensionFile {
+  version: string
   name: string
   data: LanguageFileData
   strings: InterfaceStrings

@@ -1,5 +1,5 @@
 import type { TranslatedSourceData } from '../../utilities/interfaces.ts'
-import { translate } from '../../utilities/translate.ts'
+// import { translate } from '../../utilities/translate.ts'
 
 interface LangData {
   text: string
@@ -7,29 +7,23 @@ interface LangData {
   hint: string
 }
 
-export default async function (
-  { text, translatedText, category, pos }: TranslatedSourceData,
+export default function (
+  { translatedText, category }: TranslatedSourceData,
   existing: LangData,
 ): Promise<LangData | null> {
-  if (existing) return null
+  if (existing) return Promise.resolve(null)
 
-  let hint = ''
-  let nextText = translatedText
+  const hint = ''
+  const nextText = translatedText
 
-  if (
-    pos === 'noun' &&
-    !['number', 'days_of_the_week', 'months', 'seasons', 'time']
-      .includes(category)
-  ) {
-    nextText = (await translate(['the ' + text], 'es'))[0]
-  } else if (!hint && pos === 'verb') {
-    const [nextTextResp, hintResp] = await translate([
-      `(to) ${text}`,
-      `I ${text}, you ${text}, he ${text}`,
-    ], 'es')
-    nextText = nextTextResp.replace(/\(.*\)\s/, '')
-    hint = hintResp || ''
-  }
+  // if (!hint && pos === 'verb') {
+  //   const [nextTextResp, hintResp] = await translate([
+  //     `(to) ${text}`,
+  //     `I ${text}, you ${text}, he ${text}`,
+  //   ], 'es')
+  //   nextText = nextTextResp.replace(/\(.*\)\s/, '')
+  //   hint = hintResp || ''
+  // }
 
-  return { text: nextText, category, hint }
+  return Promise.resolve({ text: nextText, category, hint })
 }

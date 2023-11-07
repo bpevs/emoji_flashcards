@@ -37,9 +37,10 @@
     "gen:text": "(deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read tasks/gen_text.ts) && deno fmt",
     "gen:anki": "deno run --allow-write=data --allow-read tasks/gen_anki.ts",
     "gen:audio": "deno run --allow-net --allow-env --allow-read --allow-write --allow-run tasks/gen_audio.ts",
-    "gen:locales-list": "deno run --allow-read --allow-write tasks/gen_locales-list.ts",
-    "list:voices": "deno run --node-modules-dir --allow-env --allow-net --allow-read tasks/list_voices.ts",
+    "gen:locales": "deno run --allow-read --allow-write tasks/gen_locales.ts",
     "start": "deno run --allow-write --allow-net --allow-read --allow-run --allow-env --watch=main.ts,index.tsx main.ts",
-    "test": "deno fmt && deno lint && deno task check"
+    "test": "deno fmt && deno lint && deno task check",
+    "validate:source": "deno run --allow-read tasks/validate_source.ts",
+    "validate:voices": "deno run --node-modules-dir --allow-env --allow-net --allow-read tasks/validate_voices.ts"
   }
 }

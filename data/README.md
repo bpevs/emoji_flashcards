@@ -14,6 +14,12 @@ The main things to note are:
 
 Language data is stored in JSON in the `languages` directory. `extensions` of the same name and file format can be used to "extend" specific languages with words that may be useful in those languages. `root.json` is the file we source in order to power the `generate` script. Basically, we update this in order to make changes to all langues (ala, add an emoji). It mostly matches `en-US`, but with additional properties that could be useful for better tuning or sorting of translations (part of speech, additional tags, etc).
 
+### Versioning
+
+`Major.Minor.Patch` Major: Changes in format Minor: Words added or deleted (Changes that reflect on all languages) Patch: Data mod, extension update, or column addition; (Changes that reflect on one language)
+
+Major and minor are shared between `source.json`, `languages`, and `plugins` `Patch` is shared between all versions of a single language and extensions. Between languages, though, patch number should vary.
+
 ### File Naming
 
 Language files should be named via 2-part [language tag](https://www.rfc-editor.org/rfc/rfc5646.html#section-2.1). Specifically, we are using [a ISO 639-1 OR ISO 639-3 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (if a 2-digit ISO 639-1 is not specific enough for common understanding) and [ISO 3166-1 code](https://www.iso.org/obp/ui/#search/code/) (again, shortest. So Probably Alpha-2 code) joined by a `-` and appended with `.json`:
