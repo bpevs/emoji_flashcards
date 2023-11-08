@@ -40,7 +40,7 @@ listLanguages().forEach(async (langCode: string) => {
   const notePromises = Object.keys(emojiDataMap)
     .map((key) => ({ ...emojiDataMap[key], key }))
     .map(async ({ category, key, text, ...other }: Translation) => {
-      const audioFilename = getAudioFilename(langCode, text)
+      const audioFilename = getAudioFilename(langCode, key, text)
 
       const fieldValues = [key, text, `[sound:${audioFilename}]`]
         .concat(hintColumnNames.map((key: string) => other[key]))
@@ -58,5 +58,5 @@ listLanguages().forEach(async (langCode: string) => {
   await Promise.all(notePromises)
 
   pkg.addDeck(deck)
-  pkg.writeToFile(join(GEN_DIR, langCode, `${langCode}.apkg`))
+  pkg.writeToFile(join(GEN_DIR, langCode, `emoji-flashcards-${langCode}.apkg`))
 })

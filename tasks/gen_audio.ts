@@ -26,11 +26,11 @@ const existingAudioFiles = listAudioFiles(language)
 
 Object.keys(emojisByCategory).forEach((category) => {
   Object.keys(emojisByCategory[category])
-    .forEach((emoji) => {
-      const text = emojisByCategory[category][emoji][0]
-      const fileName = getAudioFilename(language, text)
+    .forEach((key) => {
+      const text = emojisByCategory[category][key][0]
+      const fileName = getAudioFilename(language, key, text)
       const alreadyExists = existingAudioFiles.has(fileName)
-      if (alreadyExists) delete emojisByCategory[category][emoji]
+      if (alreadyExists) delete emojisByCategory[category][key]
     })
   if (!Object.keys(emojisByCategory[category]).length) {
     delete emojisByCategory[category]
@@ -161,7 +161,7 @@ async function writeTranslationAudioFiles(
   emojis: { [emojiKey: string]: string[] },
 ) {
   const names = Object.keys(emojis)
-    .map((emoji) => emojis[emoji][0])
+    .map((emoji) => [emoji, emojis[emoji][0]])
   const audioDirLocation = join(GEN_DIR, languageCode, 'audio')
 
   try {
@@ -189,9 +189,9 @@ async function writeTranslationAudioFiles(
       1000 * (parseFloat(nextSilenceEndS) - 0.1),
     )
 
-    console.log(emojis[count])
-
-    const name = getAudioFilename(language, names[count])
+    const [key, text] = names[count]
+    console.log(key, text)
+    const name = getAudioFilename(language, key, text)
     count = count + 1
 
     const outFile = join(audioDirLocation, name)
@@ -210,7 +210,9 @@ async function writeTranslationAudioFiles(
   }
 
   // last file
-  const name = getAudioFilename(language, names[count])
+  const [key, text] = names[count]
+  console.log(key, text)
+  const name = getAudioFilename(language, key, text)
   count = count + 1
 
   const outFile = join(audioDirLocation, name)

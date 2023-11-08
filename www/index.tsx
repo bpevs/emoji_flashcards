@@ -12,6 +12,7 @@ import {
   USER_PARAM,
 } from '../utilities/constants_shared.ts'
 import locales from '../data/locales.js'
+import { getAudioFilename } from '../utilities/data_access_utilities.ts'
 
 const touchDevice = 'ontouchstart' in document.documentElement
 const navigator = useNavigatorLanguage()
@@ -129,7 +130,9 @@ function App() {
             <Show when={noteLangCode() && currAnswer()}>
               <audio
                 ref={(ref) => audioPlayer = ref}
-                src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/emoji_${noteLangCode()}_${currAnswer()}.mp3`}
+                src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/${
+                  getAudioFilename(noteLangCode(), currEmoji(), currAnswer())
+                }`}
               />
             </Show>
             <div class='answer'>

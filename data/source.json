@@ -48,6 +48,7 @@
       "💪🦾": ["arm", "noun"],
       "🖐️": ["hand", "noun"],
       "👆": ["finger", "noun"],
+      "👆💅": ["fingernail", "noun"],
       "💇": ["haircut", "noun"],
       "🍔🤰": ["stomach", "noun"],
       "💀🦴": ["bone", "noun"],
@@ -207,6 +208,7 @@
     },
     "nature": {
       "⛰️💨🌊🔥": ["nature", "noun"],
+      "🌧️☀️🌪️☃️": ["weather", "noun"],
       "🌍": ["earth, world", "noun"],
       "🌊🐳": ["ocean", "noun"],
       "☁️": ["cloud", "noun"],

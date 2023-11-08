@@ -4,8 +4,28 @@ import type {
   LanguageFileData,
 } from './interfaces.ts'
 
-export function getAudioFilename(language: string, text: string) {
-  return `emoji_${language}_${text.replace(/\s/g, '-')}.mp3`.normalize('NFC')
+const illegalRe = /[\/\?<>\\:\*\|"]/g
+// deno-lint-ignore no-control-regex
+const controlRe = /[\x00-\x1f\x80-\x9f]/g
+const reservedRe = /^\.+$/
+const windowsReservedRe = /^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i
+const windowsTrailingRe = /[\. ]+$/
+
+export function getAudioFilename(
+  language: string,
+  emoji: string,
+  text: string,
+) {
+  const replacement = ''
+  return `${language}_${emoji}_${text}.mp3`
+    .toLowerCase()
+    .normalize('NFC')
+    .replace(illegalRe, replacement)
+    .replace(controlRe, replacement)
+    .replace(reservedRe, replacement)
+    .replace(windowsReservedRe, replacement)
+    .replace(windowsTrailingRe, replacement)
+    .replace(/(\,|\;|\:|\s|\(|\))+/g, '-')
 }
 
 export function getEmojiDataMap(
