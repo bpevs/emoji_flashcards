@@ -90,6 +90,7 @@ async function generateTranscriptionIds(
             Object.keys(emojisByCategory[categoryId])
               .map((emojiId: string) => {
                 const emoji = emojisByCategory[categoryId][emojiId]
+                console.log(emoji[pronunciationKeyIndex])
                 if (pronunciation_key) return emoji[pronunciationKeyIndex]
                 return emoji[0]
               })

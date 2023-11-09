@@ -203,9 +203,26 @@ function App() {
               }
             }}
           >
-            {/*todo: <optgroup> */}
-            <For each={data().notes}>
-              {(emoji, index) => <option value={index()}>{emoji[0]}</option>}
+            <For each={data().categories}>
+              {(category, index) => {
+                const options = () =>
+                  data().notes
+                    .map((emoji: string[], index: number) => ({ emoji, index }))
+                    .filter((
+                      { emoji }: { emoji: string[]; index: number },
+                    ) => (emoji[1] === category))
+                return (
+                  <optgroup label={category}>
+                    {
+                      <For each={options()}>
+                        {(data) => (
+                          <option value={data.index}>{data.emoji[0]}</option>
+                        )}
+                      </For>
+                    }
+                  </optgroup>
+                )
+              }}
             </For>
           </select>
         </Show>

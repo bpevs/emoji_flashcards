@@ -4,6 +4,7 @@ import { load } from 'std/dotenv/mod.ts'
 import build from './utilities/build.ts'
 import select from './www/helpers/select.ts'
 import { EmojiDataMap } from './utilities/interfaces.ts'
+import { readLanguageFile } from './utilities/data_access.ts'
 import { DATA_DIR, STATIC_DIR } from './utilities/constants_server.ts'
 import {
   DATA_PATH,
@@ -19,6 +20,7 @@ const router = new Router()
 const handle = new Handlebars({ baseDir: 'www/views', helpers: { select } })
 
 async function getWebsiteData(userLangParam, noteLangParam): {
+  categories: string[]
   userLangParam: string
   noteLangParam: string
   strings: { [name: string]: string }
@@ -34,11 +36,8 @@ async function getWebsiteData(userLangParam, noteLangParam): {
   const userLangCode = userLangParam || DEFAULT_LANG
   const noteLangCode = noteLangParam || DEFAULT_LANG
 
-  const userURL = `data/languages/${userLangCode}.json`
-  const { strings } = JSON.parse(await Deno.readTextFile(userURL))
-
-  const noteURL = `data/languages/${noteLangCode}.json`
-  const { data, locale_flag } = JSON.parse(await Deno.readTextFile(noteURL))
+  const { strings } = await readLanguageFile(userLangCode, false)
+  const { data, locale_flag } = await readLanguageFile(noteLangCode, true)
 
   const categories = Object.keys(data).sort()
   const notes = categories.map((category: string) => {
@@ -47,6 +46,7 @@ async function getWebsiteData(userLangParam, noteLangParam): {
   }).flat(1)
 
   return {
+    categories,
     userLangCode,
     noteLangCode,
     flag: locale_flag,
