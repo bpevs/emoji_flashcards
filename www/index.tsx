@@ -16,6 +16,7 @@ import { getAudioFilename } from '../utilities/data_access_utilities.ts'
 
 const touchDevice = 'ontouchstart' in document.documentElement
 const navigator = useNavigatorLanguage()
+const flagIconElements = document.getElementsByClassName('flag-icon')
 
 const browserLang = () =>
   locales.find((locale) => locale.locale_code === navigator.language())
@@ -61,7 +62,9 @@ if (userSelector) {
 }
 
 createEffect(() => {
-  if (noteSelector) (noteSelector as HTMLSelectElement).value = noteLangCode()
+  if (noteSelector) {
+    ;(noteSelector as HTMLSelectElement).value = noteLangCode()
+  }
   setParam(NOTE_PARAM, noteLangCode())
 })
 
@@ -75,6 +78,15 @@ const [data] = createResource(
   },
   { initialValue: { strings: {}, notes: [] } },
 )
+
+createEffect(() => {
+  if (flagIconElements.length) {
+    Array.prototype.forEach.call(
+      flagIconElements,
+      (el) => el.innerHTML = data().flag,
+    )
+  }
+})
 
 function App() {
   let audioPlayer: HTMLAudioElement
@@ -163,7 +175,6 @@ function App() {
       {/* Touch device probably won't use keyboard? */}
       <Show when={!touchDevice}>
         <div style='text-align: center; user-select: none;'>
-          <p>{data().strings['use-keys']}</p>
           <button
             class='kbc-button kbc-button-xs'
             data-keyboard-key='ArrowLeft'
@@ -235,4 +246,18 @@ const app = document.getElementById('app')
 if (app) {
   app.innerHTML = ''
   render(() => <App />, app)
+}
+
+// If back button exists with js, use history for back to retain params
+const buttons = document.getElementsByClassName('internal-link')
+if (buttons.length) {
+  Array.prototype.forEach.call(
+    buttons,
+    (button) => {
+      button.onclick = (e: Event) => {
+        e.preventDefault()
+        window.location.href = button.href + '?' + params.toString()
+      }
+    },
+  )
 }

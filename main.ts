@@ -23,6 +23,7 @@ async function getWebsiteData(userLangParam, noteLangParam): {
   categories: string[]
   userLangParam: string
   noteLangParam: string
+  flag: string
   strings: { [name: string]: string }
   data: EmojiDataMap
   locales: Array<{
@@ -71,6 +72,16 @@ router.get('/', async (context) => {
   )
 
   context.response.body = await handle.renderView('index', data)
+})
+
+router.get('/about', async (context) => {
+  const params = context.request.url.searchParams
+  const data = await getWebsiteData(
+    params.get(USER_PARAM),
+    params.get(NOTE_PARAM),
+  )
+
+  context.response.body = await handle.renderView('about', data)
 })
 
 router.get('/index.js', async (context) => {

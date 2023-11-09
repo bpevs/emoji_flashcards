@@ -8,7 +8,6 @@
   "locale_flag": "🇪🇸",
   "language_code": "es",
   "strings": {
-    "title": "Fichas de idiomas emoji",
     "description": "Fichas Anki descargables para",
     "switch-language": "Cambiar de idioma",
     "en-US": "Inglés",
@@ -16,13 +15,21 @@
     "ja-JP": "Japonés",
     "zh-CN": "Chino",
     "open-source": "Emoji Flashcards es gratuito y de código abierto",
-    "next": "siguiente",
     "show-answer": "mostrar respuesta",
     "no-js": "Esta demo requiere Javascript, pero puedes descargar las flashcards para Anki",
     "use-keys": "Utiliza las teclas para navegar:",
-    "footer": "¡Somos de código abierto! Puedes ayudarnos a mejorar nuestras traducciones uniéndote a nosotros en Github o Discord.",
-    "try-me": "O elija otro idioma.",
-    "download": "Descargar flashcards"
+    "download": "Descargar flashcards",
+    "title": "Flashcards Emoji",
+    "next": "siguiente",
+    "help-translate": "Ayúdanos a mejorar nuestras traducciones",
+    "back": "atrás",
+    "about": "Acerca de",
+    "about-about-description": "Emoji Flashcards es un proyecto de código abierto para generar Anki Flashcards. Mi objetivo ha sido crear un conjunto de flashcards gratuitas que puedan utilizarse en muchos idiomas. De esta manera, tendremos un lugar fácil para que los principiantes empiecen a familiarizarse con nuevo vocabulario. Creo que las tarjetas pictográficas son especialmente interesantes porque te permiten aprender nuevas palabras sin necesidad de utilizar tu lengua materna. Como los emojis son un conjunto de caracteres pictográficos que se utilizan prácticamente en todas partes, ¡me pareció una forma natural de hacerlo!",
+    "about-help-title": "Ayúdanos a traducir",
+    "about-help-description-1": "Utilizamos robots para ayudar a crear nuestras traducciones y transcripciones iniciales, ¡así que hay muchos errores! Si nos ayudas a corregirlos, nuestras fichas serán aún más útiles para todos.",
+    "about-help-description-2": "Para los errores de traducción, nos encantaría que corrigieras nuestras traducciones en Github. Si no tienes cuenta en Github, quieres ayudarnos a corregir errores de audio o simplemente quieres pasar el rato, ¡puedes unirte a nosotros en Discord!",
+    "about-sponsor-title": "Patrocínanos",
+    "about-sponsor-description": "Emoji Flashcards es un proyecto de coste relativamente bajo, por lo que creo que debería ser factible seguir siendo gratuito para siempre. Sin embargo, se necesita tiempo y energía para mantenerlo, así que si quieres ayudar a apoyar este proyecto, puedes hacerlo a través de Github Sponsors."
   },
   "columns": ["text", "hint"],
   "data": {
@@ -43,7 +50,6 @@
     "body": {
       "👂": ["el oído", ""],
       "🦶": ["el pie", ""],
-      "🫁": ["los pulmones", ""],
       "👁️": ["el ojo", ""],
       "👅": ["la lengua", ""],
       "👄": ["los labios", ""],
@@ -59,9 +65,9 @@
       "👆": ["dedo", ""],
       "💇": ["corte de pelo", ""],
       "🍔🤰": ["estómago", ""],
-      "🦵🧠💪🙆‍♀️": ["cuerpo", ""],
-      "💪🦵🫁": ["músculo", ""],
-      "🤚🏻🤚🏼🤚🏽🤚🏾🤚🏿": ["piel", ""]
+      "🤚🏻🤚🏼🤚🏽🤚🏾🤚🏿": ["piel", ""],
+      "👆💅": ["uñas", ""],
+      "🦵🧠🦴💪🙆‍♀️": ["cuerpo", ""]
     },
     "clothing": {
       "👕": ["camiseta", ""],
@@ -69,7 +75,6 @@
       "🩳": ["pantalones cortos", ""],
       "👔": ["camisa y corbata", ""],
       "👗": ["vestido", ""],
-      "👙": ["bikini", ""],
       "🎩": ["sombrero", ""],
       "🪖": ["casco", ""],
       "👟👟": ["zapatos", ""],
@@ -78,9 +83,9 @@
       "👓": ["gafas", ""],
       "🕶️": ["gafas de sol", ""],
       "🩲": ["calzoncillos, ropa interior", ""],
-      "🩱": ["bañador", ""],
       "🎒": ["mochila", ""],
-      "🧥": ["abrigo", ""]
+      "🧥": ["abrigo", ""],
+      "🩱👙": ["bañador", ""]
     },
     "color": {
       "🔵": ["azul", ""],
@@ -109,13 +114,13 @@
       "⏮️⏪": ["hacia atrás", ""],
       "🙋‍♂️🚶‍♂️🚶‍♂️🚶‍♂️": ["delante", ""],
       "🚶‍♂️🚶‍♂️🚶‍♂️🙋‍♂️": ["atrás", ""],
-      "📤📨🌳": ["fuera", ""],
-      "📥📩🏠": ["dentro", ""],
       "🧭🗺️⬆️": ["norte", ""],
       "🧭🗺️⬇️": ["sur", ""],
       "🧭🗺️⬅️": ["este", ""],
       "🧭🗺️➡️": ["oeste", ""],
-      "🧭🗺️⬆️⬇️⬅️➡️": ["dirección", ""]
+      "🧭🗺️⬆️⬇️⬅️➡️": ["dirección", ""],
+      "📤📨": ["exterior", ""],
+      "📥📩": ["interior", ""]
     },
     "drink": {
       "🍺": ["la cerveza", ""],
@@ -152,7 +157,6 @@
       "🍋": ["el limón", ""],
       "🍞🥖": ["el pan", ""],
       "🥚🍳": ["el huevo", ""],
-      "🥩": ["la carne", ""],
       "🍖": ["la carne", ""],
       "🐖🥓": ["el cerdo", ""],
       "🐓🍗": ["el pollo", ""],
@@ -168,9 +172,6 @@
       "🔪": ["el cuchillo", ""],
       "🥄": ["la cuchara", ""],
       "🥛🍺": ["la copa", ""],
-      "🍰🍩🍪": ["postre", ""],
-      "🍦": ["helado", ""],
-      "🍔": ["hamburguesa", ""],
       "🧄": ["ajo", ""],
       "🍰": ["pastel", ""],
       "🌶️": ["pimienta", ""],
@@ -179,7 +180,8 @@
       "🍝🌃": ["cena", ""],
       "🍽️": ["tenedor, plato y cuchillo", ""],
       "🛢️": ["aceite", ""],
-      "🥡🥤👋": ["comida para llevar", ""]
+      "🥡🥤👋": ["comida para llevar", ""],
+      "🐄🥩": ["carne", ""]
     },
     "measure": {
       "📏": ["largo", ""],
@@ -237,7 +239,8 @@
       "🪵": ["madera", ""],
       "🗿🪨": ["piedra", ""],
       "💎": ["diamante", ""],
-      "🏺": ["arcilla", ""]
+      "🏺": ["arcilla", ""],
+      "🌧️☀️🌪️☃️": ["tiempo", ""]
     },
     "number": {
       "#️⃣🔢": ["número", ""],
@@ -622,7 +625,8 @@
       "🧨💥": ["explotar", ""],
       "✂️💇🔪": ["cortar", ""],
       "👊🤺🤼": ["luchar", ""],
-      "🔍👀": ["encontrar", ""]
+      "🔍👀": ["encontrar", ""],
+      "🏃🏋️‍♂️": ["ejercicio", ""]
     }
   }
 }

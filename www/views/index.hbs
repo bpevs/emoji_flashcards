@@ -1,27 +1,7 @@
-<div class="user-lang">
-  <form action="/" method="GET">
-    <label for="user">🌐</label>
-    <select
-      name="user"
-      id="user-lang"
-    >
-      {{#select userLangCode}}
-        {{#each locales}}
-          <option value="{{this.locale_code}}">
-            {{this.locale_flag}} {{this.native_name}}
-          </option>
-        {{/each}}
-      {{/select}}
-    </select>
-    <input type="hidden" name="card" value="{{noteLangCode}}" />
-    <noscript>
-      <input id="fallback-go" type="submit" value="Go" />
-    </noscript>
-  </form>
-</div>
-
-<content>
-  <h1 class="title">{{strings.title}}</h1>
+<content class="index">
+  <h1 class="title">
+    {{strings.title}}
+  </h1>
 
   <div class="description">
     <form action="/" method="GET">
@@ -42,6 +22,10 @@
     </form>
   </div>
 
+  <p style="text-align: center;">
+    <a class="internal-link" href="/about">{{strings.help-translate}}</a>
+  </p>
+
   <div id="app">
     <p class="no-js">
       <div class="note-wrapper">
@@ -56,18 +40,7 @@
 
   <p class="download">
     <a download href="https://static.bpev.me/flashcards/{{userLangCode}}/deck.apkg">
-      <span>{{flag}} {{strings.download}}</span>
+      <span><span class="flag-icon">{{flag}}</span> {{strings.download}}</span>
     </a>
   </p>
 </content>
-
-
-<footer>
-  <a href="https://github.com/bpevs/emoji_flashcards">
-    <img src="/icons/github-mark.png" height="25px" />
-  </a>
-  <a href="https://discord.gg/m9WGM2QWBK">
-    <img src="/icons/discord-mark-black.png" height="20px" />
-  </a>
-  <div>{{strings.footer}}</div>
-</footer>
