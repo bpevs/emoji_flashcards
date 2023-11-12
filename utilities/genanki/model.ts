@@ -137,10 +137,10 @@ export class Note {
     const rv = []
 
     for (const req of this.model.props.req) {
-      const [card_ord, any_or_all, required_field_ords] = req
+      const [template_index, any_or_all, required_field_ords] = req
       const operation = any_or_all === 'any' ? 'some' : 'every'
       const predicate = (ord: number) => !isEmpty(this.fields[ord])
-      if (required_field_ords[operation](predicate)) rv.push(card_ord)
+      if (required_field_ords[operation](predicate)) rv.push(template_index)
     }
 
     return rv

@@ -174,20 +174,21 @@ export class Package {
       JSON.stringify({}), // tags
     ])
 
-    const insert_notes = db.prepare(
+    const insert_note = db.prepare(
       `INSERT INTO notes (id, guid, mid, mod, usn, tags, flds, sfld, csum, flags, data) 
         VALUES (null, ?, ?, ?, ?, ?, ?, ?, 0, 0, '')`,
     )
 
-    const insert_cards = db.prepare(
+    const insert_card = db.prepare(
       `INSERT INTO cards (id, nid, did, ord, mod, usn, type, queue, due, ivl, factor, reps, lapses, left, odue, odid, flags, data) 
-        VALUES (null, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, 0, 0, 0, 0, 0, '')`,
+        VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, 0, 0, 0, 0, '')`,
     )
 
+    let index = 0
     for (const deck of this.decks) {
       for (const note of deck.notes) {
         const tags = note.tags == null ? '' : note.tags.join(' ')
-        insert_notes.run(
+        insert_note.run(
           [
             note.guid, // guid
             note.model.props.id, // mid
@@ -203,7 +204,7 @@ export class Package {
         const note_id = rowID[0]['values'][0][0]
 
         for (const card_ord of note.cards) {
-          insert_cards.run(
+          insert_card.run(
             [
               note_id, // nid
               deck.id, // did
@@ -212,9 +213,11 @@ export class Package {
               -1, // usn
               0, // type 0=new, 1=learning, 2=due
               0, // queue -1 for suspended
+              index, // due
             ],
           )
         }
+        index++
       }
     }
   }
