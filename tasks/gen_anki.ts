@@ -33,7 +33,10 @@ listLanguages().forEach(async (langCode: string) => {
     tmpls: templates[lang.language_code] || [],
   })
 
-  const deck = new Deck(lang.deck_id, `${lang.name} Emoji Flashcards`)
+  const deck = new Deck(
+    lang.deck_id,
+    `${lang.name} ${lang.locale_flag} - Emoji Flashcards`,
+  )
   const pkg = new Package()
 
   const emojiDataMap = getEmojiDataMap(lang)

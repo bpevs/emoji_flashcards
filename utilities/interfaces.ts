@@ -32,7 +32,7 @@ export interface LanguageFile {
   deck_id: number
   locale_code: string
   language_code: string
-  locale_flag?: string
+  locale_flag: string
   pronunciation_key?: string
   audio_id: string
   strings: InterfaceStrings
