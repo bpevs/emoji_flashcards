@@ -16,9 +16,11 @@ Language data is stored in JSON in the `languages` directory. `extensions` of th
 
 ### Versioning
 
-`Major.Minor.Patch` Major: Changes in format Minor: Words added or deleted (Changes that reflect on all languages) Patch: Data mod, extension update, or column addition; (Changes that reflect on one language)
+**`Major.Minor.Patch`**
 
-Major and minor are shared between `source.json`, `languages`, and `plugins` `Patch` is shared between all versions of a single language and extensions. Between languages, though, patch number should vary.
+- **Major**: Changes in format
+- **Minor**: Words added or deleted (Changes that reflect on all languages)
+- **Patch**: Data mod, extension update, or column addition
 
 ### File Naming
 
@@ -47,10 +49,9 @@ Notes:
 
 1. There is NO concept of "cross-region" extensions (`CN.json` will not extend `[xx]-CN.json`).
 2. More specific extensions will override more general ones on a word-by-word basis:
-
-- If a word exists in only `extensions/es.json`, it will extend `languages/es_MS.json`.
-- If a word exists in only `extensions/es-MX.json`, it will extend `languages/es_MS.json`.
-- If a word exists in BOTH `extensions/es.json` and `extensions/es-MX.json`, `extensions/es-MX.json` will extend `languages/es_MS.json`
+   - If a word exists in only `extensions/es.json`, it will extend `languages/es_MS.json`.
+   - If a word exists in only `extensions/es-MX.json`, it will extend `languages/es_MS.json`.
+   - If a word exists in BOTH `extensions/es.json` and `extensions/es-MX.json`, `extensions/es-MX.json` will extend `languages/es_MS.json`
 
 ##### Override Priority (Highest First)
 
@@ -150,18 +151,17 @@ Extension files inherit the strings and columns of their parents.
 
 ### Audio
 
-For size reasons, audio is not included in this git repo (audio is generated into `data/gen`, but is ignored for commits). However, it is recommended to start with the latest generated files, since you'll run through all your text-to-speech credits real fast. You can download the latest `gen` directory from `https://static.bpev.me/flashcards/gen.zip`
+For filesize reasons, audio is not included in this git repo (audio is generated into `data/gen`, but is ignored for commits). The canonical audio is just `.mp3` files that can come from various sources. For this reason, it is recommended to download the latest `https://static.bpev.me/flashcards/gen.zip`, unzip it, and relocate it to `/data/gen`.
 
-Audio is currently generated using [play.ht](https://play.ht/text-to-speech-api/)
+When adding new audio, we usually start with TTS-generated audio, since it is an easy was to create a consistent set of audio. These are currently generated using [play.ht](https://play.ht/text-to-speech-api/), because they have pretty good audio through a fairly standard api. However, there are some limitations in language-choice and flexibility. In the future, it makes sense to look at some more open solutions, such as [IMS-Toucan](https://github.com/DigitalPhonetics/IMS-Toucan), [whisper](https://github.com/openai/whisper) or some other huggingface ai thing or smthn. Requirements for TTS engines are multi-lingual and SSML support (For inserting breaks to split audio. This is not necessary if using a local engine, where we can translate each word individually).
 
-It is generated into the directory:
+Audio is generated into the directory:
 
-`data/gen/{language-region-code}/audio/`
+`data/gen/{language-region-code}/audio/${locale}_${emoji}_${text}.mp3`
 
-With a filename format of:
+Examples:
 
-`{text}.mp3`
+- `data/gen/zh-CN/audio/zh-cn_🐈_猫.mp3`
+- `data/gen/ja-JP/audio/es-es_🔥_fuego.mp3`
 
-Examples: `data/gen/zh-CN/audio/狗.mp3` `data/gen/ja-JP/audio/貓.mp3`
-
-Name will be parsed to be valid urls, so we don't really care about keys with awkward text entities. The only restriction is disallowing `_` in plugin names, since we use it for splitting entity names.
+Name should be parsed to be valid urls, so we don't really care about keys with awkward text entities. The only restriction is disallowing `_` in plugin names, since we use it for splitting entity names.
