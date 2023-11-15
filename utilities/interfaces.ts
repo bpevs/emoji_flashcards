@@ -1,22 +1,18 @@
 export interface TranslatedSourceData {
   text: string
-  translatedText: string
   category: string
+  translatedText: string
   pos: string
 }
 
-export interface Translation {
+export interface EmojiData {
   text: string
   category: string
   [name: string]: string
 }
 
 export interface EmojiDataMap {
-  [emojiKey: string]: Translation
-}
-
-export interface InterfaceStrings {
-  [key: string]: string
+  [emojiKey: string]: EmojiData
 }
 
 export interface LanguageFileData {
@@ -28,14 +24,26 @@ export interface LanguageFileData {
 export interface LanguageFile {
   version: string
   name: string
-  model_id: number
-  deck_id: number
   locale_code: string
   language_code: string
   locale_flag: string
   pronunciation_key?: string
-  audio_id: string
-  strings: InterfaceStrings
+  meta: {
+    anki: {
+      model_id: number
+      deck_id: number
+    }
+    deepl?: {
+      language: string
+    }
+    play_ht?: {
+      locale: string
+      voice_id: string
+    }
+  }
+  strings: {
+    [key: string]: string
+  }
   columns: string[]
   data: LanguageFileData
 }
@@ -44,7 +52,9 @@ export interface ExtensionFile {
   version: string
   name: string
   data: LanguageFileData
-  strings: InterfaceStrings
+  strings: {
+    [key: string]: string
+  }
   extensions: {
     [extensionName: string]: {
       name: string

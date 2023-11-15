@@ -1,12 +1,22 @@
 {
   "name": "English",
   "version": "0.0.1",
-  "audio_id": "en-US-DavisNeural",
-  "model_id": 38095404,
-  "deck_id": 38095404,
+  "language_code": "en",
   "locale_code": "en-US",
   "locale_flag": "🇺🇸",
-  "language_code": "en",
+  "meta": {
+    "anki": {
+      "model_id": 38095404,
+      "deck_id": 38095404
+    },
+    "deepl": {
+      "language": "en"
+    },
+    "play_ht": {
+      "locale": "en-US",
+      "voice_id": "en-US-DavisNeural"
+    }
+  },
   "strings": {
     "description": "Downloadable Anki flashcards for",
     "switch-language": "Switch Language",

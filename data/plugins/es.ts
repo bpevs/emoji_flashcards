@@ -1,29 +1,33 @@
-import type { TranslatedSourceData } from '../../utilities/interfaces.ts'
-// import { translate } from '../../utilities/translate.ts'
+import Plugin, {
+  ProcessingTargetRow,
+  SourceRow,
+  TargetRow,
+} from '../../utilities/plugin.ts'
 
-interface LangData {
-  text: string
-  category: string
-  hint: string
-}
+export default new Plugin({
+  language: 'es',
 
-export default function (
-  { translatedText, category }: TranslatedSourceData,
-  existing: LangData,
-): Promise<LangData | null> {
-  if (existing) return Promise.resolve(null)
+  pre(
+    this: Plugin,
+    key: string,
+    { category, text_en, pos }: SourceRow,
+    prev: TargetRow,
+  ): ProcessingTargetRow {
+    if (prev?.text) return { key, ...prev }
 
-  const hint = ''
-  const nextText = translatedText
-
-  // if (!hint && pos === 'verb') {
-  //   const [nextTextResp, hintResp] = await translate([
-  //     `(to) ${text}`,
-  //     `I ${text}, you ${text}, he ${text}`,
-  //   ], 'es')
-  //   nextText = nextTextResp.replace(/\(.*\)\s/, '')
-  //   hint = hintResp || ''
-  // }
-
-  return Promise.resolve({ text: nextText, category, hint })
-}
+    if (pos === 'verb') {
+      return {
+        key,
+        category,
+        hint: this
+          .queueTranslation(`I ${text_en}, you ${text_en}, he ${text_en}`),
+        text: this
+          .queueTranslation(`(to) ${text_en}`)
+          .then((text: string) => text.replace(/\(.*\)\s/, '')),
+      }
+    } else {
+      const text = this.queueTranslation(text_en)
+      return { key, text, category, hint: '' }
+    }
+  },
+})

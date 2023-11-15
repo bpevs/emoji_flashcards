@@ -1,12 +1,22 @@
 {
   "name": "日本語",
   "version": "0.0.1",
-  "audio_id": "ja-JP-NanamiNeural",
-  "model_id": 22751404,
-  "deck_id": 22751404,
+  "language_code": "ja",
   "locale_code": "ja-JP",
   "locale_flag": "🇯🇵",
-  "language_code": "ja",
+  "meta": {
+    "anki": {
+      "model_id": 22751404,
+      "deck_id": 22751404
+    },
+    "deepl": {
+      "language": "ja"
+    },
+    "play_ht": {
+      "locale": "ja-JP",
+      "voice_id": "ja-JP-NanamiNeural"
+    }
+  },
   "strings": {
     "description": "ダウンロード可能なAnkiフラッシュカード",
     "switch-language": "言語を切り替える",

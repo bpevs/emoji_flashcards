@@ -18,7 +18,9 @@ const env = await load()
 const [language, inputCategoryId] = Deno.args
 
 const lang = await readLanguageFile(language, true)
-const { audio_id, columns, pronunciation_key } = lang
+const { columns, pronunciation_key } = lang
+const audio_id = lang?.meta?.play_ht?.voice_id
+
 const pronunciationKeyIndex = columns.indexOf(pronunciation_key || '') || 0
 
 const emojisByCategory = lang.data

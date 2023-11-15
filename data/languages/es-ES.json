@@ -1,12 +1,22 @@
 {
   "name": "Español",
   "version": "0.0.1",
-  "audio_id": "es-ES-AlvaroNeural",
-  "model_id": 2744815,
-  "deck_id": 2744815,
+  "language_code": "es",
   "locale_code": "es-ES",
   "locale_flag": "🇪🇸",
-  "language_code": "es",
+  "meta": {
+    "anki": {
+      "model_id": 2744815,
+      "deck_id": 2744815
+    },
+    "deepl": {
+      "language": "es"
+    },
+    "play_ht": {
+      "locale": "es-ES",
+      "voice_id": "es-ES-AlvaroNeural"
+    }
+  },
   "strings": {
     "description": "Fichas Anki descargables para",
     "switch-language": "Cambiar de idioma",

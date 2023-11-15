@@ -1,12 +1,22 @@
 {
   "name": "中文",
   "version": "0.0.1",
-  "audio_id": "zh-CN-XiaoxiaoNeural",
-  "model_id": 29503198,
-  "deck_id": 29503198,
+  "language_code": "zh",
   "locale_code": "zh-CN",
   "locale_flag": "🇨🇳",
-  "language_code": "zh",
+  "meta": {
+    "anki": {
+      "model_id": 29503198,
+      "deck_id": 29503198
+    },
+    "deepl": {
+      "language": "ja"
+    },
+    "play_ht": {
+      "locale": "ja-JP",
+      "voice_id": "zh-CN-XiaoxiaoNeural"
+    }
+  },
   "strings": {
     "description": "可下载的 Anki 闪存卡",
     "switch-language": "切换语言",
