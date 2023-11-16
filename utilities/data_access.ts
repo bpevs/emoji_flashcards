@@ -73,6 +73,14 @@ export async function writeLanguageFile(
   locale: string,
   languageFile: LanguageFile,
 ): Promise<void> {
+
+  // Hackery for consistent category name write-order
+  const data = languageFile.data
+  const keys = Object.keys(data).sort()
+  const newData = {}
+  keys.forEach((key) => newData[key] = data[key])
+  languageFile.data = newData
+
   await Deno.writeTextFile(
     `${LANGUAGES_DIR}/${locale}.json`,
     prettyPrintCompactFile(languageFile),

@@ -33,11 +33,11 @@ it('Runs with default pre/post', async () => {
   const rows = await plugin.getLanguageFileRows(sourceEmojiDataMap, {})
 
   assertEquals(rows, {
-    '🐈': { category: 'animal', key: '🐈', text: 'cat-es' },
-    '🐶': { category: 'animal', key: '🐶', text: 'dog-es' },
-    '🦷': { category: 'body', key: '🦷', text: 'tooth-es' },
-    '🧠': { category: 'body', key: '🧠', text: 'brain-es' },
-    '🏃‍♂️🏃‍♀️': { category: 'verbs', key: '🏃‍♂️🏃‍♀️', text: 'run-es' },
+    '🐈': { category: 'animal', text: 'cat-es' },
+    '🐶': { category: 'animal', text: 'dog-es' },
+    '🦷': { category: 'body', text: 'tooth-es' },
+    '🧠': { category: 'body', text: 'brain-es' },
+    '🏃‍♂️🏃‍♀️': { category: 'verbs', text: 'run-es' },
   })
 
   const textEn: string[] = Object.keys(sourceEmojiDataMap)
@@ -81,13 +81,12 @@ it('Runs with custom pre plugin', async () => {
 
   const rows = await plugin.getLanguageFileRows(sourceEmojiDataMap, {})
   assertEquals(rows, {
-    '🐈': { category: 'animal', key: '🐈', text: 'cat-es', hint: '' },
-    '🐶': { category: 'animal', key: '🐶', text: 'dog-es', hint: '' },
-    '🦷': { category: 'body', key: '🦷', text: 'tooth-es', hint: '' },
-    '🧠': { category: 'body', key: '🧠', text: 'brain-es', hint: '' },
+    '🐈': { category: 'animal', text: 'cat-es', hint: '' },
+    '🐶': { category: 'animal', text: 'dog-es', hint: '' },
+    '🦷': { category: 'body', text: 'tooth-es', hint: '' },
+    '🧠': { category: 'body', text: 'brain-es', hint: '' },
     '🏃‍♂️🏃‍♀️': {
       category: 'verbs',
-      key: '🏃‍♂️🏃‍♀️',
       text: 'run-es',
       hint: 'I run, you run, he run-es',
     },
@@ -131,16 +130,11 @@ it('Runs with custom post plugin', async () => {
   const rows = await plugin.getLanguageFileRows(sourceEmojiDataMap, {})
 
   assertEquals(rows, {
-    '🐈': { category: 'animal', key: '🐈', text: 'cat-uwu', hint: '🐈 UWU' },
-    '🐶': { category: 'animal', key: '🐶', text: 'dog-uwu', hint: '🐶 UWU' },
-    '🦷': { category: 'body', key: '🦷', text: 'tooth-uwu', hint: '🦷 UWU' },
-    '🧠': { category: 'body', key: '🧠', text: 'brain-uwu', hint: '🧠 UWU' },
-    '🏃‍♂️🏃‍♀️': {
-      category: 'verbs',
-      key: '🏃‍♂️🏃‍♀️',
-      text: 'run-uwu',
-      hint: '🏃‍♂️🏃‍♀️ UWU',
-    },
+    '🐈': { category: 'animal', text: 'cat-uwu', hint: '🐈 UWU' },
+    '🐶': { category: 'animal', text: 'dog-uwu', hint: '🐶 UWU' },
+    '🦷': { category: 'body', text: 'tooth-uwu', hint: '🦷 UWU' },
+    '🧠': { category: 'body', text: 'brain-uwu', hint: '🧠 UWU' },
+    '🏃‍♂️🏃‍♀️': { category: 'verbs', text: 'run-uwu', hint: '🏃‍♂️🏃‍♀️ UWU' },
   })
 
   const textEn: string[] = Object.keys(sourceEmojiDataMap)

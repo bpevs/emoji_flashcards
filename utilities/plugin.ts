@@ -71,6 +71,7 @@ export default class Plugin {
         undecoratedTarget,
         targetRowsMap[key],
       )
+      delete nextTargetRowsMap[key].key
     }
 
     return nextTargetRowsMap
@@ -85,9 +86,10 @@ export default class Plugin {
   async resolveTranslations() {
     const resolves = Object.keys(this.toTranslate)
     const translated = await translate(resolves, this.language)
-    translated.forEach((text: string, index: number) => {
+    translated.filter(Boolean).forEach((text: string, index: number) => {
       const key = resolves[index]
-      this.toTranslate[key](text)
+      if (this.toTranslate[key]) this.toTranslate[key](text)
+      else console.warn(`Missing translate resolver for ${text}`)
     })
   }
 
