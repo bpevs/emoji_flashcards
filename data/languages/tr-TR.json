@@ -1,9 +1,9 @@
 {
-  "name": "Template For New Language",
+  "name": "Turkish",
   "version": "0.0.1",
-  "language_code": "es",
-  "locale_code": "es-ES",
-  "locale_flag": "🏳️‍🌈",
+  "language_code": "tr",
+  "locale_code": "tr-TR",
+  "locale_flag": "🇹🇷",
   "meta": {
     "anki": {
       "model_id": 12345,

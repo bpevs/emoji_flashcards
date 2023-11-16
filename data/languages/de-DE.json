@@ -1,9 +1,9 @@
 {
-  "name": "Template For New Language",
+  "name": "German",
   "version": "0.0.1",
-  "language_code": "es",
-  "locale_code": "es-ES",
-  "locale_flag": "🏳️‍🌈",
+  "language_code": "de",
+  "locale_code": "de-DE",
+  "locale_flag": "🇩🇪",
   "meta": {
     "anki": {
       "model_id": 12345,

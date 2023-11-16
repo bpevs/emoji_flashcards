@@ -27,6 +27,7 @@ import {
 } from '../utilities/data_access_utilities.ts'
 import { translate } from '../utilities/translate.ts'
 import plugins from '../data/plugins/mod.ts'
+import Plugin from '../utilities/plugin.ts'
 import { SourceEmojiDataMap } from '../utilities/interfaces.ts'
 
 await generateAllTranslations()
