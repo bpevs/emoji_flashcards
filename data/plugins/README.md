@@ -1,12 +1,12 @@
 # Plugins
 
-These plugins are for usage within `generate_translations`, and they define how to build language `hints`.
+These plugins are for `gen_text` usage, and they do additional processing for building specific note/data sets.
 
 For example:
 
-- if `zh` language, generate pinyin and use it as hint.
-- if `ja` language, generate romanji and use it as a hint.
-- if `es` language:
+- `zh` language, generate pinyin and use it as hint.
+- `ja` language, generate romanji and use it as a hint.
+- `es` language:
   - if noun, translate with "the" to generate "el" or "la"; no hint.
   - if verb, hint should be alternate forms
     - e.g. `comer` -> hint: `como, come, comes`

@@ -5,7 +5,7 @@ const env = await load()
 const DEEPL_API_ENDPOINT = 'https://api-free.deepl.com/v2/translate'
 const DEEPL_API_KEY = env['DEEPL_API_KEY']
 
-export async function translate(
+async function translateDeepl(
   texts: string[],
   targetLanguage: string,
 ): Promise<string[]> {
@@ -21,4 +21,13 @@ export async function translate(
 
   const result = await response.json()
   return result.translations[0].text.split('\n')
+}
+
+export const _internals = { translateDeepl }
+
+export const translate = (
+  texts: string[],
+  targetLanguage: string,
+): Promise<string[]> => {
+  return _internals.translateDeepl(texts, targetLanguage)
 }

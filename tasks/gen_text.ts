@@ -23,16 +23,20 @@ import {
 import {
   getDataAndColumnsFromEmojiDataMap,
   getEmojiDataMap,
+  getSourceEmojiDataMap,
 } from '../utilities/data_access_utilities.ts'
 import { translate } from '../utilities/translate.ts'
 import plugins from '../data/plugins/mod.ts'
+import { SourceEmojiDataMap } from '../utilities/interfaces.ts'
 
 await generateAllTranslations()
 Deno.exit(0)
 
 async function generateAllTranslations() {
   const sourceFile = await readSourceFile()
-  const sourceEmojiDataMap = getEmojiDataMap(sourceFile)
+  const sourceEmojiDataMap: SourceEmojiDataMap = getSourceEmojiDataMap(
+    sourceFile,
+  )
 
   const languages = listLanguages()
 
@@ -68,56 +72,17 @@ async function generateAllTranslations() {
       }
     }
 
-    // If translation doesn't exist in target languageFile JSON, translate and add
-    const textsToTranslate: string[] = []
-    const emojiDataMap = getEmojiDataMap(languageFile)
+    const shortLang = language.split('-')[0]
+    const plugin = plugins[language] || plugins[shortLang]
+    if (!plugin) throw new Error('No plugin for this language')
 
-    for (const emojiKey in sourceEmojiDataMap) {
-      if (!emojiDataMap[emojiKey]) {
-        textsToTranslate.push(sourceEmojiDataMap[emojiKey].text)
-      }
-    }
+    const targetRowsMap = getEmojiDataMap(languageFile)
+    const rows = await plugin.getLanguageFileRows(
+      sourceEmojiDataMap,
+      targetRowsMap,
+    )
+    const [columns, data] = getDataAndColumnsFromEmojiDataMap(rows)
 
-    console.info(`Texts to translate:`)
-    console.info(textsToTranslate)
-
-    if (textsToTranslate.length) {
-      const translatedTexts = await translate(textsToTranslate, language)
-
-      let index = 0
-      for (const [emojiKey, item] of Object.entries(sourceEmojiDataMap)) {
-        const translatedData = {
-          text: item.text,
-          translatedText: translatedTexts[index],
-          category: item.category,
-          pos: item.pos,
-        }
-
-        const shortLang = language.split('-')[0]
-        const plugin = plugins[language] || plugins[shortLang]
-
-        if (plugin) {
-          const next = await plugin(translatedData, emojiDataMap[emojiKey])
-          if (next) {
-            emojiDataMap[emojiKey] = next
-            index++
-          }
-        } else if (!emojiDataMap[emojiKey]) {
-          emojiDataMap[emojiKey] = {
-            text: translatedData.translatedText,
-            category: translatedData.category,
-          }
-          index++
-        }
-      }
-    }
-
-    // Delete keys from target JSON that do not exist in source.json
-    for (const emojiKey in emojiDataMap) {
-      if (!sourceEmojiDataMap[emojiKey]) delete emojiDataMap[emojiKey]
-    }
-
-    const [columns, data] = getDataAndColumnsFromEmojiDataMap(emojiDataMap)
     await writeLanguageFile(language, {
       ...languageFile,
       columns,

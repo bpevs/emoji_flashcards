@@ -1,20 +1,16 @@
-import type { TranslatedSourceData } from '../../utilities/interfaces.ts'
 import pinyin from 'chinese-to-pinyin'
+import Plugin, { TargetRow } from '../../utilities/plugin.ts'
 
-interface LangData {
-  text: string
-  category: string
-  pinyin: string
-}
+export default new Plugin({
+  language: 'zh',
 
-export default function (
-  { translatedText, category }: TranslatedSourceData,
-  existing: LangData,
-): LangData | null {
-  if (existing) return null
-  return {
-    text: translatedText,
-    category,
-    pinyin: pinyin(translatedText) || '',
-  }
-}
+  post(
+    this: Plugin,
+    key: string,
+    { category, text }: TargetRow,
+    prev: TargetRow,
+  ): TargetRow {
+    if (prev) return prev
+    return { key, text, category, pinyin: pinyin(text) || '' }
+  },
+})

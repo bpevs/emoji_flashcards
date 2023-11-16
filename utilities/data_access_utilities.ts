@@ -2,6 +2,7 @@ import type {
   EmojiDataMap,
   LanguageFile,
   LanguageFileData,
+  SourceEmojiDataMap,
 } from './interfaces.ts'
 
 const illegalRe = /[\/\?<>\\:\*\|"]/g
@@ -26,6 +27,22 @@ export function getAudioFilename(
     .replace(windowsReservedRe, replacement)
     .replace(windowsTrailingRe, replacement)
     .replace(/(\,|\;|\:|\s|\(|\))+/g, '-')
+}
+
+export function getSourceEmojiDataMap(
+  { data }: LanguageFile,
+): SourceEmojiDataMap {
+  const emojiMap: SourceEmojiDataMap = {}
+  Object.keys(data).forEach((category) => {
+    Object.keys(data[category]).forEach((emojiKey) => {
+      emojiMap[emojiKey] = {
+        category,
+        text_en: data[category][emojiKey][0],
+        pos: data[category][emojiKey][1],
+      }
+    })
+  })
+  return emojiMap
 }
 
 export function getEmojiDataMap(

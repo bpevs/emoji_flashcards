@@ -1,5 +1,7 @@
 # Templates
 
+These are Anki templates. Basically, how Anki cards are formatted.
+
 ## Question
 
 Each Anki note has 3 different types of card questions:
