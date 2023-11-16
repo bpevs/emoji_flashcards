@@ -63,8 +63,9 @@ export default class Plugin {
       const { key, category, text, ...other } = rows[index]
       const undecoratedTarget: TargetRow = { key, category, text: await text }
       for (const otherKey in other) {
-        undecoratedTarget[key] = await other[otherKey]
+        undecoratedTarget[otherKey] = await other[otherKey]
       }
+
       nextTargetRowsMap[key] = await this.post(
         key,
         undecoratedTarget,
@@ -82,13 +83,12 @@ export default class Plugin {
   }
 
   async resolveTranslations() {
-    const translated = await translate(
-      Object.keys(this.toTranslate),
-      this.language,
-    )
-    translated.forEach((text: string, index: number) =>
-      this.toTranslate[index](text)
-    )
+    const resolves = Object.keys(this.toTranslate)
+    const translated = await translate(resolves, this.language)
+    translated.forEach((text: string, index: number) => {
+      const key = resolves[index]
+      this.toTranslate[key](text)
+    })
   }
 
   // Runs prior to translation; this is for if we want to modify the text

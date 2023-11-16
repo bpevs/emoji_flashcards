@@ -1,10 +1,3 @@
-export interface TranslatedSourceData {
-  text: string
-  category: string
-  translatedText: string
-  pos: string
-}
-
 export interface EmojiData {
   text: string
   category: string
@@ -13,6 +6,16 @@ export interface EmojiData {
 
 export interface EmojiDataMap {
   [emojiKey: string]: EmojiData
+}
+
+export interface SourceEmojiData {
+  text_en: string
+  category: string
+  pos: string
+}
+
+export interface SourceEmojiDataMap {
+  [emojiKey: string]: SourceEmojiData
 }
 
 export interface LanguageFileData {

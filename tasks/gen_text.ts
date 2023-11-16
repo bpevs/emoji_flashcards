@@ -23,17 +23,20 @@ import {
 import {
   getDataAndColumnsFromEmojiDataMap,
   getEmojiDataMap,
+  getSourceEmojiDataMap,
 } from '../utilities/data_access_utilities.ts'
 import { translate } from '../utilities/translate.ts'
 import plugins from '../data/plugins/mod.ts'
+import { SourceEmojiDataMap } from '../utilities/interfaces.ts'
 
 await generateAllTranslations()
 Deno.exit(0)
 
 async function generateAllTranslations() {
   const sourceFile = await readSourceFile()
-  // deno-lint-ignore no-explicit-any
-  const sourceEmojiDataMap: any = getEmojiDataMap(sourceFile)
+  const sourceEmojiDataMap: SourceEmojiDataMap = getSourceEmojiDataMap(
+    sourceFile,
+  )
 
   const languages = listLanguages()
 
