@@ -4,7 +4,7 @@
 
 > **Note**
 >
-> You can help improve Emoji Flashcards translations! Read our [Contribution Guide](./.github/CONTRIBUTING.md) and join our [Discord](https://discord.gg/m9WGM2QWBK) to learn more!
+> You can help improve translations! Read our [Contribution Guide](./.github/CONTRIBUTING.md) and join our [Discord](https://discord.gg/m9WGM2QWBK) to learn more!
 
 ![A Generated Anki Flashcard](./www/screenshots/answer.png)
 
