@@ -52,11 +52,15 @@ listLanguages().forEach(async (langCode: string) => {
       const guid = ankiHash([langCode, key])
       deck.addNote(model.createNote(fieldValues, [category], guid))
 
-      const audioLocation = join(GEN_DIR, langCode, 'audio', audioFilename)
-      const fileBytes = await Deno.readFile(audioLocation)
-      const blob = new Blob([fileBytes], { type: 'audio/mpeg' })
+      try {
+        const audioLocation = join(GEN_DIR, langCode, 'audio', audioFilename)
+        const fileBytes = await Deno.readFile(audioLocation)
+        const blob = new Blob([fileBytes], { type: 'audio/mpeg' })
 
-      pkg.addMedia(blob, audioFilename)
+        pkg.addMedia(blob, audioFilename)
+      } catch {
+        console.warn('Missing audio file: ', audioFilename)
+      }
     })
   await Promise.all(notePromises)
 

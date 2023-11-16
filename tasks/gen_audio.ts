@@ -16,6 +16,7 @@ const MATCH_SILENCE = /silence_start: ([\w\.]+)[\s\S]+?silence_end: ([\w\.]+)/g
 const env = await load()
 
 const [language, inputCategoryId] = Deno.args
+if (!language) throw new Error("Please supply language_code")
 
 const lang = await readLanguageFile(language, true)
 const { columns, pronunciation_key } = lang
@@ -92,7 +93,6 @@ async function generateTranscriptionIds(
             Object.keys(emojisByCategory[categoryId])
               .map((emojiId: string) => {
                 const emoji = emojisByCategory[categoryId][emojiId]
-                console.log(emoji[pronunciationKeyIndex])
                 if (pronunciation_key) return emoji[pronunciationKeyIndex]
                 return emoji[0]
               })
