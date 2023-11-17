@@ -62,7 +62,7 @@ export default [
   {
     'language_code': 'fr',
     'locale_code': 'fr-FR',
-    'locale_flag': '🇫🇮',
+    'locale_flag': '🇫🇷',
     'native_name': 'Français',
   },
   {

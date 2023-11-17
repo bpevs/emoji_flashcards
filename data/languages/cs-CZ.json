@@ -11,10 +11,10 @@
       "deck_id": 23111602
     },
     "deepl": {
-      "language": "cs"
+      "language_code": "cs"
     },
     "play_ht": {
-      "locale": "cs-CZ",
+      "locale_code": "cs-CZ",
       "voice_id": "cs-CZ-VlastaNeural"
     }
   },

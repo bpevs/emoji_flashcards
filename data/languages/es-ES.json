@@ -11,10 +11,10 @@
       "deck_id": 23111608
     },
     "deepl": {
-      "language": "es"
+      "language_code": "es"
     },
     "play_ht": {
-      "locale": "es-ES",
+      "locale_code": "es-ES",
       "voice_id": "es-ES-AlvaroNeural"
     }
   },

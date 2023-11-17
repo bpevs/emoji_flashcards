@@ -11,10 +11,10 @@
       "deck_id": 23111604
     },
     "deepl": {
-      "language": "de"
+      "language_code": "de"
     },
     "play_ht": {
-      "locale": "de-DE",
+      "locale_code": "de-DE",
       "voice_id": "de-DE-KillianNeural"
     }
   },

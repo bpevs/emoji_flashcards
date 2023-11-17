@@ -11,10 +11,10 @@
       "deck_id": 23111617
     },
     "deepl": {
-      "language": "ko"
+      "language_code": "ko"
     },
     "play_ht": {
-      "locale": "ko-KR",
+      "locale_code": "ko-KR",
       "voice_id": "SeoyeonNeural"
     }
   },

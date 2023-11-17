@@ -11,10 +11,10 @@
       "deck_id": 23111633
     },
     "deepl": {
-      "language": "zh"
+      "language_code": "zh"
     },
     "play_ht": {
-      "locale": "zh-TW",
+      "locale_code": "zh-TW",
       "voice_id": "zh-TW-YunJheNeura"
     }
   },

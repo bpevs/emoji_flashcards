@@ -11,7 +11,8 @@
       "deck_id": 23111624
     },
     "deepl": {
-      "language": "pt-PT"
+      "language_code": "pt",
+      "locale_code": "pt-PT"
     }
   },
   "strings": {

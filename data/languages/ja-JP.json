@@ -11,10 +11,10 @@
       "deck_id": 23111615
     },
     "deepl": {
-      "language": "ja"
+      "language_code": "ja"
     },
     "play_ht": {
-      "locale": "ja-JP",
+      "locale_code": "ja-JP",
       "voice_id": "ja-JP-NanamiNeural"
     }
   },

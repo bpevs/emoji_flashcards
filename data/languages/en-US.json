@@ -11,10 +11,11 @@
       "deck_id": 23111607
     },
     "deepl": {
-      "language": "en-US"
+      "language_code": "en",
+      "locale_code": "en-US"
     },
     "play_ht": {
-      "locale": "en-US",
+      "locale_code": "en-US",
       "voice_id": "en-US-DavisNeural"
     }
   },

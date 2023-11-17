@@ -6,6 +6,7 @@ import Plugin, {
 
 export default new Plugin({
   language: 'en',
+
   pre(
     this: Plugin,
     key: string,
