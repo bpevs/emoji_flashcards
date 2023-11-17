@@ -5,8 +5,6 @@ import Plugin, {
 } from '../../utilities/plugin.ts'
 
 export default new Plugin({
-  language: 'es',
-
   pre(
     this: Plugin,
     key: string,

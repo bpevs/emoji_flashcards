@@ -16,24 +16,25 @@ const MATCH_SILENCE = /silence_start: ([\w\.]+)[\s\S]+?silence_end: ([\w\.]+)/g
 
 const env = await load()
 
-const [language, inputCategoryId] = Deno.args
-if (!language) throw new Error('Please supply language_code')
+const [locale_code, inputCategoryId] = Deno.args
+if (!locale_code) throw new Error('Please supply language_code')
 
-const lang = await readLanguageFile(language, true)
+const lang = await readLanguageFile(locale_code, true)
 const { columns, pronunciation_key } = lang
-const audio_id = lang?.meta?.play_ht?.voice_id
+const voice_id = lang?.meta?.play_ht?.voice_id
+if (!voice_id) throw new Error(`${locale_code} does not have a voice_id`)
 
 const pronunciationKeyIndex = columns.indexOf(pronunciation_key || '') || 0
 
 const emojisByCategory = lang.data
-ensureDir(join(GEN_DIR, language, 'audio'))
-const existingAudioFiles = listAudioFiles(language)
+ensureDir(join(GEN_DIR, locale_code, 'audio'))
+const existingAudioFiles = listAudioFiles(locale_code)
 
 Object.keys(emojisByCategory).forEach((category) => {
   Object.keys(emojisByCategory[category])
     .forEach((key) => {
       const text = emojisByCategory[category][key][0]
-      const fileName = getAudioFilename(language, key, text)
+      const fileName = getAudioFilename(locale_code, key, text)
       const alreadyExists = existingAudioFiles.has(fileName)
       if (alreadyExists) delete emojisByCategory[category][key]
     })
@@ -42,9 +43,9 @@ Object.keys(emojisByCategory).forEach((category) => {
   }
 })
 
-console.log(language, audio_id, Object.keys(emojisByCategory))
+console.log(locale_code, voice_id, Object.keys(emojisByCategory))
 
-const ids = await generateTranscriptionIds(language, emojisByCategory, audio_id)
+const ids = await generateTranscriptionIds(emojisByCategory, voice_id)
 
 console.log('source audio id: ', JSON.stringify(ids))
 
@@ -57,34 +58,17 @@ for (const idx in ids) {
   const emojis = emojisByCategory[categoryId]
   const audioUrl = await downloadSourceFile(transcriptionId)
   console.log('source audio saved: ', audioUrl)
-  await writeTranslationAudioFiles(audioUrl, language, emojis)
+  await writeTranslationAudioFiles(audioUrl, locale_code, emojis)
 }
 
 console.log('COMPLETE!')
 Deno.exit(0)
 
 async function generateTranscriptionIds(
-  languageCode: string,
   emojisByCategory: { [category: string]: { [emojiKey: string]: string[] } },
-  audio_id?: string,
+  voice_id: string,
 ): Promise<{ categoryId: string; transcriptionId: string }[]> {
   PlayHT.init({ apiKey: env['PLAYHT_API_KEY'], userId: env['PLAYHT_USER_ID'] })
-
-  const voiceEngine: PlayHT.VoiceEngine[] = ['Standard']
-  const settings = {
-    quality: 'high',
-    languageCode: [languageCode],
-  }
-
-  let voice: { id: string }
-
-  if (audio_id) {
-    const voices = await PlayHT.listVoices(settings)
-    voice = voices.find(({ id }) => id === audio_id) || { id: '' }
-  } else {
-    const voices = await PlayHT.listVoices({ voiceEngine, ...settings })
-    voice = voices[0] || { id: '' }
-  }
 
   return await Promise.all(
     Object.keys(emojisByCategory)
@@ -103,7 +87,7 @@ async function generateTranscriptionIds(
               })
               .join(`, <break time="${SILENCE_REQUEST}s"/> `)
           }</p></speak>`,
-          voice.id,
+          voice_id,
         )
         if (!response.transcriptionId) console.error(response)
         return { categoryId, transcriptionId: response.transcriptionId }
@@ -171,12 +155,12 @@ function getAudioResults(transcriptionId: string) {
 //  */
 async function writeTranslationAudioFiles(
   sourceURL: string,
-  languageCode: string,
+  locale_code: string,
   emojis: { [emojiKey: string]: string[] },
 ) {
   const names = Object.keys(emojis)
     .map((emoji) => [emoji, emojis[emoji][0]])
-  const audioDirLocation = join(GEN_DIR, languageCode, 'audio')
+  const audioDirLocation = join(GEN_DIR, locale_code, 'audio')
 
   try {
     await Deno.mkdir(audioDirLocation, { recursive: true })
@@ -205,7 +189,7 @@ async function writeTranslationAudioFiles(
 
     const [key, text] = names[count]
     console.log(key, text)
-    const name = getAudioFilename(language, key, text)
+    const name = getAudioFilename(locale_code, key, text)
     count = count + 1
 
     const outFile = join(audioDirLocation, name)
@@ -226,7 +210,7 @@ async function writeTranslationAudioFiles(
   // last file
   const [key, text] = names[count]
   console.log(key, text)
-  const name = getAudioFilename(language, key, text)
+  const name = getAudioFilename(locale_code, key, text)
   count = count + 1
 
   const outFile = join(audioDirLocation, name)

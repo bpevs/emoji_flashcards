@@ -20,38 +20,35 @@ import {
   readSourceFile,
   writeLanguageFile,
 } from '../utilities/data_access.ts'
-import {
-  getDataAndColumnsFromEmojiDataMap,
-  getEmojiDataMap,
-  getSourceEmojiDataMap,
-} from '../utilities/data_access_utilities.ts'
+import { getDataAndColumns } from '../utilities/data_access_utilities.ts'
 import { translate } from '../utilities/translate.ts'
 import plugins from '../data/plugins/mod.ts'
 import Plugin from '../utilities/plugin.ts'
-import { SourceEmojiDataMap } from '../utilities/interfaces.ts'
 
 await generateAllTranslations()
 Deno.exit(0)
 
 async function generateAllTranslations() {
   const sourceFile = await readSourceFile()
-  const sourceEmojiDataMap: SourceEmojiDataMap = getSourceEmojiDataMap(
-    sourceFile,
-  )
+  const localeCodes = listLanguages()
 
-  const languages = listLanguages()
+  console.info('locale_codes: ', localeCodes)
 
-  console.info('languages: ', languages)
+  for (const localeCode of localeCodes) {
+    const languageFile = await readLanguageFile(localeCode)
+    if (!languageFile) {
+      console.warn(`no language file for ${localeCode}`)
+      continue
+    }
 
-  for (const language of languages) {
-    const languageFile = await readLanguageFile(language)
+    const { locale_code, language_code, strings } = languageFile
 
-    console.info(`Language (${language}):`)
+    console.info(`Language (${locale_code}):`)
 
     const stringsToTranslate = []
 
     for (const stringKey in sourceFile.strings) {
-      if (!languageFile?.strings[stringKey]) {
+      if (!strings[stringKey]) {
         stringsToTranslate.push(sourceFile.strings[stringKey])
       }
     }
@@ -60,9 +57,14 @@ async function generateAllTranslations() {
     console.info(stringsToTranslate)
 
     if (stringsToTranslate.length) {
+      const deepl = languageFile?.meta?.deepl
+      let translationCode = deepl?.language_code
+      if (deepl?.locale_code) translationCode = deepl?.locale_code
+      if (!translationCode) throw new Error('No locale to translate')
+
       const translatedStrings = await translate(
         stringsToTranslate,
-        language,
+        translationCode,
       )
       let index = 0
       for (const [stringKey] of Object.entries(sourceFile.strings)) {
@@ -73,21 +75,16 @@ async function generateAllTranslations() {
       }
     }
 
-    const shortLang = language.split('-')[0]
-    let plugin = plugins[language] || plugins[shortLang]
+    let plugin = plugins[locale_code] || plugins[language_code]
     if (!plugin) {
-      console.warn(`No plugin for ${language}; using default`)
-      plugin = new Plugin({ language: shortLang })
+      console.warn(`No plugin for ${language_code}; using default`)
+      plugin = new Plugin()
     }
 
-    const targetRowsMap = getEmojiDataMap(languageFile)
-    const rows = await plugin.getLanguageFileRows(
-      sourceEmojiDataMap,
-      targetRowsMap,
-    )
-    const [columns, data] = getDataAndColumnsFromEmojiDataMap(rows)
+    const rows = await plugin.getLanguageFileRows(sourceFile, languageFile)
+    const [columns, data] = getDataAndColumns(rows)
 
-    await writeLanguageFile(language, {
+    await writeLanguageFile(locale_code, {
       ...languageFile,
       columns,
       data,

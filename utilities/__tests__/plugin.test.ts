@@ -6,16 +6,34 @@ import {
 } from 'std/testing/mock.ts'
 import { assertEquals } from 'std/assert/mod.ts'
 import { afterEach, beforeEach, it } from 'std/testing/bdd.ts'
-import { SourceEmojiDataMap } from '../interfaces.ts'
+import { LanguageFile, SourceFile } from '../types.ts'
 import { _internals } from '../translate.ts'
 import Plugin, { ProcessingTargetRow, SourceRow, TargetRow } from '../plugin.ts'
 
-const sourceEmojiDataMap: SourceEmojiDataMap = Object.freeze({
-  '🐶': { text_en: 'dog', pos: 'noun', category: 'animal' },
-  '🐈': { text_en: 'cat', pos: 'noun', category: 'animal' },
-  '🦷': { text_en: 'tooth', pos: 'noun', category: 'body' },
-  '🧠': { text_en: 'brain', pos: 'noun', category: 'body' },
-  '🏃‍♂️🏃‍♀️': { text_en: 'run', pos: 'verb', category: 'verbs' },
+const baseSourceFile: SourceFile = Object.freeze({
+  version: '0.1.1',
+  strings: {},
+  columns: ['text', 'hint'],
+  data: {
+    animal: { '🐶': ['dog', 'noun'], '🐈': ['cat', 'noun'] },
+    body: { '🦷': ['tooth', 'noun'], '🧠': ['brain', 'noun'] },
+    verbs: { '🏃‍♂️🏃‍♀️': ['run', 'verb'] },
+  },
+})
+
+const emptyTarget: LanguageFile = Object.freeze({
+  version: '0.1.1',
+  name: 'UWU lang',
+  language_code: 'uwu',
+  locale_code: 'uwu-UWU',
+  locale_flag: '🏳️‍🌈',
+  strings: {},
+  columns: [],
+  data: {},
+  meta: {
+    anki: { deck_id: 1, model_id: 1 },
+    deepl: { language_code: 'uwu' },
+  },
 })
 
 let translateStub: Stub
@@ -29,31 +47,27 @@ beforeEach(() => {
 afterEach(() => translateStub.restore())
 
 it('Runs with default pre/post', async () => {
-  const plugin = new Plugin({ language: 'es' })
-  const rows = await plugin.getLanguageFileRows(sourceEmojiDataMap, {})
+  const plugin = new Plugin()
+  const rows = await plugin.getLanguageFileRows(baseSourceFile, emptyTarget)
 
   assertEquals(rows, {
-    '🐈': { category: 'animal', text: 'cat-es' },
-    '🐶': { category: 'animal', text: 'dog-es' },
-    '🦷': { category: 'body', text: 'tooth-es' },
-    '🧠': { category: 'body', text: 'brain-es' },
-    '🏃‍♂️🏃‍♀️': { category: 'verbs', text: 'run-es' },
+    '🐶': { category: 'animal', text: 'dog-uwu' },
+    '🐈': { category: 'animal', text: 'cat-uwu' },
+    '🦷': { category: 'body', text: 'tooth-uwu' },
+    '🧠': { category: 'body', text: 'brain-uwu' },
+    '🏃‍♂️🏃‍♀️': { category: 'verbs', text: 'run-uwu' },
   })
-
-  const textEn: string[] = Object.keys(sourceEmojiDataMap)
-    .map((key) => sourceEmojiDataMap[key]?.text_en)
+  const textEn: string[] = ['dog', 'cat', 'tooth', 'brain', 'run']
 
   assertSpyCallAsync(translateStub, 0, {
-    args: [textEn, 'es'],
-    returned: textEn.map((text: string) => text + '-es'),
+    args: [textEn, 'uwu'],
+    returned: textEn.map((text: string) => text + '-uwu'),
   })
   assertSpyCalls(translateStub, 1)
 })
 
 it('Runs with custom pre plugin', async () => {
   const plugin = new Plugin({
-    language: 'es',
-
     pre(
       this: Plugin,
       key: string,
@@ -79,16 +93,16 @@ it('Runs with custom pre plugin', async () => {
     },
   })
 
-  const rows = await plugin.getLanguageFileRows(sourceEmojiDataMap, {})
+  const rows = await plugin.getLanguageFileRows(baseSourceFile, emptyTarget)
   assertEquals(rows, {
-    '🐈': { category: 'animal', text: 'cat-es', hint: '' },
-    '🐶': { category: 'animal', text: 'dog-es', hint: '' },
-    '🦷': { category: 'body', text: 'tooth-es', hint: '' },
-    '🧠': { category: 'body', text: 'brain-es', hint: '' },
+    '🐶': { category: 'animal', text: 'dog-uwu', hint: '' },
+    '🐈': { category: 'animal', text: 'cat-uwu', hint: '' },
+    '🦷': { category: 'body', text: 'tooth-uwu', hint: '' },
+    '🧠': { category: 'body', text: 'brain-uwu', hint: '' },
     '🏃‍♂️🏃‍♀️': {
       category: 'verbs',
-      text: 'run-es',
-      hint: 'I run, you run, he run-es',
+      text: 'run-uwu',
+      hint: 'I run, you run, he run-uwu',
     },
   })
 
@@ -101,8 +115,8 @@ it('Runs with custom pre plugin', async () => {
     '(to) run',
   ]
   assertSpyCallAsync(translateStub, 0, {
-    args: [untranslated, 'es'],
-    returned: untranslated.map((text_en) => text_en + '-es'),
+    args: [untranslated, 'uwu'],
+    returned: untranslated.map((text_en) => text_en + '-uwu'),
   })
   assertSpyCalls(translateStub, 1)
 })
@@ -114,8 +128,6 @@ it('Runs with custom post plugin', async () => {
   }
 
   const plugin = new Plugin({
-    language: 'uwu',
-
     async post(
       this: Plugin,
       key: string,
@@ -127,18 +139,17 @@ it('Runs with custom post plugin', async () => {
     },
   })
 
-  const rows = await plugin.getLanguageFileRows(sourceEmojiDataMap, {})
+  const rows = await plugin.getLanguageFileRows(baseSourceFile, emptyTarget)
 
   assertEquals(rows, {
-    '🐈': { category: 'animal', text: 'cat-uwu', hint: '🐈 UWU' },
     '🐶': { category: 'animal', text: 'dog-uwu', hint: '🐶 UWU' },
+    '🐈': { category: 'animal', text: 'cat-uwu', hint: '🐈 UWU' },
     '🦷': { category: 'body', text: 'tooth-uwu', hint: '🦷 UWU' },
     '🧠': { category: 'body', text: 'brain-uwu', hint: '🧠 UWU' },
     '🏃‍♂️🏃‍♀️': { category: 'verbs', text: 'run-uwu', hint: '🏃‍♂️🏃‍♀️ UWU' },
   })
 
-  const textEn: string[] = Object.keys(sourceEmojiDataMap)
-    .map((key) => sourceEmojiDataMap[key]?.text_en)
+  const textEn: string[] = ['dog', 'cat', 'tooth', 'brain', 'run']
 
   assertSpyCallAsync(translateStub, 0, {
     args: [textEn, 'uwu'],

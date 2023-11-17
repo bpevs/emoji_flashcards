@@ -1,9 +1,10 @@
 import type {
-  EmojiDataMap,
+  LanguageDataMap,
   LanguageFile,
   LanguageFileData,
-  SourceEmojiDataMap,
-} from './interfaces.ts'
+  SourceDataMap,
+  SourceFile,
+} from './types.ts'
 
 const illegalRe = /[\/\?<>\\:\*\|"]/g
 // deno-lint-ignore no-control-regex
@@ -29,10 +30,10 @@ export function getAudioFilename(
     .replace(/(\,|\;|\:|\s|\(|\))+/g, '-')
 }
 
-export function getSourceEmojiDataMap(
-  { data }: LanguageFile,
-): SourceEmojiDataMap {
-  const emojiMap: SourceEmojiDataMap = {}
+export function getSourceDataMap(
+  { data }: SourceFile,
+): SourceDataMap {
+  const emojiMap: SourceDataMap = {}
   Object.keys(data).forEach((category) => {
     Object.keys(data[category]).forEach((emojiKey) => {
       emojiMap[emojiKey] = {
@@ -45,10 +46,10 @@ export function getSourceEmojiDataMap(
   return emojiMap
 }
 
-export function getEmojiDataMap(
+export function getLanguageDataMap(
   { columns, data }: LanguageFile,
-): EmojiDataMap {
-  const emojiMap: EmojiDataMap = {}
+): LanguageDataMap {
+  const emojiMap: LanguageDataMap = {}
   Object.keys(data).forEach((category) => {
     Object.keys(data[category]).forEach((emojiKey) => {
       emojiMap[emojiKey] = { category, text: data[category][emojiKey][0] }
@@ -60,8 +61,8 @@ export function getEmojiDataMap(
   return emojiMap
 }
 
-export function getDataAndColumnsFromEmojiDataMap(
-  dataMap: EmojiDataMap,
+export function getDataAndColumns(
+  dataMap: LanguageDataMap,
 ): [string[], LanguageFileData] {
   const data: LanguageFileData = {}
   const columns = Object.keys(dataMap['🐶'])

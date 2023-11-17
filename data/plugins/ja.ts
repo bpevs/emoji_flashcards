@@ -6,8 +6,6 @@ const kuroshiro = new (Kuroshiro.default)()
 await kuroshiro.init(new KuromojiAnalyzer())
 
 export default new Plugin({
-  language: 'ja',
-
   async post(
     this: Plugin,
     key: string,

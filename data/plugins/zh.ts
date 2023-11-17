@@ -2,8 +2,6 @@ import pinyin from 'chinese-to-pinyin'
 import Plugin, { TargetRow } from '../../utilities/plugin.ts'
 
 export default new Plugin({
-  language: 'zh',
-
   post(
     this: Plugin,
     key: string,

@@ -1,5 +1,9 @@
 import { join } from 'std/path/mod.ts'
-import type { ExtensionFile, LanguageFile } from '../utilities/interfaces.ts'
+import type {
+  ExtensionFile,
+  LanguageFile,
+  SourceFile,
+} from '../utilities/types.ts'
 import { prettyPrintCompactFile } from '../utilities/data_access_utilities.ts'
 import {
   EXTENSIONS_DIR,
@@ -63,10 +67,10 @@ export async function readLanguageFile(
   return languageFile
 }
 
-export async function readSourceFile(): Promise<LanguageFile> {
+export async function readSourceFile(): Promise<SourceFile> {
   const text = await Deno.readTextFile(SOURCE_FILE)
-  const languageFile: LanguageFile = JSON.parse(text)
-  return languageFile
+  const sourceFile: SourceFile = JSON.parse(text)
+  return sourceFile
 }
 
 export async function writeLanguageFile(

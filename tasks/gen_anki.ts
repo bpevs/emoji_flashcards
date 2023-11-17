@@ -1,5 +1,5 @@
 import { GEN_DIR } from '../utilities/constants_server.ts'
-import { EmojiData } from '../utilities/interfaces.ts'
+import { LanguageData } from '../utilities/types.ts'
 import { ensureDir, existsSync } from 'std/fs/mod.ts'
 import { listLanguages, readLanguageFile } from '../utilities/data_access.ts'
 import { join } from 'std/path/mod.ts'
@@ -7,7 +7,7 @@ import { ankiHash, Deck, Model, Package } from '../utilities/genanki/mod.ts'
 import templates from '../data/templates/mod.ts'
 import {
   getAudioFilename,
-  getEmojiDataMap,
+  getLanguageDataMap,
 } from '../utilities/data_access_utilities.ts'
 
 listLanguages().forEach(async (langCode: string) => {
@@ -49,10 +49,10 @@ listLanguages().forEach(async (langCode: string) => {
   )
   const pkg = new Package()
 
-  const emojiDataMap = getEmojiDataMap(lang)
-  const notePromises = Object.keys(emojiDataMap)
-    .map((key) => ({ ...emojiDataMap[key], key }))
-    .map(async ({ category, key, text, ...other }: EmojiData) => {
+  const languageDataMap = getLanguageDataMap(lang)
+  const notePromises = Object.keys(languageDataMap)
+    .map((key) => ({ ...languageDataMap[key], key }))
+    .map(async ({ category, key, text, ...other }: LanguageData) => {
       const audioFilename = getAudioFilename(langCode, key, text)
 
       const fieldValues = [key, text, `[sound:${audioFilename}]`]

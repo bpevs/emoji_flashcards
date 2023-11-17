@@ -1,30 +1,39 @@
-export interface EmojiData {
+export type LanguageData = {
   text: string
   category: string
   [name: string]: string
 }
 
-export interface EmojiDataMap {
-  [emojiKey: string]: EmojiData
+export type LanguageDataMap = {
+  [emojiKey: string]: LanguageData
 }
 
-export interface SourceEmojiData {
+export type SourceDataRow = {
   text_en: string
   category: string
   pos: string
 }
 
-export interface SourceEmojiDataMap {
-  [emojiKey: string]: SourceEmojiData
+export type SourceDataMap = {
+  [emojiKey: string]: SourceDataRow
 }
 
-export interface LanguageFileData {
+export type LanguageFileData = {
   [category: string]: {
     [emoji: string]: string[]
   }
 }
 
-export interface LanguageFile {
+export type SourceFile = {
+  version: string
+  strings: {
+    [key: string]: string
+  }
+  columns: string[]
+  data: LanguageFileData
+}
+
+export type LanguageFile = SourceFile & {
   version: string
   name: string
   locale_code: string
@@ -37,21 +46,17 @@ export interface LanguageFile {
       deck_id: number
     }
     deepl?: {
-      language: string
+      language_code: string
+      locale_code?: string
     }
     play_ht?: {
-      locale: string
+      locale_code: string
       voice_id: string
     }
   }
-  strings: {
-    [key: string]: string
-  }
-  columns: string[]
-  data: LanguageFileData
 }
 
-export interface ExtensionFile {
+export type ExtensionFile = {
   version: string
   name: string
   data: LanguageFileData

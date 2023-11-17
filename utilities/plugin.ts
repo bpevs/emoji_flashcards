@@ -1,4 +1,9 @@
 import { translate } from './translate.ts'
+import { LanguageFile, SourceDataMap, SourceFile } from './types.ts'
+import {
+  getLanguageDataMap,
+  getSourceDataMap,
+} from '../utilities/data_access_utilities.ts'
 
 export type SourceRow = {
   category: string
@@ -21,13 +26,11 @@ export type ProcessingTargetRow = {
 
 // Helps build language files
 export default class Plugin {
-  language: string
   toTranslate: {
     [text_en: string]: (translated: string) => void
   } = {}
 
-  constructor(props: {
-    language: string
+  constructor(props?: {
     pre?: (
       key: string,
       source: SourceRow,
@@ -39,23 +42,30 @@ export default class Plugin {
       target: TargetRow,
     ) => TargetRow | Promise<TargetRow>
   }) {
-    this.language = props.language
-    if (props.pre) this.pre = props.pre
-    if (props.post) this.post = props.post
+    if (props?.pre) this.pre = props.pre
+    if (props?.post) this.post = props.post
   }
 
   // Complete any queued translations, and return completed rows
   async getLanguageFileRows(
-    sourceRowsMap: { [key: string]: SourceRow },
-    targetRowsMap: { [key: string]: TargetRow },
+    sourceFile: SourceFile,
+    languageFile: LanguageFile,
   ): Promise<{ [key: string]: TargetRow }> {
+    const sourceRowsMap: SourceDataMap = getSourceDataMap(sourceFile)
+    const targetRowsMap = getLanguageDataMap(languageFile)
+
     const rows: ProcessingTargetRow[] = []
 
     for (const key in sourceRowsMap) {
       rows.push(this.pre(key, sourceRowsMap[key], targetRowsMap[key]))
     }
 
-    await this.resolveTranslations()
+    const deepl = languageFile?.meta?.deepl
+    let translationCode = deepl?.language_code
+    if (deepl?.locale_code) translationCode = deepl?.locale_code
+
+    if (!translationCode) throw new Error('No deepl translation locale')
+    await this.resolveTranslations(translationCode)
 
     const nextTargetRowsMap: { [key: string]: TargetRow } = {}
 
@@ -83,9 +93,9 @@ export default class Plugin {
     })
   }
 
-  async resolveTranslations() {
+  async resolveTranslations(translation_language: string) {
     const resolves = Object.keys(this.toTranslate)
-    const translated = await translate(resolves, this.language)
+    const translated = await translate(resolves, translation_language)
     translated.filter(Boolean).forEach((text: string, index: number) => {
       const key = resolves[index]
       if (this.toTranslate[key]) this.toTranslate[key](text)
