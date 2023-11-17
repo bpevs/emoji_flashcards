@@ -74,8 +74,11 @@ async function generateAllTranslations() {
     }
 
     const shortLang = language.split('-')[0]
-    const plugin = plugins[language] || plugins[shortLang]
-    if (!plugin) throw new Error('No plugin for this language')
+    let plugin = plugins[language] || plugins[shortLang]
+    if (!plugin) {
+      console.warn(`No plugin for ${language}; using default`)
+      plugin = new Plugin({ language: shortLang })
+    }
 
     const targetRowsMap = getEmojiDataMap(languageFile)
     const rows = await plugin.getLanguageFileRows(

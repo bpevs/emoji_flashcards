@@ -1,12 +1,12 @@
 import { Template } from '../../utilities/genanki/mod.ts'
+import { nohint } from './default.js'
 
-import en from './en.ts'
 import es from './es.ts'
 import ja from './ja.ts'
 import zh from './zh.ts'
 
 const templates: { [language_code: string]: Template[] } = {
-  en,
+  nohint,
   es,
   ja,
   zh,

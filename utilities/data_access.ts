@@ -56,8 +56,8 @@ export async function readLanguageFile(
           })
         })
       })
-    } catch (e) {
-      console.warn('extension file failed loading', e)
+    } catch {
+      console.warn('No extension file for:', locale)
     }
   }
   return languageFile
@@ -73,12 +73,15 @@ export async function writeLanguageFile(
   locale: string,
   languageFile: LanguageFile,
 ): Promise<void> {
-
   // Hackery for consistent category name write-order
   const data = languageFile.data
   const keys = Object.keys(data).sort()
-  const newData = {}
-  keys.forEach((key) => newData[key] = data[key])
+  const newData: {
+    [category: string]: {
+      [emoji: string]: string[]
+    }
+  } = {}
+  keys.forEach((key: string) => newData[key] = data[key])
   languageFile.data = newData
 
   await Deno.writeTextFile(

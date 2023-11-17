@@ -1,13 +1,14 @@
 {
   "name": "English",
+  "name_en": "English",
   "version": "0.0.1",
   "language_code": "en",
   "locale_code": "en-US",
   "locale_flag": "🇺🇸",
   "meta": {
     "anki": {
-      "model_id": 38095404,
-      "deck_id": 38095404
+      "model_id": 23111607,
+      "deck_id": 23111607
     },
     "deepl": {
       "language": "en"
@@ -20,10 +21,6 @@
   "strings": {
     "description": "Downloadable Anki flashcards for",
     "switch-language": "Switch Language",
-    "en-US": "English",
-    "es-ES": "Spanish",
-    "ja-JP": "Japanese",
-    "zh-CN": "Chinese",
     "open-source": "Emoji Flashcards is free and open-source",
     "show-answer": "show answer",
     "no-js": "This demo requires Javascript, but you can still download the flashcards for Anki",
@@ -39,7 +36,39 @@
     "about-help-description-1": "We use robots to help create our initial translations and transcriptions, so there are a lot of mistakes! If you help us fix our mistakes, our flashcards can be even more useful for everyone!",
     "about-help-description-2": "For translation errors, we'd love it if you could correct our translations on Github. If you don't have a Github account, want to help fix audio errors, or just want to hang out, you can join us on Discord!",
     "about-sponsor-title": "Sponsor Us",
-    "about-sponsor-description": "Emoji Flashcards is a relatively low-cost project, so I think it should be feasible to stay free-of-charge forever. However, it does take time and energy to maintain, so if you want to help support this project, you can do so via Github Sponsors."
+    "about-sponsor-description": "Emoji Flashcards is a relatively low-cost project, so I think it should be feasible to stay free-of-charge forever. However, it does take time and energy to maintain, so if you want to help support this project, you can do so via Github Sponsors.",
+    "bg-BG": "Bulgarian",
+    "cs-CZ": "Czech",
+    "da-DK": "Danish",
+    "de-DE": "German",
+    "el-GR": "Greek",
+    "en-GB": "English",
+    "en-US": "English",
+    "es-ES": "Spanish",
+    "et-EE": "Estonian",
+    "fi-FI": "Finnish",
+    "fr-FR": "French",
+    "hu-HU": "Hungarian",
+    "id-ID": "Indonesian",
+    "it-IT": "Italian",
+    "ja-JP": "Japanese",
+    "ko-KR": "Korean",
+    "lt-LT": "Lithuanian",
+    "lv-LV": "Latvian",
+    "nb-NO": "Norwegian",
+    "nl-NL": "Dutch",
+    "pl-PL": "Polish",
+    "pt-BR": "Portuguese",
+    "pt-PT": "Portuguese",
+    "ro-RO": "Romanian",
+    "ru-RU": "Russian",
+    "sk-SK": "Slovak",
+    "sl-SL": "Slovenian",
+    "sv-SE": "Swedish",
+    "tr-TR": "Turkish",
+    "uk-UA": "Ukranian",
+    "zh-CN": "Chinese",
+    "zh-TW": "Chinese"
   },
   "columns": ["text"],
   "data": {

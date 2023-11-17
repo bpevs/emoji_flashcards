@@ -16,7 +16,7 @@ const MATCH_SILENCE = /silence_start: ([\w\.]+)[\s\S]+?silence_end: ([\w\.]+)/g
 const env = await load()
 
 const [language, inputCategoryId] = Deno.args
-if (!language) throw new Error("Please supply language_code")
+if (!language) throw new Error('Please supply language_code')
 
 const lang = await readLanguageFile(language, true)
 const { columns, pronunciation_key } = lang

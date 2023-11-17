@@ -1,13 +1,14 @@
 {
   "name": "Español",
+  "name_en": "Spanish",
   "version": "0.0.1",
   "language_code": "es",
   "locale_code": "es-ES",
   "locale_flag": "🇪🇸",
   "meta": {
     "anki": {
-      "model_id": 2744815,
-      "deck_id": 2744815
+      "model_id": 23111608,
+      "deck_id": 23111608
     },
     "deepl": {
       "language": "es"
@@ -20,10 +21,6 @@
   "strings": {
     "description": "Fichas Anki descargables para",
     "switch-language": "Cambiar de idioma",
-    "en-US": "Inglés",
-    "es-ES": "Español",
-    "ja-JP": "Japonés",
-    "zh-CN": "Chino",
     "open-source": "Emoji Flashcards es gratuito y de código abierto",
     "show-answer": "mostrar respuesta",
     "no-js": "Esta demo requiere Javascript, pero puedes descargar las flashcards para Anki",
@@ -39,7 +36,39 @@
     "about-help-description-1": "Utilizamos robots para ayudar a crear nuestras traducciones y transcripciones iniciales, ¡así que hay muchos errores! Si nos ayudas a corregirlos, nuestras fichas serán aún más útiles para todos.",
     "about-help-description-2": "Para los errores de traducción, nos encantaría que corrigieras nuestras traducciones en Github. Si no tienes cuenta en Github, quieres ayudarnos a corregir errores de audio o simplemente quieres pasar el rato, ¡puedes unirte a nosotros en Discord!",
     "about-sponsor-title": "Patrocínanos",
-    "about-sponsor-description": "Emoji Flashcards es un proyecto de coste relativamente bajo, por lo que creo que debería ser factible seguir siendo gratuito para siempre. Sin embargo, se necesita tiempo y energía para mantenerlo, así que si quieres ayudar a apoyar este proyecto, puedes hacerlo a través de Github Sponsors."
+    "about-sponsor-description": "Emoji Flashcards es un proyecto de coste relativamente bajo, por lo que creo que debería ser factible seguir siendo gratuito para siempre. Sin embargo, se necesita tiempo y energía para mantenerlo, así que si quieres ayudar a apoyar este proyecto, puedes hacerlo a través de Github Sponsors.",
+    "bg-BG": "Búlgaro",
+    "cs-CZ": "Checo",
+    "da-DK": "Danés",
+    "de-DE": "Alemán",
+    "el-GR": "Griego",
+    "en-GB": "Inglés",
+    "en-US": "Inglés",
+    "es-ES": "Español",
+    "et-EE": "Estonio",
+    "fi-FI": "Finlandés",
+    "fr-FR": "Francés",
+    "hu-HU": "Húngaro",
+    "id-ID": "Indonesio",
+    "it-IT": "Italiano",
+    "ja-JP": "Japonés",
+    "ko-KR": "Coreano",
+    "lt-LT": "Lituano",
+    "lv-LV": "Letón",
+    "nb-NO": "Noruego",
+    "nl-NL": "Holandés",
+    "pl-PL": "Polaco",
+    "pt-BR": "Portugués",
+    "pt-PT": "Portugués",
+    "ro-RO": "Rumano",
+    "ru-RU": "Ruso",
+    "sk-SK": "Eslovaco",
+    "sl-SL": "Esloveno",
+    "sv-SE": "Sueco",
+    "tr-TR": "Turco",
+    "uk-UA": "Ucraniano",
+    "zh-CN": "Chino (mandarín)",
+    "zh-TW": "Chino"
   },
   "columns": ["text", "hint"],
   "data": {
@@ -76,6 +105,7 @@
       "🍔🤰": ["estómago", ""],
       "💀🦴": ["el hueso", ""],
       "🦵🧠🦴💪🙆‍♀️": ["cuerpo", ""],
+      "💪🏋️‍♂️": ["músculo", ""],
       "🤚🏻🤚🏼🤚🏽🤚🏾🤚🏿": ["piel", ""],
       "🩸🅰️🅱️🆎🅾️": ["la sangre", ""]
     },

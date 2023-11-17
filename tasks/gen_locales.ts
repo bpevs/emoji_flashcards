@@ -4,7 +4,7 @@ import { listLanguages, readLanguageFile } from '../utilities/data_access.ts'
 
 const locales = await listLanguages()
 
-const results = locales.map(async (locale_code: string) => {
+const results = locales.sort().map(async (locale_code: string) => {
   const languageFile = await readLanguageFile(locale_code)
 
   return {

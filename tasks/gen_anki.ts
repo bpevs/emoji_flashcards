@@ -1,5 +1,6 @@
 import { GEN_DIR } from '../utilities/constants_server.ts'
 import { EmojiData } from '../utilities/interfaces.ts'
+import { ensureDir, existsSync } from 'std/fs/mod.ts'
 import { listLanguages, readLanguageFile } from '../utilities/data_access.ts'
 import { join } from 'std/path/mod.ts'
 import { ankiHash, Deck, Model, Package } from '../utilities/genanki/mod.ts'
@@ -20,17 +21,26 @@ listLanguages().forEach(async (langCode: string) => {
     name: name.charAt(0).toUpperCase() + name.slice(1),
   })))
 
+  const req: Array<[
+    number,
+    'any' | 'all',
+    number[],
+  ]> = [[2, 'all', [0]], [1, 'all', [0]]]
+
+  const audioLocation = join(GEN_DIR, langCode, 'audio')
+  const hasAudioDir = existsSync(audioLocation, {
+    isReadable: true,
+    isDirectory: true,
+  })
+  if (hasAudioDir) req.push([0, 'all', [0]])
+
   const model = new Model({
     name: `Emoji Flashcards (${lang.name})`,
     id: lang.meta.anki.model_id,
     did: lang.meta.anki.deck_id,
     flds: fields,
-    req: [
-      [0, 'all', [0]],
-      [1, 'all', [0]],
-      [2, 'all', [0]],
-    ],
-    tmpls: templates[lang.language_code] || [],
+    req,
+    tmpls: templates[lang.language_code] || templates.nohint,
   })
 
   const deck = new Deck(
@@ -51,19 +61,21 @@ listLanguages().forEach(async (langCode: string) => {
       // Stable note guid based on locale + emoji
       const guid = ankiHash([langCode, key])
       deck.addNote(model.createNote(fieldValues, [category], guid))
+      if (hasAudioDir) {
+        try {
+          const audioLocation = join(GEN_DIR, langCode, 'audio', audioFilename)
+          const fileBytes = await Deno.readFile(audioLocation)
+          const blob = new Blob([fileBytes], { type: 'audio/mpeg' })
 
-      try {
-        const audioLocation = join(GEN_DIR, langCode, 'audio', audioFilename)
-        const fileBytes = await Deno.readFile(audioLocation)
-        const blob = new Blob([fileBytes], { type: 'audio/mpeg' })
-
-        pkg.addMedia(blob, audioFilename)
-      } catch {
-        console.warn('Missing audio file: ', audioFilename)
+          pkg.addMedia(blob, audioFilename)
+        } catch {
+          console.warn('Missing audio file: ', audioFilename)
+        }
       }
     })
   await Promise.all(notePromises)
 
   pkg.addDeck(deck)
+  await ensureDir(join(GEN_DIR, langCode))
   pkg.writeToFile(join(GEN_DIR, langCode, `emoji-flashcards-${langCode}.apkg`))
 })

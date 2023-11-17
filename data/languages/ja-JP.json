@@ -1,13 +1,14 @@
 {
   "name": "日本語",
+  "name_en": "Japanese",
   "version": "0.0.1",
   "language_code": "ja",
   "locale_code": "ja-JP",
   "locale_flag": "🇯🇵",
   "meta": {
     "anki": {
-      "model_id": 22751404,
-      "deck_id": 22751404
+      "model_id": 23111615,
+      "deck_id": 23111615
     },
     "deepl": {
       "language": "ja"
@@ -20,10 +21,6 @@
   "strings": {
     "description": "ダウンロード可能なAnkiフラッシュカード",
     "switch-language": "言語を切り替える",
-    "en-US": "英語",
-    "es-ES": "スペイン語",
-    "ja-JP": "日本語",
-    "zh-CN": "中国語",
     "open-source": "絵文字フラッシュカードはフリーでオープンソースです。",
     "show-answer": "答えを示す",
     "no-js": "このデモにはJavascriptが必要ですが、Anki用フラッシュカードをダウンロードすることはできます。",
@@ -39,7 +36,39 @@
     "about-help-description-1": "私たちはロボットを使って最初の翻訳とトランスクリプションを作成しています！間違いの修正にご協力いただければ、フラッシュカードがより便利になります！",
     "about-help-description-2": "翻訳ミスについては、Githubで翻訳を修正していただけると嬉しいです。Githubのアカウントを持っていない方、音声の間違いを直すのを手伝いたい方、ただ一緒に遊びたい方は、Discordで参加することができます！",
     "about-sponsor-title": "スポンサーになる",
-    "about-sponsor-description": "絵文字フラッシュカードは比較的低コストのプロジェクトです。しかし、維持するには時間とエネルギーが必要なので、このプロジェクトをサポートしたい方は、Github Sponsorsからお願いします。"
+    "about-sponsor-description": "絵文字フラッシュカードは比較的低コストのプロジェクトです。しかし、維持するには時間とエネルギーが必要なので、このプロジェクトをサポートしたい方は、Github Sponsorsからお願いします。",
+    "bg-BG": "ブルガリア語",
+    "cs-CZ": "チェコ語",
+    "da-DK": "デンマーク語",
+    "de-DE": "ドイツ語",
+    "el-GR": "ギリシャ語",
+    "en-GB": "英語",
+    "en-US": "英語",
+    "es-ES": "スペイン語",
+    "et-EE": "エストニア語",
+    "fi-FI": "フィンランド語",
+    "fr-FR": "フランス語",
+    "hu-HU": "ハンガリー語",
+    "id-ID": "インドネシア語",
+    "it-IT": "イタリア語",
+    "ja-JP": "日本語",
+    "ko-KR": "韓国語",
+    "lt-LT": "リトアニア語",
+    "lv-LV": "ラトビア語",
+    "nb-NO": "ノルウェー語",
+    "nl-NL": "オランダ語",
+    "pl-PL": "ポーランド語",
+    "pt-BR": "ポルトガル語",
+    "pt-PT": "ポルトガル語",
+    "ro-RO": "ルーマニア語",
+    "ru-RU": "ロシア語",
+    "sk-SK": "スロバキア語",
+    "sl-SL": "スロベニア語",
+    "sv-SE": "スウェーデン語",
+    "tr-TR": "トルコ語",
+    "uk-UA": "ウクライナ語",
+    "zh-CN": "中国語（北京語）",
+    "zh-TW": "中国語"
   },
   "columns": ["text", "romaji"],
   "data": {
