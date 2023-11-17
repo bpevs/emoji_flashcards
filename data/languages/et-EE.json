@@ -9,6 +9,9 @@
     "anki": {
       "model_id": 23111609,
       "deck_id": 23111609
+    },
+    "deepl": {
+      "language": "et"
     }
   },
   "strings": {

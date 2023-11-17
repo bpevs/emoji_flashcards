@@ -1,5 +1,6 @@
 import * as PlayHT from 'playht'
 import { load } from 'std/dotenv/mod.ts'
+import { ensureDir } from 'std/fs/mod.ts'
 import { listAudioFiles, readLanguageFile } from '../utilities/data_access.ts'
 import { getAudioFilename } from '../utilities/data_access_utilities.ts'
 import { GEN_DIR } from '../utilities/constants_server.ts'
@@ -25,6 +26,7 @@ const audio_id = lang?.meta?.play_ht?.voice_id
 const pronunciationKeyIndex = columns.indexOf(pronunciation_key || '') || 0
 
 const emojisByCategory = lang.data
+ensureDir(join(GEN_DIR, language, 'audio'))
 const existingAudioFiles = listAudioFiles(language)
 
 Object.keys(emojisByCategory).forEach((category) => {
@@ -48,6 +50,10 @@ console.log('source audio id: ', JSON.stringify(ids))
 
 for (const idx in ids) {
   const { categoryId, transcriptionId } = ids[idx]
+  if (!transcriptionId) {
+    console.warn(`Skipping category "${categoryId}": no transcriptionId`)
+    continue
+  }
   const emojis = emojisByCategory[categoryId]
   const audioUrl = await downloadSourceFile(transcriptionId)
   console.log('source audio saved: ', audioUrl)
@@ -86,9 +92,8 @@ async function generateTranscriptionIds(
         if (inputCategoryId) return categoryId === inputCategoryId
         return true
       })
-      .map(async (categoryId) => ({
-        categoryId,
-        transcriptionId: (await requestSSMLAudio(
+      .map(async (categoryId) => {
+        const response = await requestSSMLAudio(
           `<speak><p>${
             Object.keys(emojisByCategory[categoryId])
               .map((emojiId: string) => {
@@ -99,25 +104,31 @@ async function generateTranscriptionIds(
               .join(`, <break time="${SILENCE_REQUEST}s"/> `)
           }</p></speak>`,
           voice.id,
-        )).transcriptionId,
-      })),
+        )
+        if (!response.transcriptionId) console.error(response)
+        return { categoryId, transcriptionId: response.transcriptionId }
+      }),
   )
 }
 
 function requestSSMLAudio(ssml: string, voice: string) {
-  return fetch('https://api.play.ht/api/v1/convert/', {
-    method: 'POST',
-    headers: {
-      accept: 'application/json',
-      'content-type': 'application/json',
-      AUTHORIZATION: env['PLAYHT_API_KEY'],
-      'X-USER-ID': env['PLAYHT_USER_ID'],
-    },
-    body: JSON.stringify({
-      ssml: [ssml],
-      voice,
-    }),
-  }).then((res) => res.json())
+  try {
+    return fetch('https://api.play.ht/api/v1/convert/', {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/json',
+        AUTHORIZATION: env['PLAYHT_API_KEY'],
+        'X-USER-ID': env['PLAYHT_USER_ID'],
+      },
+      body: JSON.stringify({
+        ssml: [ssml],
+        voice,
+      }),
+    }).then((res) => res.json())
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 async function downloadSourceFile(transcriptionId: string) {

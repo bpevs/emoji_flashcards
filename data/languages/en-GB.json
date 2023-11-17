@@ -9,6 +9,13 @@
     "anki": {
       "model_id": 23111606,
       "deck_id": 23111606
+    },
+    "deepl": {
+      "language": "en-GB"
+    },
+    "play_ht": {
+      "locale": "en-GB",
+      "voice_id": "en-GB-OliviaNeural"
     }
   },
   "strings": {

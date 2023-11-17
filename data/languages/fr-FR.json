@@ -4,11 +4,14 @@
   "version": "0.0.1",
   "language_code": "fr",
   "locale_code": "fr-FR",
-  "locale_flag": "🇫🇮",
+  "locale_flag": "🇫🇷",
   "meta": {
     "anki": {
       "model_id": 23111611,
       "deck_id": 23111611
+    },
+    "deepl": {
+      "language": "fr"
     }
   },
   "strings": {
