@@ -62,6 +62,7 @@ async function ttsByCategory(
   emojisByCategory: { [category: string]: { [emojiKey: string]: string[] } },
   voice_id: string,
 ): Promise<{ categoryId: string; fileName: string | null }[]> {
+  // todo: pool the tts requests
   return await Promise.all(
     Object.keys(emojisByCategory)
       .filter((catId) => !inputCategoryId || (catId === inputCategoryId))
