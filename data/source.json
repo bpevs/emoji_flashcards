@@ -57,7 +57,6 @@
     "animal": {
       "🐶": ["dog", "noun"],
       "🐈": ["cat", "noun"],
-      "🐶🐱": ["pet", "noun"],
       "🐟": ["fish", "noun"],
       "🐦": ["bird", "noun"],
       "🐮": ["cow", "noun"],
@@ -66,6 +65,7 @@
       "🐴": ["horse", "noun"],
       "🐛🐞🐝": ["bugs", "noun"],
       "🪽": ["wing", "noun"],
+      "🐶🐱": ["pet", "noun"],
       "🦊🐰🐶🐷": ["animal", "noun"]
     },
     "body": {
@@ -86,14 +86,14 @@
       "💇": ["haircut", "noun"],
       "🍔🤰": ["stomach", "noun"],
       "💀🦴": ["bone", "noun"],
-      "🦵🧠🦴💪🙆‍♀️": ["body", "noun"],
       "💪🏋️‍♂️": ["muscle", "noun"],
       "🤚🏻🤚🏼🤚🏽🤚🏾🤚🏿": ["skin", "noun"],
-      "🩸🅰️🅱️🆎🅾️": ["blood", "noun"]
+      "🩸🅰️🅱️🆎🅾️": ["blood", "noun"],
+      "🦵🧠🦴💪🙆‍♀️": ["body", "noun"]
     },
     "clothing": {
       "👕": ["shirt", "noun"],
-      "👖": ["pants", "noun"],
+      "👖": ["trousers", "noun"],
       "🩳": ["shorts", "noun"],
       "👔": ["shirt and tie", "noun"],
       "👗": ["dress", "noun"],
@@ -105,9 +105,11 @@
       "👓": ["glasses", "noun"],
       "🕶️": ["sunglasses", "noun"],
       "🎒": ["backpack", "noun"],
-      "🧥": ["coat", "noun"]
+      "🧥": ["coat", "noun"],
+      "👕👖👗👟": ["clothes", "noun"]
     },
     "color": {
+      "🎨": ["color", "noun"],
       "🔵": ["blue", "adjective"],
       "⚪️": ["white", "adjective"],
       "⚫️": ["black", "adjective"],
@@ -117,7 +119,6 @@
       "🟠": ["orange", "adjective"],
       "🟣": ["purple", "adjective"],
       "🟢": ["green", "adjective"],
-      "🎨": ["color", "noun"],
       "🥇🎨": ["gold", "adjective"],
       "🥈🎨": ["silver", "adjective"],
       "🥉🎨": ["bronze", "adjective"],
@@ -153,15 +154,15 @@
       "🥤🥛🍺🍵🍸": ["beverage", "noun"]
     },
     "emotions": {
+      "😃😢😡😍": ["emotions", "noun"],
       "😃": ["happy", "adjective"],
       "😢": ["sad", "adjective"],
       "😡": ["angry", "adjective"],
-      "😰": ["anxious", "adjective"],
-      "😴": ["sleepy", "adjective"],
+      "😴": ["tired", "adjective"],
       "😍": ["in love", "adjective"],
-      "🙄": ["annoyed", "adjective"],
-      "🤤🍔": ["hungry", "adjective"],
       "😱👻": ["scared", "adjective"],
+      "😰": ["nervous", "adjective"],
+      "🤤🍔": ["hungry", "adjective"],
       "😈": ["evil", "adjective"]
     },
     "food": {

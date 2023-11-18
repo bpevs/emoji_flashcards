@@ -75,7 +75,6 @@
     "animal": {
       "🐶": ["cane"],
       "🐈": ["gatto"],
-      "🐶🐱": ["animale domestico"],
       "🐟": ["pesce"],
       "🐦": ["uccello"],
       "🐮": ["mucca"],
@@ -84,6 +83,7 @@
       "🐴": ["cavallo"],
       "🐛🐞🐝": ["insetti"],
       "🪽": ["ala"],
+      "🐶🐱": ["animale domestico"],
       "🦊🐰🐶🐷": ["animale"]
     },
     "body": {
@@ -104,10 +104,10 @@
       "💇": ["taglio di capelli"],
       "🍔🤰": ["stomaco"],
       "💀🦴": ["osso"],
-      "🦵🧠🦴💪🙆‍♀️": ["corpo"],
       "💪🏋️‍♂️": ["muscolo"],
       "🤚🏻🤚🏼🤚🏽🤚🏾🤚🏿": ["pelle"],
-      "🩸🅰️🅱️🆎🅾️": ["sangue"]
+      "🩸🅰️🅱️🆎🅾️": ["sangue"],
+      "🦵🧠🦴💪🙆‍♀️": ["corpo"]
     },
     "clothing": {
       "👕": ["camicia"],
@@ -123,9 +123,11 @@
       "👓": ["occhiali da vista"],
       "🕶️": ["occhiali da sole"],
       "🎒": ["zaino"],
-      "🧥": ["cappotto"]
+      "🧥": ["cappotto"],
+      "👕👖👗👟": ["vestiti"]
     },
     "color": {
+      "🎨": ["colore"],
       "🔵": ["blu"],
       "⚪️": ["bianco"],
       "⚫️": ["nero"],
@@ -135,7 +137,6 @@
       "🟠": ["arancione"],
       "🟣": ["viola"],
       "🟢": ["verde"],
-      "🎨": ["colore"],
       "🥇🎨": ["oro"],
       "🥈🎨": ["argento"],
       "🥉🎨": ["bronzo"],
@@ -171,15 +172,15 @@
       "🥤🥛🍺🍵🍸": ["bevanda"]
     },
     "emotions": {
+      "😃😢😡😍": ["emozioni"],
       "😃": ["felice"],
       "😢": ["triste"],
       "😡": ["arrabbiato"],
-      "😰": ["ansioso"],
       "😴": ["assonnato"],
       "😍": ["innamorato"],
-      "🙄": ["infastidito"],
-      "🤤🍔": ["affamato"],
       "😱👻": ["spaventato"],
+      "😰": ["ansioso"],
+      "🤤🍔": ["affamato"],
       "😈": ["malvagio"]
     },
     "food": {
