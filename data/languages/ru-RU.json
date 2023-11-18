@@ -10,6 +10,10 @@
       "model_id": 23111626,
       "deck_id": 23111626
     },
+    "azure": {
+      "locale_code": "ru-RU",
+      "voice_id": "ru-RU-SvetlanaNeural"
+    },
     "deepl": {
       "language_code": "ru-RU"
     }
@@ -59,7 +63,7 @@
     "ro-RO": "Румынский",
     "ru-RU": "Русский",
     "sk-SK": "Словацкий",
-    "sl-SL": "Словенский",
+    "sl-SI": "Словенский",
     "sv-SE": "Шведский",
     "tr-TR": "Турецкий",
     "uk-UA": "Укранский",

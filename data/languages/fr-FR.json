@@ -10,6 +10,10 @@
       "model_id": 23111611,
       "deck_id": 23111611
     },
+    "azure": {
+      "locale_code": "fr-FR",
+      "voice_id": "fr-FR-HenriNeural"
+    },
     "deepl": {
       "language_code": "fr"
     }
@@ -59,7 +63,7 @@
     "ro-RO": "Roumain",
     "ru-RU": "russe",
     "sk-SK": "Slovaque",
-    "sl-SL": "Slovène",
+    "sl-SI": "Slovène",
     "sv-SE": "Suédois",
     "tr-TR": "turc",
     "uk-UA": "ukrainien",

@@ -10,6 +10,10 @@
       "model_id": 23111629,
       "deck_id": 23111629
     },
+    "azure": {
+      "locale_code": "sv-SE",
+      "voice_id": "sv-SE-MattiasNeural"
+    },
     "deepl": {
       "language_code": "sv"
     }
@@ -59,7 +63,7 @@
     "ro-RO": "rumänska",
     "ru-RU": "ryska",
     "sk-SK": "slovakiska",
-    "sl-SL": "Slovenska",
+    "sl-SI": "Slovenska",
     "sv-SE": "Svenska",
     "tr-TR": "turkiska",
     "uk-UA": "ukrainska",

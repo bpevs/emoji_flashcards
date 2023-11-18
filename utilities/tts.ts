@@ -15,7 +15,7 @@ async function ttsAzure(
   voice_id: string,
   locale_code: string,
   category_id: string,
-): Promise<string> {
+): Promise<string | null> {
   const response = await fetch(url, {
     method: 'POST',
     headers: {
@@ -32,7 +32,10 @@ async function ttsAzure(
       </speak>
     `,
   })
-  if (response.status > 200) console.warn(response)
+  if (response.status > 399) {
+    console.warn(response)
+    return null
+  }
   const fileName = `${locale_code}_${category_id}.mp3`
   const filePath = join('./data/tmp', fileName)
   const file = await Deno.open(filePath, { create: true, write: true })
@@ -48,6 +51,6 @@ export const tts = (
   voice_id: string,
   locale_code: string,
   category_id: string,
-): Promise<string> => {
+): Promise<string | null> => {
   return _internals.ttsAzure(texts, voice_id, locale_code, category_id)
 }

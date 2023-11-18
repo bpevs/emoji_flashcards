@@ -10,12 +10,12 @@
       "model_id": 23111602,
       "deck_id": 23111602
     },
-    "deepl": {
-      "language_code": "cs"
-    },
-    "play_ht": {
+    "azure": {
       "locale_code": "cs-CZ",
       "voice_id": "cs-CZ-VlastaNeural"
+    },
+    "deepl": {
+      "language_code": "cs"
     }
   },
   "strings": {
@@ -63,7 +63,7 @@
     "ro-RO": "Rumunština",
     "ru-RU": "Ruština",
     "sk-SK": "Slovenština",
-    "sl-SL": "slovinština",
+    "sl-SI": "slovinština",
     "sv-SE": "švédština",
     "tr-TR": "turečtina",
     "uk-UA": "ukrajinština",

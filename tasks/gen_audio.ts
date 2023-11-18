@@ -21,7 +21,7 @@ if (!voice_id) throw new Error(`${locale_code} does not have a voice_id`)
 const pronunciationKeyIndex = columns.indexOf(pronunciation_key || '') || 0
 
 const emojisByCategory = lang.data
-ensureDir(join(GEN_DIR, locale_code, 'audio'))
+await ensureDir(join(GEN_DIR, locale_code, 'audio'))
 const existingAudioFiles = listAudioFiles(locale_code)
 
 Object.keys(emojisByCategory).forEach((category) => {
@@ -51,8 +51,8 @@ for (const idx in ttsResults) {
   }
   const emojis = emojisByCategory[categoryId]
   console.log('source audio saved: ', fileName)
-  const filePath = join('./data/tmp', fileName)
-  await writeTranslationAudioFiles(filePath, locale_code, emojis)
+  const tempAudio = join('./data/tmp', fileName)
+  await writeTranslationAudioFiles(tempAudio, locale_code, emojis)
 }
 
 console.log('COMPLETE!')
@@ -61,7 +61,7 @@ Deno.exit(0)
 async function ttsByCategory(
   emojisByCategory: { [category: string]: { [emojiKey: string]: string[] } },
   voice_id: string,
-): Promise<{ categoryId: string; fileName: string }[]> {
+): Promise<{ categoryId: string; fileName: string | null }[]> {
   return await Promise.all(
     Object.keys(emojisByCategory)
       .filter((catId) => !inputCategoryId || (catId === inputCategoryId))
@@ -88,7 +88,7 @@ async function writeTranslationAudioFiles(
   emojis: { [emojiKey: string]: string[] },
 ) {
   const names = Object.keys(emojis)
-    .map((emoji) => [emoji, emojis[emoji][0]])
+    .map((key) => [key, emojis[key][0]])
   const audioDirLocation = join(GEN_DIR, locale_code, 'audio')
 
   try {
@@ -137,8 +137,11 @@ async function writeTranslationAudioFiles(
   }
 
   // last file
-  const [key, text] = names[count]
-  console.log(key, text)
+  const [key, text] = names[count] || []
+  if (!key || !text) {
+    console.warn(`Careful about mismatching: ${sourceURL}`)
+    return
+  }
   const name = getAudioFilename(locale_code, key, text)
   count = count + 1
 

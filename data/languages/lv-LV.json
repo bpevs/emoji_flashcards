@@ -10,6 +10,10 @@
       "model_id": 23111619,
       "deck_id": 23111619
     },
+    "azure": {
+      "locale_code": "lv-LV",
+      "voice_id": "lv-LV-NilsNeural"
+    },
     "deepl": {
       "language_code": "lv"
     }
@@ -59,7 +63,7 @@
     "ro-RO": "Rumāņu",
     "ru-RU": "Krievu",
     "sk-SK": "slovāku",
-    "sl-SL": "slovēņu",
+    "sl-SI": "slovēņu",
     "sv-SE": "zviedru",
     "tr-TR": "turku",
     "uk-UA": "ukraiņu",

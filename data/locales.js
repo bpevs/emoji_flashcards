@@ -157,7 +157,7 @@ export default [
   },
   {
     'language_code': 'sl',
-    'locale_code': 'sl-SL',
+    'locale_code': 'sl-SI',
     'locale_flag': '🇸🇮',
     'native_name': 'Slovenski',
   },

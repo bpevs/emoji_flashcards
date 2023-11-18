@@ -10,16 +10,12 @@
       "model_id": 23111601,
       "deck_id": 23111601
     },
-    "deepl": {
-      "language_code": "bg"
-    },
-    "play_ht": {
-      "locale_code": "bg-BG",
-      "voice_id": "bg-BG-KalinaNeural"
-    },
     "azure": {
       "locale_code": "bg-BG",
       "voice_id": "bg-BG-KalinaNeural"
+    },
+    "deepl": {
+      "language_code": "bg"
     }
   },
   "strings": {
@@ -67,7 +63,7 @@
     "ro-RO": "Румънски",
     "ru-RU": "Руски",
     "sk-SK": "Словашки",
-    "sl-SL": "Словенски",
+    "sl-SI": "Словенски",
     "sv-SE": "Шведски",
     "tr-TR": "Турски",
     "uk-UA": "Украински",
