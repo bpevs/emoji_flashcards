@@ -16,6 +16,10 @@
     "play_ht": {
       "locale_code": "bg-BG",
       "voice_id": "bg-BG-KalinaNeural"
+    },
+    "azure": {
+      "locale_code": "bg-BG",
+      "voice_id": "bg-BG-KalinaNeural"
     }
   },
   "strings": {
