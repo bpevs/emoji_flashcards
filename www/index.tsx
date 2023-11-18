@@ -16,7 +16,6 @@ import { getAudioFilename } from '../utilities/data_access_utilities.ts'
 
 const touchDevice = 'ontouchstart' in document.documentElement
 const navigator = useNavigatorLanguage()
-const flagIconElements = document.getElementsByClassName('flag-icon')
 
 const browserLang = () =>
   locales.find((locale) => locale.locale_code === navigator.language())
@@ -79,12 +78,20 @@ const [data] = createResource(
   { initialValue: { strings: {}, notes: [] } },
 )
 
+const flagIconElements = document.getElementsByClassName('flag-icon')
+const downloadLink = document.getElementById(
+  'download-link',
+) as HTMLAnchorElement
 createEffect(() => {
   if (flagIconElements.length) {
     Array.prototype.forEach.call(
       flagIconElements,
       (el) => el.innerHTML = data().flag,
     )
+  }
+  if (downloadLink) {
+    downloadLink.href =
+      `https://static.bpev.me/flashcards/${data().noteLangCode}/emoji-flashcards-${data().noteLangCode}.apkg`
   }
 })
 
