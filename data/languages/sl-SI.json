@@ -3,12 +3,16 @@
   "name_en": "Slovenian",
   "version": "0.0.1",
   "language_code": "sl",
-  "locale_code": "sl-SL",
+  "locale_code": "sl-SI",
   "locale_flag": "🇸🇮",
   "meta": {
     "anki": {
       "model_id": 23111628,
       "deck_id": 23111628
+    },
+    "azure": {
+      "locale_code": "sl-SI",
+      "voice_id": "sl-SI-RokNeural"
     },
     "deepl": {
       "language_code": "sl"
@@ -59,7 +63,7 @@
     "ro-RO": "Romunščina",
     "ru-RU": "ruščina",
     "sk-SK": "slovaški",
-    "sl-SL": "slovenski",
+    "sl-SI": "slovenski",
     "sv-SE": "švedski",
     "tr-TR": "turški",
     "uk-UA": "ukrajinski",

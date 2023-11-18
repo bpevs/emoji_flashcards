@@ -10,12 +10,12 @@
       "model_id": 23111617,
       "deck_id": 23111617
     },
+    "azure": {
+      "locale_code": "ko-KR",
+      "voice_id": "ko-KR-HyunsuNeural"
+    },
     "deepl": {
       "language_code": "ko"
-    },
-    "play_ht": {
-      "locale_code": "ko-KR",
-      "voice_id": "SeoyeonNeural"
     }
   },
   "strings": {
@@ -63,7 +63,7 @@
     "ro-RO": "Romanian",
     "ru-RU": "러시아어",
     "sk-SK": "Slovak",
-    "sl-SL": "Slovenian",
+    "sl-SI": "Slovenian",
     "sv-SE": "Swedish",
     "tr-TR": "Turkish",
     "uk-UA": "Ukranian",

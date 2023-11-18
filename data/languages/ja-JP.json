@@ -10,12 +10,12 @@
       "model_id": 23111615,
       "deck_id": 23111615
     },
-    "deepl": {
-      "language_code": "ja"
-    },
-    "play_ht": {
+    "azure": {
       "locale_code": "ja-JP",
       "voice_id": "ja-JP-NanamiNeural"
+    },
+    "deepl": {
+      "language_code": "ja"
     }
   },
   "strings": {
@@ -63,7 +63,7 @@
     "ro-RO": "ルーマニア語",
     "ru-RU": "ロシア語",
     "sk-SK": "スロバキア語",
-    "sl-SL": "スロベニア語",
+    "sl-SI": "スロベニア語",
     "sv-SE": "スウェーデン語",
     "tr-TR": "トルコ語",
     "uk-UA": "ウクライナ語",

@@ -10,6 +10,10 @@
       "model_id": 23111621,
       "deck_id": 23111621
     },
+    "azure": {
+      "locale_code": "nl-NL",
+      "voice_id": "nl-NL-FennaNeural"
+    },
     "deepl": {
       "language_code": "nl"
     }
@@ -59,7 +63,7 @@
     "ro-RO": "Roemeens",
     "ru-RU": "Russisch",
     "sk-SK": "Slowaaks",
-    "sl-SL": "Sloveens",
+    "sl-SI": "Sloveens",
     "sv-SE": "Zweeds",
     "tr-TR": "Turks",
     "uk-UA": "Oekraïens",

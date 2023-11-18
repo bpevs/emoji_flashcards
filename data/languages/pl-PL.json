@@ -10,6 +10,10 @@
       "model_id": 23111622,
       "deck_id": 23111622
     },
+    "azure": {
+      "locale_code": "pl-PL",
+      "voice_id": "pl-PL-MarekNeural"
+    },
     "deepl": {
       "language_code": "pl"
     }
@@ -59,7 +63,7 @@
     "ro-RO": "rumuński",
     "ru-RU": "rosyjski",
     "sk-SK": "słowacki",
-    "sl-SL": "słoweński",
+    "sl-SI": "słoweński",
     "sv-SE": "szwedzki",
     "tr-TR": "turecki",
     "uk-UA": "ukraiński",

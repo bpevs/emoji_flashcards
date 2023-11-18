@@ -10,13 +10,13 @@
       "model_id": 23111606,
       "deck_id": 23111606
     },
+    "azure": {
+      "locale_code": "en-GB",
+      "voice_id": "en-GB-OliviaNeural"
+    },
     "deepl": {
       "language_code": "en",
       "locale_code": "en-GB"
-    },
-    "play_ht": {
-      "locale_code": "en-GB",
-      "voice_id": "en-GB-OliviaNeural"
     }
   },
   "strings": {
@@ -64,7 +64,7 @@
     "ro-RO": "Romanian",
     "ru-RU": "Russian",
     "sk-SK": "Slovak",
-    "sl-SL": "Slovenian",
+    "sl-SI": "Slovenian",
     "sv-SE": "Swedish",
     "tr-TR": "Turkish",
     "uk-UA": "Ukranian",

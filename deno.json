@@ -18,7 +18,6 @@
     "esbuild": "https://deno.land/x/esbuild@v0.14.51/mod.js",
     "esbuild-deno-loader": "https://deno.land/x/esbuild_deno_loader@0.8.1/mod.ts",
 
-    "playht": "npm:playht",
     "kuroshiro": "npm:kuroshiro",
     "kuroshiro-analyzer-kuromoji": "npm:kuroshiro-analyzer-kuromoji",
     "chinese-to-pinyin": "npm:chinese-to-pinyin",

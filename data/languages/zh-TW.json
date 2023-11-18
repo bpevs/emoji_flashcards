@@ -10,12 +10,12 @@
       "model_id": 23111633,
       "deck_id": 23111633
     },
+    "azure": {
+      "locale_code": "zh-TW",
+      "voice_id": "zh-TW-YunJheNeural"
+    },
     "deepl": {
       "language_code": "zh"
-    },
-    "play_ht": {
-      "locale_code": "zh-TW",
-      "voice_id": "zh-TW-YunJheNeura"
     }
   },
   "strings": {
@@ -63,7 +63,7 @@
     "ro-RO": "羅馬尼亞文",
     "ru-RU": "俄語",
     "sk-SK": "斯洛伐克語",
-    "sl-SL": "斯洛文尼亞語",
+    "sl-SI": "斯洛文尼亞語",
     "sv-SE": "瑞典語",
     "tr-TR": "土耳其語",
     "uk-UA": "烏克蘭文",

@@ -10,6 +10,10 @@
       "model_id": 23111631,
       "deck_id": 23111631
     },
+    "azure": {
+      "locale_code": "uk-UA",
+      "voice_id": "uk-UA-PolinaNeural"
+    },
     "deepl": {
       "language_code": "uk"
     }
@@ -59,7 +63,7 @@
     "ro-RO": "Румунська",
     "ru-RU": "російська",
     "sk-SK": "Словацька",
-    "sl-SL": "Словенська",
+    "sl-SI": "Словенська",
     "sv-SE": "шведська",
     "tr-TR": "Турецька",
     "uk-UA": "Українська",

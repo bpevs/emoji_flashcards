@@ -10,6 +10,10 @@
       "model_id": 23111618,
       "deck_id": 23111618
     },
+    "azure": {
+      "locale_code": "lt-LT",
+      "voice_id": "lt-LT-OnaNeural"
+    },
     "deepl": {
       "language_code": "lt"
     }
@@ -59,7 +63,7 @@
     "ro-RO": "Rumunų kalba",
     "ru-RU": "Rusų kalba",
     "sk-SK": "Slovakų",
-    "sl-SL": "slovėnų",
+    "sl-SI": "slovėnų",
     "sv-SE": "švedų",
     "tr-TR": "turkų",
     "uk-UA": "ukrainiečių",

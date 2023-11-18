@@ -53,6 +53,10 @@ export type LanguageFile = SourceFile & {
       locale_code: string
       voice_id: string
     }
+    azure?: {
+      locale_code: string
+      voice_id: string
+    }
   }
 }
 
