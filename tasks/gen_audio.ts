@@ -118,7 +118,7 @@ async function writeTranslationAudioFiles(
     )
 
     const [key, text] = names[count]
-    console.log(key, text)
+
     const name = getAudioFilename(locale_code, key, text)
     count = count + 1
 
