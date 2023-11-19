@@ -73,7 +73,8 @@
     "af-ZA": "Afrika",
     "ca-ES": "Katalanca",
     "hi-IN": "Hintçe",
-    "th-TH": "Tayland"
+    "th-TH": "Tayland",
+    "ar-EG": "Arapça"
   },
   "columns": ["text"],
   "data": {

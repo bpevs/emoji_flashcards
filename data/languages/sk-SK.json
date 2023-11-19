@@ -73,7 +73,8 @@
     "af-ZA": "African",
     "ca-ES": "Katalánčina",
     "hi-IN": "Hindčina",
-    "th-TH": "thajčina"
+    "th-TH": "thajčina",
+    "ar-EG": "Arabčina"
   },
   "columns": ["text"],
   "data": {

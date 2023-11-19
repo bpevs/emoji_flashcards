@@ -73,7 +73,8 @@
     "af-ZA": "Afrikos",
     "ca-ES": "Katalonų",
     "hi-IN": "Hindi",
-    "th-TH": "tajų kalba"
+    "th-TH": "tajų kalba",
+    "ar-EG": "Arabų kalba"
   },
   "columns": ["text"],
   "data": {

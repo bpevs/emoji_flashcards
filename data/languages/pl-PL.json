@@ -73,7 +73,8 @@
     "af-ZA": "Afrykański",
     "ca-ES": "Kataloński",
     "hi-IN": "hindi",
-    "th-TH": "tajski"
+    "th-TH": "tajski",
+    "ar-EG": "Arabski"
   },
   "columns": ["text"],
   "data": {

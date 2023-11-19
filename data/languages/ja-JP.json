@@ -73,7 +73,8 @@
     "af-ZA": "アフリカ語",
     "ca-ES": "カタロニア語",
     "hi-IN": "ヒンディー語",
-    "th-TH": "タイ語"
+    "th-TH": "タイ語",
+    "ar-EG": "アラビア語"
   },
   "columns": ["text", "romaji"],
   "data": {

@@ -73,7 +73,8 @@
     "af-ZA": "아프리카",
     "ca-ES": "카탈루냐어",
     "hi-IN": "Hindi",
-    "th-TH": "Thai"
+    "th-TH": "Thai",
+    "ar-EG": "아랍어"
   },
   "columns": ["text"],
   "data": {

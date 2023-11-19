@@ -73,7 +73,8 @@
     "af-ZA": "Āfrikas",
     "ca-ES": "Katalāņu",
     "hi-IN": "Hindi",
-    "th-TH": "Taizemes"
+    "th-TH": "Taizemes",
+    "ar-EG": "Arābu valodā"
   },
   "columns": ["text"],
   "data": {

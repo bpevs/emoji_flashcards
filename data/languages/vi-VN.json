@@ -71,7 +71,8 @@
     "af-ZA": "Afrikaans",
     "ca-ES": "Catalan",
     "hi-IN": "Tiếng Hin-đi",
-    "th-TH": "Thái"
+    "th-TH": "Thái",
+    "ar-EG": "Tiếng A-rập"
   },
   "columns": ["text"],
   "data": {

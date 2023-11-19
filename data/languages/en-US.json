@@ -71,10 +71,11 @@
     "vi-VN": "Vietnamese",
     "zh-CN": "Chinese",
     "zh-TW": "Chinese",
-    "af-ZA": "African",
+    "af-ZA": "Africaans",
     "ca-ES": "Catalan",
     "hi-IN": "Hindi",
-    "th-TH": "Thai"
+    "th-TH": "Thai",
+    "ar-EG": "Arabic"
   },
   "columns": ["text"],
   "data": {

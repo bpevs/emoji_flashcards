@@ -73,7 +73,8 @@
     "af-ZA": "Aafrika",
     "ca-ES": "Katalaani",
     "hi-IN": "Hindi",
-    "th-TH": "Tai"
+    "th-TH": "Tai",
+    "ar-EG": "Araabia keel"
   },
   "columns": ["text"],
   "data": {
