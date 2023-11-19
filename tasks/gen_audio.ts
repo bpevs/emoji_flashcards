@@ -21,7 +21,7 @@ if (!voice_id) throw new Error(`${locale_code} does not have a voice_id`)
 const pronunciationKeyIndex = columns.indexOf(pronunciation_key || '') || 0
 
 const emojisByCategory = lang.data
-await ensureDir('./data/tmp')
+await ensureDir('./tmp/audio')
 await ensureDir(join(GEN_DIR, locale_code, 'audio'))
 const existingAudioFiles = listAudioFiles(locale_code)
 
@@ -52,7 +52,7 @@ for (const idx in ttsResults) {
   }
   const emojis = emojisByCategory[categoryId]
   console.log('source audio saved: ', fileName)
-  const tempAudio = join('./data/tmp', fileName)
+  const tempAudio = join('./tmp/audio', fileName)
   await writeTranslationAudioFiles(tempAudio, locale_code, emojis)
 }
 

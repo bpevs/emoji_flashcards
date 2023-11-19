@@ -7,4 +7,4 @@ www/index.js
 data/gen
 
 # Temporary deletable files
-data/tmp
+tmp

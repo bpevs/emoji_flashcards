@@ -37,7 +37,7 @@ async function ttsAzure(
     return null
   }
   const fileName = `${locale_code}_${category_id}.mp3`
-  const filePath = join('./data/tmp', fileName)
+  const filePath = join('./tmp/audio', fileName)
   const file = await Deno.open(filePath, { create: true, write: true })
   const arrayBuffer = new Uint8Array(await response.arrayBuffer())
   await writeAll(file, arrayBuffer)
