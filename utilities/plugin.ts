@@ -1,4 +1,4 @@
-import { translate } from './translate.ts'
+import { API, translate } from './translate.ts'
 import { LanguageFile, SourceDataMap, SourceFile } from './types.ts'
 import {
   getLanguageDataMap,
@@ -60,15 +60,16 @@ export default class Plugin {
       rows.push(this.pre(key, sourceRowsMap[key], targetRowsMap[key]))
     }
 
-    const deepl = languageFile?.meta?.deepl
-    let translationCode = deepl?.language_code
-    if (deepl?.locale_code) translationCode = deepl?.locale_code
-
-    if (!translationCode) throw new Error('No deepl translation locale')
-    await this.resolveTranslations(translationCode)
-
+    const { azure, deepl } = languageFile?.meta || {}
+    let translationAPI = API.AZURE
+    let translationCode = azure?.translation_locale
+    if (deepl?.language_code) {
+      translationAPI = API.DEEPL
+      translationCode = deepl?.language_code
+    }
+    if (!translationCode) throw new Error('No locale to translate')
+    await this.resolveTranslations(translationCode, translationAPI)
     const nextTargetRowsMap: { [key: string]: TargetRow } = {}
-
     for (const index in rows) {
       const { key, category, text, ...other } = rows[index]
       const undecoratedTarget: TargetRow = { key, category, text: await text }
@@ -83,7 +84,6 @@ export default class Plugin {
       )
       delete nextTargetRowsMap[key].key
     }
-
     return nextTargetRowsMap
   }
 
@@ -93,10 +93,18 @@ export default class Plugin {
     })
   }
 
-  async resolveTranslations(translation_language: string) {
+  async resolveTranslations(
+    translation_language: string,
+    translation_api: API,
+  ) {
     const resolves = Object.keys(this.toTranslate)
-    const translated = await translate(resolves, translation_language)
-    translated.filter(Boolean).forEach((text: string, index: number) => {
+    if (!resolves.length) return
+    const translated = await translate(
+      resolves,
+      translation_language,
+      translation_api,
+    )
+    translated.forEach((text: string, index: number) => {
       const key = resolves[index]
       if (this.toTranslate[key]) this.toTranslate[key](text)
       else console.warn(`Missing translate resolver for ${text}`)

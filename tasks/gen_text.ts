@@ -21,16 +21,18 @@ import {
   writeLanguageFile,
 } from '../utilities/data_access.ts'
 import { getDataAndColumns } from '../utilities/data_access_utilities.ts'
-import { translate } from '../utilities/translate.ts'
+import { API, translate } from '../utilities/translate.ts'
 import plugins from '../data/plugins/mod.ts'
 import Plugin from '../utilities/plugin.ts'
+
+const [input_locale_code] = Deno.args
 
 await generateAllTranslations()
 Deno.exit(0)
 
 async function generateAllTranslations() {
   const sourceFile = await readSourceFile()
-  const localeCodes = listLanguages()
+  const localeCodes = input_locale_code ? [input_locale_code] : listLanguages()
 
   console.info('locale_codes: ', localeCodes)
 
@@ -57,15 +59,22 @@ async function generateAllTranslations() {
     console.info(stringsToTranslate)
 
     if (stringsToTranslate.length) {
-      const deepl = languageFile?.meta?.deepl
-      let translationCode = deepl?.language_code
-      if (deepl?.locale_code) translationCode = deepl?.locale_code
+      const { azure, deepl } = languageFile?.meta || {}
+      let translationAPI = API.AZURE
+      let translationCode = azure?.translation_locale
+      if (deepl?.language_code) {
+        translationAPI = API.DEEPL
+        translationCode = deepl?.language_code
+      }
+
       if (!translationCode) throw new Error('No locale to translate')
 
       const translatedStrings = await translate(
         stringsToTranslate,
         translationCode,
+        translationAPI,
       )
+
       let index = 0
       for (const [stringKey] of Object.entries(sourceFile.strings)) {
         if (!languageFile.strings[stringKey]) {
@@ -83,7 +92,6 @@ async function generateAllTranslations() {
 
     const rows = await plugin.getLanguageFileRows(sourceFile, languageFile)
     const [columns, data] = getDataAndColumns(rows)
-
     await writeLanguageFile(locale_code, {
       ...languageFile,
       columns,
