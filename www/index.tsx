@@ -82,6 +82,7 @@ const flagIconElements = document.getElementsByClassName('flag-icon')
 const downloadLink = document.getElementById(
   'download-link',
 ) as HTMLAnchorElement
+
 createEffect(() => {
   if (flagIconElements.length) {
     Array.prototype.forEach.call(
@@ -89,9 +90,10 @@ createEffect(() => {
       (el) => el.innerHTML = data().flag,
     )
   }
+
   if (downloadLink) {
     downloadLink.href =
-      `https://static.bpev.me/flashcards/${data().noteLangCode}/emoji-flashcards-${data().noteLangCode}.apkg`
+      `https://static.bpev.me/flashcards/${noteLangCode()}/emoji-flashcards-${noteLangCode()}.apkg`
   }
 })
 
