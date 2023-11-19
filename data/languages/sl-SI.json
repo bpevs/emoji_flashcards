@@ -69,7 +69,11 @@
     "uk-UA": "ukrajinski",
     "vi-VN": "Vietnamski",
     "zh-CN": "kitajščina (mandarinščina)",
-    "zh-TW": "kitajščina"
+    "zh-TW": "kitajščina",
+    "af-ZA": "Afriški",
+    "ca-ES": "Katalonščina",
+    "hi-IN": "hindujščina",
+    "th-TH": "tajščina"
   },
   "columns": ["text"],
   "data": {

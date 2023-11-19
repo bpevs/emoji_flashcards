@@ -69,7 +69,11 @@
     "uk-UA": "ukrán",
     "vi-VN": "Vietnámi",
     "zh-CN": "Kínai (mandarin)",
-    "zh-TW": "Kínai"
+    "zh-TW": "Kínai",
+    "af-ZA": "Afrikai",
+    "ca-ES": "Katalán",
+    "hi-IN": "Hindi",
+    "th-TH": "thai"
   },
   "columns": ["text"],
   "data": {

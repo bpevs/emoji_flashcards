@@ -69,7 +69,11 @@
     "uk-UA": "ukrainiečių",
     "vi-VN": "Vietnamiečių",
     "zh-CN": "Kinų (mandarinų)",
-    "zh-TW": "Kinų"
+    "zh-TW": "Kinų",
+    "af-ZA": "Afrikos",
+    "ca-ES": "Katalonų",
+    "hi-IN": "Hindi",
+    "th-TH": "tajų kalba"
   },
   "columns": ["text"],
   "data": {

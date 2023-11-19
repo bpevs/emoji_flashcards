@@ -69,7 +69,11 @@
     "uk-UA": "Ukranian",
     "zh-CN": "중국어(만다린)",
     "vi-VN": "베트남어",
-    "zh-TW": "중국어"
+    "zh-TW": "중국어",
+    "af-ZA": "아프리카",
+    "ca-ES": "카탈루냐어",
+    "hi-IN": "Hindi",
+    "th-TH": "Thai"
   },
   "columns": ["text"],
   "data": {

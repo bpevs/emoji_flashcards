@@ -69,7 +69,11 @@
     "uk-UA": "ukraiņu",
     "vi-VN": "Vjetnamiešu",
     "zh-CN": "Ķīniešu (mandarīnu)",
-    "zh-TW": "Ķīniešu"
+    "zh-TW": "Ķīniešu",
+    "af-ZA": "Āfrikas",
+    "ca-ES": "Katalāņu",
+    "hi-IN": "Hindi",
+    "th-TH": "Taizemes"
   },
   "columns": ["text"],
   "data": {
