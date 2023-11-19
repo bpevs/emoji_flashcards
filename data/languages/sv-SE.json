@@ -69,7 +69,11 @@
     "uk-UA": "ukrainska",
     "vi-VN": "Vietnamesiska",
     "zh-CN": "Kinesiska (mandarin)",
-    "zh-TW": "Kinesiska"
+    "zh-TW": "Kinesiska",
+    "af-ZA": "Afrikanska",
+    "ca-ES": "katalanska",
+    "hi-IN": "hindi",
+    "th-TH": "thailändska"
   },
   "columns": ["text"],
   "data": {

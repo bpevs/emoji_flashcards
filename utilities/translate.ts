@@ -15,7 +15,6 @@ async function translateAzure(
   texts: string[],
   targetLanguage: string,
 ): Promise<string[]> {
-  const text = texts.join('\n')
   const url = new URL(AZURE_API_ENDPOINT)
   url.search = new URLSearchParams({
     'api-version': '3.0',
@@ -31,10 +30,14 @@ async function translateAzure(
       'Content-type': 'application/json',
       'X-ClientTraceId': crypto.randomUUID(),
     },
-    body: JSON.stringify([{ text }]),
+    body: JSON.stringify(texts.map((text) => ({ text }))),
   })
-  const result = await response.json()
-  return result[0].translations[0].text.split('\n')
+  return (await response.json())
+    .map((
+      { translations }: {
+        translations: Array<{ text: 'string'; to: 'string' }>
+      },
+    ) => translations[0].text)
 }
 
 async function translateDeepl(

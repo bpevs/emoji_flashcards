@@ -69,7 +69,11 @@
     "uk-UA": "烏克蘭文",
     "vi-VN": "越南语",
     "zh-CN": "中文",
-    "zh-TW": "中文"
+    "zh-TW": "中文",
+    "af-ZA": "非洲",
+    "ca-ES": "加泰罗尼亚语",
+    "hi-IN": "印地语",
+    "th-TH": "泰语"
   },
   "columns": ["text", "pinyin"],
   "data": {

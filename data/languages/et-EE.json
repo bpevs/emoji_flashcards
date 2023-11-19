@@ -69,7 +69,11 @@
     "uk-UA": "ukraina",
     "vi-VN": "Vietnami",
     "zh-CN": "hiina keel (mandariini keel)",
-    "zh-TW": "Hiina"
+    "zh-TW": "Hiina",
+    "af-ZA": "Aafrika",
+    "ca-ES": "Katalaani",
+    "hi-IN": "Hindi",
+    "th-TH": "Tai"
   },
   "columns": ["text"],
   "data": {

@@ -69,7 +69,11 @@
     "uk-UA": "Ukraynaca",
     "vi-VN": "Vietnamca",
     "zh-CN": "Çince (Mandarin)",
-    "zh-TW": "Çince (Mandarin)"
+    "zh-TW": "Çince (Mandarin)",
+    "af-ZA": "Afrika",
+    "ca-ES": "Katalanca",
+    "hi-IN": "Hintçe",
+    "th-TH": "Tayland"
   },
   "columns": ["text"],
   "data": {

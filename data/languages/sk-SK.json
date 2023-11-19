@@ -69,7 +69,11 @@
     "uk-UA": "ukrajinčina",
     "vi-VN": "Vietnamci",
     "zh-CN": "čínština (mandarínčina)",
-    "zh-TW": "čínština"
+    "zh-TW": "čínština",
+    "af-ZA": "African",
+    "ca-ES": "Katalánčina",
+    "hi-IN": "Hindčina",
+    "th-TH": "thajčina"
   },
   "columns": ["text"],
   "data": {

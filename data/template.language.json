@@ -1,13 +1,14 @@
 {
-  "name": "Template For New Language",
+  "name": "",
+  "name_en": "Template For New Language",
   "version": "0.0.1",
   "language_code": "es",
   "locale_code": "es-ES",
   "locale_flag": "🏳️‍🌈",
   "meta": {
     "anki": {
-      "model_id": 12345,
-      "deck_id": 12345
+      "model_id": 23111640,
+      "deck_id": 23111640
     }
   },
   "strings": {},

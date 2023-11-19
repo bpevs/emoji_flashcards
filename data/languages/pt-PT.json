@@ -70,7 +70,11 @@
     "uk-UA": "ucraniano",
     "vi-VN": "vietnamita",
     "zh-CN": "Chinês",
-    "zh-TW": "Chinês"
+    "zh-TW": "Chinês",
+    "af-ZA": "Africano",
+    "ca-ES": "Catalão",
+    "hi-IN": "Hindi",
+    "th-TH": "Tailandês"
   },
   "columns": ["text"],
   "data": {

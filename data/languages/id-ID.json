@@ -69,7 +69,11 @@
     "uk-UA": "Bahasa Ukrania",
     "vi-VN": "Vietnam",
     "zh-CN": "Bahasa Tionghoa (Mandarin)",
-    "zh-TW": "Bahasa Tionghoa (Mandarin)"
+    "zh-TW": "Bahasa Tionghoa (Mandarin)",
+    "af-ZA": "Afrika",
+    "ca-ES": "Bahasa Katalan",
+    "hi-IN": "Bahasa Hindi",
+    "th-TH": "Bahasa Thailand"
   },
   "columns": ["text"],
   "data": {
