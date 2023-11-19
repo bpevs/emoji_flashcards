@@ -180,6 +180,12 @@ export default [
     'native_name': 'Українська',
   },
   {
+    'language_code': 'vi',
+    'locale_code': 'vi-VN',
+    'locale_flag': '🇻🇳',
+    'native_name': 'Tiếng Việt',
+  },
+  {
     'language_code': 'zh',
     'locale_code': 'zh-CN',
     'locale_flag': '🇨🇳',

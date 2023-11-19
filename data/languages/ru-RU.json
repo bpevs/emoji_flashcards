@@ -15,7 +15,7 @@
       "voice_id": "ru-RU-SvetlanaNeural"
     },
     "deepl": {
-      "language_code": "ru-RU"
+      "language_code": "ru"
     }
   },
   "strings": {
@@ -67,6 +67,7 @@
     "sv-SE": "Шведский",
     "tr-TR": "Турецкий",
     "uk-UA": "Укранский",
+    "vi-VN": "Вьетнамский",
     "zh-CN": "Китайский язык (мандарин)",
     "zh-TW": "Китайский язык"
   },

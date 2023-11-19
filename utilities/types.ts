@@ -49,12 +49,9 @@ export type LanguageFile = SourceFile & {
       language_code: string
       locale_code?: string
     }
-    play_ht?: {
-      locale_code: string
-      voice_id: string
-    }
     azure?: {
       locale_code: string
+      translation_locale?: string
       voice_id: string
     }
   }

@@ -21,6 +21,7 @@ if (!voice_id) throw new Error(`${locale_code} does not have a voice_id`)
 const pronunciationKeyIndex = columns.indexOf(pronunciation_key || '') || 0
 
 const emojisByCategory = lang.data
+await ensureDir('./data/tmp')
 await ensureDir(join(GEN_DIR, locale_code, 'audio'))
 const existingAudioFiles = listAudioFiles(locale_code)
 
@@ -118,7 +119,7 @@ async function writeTranslationAudioFiles(
     )
 
     const [key, text] = names[count]
-    console.log(key, text)
+
     const name = getAudioFilename(locale_code, key, text)
     count = count + 1
 

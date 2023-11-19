@@ -7,7 +7,7 @@ const SILENCE_REQUEST = 2
 const env = await load()
 
 const url = `https://${
-  env['AZURE_REGION']
+  env['AZURE_SPEECH_REGION']
 }.tts.speech.microsoft.com/cognitiveservices/v1`
 
 async function ttsAzure(
@@ -19,7 +19,7 @@ async function ttsAzure(
   const response = await fetch(url, {
     method: 'POST',
     headers: {
-      'Ocp-Apim-Subscription-Key': env['AZURE_KEY'],
+      'Ocp-Apim-Subscription-Key': env['AZURE_SPEECH_KEY'],
       'Content-Type': 'application/ssml+xml',
       'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3',
       'User-Agent': 'curl',
