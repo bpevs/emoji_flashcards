@@ -21,6 +21,7 @@ export default [
     'language_code': 'ca',
     'locale_code': 'ca-ES',
     'locale_flag': '🇪🇸',
+    'native_name': 'Català',
   },
   {
     'language_code': 'cs',
@@ -86,6 +87,7 @@ export default [
     'language_code': 'hi',
     'locale_code': 'hi-IN',
     'locale_flag': '🇮🇳',
+    'native_name': 'हिंदी',
   },
   {
     'language_code': 'hu',
