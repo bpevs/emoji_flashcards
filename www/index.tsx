@@ -184,34 +184,7 @@ function App() {
         </div>
       </div>
 
-      <div style='text-align: center; user-select: none;'>
-        <button
-          class='kbc-button kbc-button-xs'
-          data-keyboard-key='ArrowLeft'
-          disabled={currIndex() <= 0}
-          onClick={goPrevIndex}
-        >
-          ◀
-        </button>
-        <button
-          class='kbc-button kbc-button-xs'
-          data-keyboard-key=' '
-          disabled={currIndex() >= (data().notes.length - 1)}
-          onClick={goNextIndex}
-        >
-          space
-        </button>
-        <button
-          class='kbc-button kbc-button-xs'
-          data-keyboard-key='ArrowRight'
-          disabled={currIndex() >= (data().notes.length - 1)}
-          onClick={goNextIndex}
-        >
-          ▶
-        </button>
-      </div>
-
-      <div style='text-align: center; padding-top: 10px;'>
+      <div style='text-align: center; padding: 10px;'>
         <Show when={data().notes.length}>
           <select
             name='current-note'
@@ -247,6 +220,33 @@ function App() {
             </For>
           </select>
         </Show>
+      </div>
+
+      <div style='text-align: center; user-select: none;'>
+        <button
+          class='kbc-button kbc-button-xs'
+          data-keyboard-key='ArrowLeft'
+          disabled={currIndex() <= 0}
+          onClick={goPrevIndex}
+        >
+          ◀
+        </button>
+        <button
+          class='kbc-button kbc-button-xs'
+          data-keyboard-key=' '
+          disabled={currIndex() >= (data().notes.length - 1)}
+          onClick={goNextIndex}
+        >
+          {data().strings['next']}
+        </button>
+        <button
+          class='kbc-button kbc-button-xs'
+          data-keyboard-key='ArrowRight'
+          disabled={currIndex() >= (data().notes.length - 1)}
+          onClick={goNextIndex}
+        >
+          ▶
+        </button>
       </div>
     </>
   )
