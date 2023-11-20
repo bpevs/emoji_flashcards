@@ -31,7 +31,6 @@ async function getWebsiteData(userLangParam, noteLangParam): {
     locale_code: string
     native_name: string
     locale_flag: string
-    user_lang_name: string
   }>
 } {
   const userLangCode = userLangParam || DEFAULT_LANG
@@ -53,14 +52,13 @@ async function getWebsiteData(userLangParam, noteLangParam): {
     flag: locale_flag,
     strings,
     notes,
-    locales: locales.map((localeData) => ({
-      ...localeData,
-      user_lang_name: strings[localeData.locale_code],
-    })).sort((a, b) => {
-      if (a.user_lang_name < b.user_lang_name) return -1
-      if (a.user_lang_name > b.user_lang_name) return 1
-      return 0
-    }),
+    locales: locales
+      .map((localeData) => localeData)
+      .sort((a, b) => {
+        if (a.locale_code < b.locale_code) return -1
+        if (a.locale_code > b.locale_code) return 1
+        return 0
+      }),
   }
 }
 
