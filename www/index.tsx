@@ -14,6 +14,7 @@ import {
 import locales from '../data/locales.js'
 import { getAudioFilename } from '../utilities/data_access_utilities.ts'
 
+const touchDevice = 'ontouchstart' in document.documentElement
 const navigator = useNavigatorLanguage()
 
 const browserLang = () =>
@@ -83,14 +84,14 @@ const downloadLink = document.getElementById(
 ) as HTMLAnchorElement
 
 createEffect(() => {
-  if (flagIconElements.length) {
+  if (data().flag && flagIconElements.length) {
     Array.prototype.forEach.call(
       flagIconElements,
       (el) => el.innerHTML = data().flag,
     )
   }
 
-  if (downloadLink) {
+  if (noteLangCode() && downloadLink) {
     downloadLink.href =
       `https://static.bpev.me/flashcards/${noteLangCode()}/emoji-flashcards-${noteLangCode()}.apkg`
   }
@@ -222,32 +223,35 @@ function App() {
         </Show>
       </div>
 
-      <div style='text-align: center; user-select: none;'>
-        <button
-          class='kbc-button kbc-button-xs'
-          data-keyboard-key='ArrowLeft'
-          disabled={currIndex() <= 0}
-          onClick={goPrevIndex}
-        >
-          ◀
-        </button>
-        <button
-          class='kbc-button kbc-button-xs'
-          data-keyboard-key=' '
-          disabled={currIndex() >= (data().notes.length - 1)}
-          onClick={goNextIndex}
-        >
-          {data().strings['next']}
-        </button>
-        <button
-          class='kbc-button kbc-button-xs'
-          data-keyboard-key='ArrowRight'
-          disabled={currIndex() >= (data().notes.length - 1)}
-          onClick={goNextIndex}
-        >
-          ▶
-        </button>
-      </div>
+      {/* Touch device probably won't use keyboard? */}
+      <Show when={!touchDevice}>
+        <div style='text-align: center; user-select: none;'>
+          <button
+            class='kbc-button kbc-button-xs'
+            data-keyboard-key='ArrowLeft'
+            disabled={currIndex() <= 0}
+            onClick={goPrevIndex}
+          >
+            ◀
+          </button>
+          <button
+            class='kbc-button kbc-button-xs'
+            data-keyboard-key=' '
+            disabled={currIndex() >= (data().notes.length - 1)}
+            onClick={goNextIndex}
+          >
+            {data().strings['next']}
+          </button>
+          <button
+            class='kbc-button kbc-button-xs'
+            data-keyboard-key='ArrowRight'
+            disabled={currIndex() >= (data().notes.length - 1)}
+            onClick={goNextIndex}
+          >
+            ▶
+          </button>
+        </div>
+      </Show>
     </>
   )
 }
