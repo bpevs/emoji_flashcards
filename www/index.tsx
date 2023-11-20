@@ -14,7 +14,6 @@ import {
 import locales from '../data/locales.js'
 import { getAudioFilename } from '../utilities/data_access_utilities.ts'
 
-const touchDevice = 'ontouchstart' in document.documentElement
 const navigator = useNavigatorLanguage()
 
 const browserLang = () =>
@@ -146,70 +145,72 @@ function App() {
     <>
       <div class='note-wrapper'>
         <div class='note' onClick={goNextIndex}>
-          <h1 class='question'>{currEmoji()}</h1>
-          <div>
-            <Show when={noteLangCode() && currAnswer()}>
-              <audio
-                ref={(ref) => audioPlayer = ref}
-                src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/${
-                  getAudioFilename(noteLangCode(), currEmoji(), currAnswer())
-                }`}
-              />
-            </Show>
-            <div class='answer'>
-              <h3
-                style={`
-                visibility: ${isFlipped() ? 'hidden' : 'visible'};
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, 50%);
-                opacity: 0.7;
-                cursor: pointer;
-              `}
-              >
-                {data().strings['show-answer']}
-              </h3>
-              <h1 style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
-                {currAnswer()}
-              </h1>
-              <div style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
-                <Show when={hasHints()}>{hintComponents()}</Show>
+          <Show
+            when={data().notes}
+            fallback={
+              <div class='lds-circle'>
+                <div></div>
+              </div>
+            }
+          >
+            <h1 class='question'>{currEmoji()}</h1>
+            <div>
+              <Show when={noteLangCode() && currAnswer()}>
+                <audio
+                  ref={(ref) => audioPlayer = ref}
+                  src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/${
+                    getAudioFilename(noteLangCode(), currEmoji(), currAnswer())
+                  }`}
+                />
+              </Show>
+              <div class='answer'>
+                <h3
+                  class='show-answer-tag'
+                  style={`visibility: ${isFlipped() ? 'hidden' : 'visible'}`}
+                >
+                  {data().strings['show-answer']}
+                </h3>
+                <h1 style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
+                  {currAnswer()}
+                </h1>
+                <div
+                  style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}
+                >
+                  <Show when={hasHints()}>{hintComponents()}</Show>
+                </div>
               </div>
             </div>
-          </div>
+          </Show>
         </div>
       </div>
 
-      {/* Touch device probably won't use keyboard? */}
-      <Show when={!touchDevice}>
-        <div style='text-align: center; user-select: none;'>
-          <button
-            class='kbc-button kbc-button-xs'
-            data-keyboard-key='ArrowLeft'
-            disabled={currIndex() <= 0}
-            onClick={goPrevIndex}
-          >
-            ◀
-          </button>
-          <button
-            class='kbc-button kbc-button-xs'
-            data-keyboard-key=' '
-            disabled={currIndex() >= (data().notes.length - 1)}
-            onClick={goNextIndex}
-          >
-            space
-          </button>
-          <button
-            class='kbc-button kbc-button-xs'
-            data-keyboard-key='ArrowRight'
-            disabled={currIndex() >= (data().notes.length - 1)}
-            onClick={goNextIndex}
-          >
-            ▶
-          </button>
-        </div>
-      </Show>
+      <div style='text-align: center; user-select: none;'>
+        <button
+          class='kbc-button kbc-button-xs'
+          data-keyboard-key='ArrowLeft'
+          disabled={currIndex() <= 0}
+          onClick={goPrevIndex}
+        >
+          ◀
+        </button>
+        <button
+          class='kbc-button kbc-button-xs'
+          data-keyboard-key=' '
+          disabled={currIndex() >= (data().notes.length - 1)}
+          onClick={goNextIndex}
+        >
+          space
+        </button>
+        <button
+          class='kbc-button kbc-button-xs'
+          data-keyboard-key='ArrowRight'
+          disabled={currIndex() >= (data().notes.length - 1)}
+          onClick={goNextIndex}
+        >
+          ▶
+        </button>
+      </div>
+
       <div style='text-align: center; padding-top: 10px;'>
         <Show when={data().notes.length}>
           <select
