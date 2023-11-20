@@ -2,8 +2,8 @@
   "name": "",
   "name_en": "Template For New Language",
   "version": "0.0.1",
-  "language_code": "es",
-  "locale_code": "es-ES",
+  "language_code": "xx",
+  "locale_code": "xx-XX",
   "locale_flag": "🏳️‍🌈",
   "meta": {
     "anki": {
@@ -12,31 +12,6 @@
     }
   },
   "strings": {},
-  "columns": ["text", "hint"],
-  "data": {
-    "animal": {},
-    "body": {},
-    "clothing": {},
-    "color": {},
-    "directions": {},
-    "drink": {},
-    "emotions": {},
-    "food": {},
-    "measure": {},
-    "nature": {},
-    "number": {},
-    "objects": {},
-    "other-adjectives": {},
-    "other-nouns": {},
-    "people": {},
-    "people.descriptors": {},
-    "people.family": {},
-    "people.pronouns": {},
-    "phrases": {},
-    "places": {},
-    "seasons": {},
-    "time": {},
-    "transportation": {},
-    "verbs": {}
-  }
+  "columns": [],
+  "data": {}
 }

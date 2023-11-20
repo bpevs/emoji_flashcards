@@ -66,10 +66,22 @@ export default [
     'native_name': 'Español',
   },
   {
+    'language_code': 'fa',
+    'locale_code': 'es-MX',
+    'locale_flag': '🇲🇽',
+    'native_name': 'Español (México)',
+  },
+  {
     'language_code': 'et',
     'locale_code': 'et-EE',
     'locale_flag': '🇪🇪',
     'native_name': 'Eesti',
+  },
+  {
+    'language_code': 'fa',
+    'locale_code': 'fa-IR',
+    'locale_flag': '🇮🇷',
+    'native_name': 'فارسی',
   },
   {
     'language_code': 'fi',
@@ -82,6 +94,12 @@ export default [
     'locale_code': 'fr-FR',
     'locale_flag': '🇫🇷',
     'native_name': 'Français',
+  },
+  {
+    'language_code': 'fa',
+    'locale_code': 'he-IL',
+    'locale_flag': '🇮🇱',
+    'native_name': 'עברית',
   },
   {
     'language_code': 'hi',
@@ -223,8 +241,14 @@ export default [
   },
   {
     'language_code': 'zh',
+    'locale_code': 'zh-HK',
+    'locale_flag': '🇭🇰',
+    'native_name': '中文（香港）',
+  },
+  {
+    'language_code': 'zh',
     'locale_code': 'zh-TW',
     'locale_flag': '🇹🇼',
-    'native_name': '中文',
+    'native_name': '中文（台灣）',
   },
 ]
