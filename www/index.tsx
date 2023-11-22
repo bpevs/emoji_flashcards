@@ -1,11 +1,6 @@
 import { render } from 'solid-js/web'
 import { createEffect, createResource, createSignal, For, Show } from 'solid-js'
-import {
-  onKeyDown,
-  onKeyStroke,
-  onKeyUp,
-  useNavigatorLanguage,
-} from 'solidjs-use'
+import { onKeyStroke, useNavigatorLanguage } from 'solidjs-use'
 import {
   DEFAULT_LANG,
   NOTE_PARAM,
@@ -129,59 +124,38 @@ function App() {
 
   onKeyStroke(['ArrowLeft'], goPrevIndex, { dedupe: true })
   onKeyStroke(['ArrowRight', ' '], goNextIndex, { dedupe: true })
-  onKeyDown(true, ({ key }) => {
-    const element = document.querySelector('[data-keyboard-key="' + key + '"]')
-    if (element) element.classList.add('active')
-  })
-  onKeyUp(true, ({ key }) => {
-    const element = document.querySelector('[data-keyboard-key="' + key + '"]')
-    if (element) element.classList.remove('active')
-  })
 
   createEffect(() => {
     setParam('i', String(currIndex() || 0))
   })
 
+  const showOnFlip = () => `visibility: ${isFlipped() ? 'visible' : 'hidden'}`
+  const hideOnFlip = () => `visibility: ${isFlipped() ? 'hidden' : 'visible'}`
+
   return (
     <>
       <div class='note-wrapper'>
         <div class='note' onClick={goNextIndex}>
-          <Show
-            when={data().notes}
-            fallback={
-              <div class='lds-circle'>
-                <div></div>
-              </div>
-            }
-          >
-            <h1 class='question'>{currEmoji()}</h1>
-            <div>
-              <Show when={noteLangCode() && currAnswer()}>
-                <audio
-                  ref={(ref) => audioPlayer = ref}
-                  src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/${
-                    getAudioFilename(noteLangCode(), currEmoji(), currAnswer())
-                  }`}
-                />
+          <h1 class='question'>{currEmoji()}</h1>
+          <div>
+            <Show when={noteLangCode() && currAnswer()}>
+              <audio
+                ref={(ref) => audioPlayer = ref}
+                src={`https://static.bpev.me/flashcards/${noteLangCode()}/audio/${
+                  getAudioFilename(noteLangCode(), currEmoji(), currAnswer())
+                }`}
+              />
+            </Show>
+            <div class='answer'>
+              <h3 class='show-answer-tag' style={hideOnFlip()}>
+                {data().strings['show-answer']}
+              </h3>
+              <h1 style={showOnFlip()}>{currAnswer()}</h1>
+              <Show when={hasHints()}>
+                <div style={showOnFlip()}>{hintComponents()}</div>
               </Show>
-              <div class='answer'>
-                <h3
-                  class='show-answer-tag'
-                  style={`visibility: ${isFlipped() ? 'hidden' : 'visible'}`}
-                >
-                  {data().strings['show-answer']}
-                </h3>
-                <h1 style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}>
-                  {currAnswer()}
-                </h1>
-                <div
-                  style={`visibility: ${isFlipped() ? 'visible' : 'hidden'}`}
-                >
-                  <Show when={hasHints()}>{hintComponents()}</Show>
-                </div>
-              </div>
             </div>
-          </Show>
+          </div>
         </div>
       </div>
 
@@ -200,21 +174,17 @@ function App() {
           >
             <For each={data().categories}>
               {(category, index) => {
+                type Emoji = { row: string[]; index: number }
                 const options = () =>
                   data().notes
-                    .map((emoji: string[], index: number) => ({ emoji, index }))
-                    .filter((
-                      { emoji }: { emoji: string[]; index: number },
-                    ) => (emoji[1] === category))
+                    // map first to use original index
+                    .map((row: string[], index: number) => ({ row, index }))
+                    .filter(({ row }: Emoji) => (row[1] === category))
                 return (
                   <optgroup label={category}>
-                    {
-                      <For each={options()}>
-                        {(data) => (
-                          <option value={data.index}>{data.emoji[0]}</option>
-                        )}
-                      </For>
-                    }
+                    <For each={options()}>
+                      {(d) => <option value={d.index}>{d.row[0]}</option>}
+                    </For>
                   </optgroup>
                 )
               }}
@@ -222,36 +192,6 @@ function App() {
           </select>
         </Show>
       </div>
-
-      {/* Touch device probably won't use keyboard? */}
-      <Show when={!touchDevice}>
-        <div style='text-align: center; user-select: none;'>
-          <button
-            class='kbc-button kbc-button-xs'
-            data-keyboard-key='ArrowLeft'
-            disabled={currIndex() <= 0}
-            onClick={goPrevIndex}
-          >
-            ◀
-          </button>
-          <button
-            class='kbc-button kbc-button-xs'
-            data-keyboard-key=' '
-            disabled={currIndex() >= (data().notes.length - 1)}
-            onClick={goNextIndex}
-          >
-            {data().strings['next']}
-          </button>
-          <button
-            class='kbc-button kbc-button-xs'
-            data-keyboard-key='ArrowRight'
-            disabled={currIndex() >= (data().notes.length - 1)}
-            onClick={goNextIndex}
-          >
-            ▶
-          </button>
-        </div>
-      </Show>
     </>
   )
 }

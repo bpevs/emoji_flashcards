@@ -1,41 +1,36 @@
-<content class="index">
-  <h1 class="title">
-    {{strings.title}}
-  </h1>
-
-  <div class="description">
-    <form action="/" method="GET">
-      <input type="hidden" name="user" value="{{userLangCode}}" />
-      <label for="card">{{strings.description}}</label>
-      <select name="card" id="note-lang">
-        {{#select noteLangCode}}
-          {{#each locales}}
-            <option value="{{this.locale_code}}">
-              {{this.locale_flag}} {{lookup ../strings this.locale_code}}
-            </option>
-          {{/each}}
-        {{/select}}
-      </select>
-      <noscript>
-        <input id="fallback-go" type="submit" value="Go" />
-      </noscript>
-    </form>
+<div class="content">
+  <div class="title">
+    <h1>{{strings.title}}</h1>
+    <div class="description">
+      <form action="/" method="GET">
+        <input type="hidden" name="user" value="{{userLangCode}}" />
+        <label for="card">{{strings.description}}</label>
+        <select name="card" id="note-lang">
+          {{#select noteLangCode}}
+            {{#each locales}}
+              <option value="{{this.locale_code}}">
+                {{this.locale_flag}} {{lookup ../strings this.locale_code}}
+              </option>
+            {{/each}}
+          {{/select}}
+        </select>
+        <noscript>
+          <input id="fallback-go" type="submit" value="Go" />
+        </noscript>
+      </form>
+    </div>
   </div>
 
-  <p style="text-align: center;">
-    <a class="internal-link" href="/about">{{strings.help-translate}}</a>
-  </p>
-
   <div id="app">
-    <p class="no-js">
-      <div class="note-wrapper">
-        <div class="note" style="min-height: 300px;">
-          <noscript>
+    <div class="note-wrapper">
+      <div class="note">
+        <noscript>
+          <div class="no-script-message">
             {{strings.no-js}}
-          </noscript>
-        </div>
+          </div>
+        </noscript>
       </div>
-    </p>
+    </div>
   </div>
 
   <h2 class="download">
@@ -43,4 +38,58 @@
       <span><span class="flag-icon">{{flag}}</span> {{strings.download}}</span>
     </a>
   </h2>
-</content>
+
+  <a id="learn-more">
+    <div class="learn-more">
+      <p>{{strings.learn-more}}</p>
+      <svg
+        fill="#000000"
+        height="20px"
+        width="20px"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 407.437 407.437"
+        xml:space="preserve">
+          <polygon points="386.258,91.567 203.718,273.512 21.179,91.567 0,112.815 203.718,315.87 407.437,112.815 "/>
+      </svg>
+    </div>
+  </a>
+</div>
+
+<div class="content">
+  <div class="about">
+    <h1 id="about">{{strings.about}}</h1>
+    <p>{{strings.about-about-description}}</p>
+    <p class="about-links">
+      <a href="https://apps.ankiweb.net">
+        <img src="/icons/anki-mark.png" height="25px" />
+        <span>Anki</span>
+      </a>
+    </p>
+
+    <h1>{{strings.about-help-title}}</h1>
+    <p>{{strings.about-help-description-1}}</p>
+    <p>{{strings.about-help-description-2}}</p>
+
+    <p class="about-links">
+      <a href="https://github.com/bpevs/emoji_flashcards/tree/main/data">
+        <img src="/icons/github-mark.png" height="25px" />
+        <span>Github</span>
+      </a>
+      <a href="https://discord.gg/m9WGM2QWBK">
+        <img src="/icons/discord-mark-black.png" height="20px" />
+        <span>Discord</span>
+      </a>
+    </p>
+
+    <h1>{{strings.about-sponsor-title}}</h1>
+    <p>{{strings.about-sponsor-description}}</p>
+    <p class="about-links">
+      <a href="https://github.com/sponsors/bpevs">
+        <img src="/icons/github-mark.png" height="25px" />
+        <span>Github Sponsors</span>
+      </a>
+    </p>
+  </div>
+</div>

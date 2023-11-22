@@ -14,7 +14,6 @@
     <meta property="og:description" content="{{strings.description}} {{noteLangCode}}" />
     <meta property="og:image" content="/icons/favicon.png" />
 
-    <link rel="stylesheet" href="/keyboard.css" />
     <link rel="icon" type="image/png" href="/icons/favicon.png">
     <link rel="apple-touch-icon" type="image/png" href="/icons/favicon.png">
 
@@ -33,6 +32,13 @@
 
       #fallback-go { display: none; }
       .no-script #fallback-go { display: inline-block; }
+      .no-script-message {
+        width: 90%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%)
+      }
 
       #wrapper {
         box-sizing: border-box;
@@ -43,42 +49,16 @@
         background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
       }
 
-      header,
-      footer {
-        flex-grow: 0;
-        flex-shrink: 0;
-        padding: 10px;
+      .content {
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        justify-content: space-around;
+        align-content: center;
+        min-height: 100vh;
+        padding: 20px;
       }
 
-      footer {
-        background-color: rgba(256, 256, 256, 0.4);
-        box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-      }
-
-      footer a {
-        vertical-align: middle;
-        text-decoration: none;
-        display: inline-block;
-        padding: 10px;
-      }
-
-      footer a:hover {
-        opacity: 0.8;
-      }
-
-      footer div {
-        padding: 10px;
-        display: inline-block;
-        vertical-align: middle;
-      }
-
-      content.index {
-        flex-grow: 1;
-      }
-
-      content.about {
+      .about {
         max-width: 700px;
         background-color: rgba(256, 256, 256, 0.4);
         box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
@@ -87,18 +67,10 @@
         border-radius: 10px;
       }
 
-      .no-js {
-        text-align: center;
-      }
-
       .title {
         text-align: center;
-        margin-top: 70px;
-      }
-
-      .description {
-        text-align: center;
         margin-top: 20px;
+        margin-bottom: 20px;
       }
 
       .user-lang {
@@ -113,6 +85,10 @@
         border: 2px solid black;
       }
 
+      #app {
+        min-height: 300px;
+      }
+
       .note-wrapper {
         margin: 20px 0 0 0;
         text-align: center;
@@ -122,7 +98,6 @@
 
       .note {
         display: flex;
-        justify-content: center;
         user-select: none;
         background-color: rgba(256, 256, 256, 0.3);
         box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
@@ -131,10 +106,11 @@
         width: 100%;
         max-width: 400px;
         max-height: 400px;
+        min-height: 300px;
+        min-width: 100px;
         flex-direction: column;
         position: relative;
         padding: 0 0 0 0;
-        min-width: 100px;
         cursor: pointer;
         overflow: hidden;
       }
@@ -155,6 +131,7 @@
         border-top: 1px dotted rgba(0, 0, 0, 0.3);
         padding-top: 20px;
         padding-bottom: 50px;
+        overflow-wrap: break-word;
       }
 
       button {
@@ -162,22 +139,7 @@
         font-size: 1em;
       }
 
-      table {
-        margin: auto;
-        text-align: center;
-      }
-
-      .emoji-row {
-        cursor: pointer;
-      }
-
-      .emoji-row:hover,
-      .emoji-row.selected {
-        background-color: rgba(0, 0, 0, 0.1);
-      }
-
       .download {
-        padding: 60px;
         text-align: center;
       }
 
@@ -197,6 +159,16 @@
 
       .download a:hover {
         color: blue;
+      }
+
+      .learn-more {
+        margin: 20px auto 20px auto;
+        text-align: center;
+        height: 30px;
+      }
+
+      .learn-more p {
+        margin: 5px;
       }
 
       .show-answer-tag {
@@ -224,46 +196,13 @@
       .about-links span {
         padding-left: 3px;
       }
-
-      .lds-circle {
-        display: inline-block;
-        transform: translateZ(1px);
-      }
-      .lds-circle > div {
-        display: inline-block;
-        width: 64px;
-        height: 64px;
-        margin: 8px;
-        border-radius: 50%;
-        background: #fff;
-        animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-      }
-      @keyframes lds-circle {
-        0%, 100% {
-          animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
-        }
-        0% {
-          transform: rotateY(0deg);
-        }
-        50% {
-          transform: rotateY(1800deg);
-          animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
-        }
-        100% {
-          transform: rotateY(3600deg);
-        }
-      }
-
     </style>
   </head>
   <body class="no-script">
     <div class="user-lang">
       <form action="/" method="GET">
         <label for="user">🌐</label>
-        <select
-          name="user"
-          id="user-lang"
-        >
+        <select name="user" id="user-lang">
           {{#select userLangCode}}
             {{#each locales}}
               <option value="{{this.locale_code}}">
@@ -278,10 +217,10 @@
         </noscript>
       </form>
     </div>
-
-    <div id="wrapper">
+    <content id="wrapper">
       {{{body}}}
-    </div>
+    </content>
+
     <script src="/index.js"></script>
     <script>document.body.classList.remove('no-script');</script>
   </body>
