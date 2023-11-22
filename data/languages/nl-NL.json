@@ -79,7 +79,8 @@
     "vi-VN": "Vietnamees",
     "zh-CN": "Chinees (Mandarijn)",
     "zh-HK": "Chinees (Kantonees)",
-    "zh-TW": "Chinees (Taiwan)"
+    "zh-TW": "Chinees (Taiwan)",
+    "learn-more": "Meer leren"
   },
   "columns": ["text"],
   "data": {

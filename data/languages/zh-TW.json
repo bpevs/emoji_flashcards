@@ -79,7 +79,8 @@
     "vi-VN": "越南语",
     "zh-CN": "中文（普通话）",
     "zh-HK": "中文（粤语）",
-    "zh-TW": "中文（台湾）"
+    "zh-TW": "中文（台湾）",
+    "learn-more": "了解更多"
   },
   "columns": ["text","pinyin"],
   "data": {

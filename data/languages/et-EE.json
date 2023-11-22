@@ -79,7 +79,8 @@
     "vi-VN": "Vietnami",
     "zh-CN": "hiina keel (mandariini keel)",
     "zh-HK": "Hiina keel (kantoni keel)",
-    "zh-TW": "Hiina keel (Taiwan)"
+    "zh-TW": "Hiina keel (Taiwan)",
+    "learn-more": "Lisateave"
   },
   "columns": ["text"],
   "data": {

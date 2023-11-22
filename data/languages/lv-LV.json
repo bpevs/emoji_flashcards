@@ -79,7 +79,8 @@
     "vi-VN": "vjetnamiešu",
     "zh-CN": "ķīniešu (mandarīnu)",
     "zh-HK": "Ķīniešu (kantoniešu)",
-    "zh-TW": "Ķīniešu (Taivāna)"
+    "zh-TW": "Ķīniešu (Taivāna)",
+    "learn-more": "Uzzināt vairāk"
   },
   "columns": ["text"],
   "data": {

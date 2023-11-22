@@ -79,7 +79,8 @@
     "vi-VN": "vietnamčina",
     "zh-CN": "čínština (mandarínčina)",
     "zh-HK": "Čínština (kantončina)",
-    "zh-TW": "Čínština (Taiwan)"
+    "zh-TW": "Čínština (Taiwan)",
+    "learn-more": "Dozvedieť sa viac"
   },
   "columns": ["text"],
   "data": {

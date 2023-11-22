@@ -79,7 +79,8 @@
     "vi-VN": "ベトナム語",
     "zh-CN": "中国語（北京語）",
     "zh-HK": "中国語（広東語）",
-    "zh-TW": "中国語（台湾）"
+    "zh-TW": "中国語（台湾）",
+    "learn-more": "さらに詳しく"
   },
   "columns": ["text","romaji"],
   "data": {

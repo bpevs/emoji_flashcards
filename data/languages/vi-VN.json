@@ -77,7 +77,8 @@
     "vi-VN": "Tiếng Việt",
     "zh-CN": "Tiếng Trung (Quan Thoại)",
     "zh-HK": "Tiếng Trung (tiếng Quảng Đông)",
-    "zh-TW": "Tiếng Trung (Đài Loan)"
+    "zh-TW": "Tiếng Trung (Đài Loan)",
+    "learn-more": "Tìm hiểu thêm"
   },
   "columns": ["text"],
   "data": {

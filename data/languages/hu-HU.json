@@ -79,7 +79,8 @@
     "vi-VN": "vietnami",
     "zh-CN": "kínai (mandarin)",
     "zh-HK": "Kínai (kantoni)",
-    "zh-TW": "Kínai (tajvani)"
+    "zh-TW": "Kínai (tajvani)",
+    "learn-more": "Tudjon meg többet"
   },
   "columns": ["text"],
   "data": {

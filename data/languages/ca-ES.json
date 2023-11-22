@@ -77,7 +77,8 @@
     "vi-VN": "Vietnamita",
     "zh-CN": "Xinès (Mandarí)",
     "zh-HK": "Xinès (cantonès)",
-    "zh-TW": "Xinès (Taiwan)"
+    "zh-TW": "Xinès (Taiwan)",
+    "learn-more": "Aprèn més"
   },
   "columns": ["text"],
   "data": {

@@ -79,7 +79,8 @@
     "vi-VN": "vietnamesisk",
     "zh-CN": "Kinesisk (mandarin)",
     "zh-HK": "Kinesisk (kantonesisk)",
-    "zh-TW": "Kinesisk (Taiwan)"
+    "zh-TW": "Kinesisk (Taiwan)",
+    "learn-more": "Les mer"
   },
   "columns": ["text"],
   "data": {

@@ -79,7 +79,8 @@
     "vi-VN": "vietnamiečių",
     "zh-CN": "Kinų (mandarinų)",
     "zh-HK": "Kinų (kantoniečių)",
-    "zh-TW": "Kinų kalba (Taivanas)"
+    "zh-TW": "Kinų kalba (Taivanas)",
+    "learn-more": "Sužinokite daugiau"
   },
   "columns": ["text"],
   "data": {

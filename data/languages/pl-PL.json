@@ -79,7 +79,8 @@
     "vi-VN": "wietnamski",
     "zh-CN": "Chiński (mandaryński)",
     "zh-HK": "Chiński (kantoński)",
-    "zh-TW": "Chiński (Tajwan)"
+    "zh-TW": "Chiński (Tajwan)",
+    "learn-more": "Dowiedz się więcej"
   },
   "columns": ["text"],
   "data": {

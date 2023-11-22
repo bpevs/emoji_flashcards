@@ -79,7 +79,8 @@
     "vi-VN": "vietnamščina",
     "zh-CN": "kitajščina (mandarinščina)",
     "zh-HK": "kitajščina (kantonščina)",
-    "zh-TW": "kitajščina (Tajvan)"
+    "zh-TW": "kitajščina (Tajvan)",
+    "learn-more": "Preberite več"
   },
   "columns": ["text"],
   "data": {

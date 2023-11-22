@@ -77,7 +77,8 @@
     "vi-VN": "越南文",
     "zh-CN": "中文（普通話）",
     "zh-HK": "中文（粵語）",
-    "zh-TW": "中文（台灣）"
+    "zh-TW": "中文（台灣）",
+    "learn-more": "瞭解更多信息"
   },
   "columns": ["text","jyutping"],
   "data": {

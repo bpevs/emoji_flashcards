@@ -79,7 +79,8 @@
     "vi-VN": "Bahasa Vietnam",
     "zh-CN": "Bahasa Cina (Mandarin)",
     "zh-HK": "Bahasa Mandarin (Kanton)",
-    "zh-TW": "Bahasa Mandarin (Taiwan)"
+    "zh-TW": "Bahasa Mandarin (Taiwan)",
+    "learn-more": "Pelajari Lebih Lanjut"
   },
   "columns": ["text"],
   "data": {

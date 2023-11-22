@@ -80,7 +80,8 @@
     "vi-VN": "vietnamita",
     "zh-CN": "Chinês (Mandarim)",
     "zh-HK": "Chinês (cantonês)",
-    "zh-TW": "Chinês (Taiwan)"
+    "zh-TW": "Chinês (Taiwan)",
+    "learn-more": "Saiba mais"
   },
   "columns": ["text"],
   "data": {

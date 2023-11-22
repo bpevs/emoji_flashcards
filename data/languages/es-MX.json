@@ -77,7 +77,8 @@
     "vi-VN": "Vietnamita",
     "zh-CN": "Chino (Mandarín)",
     "zh-HK": "Chino (cantonés)",
-    "zh-TW": "Chino (Taiwán)"
+    "zh-TW": "Chino (Taiwán)",
+    "learn-more": "Aprende más"
   },
   "columns": ["text"],
   "data": {

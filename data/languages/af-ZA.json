@@ -77,7 +77,8 @@
     "vi-VN": "Viëtnamese",
     "zh-CN": "Sjinees (Mandaryns)",
     "zh-HK": "Sjinees (Kantonees)",
-    "zh-TW": "Sjinees (Taiwan)"
+    "zh-TW": "Sjinees (Taiwan)",
+    "learn-more": "Leer meer"
   },
   "columns": ["text"],
   "data": {

@@ -80,7 +80,8 @@
     "vi-VN": "Vietnamese",
     "zh-CN": "Chinese (Mandarin)",
     "zh-HK": "Chinese (Cantonese)",
-    "zh-TW": "Chinese (Taiwan)"
+    "zh-TW": "Chinese (Taiwan)",
+    "learn-more": "Learn More"
   },
   "columns": ["text"],
   "data": {

@@ -79,7 +79,8 @@
     "vi-VN": "vietnam",
     "zh-CN": "Kiina (mandariini)",
     "zh-HK": "Kiina (kantoninkiina)",
-    "zh-TW": "Kiina (Taiwan)"
+    "zh-TW": "Kiina (Taiwan)",
+    "learn-more": "Lue lisää"
   },
   "columns": ["text"],
   "data": {

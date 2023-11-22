@@ -79,7 +79,8 @@
     "vi-VN": "vietnamesiska",
     "zh-CN": "Kinesiska (mandarin)",
     "zh-HK": "Kinesiska (kantonesiska)",
-    "zh-TW": "Kinesiska (Taiwan)"
+    "zh-TW": "Kinesiska (Taiwan)",
+    "learn-more": "Läs mer"
   },
   "columns": ["text"],
   "data": {
