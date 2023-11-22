@@ -76,7 +76,6 @@
       "🐴": ["horse", "noun"],
       "🐛🐞🐝": ["bugs", "noun"],
       "🪽": ["wing", "noun"],
-      "🐶🐱": ["pet", "noun"],
       "🦊🐰🐶🐷": ["animal", "noun"]
     },
     "body": {
@@ -94,11 +93,11 @@
       "🖐️": ["hand", "noun"],
       "☝️": ["finger", "noun"],
       "☝️💅": ["fingernail", "noun"],
-      "💇": ["haircut", "noun"],
+      "🦰🦱🦳": ["hair", "noun"],
       "🍔🤰": ["stomach", "noun"],
       "💀🦴": ["bone", "noun"],
       "💪🏋️‍♂️": ["muscle", "noun"],
-      "🤚🏻🤚🏼🤚🏽🤚🏾🤚🏿": ["skin", "noun"],
+      "🏻🏽🏿🧏‍♂️": ["skin", "noun"],
       "🩸🅰️🅱️🆎🅾️": ["blood", "noun"],
       "🦵🧠🦴💪🙆‍♀️": ["body", "noun"]
     },
@@ -106,7 +105,6 @@
       "👕": ["shirt", "noun"],
       "👖": ["trousers", "noun"],
       "🩳": ["shorts", "noun"],
-      "👔": ["shirt and tie", "noun"],
       "👗": ["dress", "noun"],
       "🩱👙": ["swimsuit", "noun"],
       "🎩": ["hat", "noun"],
@@ -150,8 +148,8 @@
       "📥📩": ["inside", "noun"],
       "🧭🗺️⬆️": ["north", "noun"],
       "🧭🗺️⬇️": ["south", "noun"],
-      "🧭🗺️⬅️": ["east", "noun"],
-      "🧭🗺️➡️": ["west", "noun"],
+      "🧭🗺️➡️": ["east", "noun"],
+      "🧭🗺️⬅️": ["west", "noun"],
       "🧭🗺️⬆️⬇️⬅️➡️": ["direction", "noun"]
     },
     "drink": {
@@ -172,14 +170,12 @@
       "😴": ["tired", "adjective"],
       "😍": ["in love", "adjective"],
       "😱👻": ["scared", "adjective"],
-      "😰": ["nervous", "adjective"],
       "🤤🍔": ["hungry", "adjective"],
       "😈": ["evil", "adjective"]
     },
     "food": {
       "🍎🍊🍌": ["fruit", "noun"],
       "🥒🥦🥬": ["vegetable", "noun"],
-      "🍭🍬🎂": ["sugar", "noun"],
       "🍎": ["apple", "noun"],
       "🧅": ["onion", "noun"],
       "🍅": ["tomato", "noun"],
@@ -208,16 +204,16 @@
       "🔪": ["knife", "noun"],
       "🥄": ["spoon", "noun"],
       "🍴": ["fork and knife", "noun"],
-      "🥛🍺": ["cup", "noun"],
+      "🍽️": ["plate", "noun"],
+      "🥛🍺🫗": ["cup", "noun"],
       "🍳🌅": ["breakfast", "noun"],
       "🍱☀️": ["lunch", "noun"],
       "🍝🌃": ["dinner", "noun"],
-      "🍽️": ["plate", "noun"],
       "🛢️": ["oil", "noun"],
       "🥡🥤👋": ["takeout", "noun"]
     },
     "measure": {
-      "📏": ["length", "noun"],
+      "📏↔️↕️": ["measure", "noun"],
       "📏🐳🪐": ["big", "adjective"],
       "📏🐜🦠": ["small", "adjective"],
       "📏🦒": ["tall", "adjective"],
@@ -240,8 +236,8 @@
       "☀️🥵🌡️": ["hot", "adjective"],
       "🌶️🌡️": ["spicy", "adjective"],
       "🚫🌶️🌡️": ["mild", "adjective"],
-      "💪💪💪": ["strong", "adjective"],
-      "🚫💪": ["weak", "adjective"]
+      "💪📏": ["strong", "adjective"],
+      "🚫💪📏": ["weak", "adjective"]
     },
     "money": {
       "🧾": ["receipt", "noun"],
@@ -258,7 +254,7 @@
     },
     "nature": {
       "⛰️💨🌊🔥": ["nature", "noun"],
-      "🌧️☀️🌪️☃️": ["weather", "noun"],
+      "🌧️☀️🌪️❄️": ["weather", "noun"],
       "☀️": ["sun", "noun"],
       "🌙": ["moon", "noun"],
       "💨": ["wind", "noun"],
@@ -274,17 +270,14 @@
       "🌱🫚": ["root", "noun"],
       "🌳🌳🌳": ["forest", "noun"],
       "🌍": ["earth / world", "noun"],
-      "🏞️": ["valley", "noun"],
       "🌊🐳": ["ocean", "noun"],
       "⭐": ["star", "noun"],
-      "💨": ["air", "noun"],
+      "💨💨": ["wind", "noun"],
       "🌊": ["wave", "noun"],
       "🔥": ["fire", "noun"],
-      "🔩": ["metal", "noun"],
       "🪵": ["wood", "noun"],
       "⛰️": ["mountain", "noun"],
       "💎": ["diamond", "noun"],
-      "🏺": ["clay", "noun"],
       "🗿🪨": ["stone", "noun"],
       "🏖️🏜️⏳": ["sand", "noun"],
       "🥃🪟🔎": ["glass", "noun"]
@@ -387,7 +380,6 @@
       "🗺️": ["map", "noun"]
     },
     "other-adjectives": {
-      "🥱😑😴": ["boring", "adjective"],
       "👸😻": ["beautiful", "adjective"],
       "🚫👂🙉": ["deaf", "adjective"],
       "🚫👁️🙈": ["blind", "adjective"],
@@ -401,7 +393,6 @@
       "🧸🪶🛏️": ["soft", "adjective"],
       "🧱🪖🪨": ["hard", "adjective"],
       "🤒": ["sick", "adjective"],
-      "🤕": ["injured", "noun"],
       "🏋️‍♂️🥦": ["healthy", "adjective"],
       "🧼✨": ["clean", "adjective"],
       "🚫🧼✨": ["dirty", "adjective"],
@@ -419,7 +410,8 @@
       "💊💉": ["medicine", "noun"],
       "🔊": ["sound", "noun"],
       "✅🙆‍♀️": ["yes", "noun"],
-      "❌🙅": ["no", "noun"]
+      "❌🙅": ["no", "noun"],
+      "🤕": ["injury", "noun"]
     },
     "people": {
       "👤": ["person", "noun"],
@@ -431,10 +423,10 @@
     },
     "people.pronouns": {
       "🙋": ["I / me", "noun"],
+      "🙋🙋🙋": ["we", "noun"],
       "🫵": ["you", "noun"],
       "👉👨": ["he", "noun"],
       "👉👩": ["she", "noun"],
-      "👥": ["we", "noun"],
       "👉👥👥": ["they", "noun"],
       "👉🪨": ["it", "noun"],
       "❓👤": ["who", "noun"]
@@ -442,12 +434,12 @@
     "people.family": {
       "👩‍👧(👩+👧)": ["mother and daughter", "noun"],
       "👨‍👦(👨+👦)": ["father and son", "noun"],
-      "👩‍👦(👩+👧)": ["mother and son", "noun"],
-      "👨‍👧(👨+👦)": ["father and daughter", "noun"],
+      "👩‍👦(👩+👦)": ["mother and son", "noun"],
+      "👨‍👧(👨+👧)": ["father and daughter", "noun"],
       "👨💍": ["husband", "noun"],
       "👩💍": ["wife", "noun"],
-      "👦+👦": ["brother", "noun"],
-      "👧+👧": ["sister", "noun"],
+      "👦+👦": ["brothers", "noun"],
+      "👧+👧": ["sisters", "noun"],
       "👵": ["grandmother", "noun"],
       "👴": ["grandfather", "noun"],
       "🤝👫": ["friend", "noun"],
@@ -472,14 +464,12 @@
       "👩‍🔬👨‍🔬": ["scientist", "noun"],
       "🧑‍🎓👩‍🎓": ["student", "noun"],
       "👱‍♂️💼 / 👩💼": ["businessman / businesswoman", "noun"],
-      "🙂💇‍♀️✂️": ["hairdresser", "noun"],
       "🙂🎭🎬": ["actor / actress", "noun"],
       "🙂🚴‍♂️🏋️‍♂️⛹️‍♂️": ["athlete", "noun"],
       "🙂✍️": ["writer", "noun"],
       "🙂🎒✈️": ["traveler", "noun"],
       "🙂🪖🔫": ["soldier", "noun"],
       "🙂🚗👤": ["driver", "noun"],
-      "🙂🏠👤": ["citizen", "noun"],
       "🦸‍♀️🦸‍♂️": ["hero", "noun"],
       "🦹🦹‍♂️": ["villain", "noun"],
       "🤴": ["king", "noun"],
@@ -490,13 +480,12 @@
       "👋🛫": ["Bye!", "phrase"],
       "🙋🍽️🤤": ["I'm hungry", "phrase"],
       "🙋🥤🤤": ["I'm thirsty", "phrase"],
-      "🎂🎉": ["Happy birthday!", "phrase"],
-      "☺️🙏": ["Thanks!", "phrase"],
+      "☺️🙏🙏": ["Thanks!", "phrase"],
       "🎆🍾1️⃣🗓️": ["Happy new year!", "phrase"],
       "🎉👏": ["congratulations!", "phrase"],
       "🤷": ["I don't know.", "phrase"],
       "🍀🤞": ["good luck!", "phrase"],
-      "🙋❓": ["I have a question.", "phrase"],
+      "🙋💭❓": ["I have a question.", "phrase"],
       "✈️🙏": ["safe travels!", "phrase"],
       "🙋❤️🫵": ["I love you", "phrase"],
       "🫵❤️❓": ["Who do you love?", "phrase"],
@@ -524,7 +513,7 @@
       "🍻🏢": ["bar", "noun"],
       "☕🏢": ["cafe", "noun"],
       "🛒🏢": ["market", "noun"],
-      "👩‍⚖️🏛️": ["court", "noun"],
+      "👩‍⚖️🏛️": ["courthouse", "noun"],
       "🛍️🏪": ["store, shop", "noun"],
       "🎭🏛️": ["theater", "noun"],
       "📚🏛️": ["library", "noun"],
@@ -572,11 +561,11 @@
       "☀️🕐": ["afternoon", "noun"],
       "🌄🕣": ["evening", "noun"],
       "🌌🕙": ["night", "noun"],
-      "☝️☀️": ["today", "noun"],
+      "🗓️☀️": ["today", "noun"],
       "⏭️☀️": ["tomorrow", "noun"],
       "⏮️☀️": ["yesterday", "noun"],
       "🕒❓": ["what time is it?", "phrase"],
-      "🛑✋⏳": ["Wait a moment", "phrase"]
+      "🛑✋🤏⏳": ["Wait a moment", "phrase"]
     },
     "transportation": {
       "🚗⛵️🚎✈️": ["transportation", "noun"],
@@ -663,7 +652,6 @@
       "🧨💥": ["explode", "verb"],
       "✂️💇🔪": ["cut", "verb"],
       "🥊🤺🤼": ["fight", "verb"],
-      "🔍👀": ["find", "verb"],
       "🔁": ["repeat", "verb"]
     }
   }
