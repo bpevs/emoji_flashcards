@@ -60,9 +60,7 @@ export async function readLanguageFile(
           })
         })
       })
-    } catch {
-      console.warn('No extension file for:', locale)
-    }
+    } catch { /* No extension file */ }
   }
   return languageFile
 }

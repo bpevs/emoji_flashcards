@@ -1,5 +1,9 @@
 import { ensureDir } from 'std/fs/mod.ts'
-import { listAudioFiles, readLanguageFile } from '../utilities/data_access.ts'
+import {
+  listAudioFiles,
+  listLanguages,
+  readLanguageFile,
+} from '../utilities/data_access.ts'
 import { getAudioFilename } from '../utilities/data_access_utilities.ts'
 import { GEN_DIR } from '../utilities/constants_server.ts'
 import { join } from 'std/path/mod.ts'
@@ -11,36 +15,35 @@ const DETECT_STR = `silencedetect=noise=${MAX_NOISE_LEVEL}dB:d=${SILENCE_SPLIT}`
 const MATCH_SILENCE = /silence_start: ([\w\.]+)[\s\S]+?silence_end: ([\w\.]+)/g
 
 const [locale_code, inputCategoryId] = Deno.args
-if (!locale_code) throw new Error('Please supply language_code')
+if (!locale_code) {
+  console.log('No language_code; These languages are missing files...')
+  const data = await Promise.all(listLanguages().map(findMissingAudioFiles))
+  const needFetch = data.filter((langData) => {
+    for (const key in langData.emojisByCategory) {
+      if (
+        Object.prototype.hasOwnProperty.call(langData.emojisByCategory, key)
+      ) return true
+    }
+    return false
+  }).map((langData) => langData.locale_code)
+  console.log(needFetch)
 
-const lang = await readLanguageFile(locale_code, true)
-const { columns, pronunciation_key } = lang
-const voice_id = lang?.meta?.azure?.voice_id
-if (!voice_id) throw new Error(`${locale_code} does not have a voice_id`)
+  console.log('COMPLETE')
+  Deno.exit(0)
+}
 
-const pronunciationKeyIndex = columns.indexOf(pronunciation_key || '') || 0
-
-const emojisByCategory = lang.data
 await ensureDir('./tmp/audio')
-await ensureDir(join(GEN_DIR, locale_code, 'audio'))
-const existingAudioFiles = listAudioFiles(locale_code)
 
-Object.keys(emojisByCategory).forEach((category) => {
-  Object.keys(emojisByCategory[category])
-    .forEach((key) => {
-      const text = emojisByCategory[category][key][0]
-      const fileName = getAudioFilename(locale_code, key, text)
-      const alreadyExists = existingAudioFiles.has(fileName)
-      if (alreadyExists) delete emojisByCategory[category][key]
-    })
-  if (!Object.keys(emojisByCategory[category]).length) {
-    delete emojisByCategory[category]
-  }
-})
+const { emojisByCategory, voice_id, pronunciationKeyIndex } =
+  await findMissingAudioFiles(locale_code)
 
 console.log(locale_code, voice_id, Object.keys(emojisByCategory))
 
-const ttsResults = await ttsByCategory(emojisByCategory, voice_id)
+const ttsResults = await ttsByCategory(
+  emojisByCategory,
+  voice_id,
+  pronunciationKeyIndex,
+)
 
 console.log('source audio id: ', JSON.stringify(ttsResults))
 
@@ -59,9 +62,40 @@ for (const idx in ttsResults) {
 console.log('COMPLETE!')
 Deno.exit(0)
 
+async function findMissingAudioFiles(locale_code: string) {
+  const lang = await readLanguageFile(locale_code, true)
+  const { columns, pronunciation_key } = lang
+  const voice_id = lang?.meta?.azure?.voice_id
+  if (!voice_id) throw new Error(`${locale_code} does not have a voice_id`)
+
+  const pronunciationKeyIndex = (pronunciation_key != null)
+    ? columns.indexOf(pronunciation_key)
+    : -1
+
+  const emojisByCategory = lang.data
+  await ensureDir(join(GEN_DIR, locale_code, 'audio'))
+  const existingAudioFiles = listAudioFiles(locale_code)
+
+  Object.keys(emojisByCategory).forEach((category) => {
+    Object.keys(emojisByCategory[category])
+      .forEach((key) => {
+        const text = emojisByCategory[category][key][0]
+        const fileName = getAudioFilename(locale_code, key, text)
+        const alreadyExists = existingAudioFiles.has(fileName)
+        if (alreadyExists) delete emojisByCategory[category][key]
+      })
+    if (!Object.keys(emojisByCategory[category]).length) {
+      delete emojisByCategory[category]
+    }
+  })
+
+  return { emojisByCategory, locale_code, pronunciationKeyIndex, voice_id }
+}
+
 async function ttsByCategory(
   emojisByCategory: { [category: string]: { [emojiKey: string]: string[] } },
   voice_id: string,
+  pronunciationKeyIndex: number,
 ): Promise<{ categoryId: string; fileName: string | null }[]> {
   // todo: pool the tts requests
   return await Promise.all(
@@ -71,7 +105,7 @@ async function ttsByCategory(
         const texts = Object.keys(emojisByCategory[categoryId])
           .map((emojiId: string) => {
             const emoji = emojisByCategory[categoryId][emojiId]
-            if (pronunciation_key) return emoji[pronunciationKeyIndex]
+            if (pronunciationKeyIndex >= 0) return emoji[pronunciationKeyIndex]
             return emoji[0]
           })
         const fileName = await tts(texts, voice_id, locale_code, categoryId)
