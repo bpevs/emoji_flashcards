@@ -6,17 +6,12 @@
   "locale_code": "ru-RU",
   "locale_flag": "🇷🇺",
   "meta": {
-    "anki": {
-      "model_id": 23111626,
-      "deck_id": 23111626
-    },
+    "anki": { "model_id": 23111626, "deck_id": 23111626 },
     "azure": {
       "locale_code": "ru-RU",
       "voice_id": "ru-RU-SvetlanaNeural"
     },
-    "deepl": {
-      "language_code": "ru"
-    }
+    "deepl": { "language_code": "ru" }
   },
   "strings": {
     "title": "Флэшкарты Emoji",

@@ -6,10 +6,7 @@
   "locale_code": "vi-VN",
   "locale_flag": "🇻🇳",
   "meta": {
-    "anki": {
-      "model_id": 23111634,
-      "deck_id": 23111634
-    },
+    "anki": { "model_id": 23111634, "deck_id": 23111634 },
     "azure": {
       "translation_locale": "vi-VN",
       "locale_code": "vi-VN",

@@ -6,17 +6,12 @@
   "locale_code": "es-ES",
   "locale_flag": "🇪🇸",
   "meta": {
-    "anki": {
-      "model_id": 23111608,
-      "deck_id": 23111608
-    },
+    "anki": { "model_id": 23111608, "deck_id": 23111608 },
     "azure": {
       "locale_code": "es-ES",
       "voice_id": "es-ES-AlvaroNeural"
     },
-    "deepl": {
-      "language_code": "es"
-    }
+    "deepl": { "language_code": "es" }
   },
   "strings": {
     "description": "Fichas Anki descargables para",
@@ -597,22 +592,52 @@
       "🎫🚂": ["billete de tren", ""]
     },
     "verbs": {
-      "💸🛍️": ["comprar", "Yo compro, tú compras, él compra"],
-      "🏃‍♂️🏃‍♀️": ["correr", "yo corro, tú corres, él corre"],
-      "🚶‍♂️🚶‍♀️": ["caminar", "yo camino, tú caminas, él camina"],
+      "💸🛍️": [
+        "comprar",
+        "Yo compro, tú compras, él compra"
+      ],
+      "🏃‍♂️🏃‍♀️": [
+        "correr",
+        "yo corro, tú corres, él corre"
+      ],
+      "🚶‍♂️🚶‍♀️": [
+        "caminar",
+        "yo camino, tú caminas, él camina"
+      ],
       "🗣️💬": ["hablar", "Yo hablo, tú hablas, él habla"],
       "🗣️🗯️": ["gritar", "Yo grito, tú gritas, él grita"],
-      "🗣️👂": ["escuchar", "yo escucho, tú escuchas, él escucha"],
+      "🗣️👂": [
+        "escuchar",
+        "yo escucho, tú escuchas, él escucha"
+      ],
       "🗣️📞": ["llamar", "Yo llamo, tú llamas, él llama"],
-      "🗣️🎤🎶": ["cantar", "Yo canto, tú cantas, él canta"],
-      "🗣️💬🔢": ["contar", "Yo cuento, tú cuentas, él cuenta"],
+      "🗣️🎤🎶": [
+        "cantar",
+        "Yo canto, tú cantas, él canta"
+      ],
+      "🗣️💬🔢": [
+        "contar",
+        "Yo cuento, tú cuentas, él cuenta"
+      ],
       "😮🍽️🍔": ["comer", "yo como, tú comes, él come"],
-      "😮👅🍔": ["pruebe", "Yo pruebo, tú pruebas, él prueba"],
+      "😮👅🍔": [
+        "pruebe",
+        "Yo pruebo, tú pruebas, él prueba"
+      ],
       "😮🥤": ["beber", "Yo bebo, tú bebes, él bebe"],
-      "😴💤🛌": ["dormir", "Yo duermo, tú duermes, él duerme"],
+      "😴💤🛌": [
+        "dormir",
+        "Yo duermo, tú duermes, él duerme"
+      ],
       "😴💭": ["soñar", "Yo sueño, tú sueñas, él sueña"],
-      "🤔💭": ["pensar", "Yo pienso, tú piensas, él piensa"],
-      "👩‍💻💼": ["trabajar", "Yo trabajo, tú trabajas, él trabaja"],
+      "🤔💭": [
+        "pensar",
+        "Yo pienso, tú piensas, él piensa"
+      ],
+      "👩‍💻💼": [
+        "trabajar",
+        "Yo trabajo, tú trabajas, él trabaja"
+      ],
       "🎦🍿👀": [
         "ver una película",
         "Yo veo una película, tú ves una película, él ve una película"
@@ -629,18 +654,36 @@
         "leer las noticias",
         "Yo leo las noticias, tú lees las noticias, él lee las noticias"
       ],
-      "✍️🤓": ["escribir", "Yo escribo, tú escribes, él escribe"],
-      "🖼️✍️🧑‍🎨": ["dibujar", "Yo dibujo, tú dibujas, él dibuja"],
-      "🙋‍♂️💬❓": ["preguntar", "Yo pregunto, tú preguntas, él pregunta"],
+      "✍️🤓": [
+        "escribir",
+        "Yo escribo, tú escribes, él escribe"
+      ],
+      "🖼️✍️🧑‍🎨": [
+        "dibujar",
+        "Yo dibujo, tú dibujas, él dibuja"
+      ],
+      "🙋‍♂️💬❓": [
+        "preguntar",
+        "Yo pregunto, tú preguntas, él pregunta"
+      ],
       "💃": ["bailar", "Yo bailo, tú bailas, él baila"],
       "🏊‍♂️": ["nadar", "Yo nado, tú nadas, él nada"],
-      "👏": ["aplaudir", "Yo aplaudo, tú aplaudes, él aplaude"],
+      "👏": [
+        "aplaudir",
+        "Yo aplaudo, tú aplaudes, él aplaude"
+      ],
       "⛹️‍♂️": [
         "jugar al baloncesto",
         "Yo juego al baloncesto, tú juegas al baloncesto, él juega al baloncesto"
       ],
-      "🎣": ["ir a pescar", "Yo voy a pescar, tú vas a pescar, él va a pescar"],
-      "👩‍🍳🍳": ["cocinar", "Yo cocino, tú cocinas, él cocina"],
+      "🎣": [
+        "ir a pescar",
+        "Yo voy a pescar, tú vas a pescar, él va a pescar"
+      ],
+      "👩‍🍳🍳": [
+        "cocinar",
+        "Yo cocino, tú cocinas, él cocina"
+      ],
       "😭💦": ["llorar", "Yo lloro, tú lloras, él llora"],
       "😄": ["sonreír", "Yo sonrío, tú sonríes, él sonríe"],
       "😂": ["reír", "Yo río, tú ríes, él ríe"],
@@ -664,7 +707,10 @@
         "un regalo",
         "Yo hago un regalo, tú haces un regalo, él hace un regalo"
       ],
-      "🤝": ["la mano", "Yo doy la mano, tú das la mano, él da la mano"],
+      "🤝": [
+        "la mano",
+        "Yo doy la mano, tú das la mano, él da la mano"
+      ],
       "🧼🫧🚿": ["lavar", "Yo lavo, tú lavas, él lava"],
       "✈️🦅🚀": ["volar", "Yo vuelo, tú vuelas, él vuela"],
       "🚗💨": [
@@ -676,24 +722,54 @@
         "Yo monto en bicicleta, tú montas en bicicleta, él monta en bicicleta"
       ],
       "🔪💀": ["matar", "Yo mato, tú matas, él mata"],
-      "🥄🔄": ["mezclar", "Yo mezclo, tú mezclas, él mezcla"],
+      "🥄🔄": [
+        "mezclar",
+        "Yo mezclo, tú mezclas, él mezcla"
+      ],
       "📭🔓📂": ["abrir", "Yo abro, tú abres, él abre"],
-      "📫🔒📁": ["cerrar", "Yo cierro, tú cierras, él cierra"],
+      "📫🔒📁": [
+        "cerrar",
+        "Yo cierro, tú cierras, él cierra"
+      ],
       "🙌🏆🥇": ["ganar", "Yo gano, tú ganas, él gana"],
-      "😞🥉": ["perder", "Yo pierdo, tú pierdes, él pierde"],
+      "😞🥉": [
+        "perder",
+        "Yo pierdo, tú pierdes, él pierde"
+      ],
       "💔": ["romper", "Yo rompo, tú rompes, él rompe"],
-      "🫸➡️🚪": ["empujar", "Yo empujo, tú empujas, él empuja"],
+      "🫸➡️🚪": [
+        "empujar",
+        "Yo empujo, tú empujas, él empuja"
+      ],
       "🤜⬅️🚪": ["tirar", "Yo tiro, tú tiras, él tira"],
       "🪵🔥": ["quemar", "Yo quemo, tú quemas, él quema"],
-      "🙌🔫": ["disparar", "Yo disparo, tú disparas, él dispara"],
-      "🧑‍🎓💭📚": ["aprender", "Yo aprendo, tú aprendes, él aprende"],
-      "🐒🪑": ["sentarse", "Yo me siento, tú te sientas, él se sienta"],
+      "🙌🔫": [
+        "disparar",
+        "Yo disparo, tú disparas, él dispara"
+      ],
+      "🧑‍🎓💭📚": [
+        "aprender",
+        "Yo aprendo, tú aprendes, él aprende"
+      ],
+      "🐒🪑": [
+        "sentarse",
+        "Yo me siento, tú te sientas, él se sienta"
+      ],
       "🙏🛐": ["rezar", "Yo rezo, tú rezas, él reza"],
       "😘💋": ["besar", "Yo beso, tú besas, él besa"],
-      "🙌⏰🌅": ["despertar", "Yo despierto, tú despiertas, él despierta"],
-      "🍫🫠": ["derretir", "Yo me derrito, tú te derrites, él se derrite"],
+      "🙌⏰🌅": [
+        "despertar",
+        "Yo despierto, tú despiertas, él despierta"
+      ],
+      "🍫🫠": [
+        "derretir",
+        "Yo me derrito, tú te derrites, él se derrite"
+      ],
       "⛏️🕳️": ["cavar", "Yo cavo, tú cavas, él cava"],
-      "🧨💥": ["explotar", "Yo exploto, tú explotas, él explota"],
+      "🧨💥": [
+        "explotar",
+        "Yo exploto, tú explotas, él explota"
+      ],
       "✂️💇🔪": ["cortar", "Yo corto, tú cortas, él corta"],
       "🥊🤺🤼": ["pelear", "Yo peleo, tú peleas, él pelea"],
       "🔁": ["repetir", "Yo repito, tú repites, él repite"]

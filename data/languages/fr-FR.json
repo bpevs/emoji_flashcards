@@ -6,17 +6,12 @@
   "locale_code": "fr-FR",
   "locale_flag": "🇫🇷",
   "meta": {
-    "anki": {
-      "model_id": 23111611,
-      "deck_id": 23111611
-    },
+    "anki": { "model_id": 23111611, "deck_id": 23111611 },
     "azure": {
       "locale_code": "fr-FR",
       "voice_id": "fr-FR-HenriNeural"
     },
-    "deepl": {
-      "language_code": "fr"
-    }
+    "deepl": { "language_code": "fr" }
   },
   "strings": {
     "title": "Flashcards Emoji",
@@ -452,7 +447,9 @@
       "👷‍♀️👷‍♂️": ["ouvrier du bâtiment"],
       "👩‍🔬👨‍🔬": ["scientifique"],
       "🧑‍🎓👩‍🎓": ["étudiant"],
-      "👱‍♂️💼 / 👩💼": ["homme d'affaires / femme d'affaires"],
+      "👱‍♂️💼 / 👩💼": [
+        "homme d'affaires / femme d'affaires"
+      ],
       "🙂🎭🎬": ["acteur / actrice"],
       "🙂🚴‍♂️🏋️‍♂️⛹️‍♂️": ["athlète"],
       "🙂✍️": ["écrivain"],

@@ -6,17 +6,12 @@
   "locale_code": "da-DK",
   "locale_flag": "🇩🇰",
   "meta": {
-    "anki": {
-      "model_id": 23111603,
-      "deck_id": 23111603
-    },
+    "anki": { "model_id": 23111603, "deck_id": 23111603 },
     "azure": {
       "locale_code": "da-DK",
       "voice_id": "da-DK-JeppeNeural"
     },
-    "deepl": {
-      "language_code": "da"
-    }
+    "deepl": { "language_code": "da" }
   },
   "strings": {
     "title": "Emoji Flashcards",
@@ -452,7 +447,9 @@
       "👷‍♀️👷‍♂️": ["Bygningsarbejder"],
       "👩‍🔬👨‍🔬": ["videnskabsmand"],
       "🧑‍🎓👩‍🎓": ["studerende"],
-      "👱‍♂️💼 / 👩💼": ["forretningsmand/forretningskvinde"],
+      "👱‍♂️💼 / 👩💼": [
+        "forretningsmand/forretningskvinde"
+      ],
       "🙂🎭🎬": ["skuespiller/skuespillerinde"],
       "🙂🚴‍♂️🏋️‍♂️⛹️‍♂️": ["sportsudøver"],
       "🙂✍️": ["forfatter"],

@@ -6,10 +6,7 @@
   "locale_code": "es-MX",
   "locale_flag": "🇲🇽",
   "meta": {
-    "anki": {
-      "model_id": 23111643,
-      "deck_id": 23111643
-    },
+    "anki": { "model_id": 23111643, "deck_id": 23111643 },
     "azure": {
       "translation_locale": "es-MX",
       "locale_code": "es-MX",
@@ -450,7 +447,9 @@
       "👷‍♀️👷‍♂️": ["Obrero de la construcción"],
       "👩‍🔬👨‍🔬": ["científico"],
       "🧑‍🎓👩‍🎓": ["estudiante"],
-      "👱‍♂️💼 / 👩💼": ["Hombre de negocios / Mujer de negocios"],
+      "👱‍♂️💼 / 👩💼": [
+        "Hombre de negocios / Mujer de negocios"
+      ],
       "🙂🎭🎬": ["actor / actriz"],
       "🙂🚴‍♂️🏋️‍♂️⛹️‍♂️": ["atleta"],
       "🙂✍️": ["escritor"],

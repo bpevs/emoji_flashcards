@@ -6,18 +6,12 @@
   "locale_code": "en-GB",
   "locale_flag": "🇬🇧",
   "meta": {
-    "anki": {
-      "model_id": 23111606,
-      "deck_id": 23111606
-    },
+    "anki": { "model_id": 23111606, "deck_id": 23111606 },
     "azure": {
       "locale_code": "en-GB",
       "voice_id": "en-GB-OliviaNeural"
     },
-    "deepl": {
-      "language_code": "en",
-      "locale_code": "en-GB"
-    }
+    "deepl": { "language_code": "en", "locale_code": "en-GB" }
   },
   "strings": {
     "title": "Emoji Flashcards",

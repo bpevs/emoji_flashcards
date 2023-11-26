@@ -6,10 +6,7 @@
   "locale_code": "th-TH",
   "locale_flag": "🇹🇭",
   "meta": {
-    "anki": {
-      "model_id": 23111638,
-      "deck_id": 23111638
-    },
+    "anki": { "model_id": 23111638, "deck_id": 23111638 },
     "azure": {
       "translation_locale": "th-TH",
       "locale_code": "th-TH",

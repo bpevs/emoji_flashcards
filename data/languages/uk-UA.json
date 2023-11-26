@@ -6,17 +6,12 @@
   "locale_code": "uk-UA",
   "locale_flag": "🇺🇦",
   "meta": {
-    "anki": {
-      "model_id": 23111631,
-      "deck_id": 23111631
-    },
+    "anki": { "model_id": 23111631, "deck_id": 23111631 },
     "azure": {
       "locale_code": "uk-UA",
       "voice_id": "uk-UA-PolinaNeural"
     },
-    "deepl": {
-      "language_code": "uk"
-    }
+    "deepl": { "language_code": "uk" }
   },
   "strings": {
     "title": "Емодзі флеш-картки",

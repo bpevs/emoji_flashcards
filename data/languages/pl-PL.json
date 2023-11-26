@@ -6,17 +6,12 @@
   "locale_code": "pl-PL",
   "locale_flag": "🇵🇱",
   "meta": {
-    "anki": {
-      "model_id": 23111622,
-      "deck_id": 23111622
-    },
+    "anki": { "model_id": 23111622, "deck_id": 23111622 },
     "azure": {
       "locale_code": "pl-PL",
       "voice_id": "pl-PL-MarekNeural"
     },
-    "deepl": {
-      "language_code": "pl"
-    }
+    "deepl": { "language_code": "pl" }
   },
   "strings": {
     "title": "Fiszki z emoji",

@@ -6,17 +6,12 @@
   "locale_code": "nb-NO",
   "locale_flag": "🇳🇴",
   "meta": {
-    "anki": {
-      "model_id": 23111620,
-      "deck_id": 23111620
-    },
+    "anki": { "model_id": 23111620, "deck_id": 23111620 },
     "azure": {
       "locale_code": "nb-NO",
       "voice_id": "nb-NO-FinnNeural"
     },
-    "deepl": {
-      "language_code": "nb"
-    }
+    "deepl": { "language_code": "nb" }
   },
   "strings": {
     "title": "Emoji-lommekort",
@@ -452,7 +447,9 @@
       "👷‍♀️👷‍♂️": ["bygningsarbeider"],
       "👩‍🔬👨‍🔬": ["forsker"],
       "🧑‍🎓👩‍🎓": ["student"],
-      "👱‍♂️💼 / 👩💼": ["forretningsmann/forretningskvinne"],
+      "👱‍♂️💼 / 👩💼": [
+        "forretningsmann/forretningskvinne"
+      ],
       "🙂🎭🎬": ["skuespiller/skuespillerinne"],
       "🙂🚴‍♂️🏋️‍♂️⛹️‍♂️": ["idrettsutøver"],
       "🙂✍️": ["forfatter"],

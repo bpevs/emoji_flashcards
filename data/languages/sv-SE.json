@@ -6,17 +6,12 @@
   "locale_code": "sv-SE",
   "locale_flag": "🇸🇪",
   "meta": {
-    "anki": {
-      "model_id": 23111629,
-      "deck_id": 23111629
-    },
+    "anki": { "model_id": 23111629, "deck_id": 23111629 },
     "azure": {
       "locale_code": "sv-SE",
       "voice_id": "sv-SE-MattiasNeural"
     },
-    "deepl": {
-      "language_code": "sv"
-    }
+    "deepl": { "language_code": "sv" }
   },
   "strings": {
     "title": "Emoji-kort",

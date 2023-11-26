@@ -6,17 +6,12 @@
   "locale_code": "id-ID",
   "locale_flag": "🇮🇩",
   "meta": {
-    "anki": {
-      "model_id": 23111613,
-      "deck_id": 23111613
-    },
+    "anki": { "model_id": 23111613, "deck_id": 23111613 },
     "azure": {
       "locale_code": "id-ID",
       "voice_id": "id-ID-GadisNeural"
     },
-    "deepl": {
-      "language_code": "id"
-    }
+    "deepl": { "language_code": "id" }
   },
   "strings": {
     "title": "Kartu Flash Emoji",

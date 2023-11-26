@@ -6,17 +6,12 @@
   "locale_code": "de-DE",
   "locale_flag": "🇩🇪",
   "meta": {
-    "anki": {
-      "model_id": 23111604,
-      "deck_id": 23111604
-    },
+    "anki": { "model_id": 23111604, "deck_id": 23111604 },
     "azure": {
       "locale_code": "de-DE",
       "voice_id": "de-DE-KillianNeural"
     },
-    "deepl": {
-      "language_code": "de"
-    }
+    "deepl": { "language_code": "de" }
   },
   "strings": {
     "title": "Emoji-Flashcards",

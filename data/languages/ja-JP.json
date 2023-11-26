@@ -6,17 +6,12 @@
   "locale_code": "ja-JP",
   "locale_flag": "🇯🇵",
   "meta": {
-    "anki": {
-      "model_id": 23111615,
-      "deck_id": 23111615
-    },
+    "anki": { "model_id": 23111615, "deck_id": 23111615 },
     "azure": {
       "locale_code": "ja-JP",
       "voice_id": "ja-JP-NanamiNeural"
     },
-    "deepl": {
-      "language_code": "ja"
-    }
+    "deepl": { "language_code": "ja" }
   },
   "strings": {
     "description": "ダウンロード可能なAnkiフラッシュカード",

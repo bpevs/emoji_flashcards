@@ -6,17 +6,12 @@
   "locale_code": "ro-RO",
   "locale_flag": "🇷🇴",
   "meta": {
-    "anki": {
-      "model_id": 23111625,
-      "deck_id": 23111625
-    },
+    "anki": { "model_id": 23111625, "deck_id": 23111625 },
     "azure": {
       "locale_code": "ro-RO",
       "voice_id": "ro-RO-AlinaNeural"
     },
-    "deepl": {
-      "language_code": "ro"
-    }
+    "deepl": { "language_code": "ro" }
   },
   "strings": {
     "title": "Emoji Flashcards",
@@ -452,7 +447,9 @@
       "👷‍♀️👷‍♂️": ["muncitor în construcții"],
       "👩‍🔬👨‍🔬": ["om de știință"],
       "🧑‍🎓👩‍🎓": ["student"],
-      "👱‍♂️💼 / 👩💼": ["om de afaceri / femeie de afaceri"],
+      "👱‍♂️💼 / 👩💼": [
+        "om de afaceri / femeie de afaceri"
+      ],
       "🙂🎭🎬": ["actor / actriță"],
       "🙂🚴‍♂️🏋️‍♂️⛹️‍♂️": ["atlet"],
       "🙂✍️": ["scriitor"],

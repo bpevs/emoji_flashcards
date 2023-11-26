@@ -6,17 +6,12 @@
   "locale_code": "ko-KR",
   "locale_flag": "🇰🇷",
   "meta": {
-    "anki": {
-      "model_id": 23111617,
-      "deck_id": 23111617
-    },
+    "anki": { "model_id": 23111617, "deck_id": 23111617 },
     "azure": {
       "locale_code": "ko-KR",
       "voice_id": "ko-KR-HyunsuNeural"
     },
-    "deepl": {
-      "language_code": "ko"
-    }
+    "deepl": { "language_code": "ko" }
   },
   "strings": {
     "title": "이모티콘 플래시카드",

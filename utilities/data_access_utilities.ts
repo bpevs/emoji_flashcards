@@ -1,3 +1,4 @@
+import stringify from 'npm:json-stringify-pretty-compact'
 import type {
   LanguageDataMap,
   LanguageFile,
@@ -79,17 +80,8 @@ export function getDataAndColumns(
   return [['text', ...columns], data]
 }
 
-// deno-lint-ignore no-explicit-any
-const replacer = (_: any, v: any) =>
-  (v instanceof Array) ? JSON.stringify(v) : v
-
 export function prettyPrintCompactFile(json: LanguageFile): string {
   if (typeof json === 'string') json = JSON.parse(json)
 
-  return JSON.stringify(json, replacer, 2)
-    .replace(/\\/g, '')
-    .replace(/\"\[/g, '[')
-    .replace(/\]\"/g, ']')
-    .replace(/\"\{/g, '{')
-    .replace(/\}\"/g, '}')
+  return stringify(json, { maxLength: 60 })
 }

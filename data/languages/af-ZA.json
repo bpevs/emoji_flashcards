@@ -6,10 +6,7 @@
   "locale_code": "af-ZA",
   "locale_flag": "🇿🇦",
   "meta": {
-    "anki": {
-      "model_id": 23111635,
-      "deck_id": 23111635
-    },
+    "anki": { "model_id": 23111635, "deck_id": 23111635 },
     "azure": {
       "translation_locale": "af-ZA",
       "locale_code": "af-ZA",

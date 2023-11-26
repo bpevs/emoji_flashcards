@@ -6,17 +6,12 @@
   "locale_code": "it-IT",
   "locale_flag": "🇮🇹",
   "meta": {
-    "anki": {
-      "model_id": 23111614,
-      "deck_id": 23111614
-    },
+    "anki": { "model_id": 23111614, "deck_id": 23111614 },
     "azure": {
       "locale_code": "it-IT",
       "voice_id": "it-IT-DiegoNeural"
     },
-    "deepl": {
-      "language_code": "it"
-    }
+    "deepl": { "language_code": "it" }
   },
   "strings": {
     "title": "Cartoline Emoji",

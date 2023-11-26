@@ -6,17 +6,12 @@
   "locale_code": "hu-HU",
   "locale_flag": "🇭🇺",
   "meta": {
-    "anki": {
-      "model_id": 23111612,
-      "deck_id": 23111612
-    },
+    "anki": { "model_id": 23111612, "deck_id": 23111612 },
     "azure": {
       "locale_code": "hu-HU",
       "voice_id": "hu-HU-TamasNeural"
     },
-    "deepl": {
-      "language_code": "hu"
-    }
+    "deepl": { "language_code": "hu" }
   },
   "strings": {
     "title": "Emoji villámkártyák",

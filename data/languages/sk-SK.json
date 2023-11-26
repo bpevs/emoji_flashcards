@@ -6,17 +6,12 @@
   "locale_code": "sk-SK",
   "locale_flag": "🇸🇰",
   "meta": {
-    "anki": {
-      "model_id": 23111627,
-      "deck_id": 23111627
-    },
+    "anki": { "model_id": 23111627, "deck_id": 23111627 },
     "azure": {
       "locale_code": "sk-SK",
       "voice_id": "sk-SK-LukasNeural"
     },
-    "deepl": {
-      "language_code": "sk"
-    }
+    "deepl": { "language_code": "sk" }
   },
   "strings": {
     "title": "Emoji Flashcards",
