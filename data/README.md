@@ -151,7 +151,7 @@ Extension files inherit the strings and columns of their parents.
 
 ### Audio
 
-For filesize reasons, audio is not included in this git repo (audio is generated into `data/gen`, but is ignored for commits). The canonical audio is just `.mp3` files that can come from various sources. For this reason, it is recommended to download the latest `https://static.bpev.me/flashcards/gen.zip`, unzip it, and relocate it to `/data/gen`.
+For filesize reasons, audio is not included in this git repo (audio is generated into `data/gen`, but is ignored for commits). The canonical audio is just `.mp3` files that can come from various sources. For this reason, it is recommended to download the latest `https://static.bpev.me/flashcards/Archive.zip`, unzip it, and relocate it to `/data/gen`.
 
 When adding new audio, we usually start with TTS-generated audio, since it is an easy was to create a consistent set of audio. These are currently generated using [play.ht](https://play.ht/text-to-speech-api/), because they have pretty good audio through a fairly standard api. However, there are some limitations in language-choice and flexibility. In the future, it makes sense to look at some more open solutions, such as [IMS-Toucan](https://github.com/DigitalPhonetics/IMS-Toucan), [whisper](https://github.com/openai/whisper) or some other huggingface ai thing or smthn. Requirements for TTS engines are multi-lingual and SSML support (For inserting breaks to split audio. This is not necessary if using a local engine, where we can translate each word individually).
 
