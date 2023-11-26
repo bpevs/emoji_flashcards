@@ -35,7 +35,7 @@ listLanguages().forEach(async (langCode: string) => {
   if (hasAudioDir) req.push([0, 'all', [0]])
 
   const model = new Model({
-    name: `Emoji Flashcards (${lang.name_short || lang.name})`,
+    name: `Emoji Flashcards (${lang.name})`,
     id: lang.meta.anki_id,
     did: lang.meta.anki_id,
     flds: fields,
@@ -45,7 +45,7 @@ listLanguages().forEach(async (langCode: string) => {
 
   const deck = new Deck(
     lang.meta.anki_id,
-    `${lang.name} ${lang.locale_flag} - Emoji Flashcards`,
+    `${lang.name_short || lang.name} ${lang.locale_flag} - Emoji Flashcards`,
   )
   const pkg = new Package()
 

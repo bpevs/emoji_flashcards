@@ -109,7 +109,7 @@ export class Package {
     this.media.push({ name, data })
   }
 
-  async writeToFile(filename: string) {
+  async writeToFile(filepath: string) {
     const SQL = await initSqlJs()
 
     const db = new SQL.Database()
@@ -139,7 +139,7 @@ export class Package {
     } = { type: 'blob', mimeType: 'application/apkg' }
     const blob = await zip.generateAsync(props)
     const zipBuffer = await blob.arrayBuffer()
-    await Deno.writeFile(filename, new Uint8Array(zipBuffer))
+    await Deno.writeFile(filepath, new Uint8Array(zipBuffer))
   }
 
   // deno-lint-ignore no-explicit-any
