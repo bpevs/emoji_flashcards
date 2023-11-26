@@ -1,12 +1,13 @@
 {
   "name": "中文（粵語）",
   "name_en": "Chinese (Cantonese)",
+  "name_short": "中文",
   "version": "0.0.1",
   "language_code": "zh",
   "locale_code": "zh-HK",
   "locale_flag": "🇭🇰",
   "meta": {
-    "anki": { "model_id": 23111641, "deck_id": 23111641 },
+    "anki_id": 23111641,
     "azure": {
       "translation_locale": "zh-HK",
       "locale_code": "zh-HK",

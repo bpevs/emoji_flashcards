@@ -1,12 +1,13 @@
 {
   "name": "Español (México)",
   "name_en": "Spanish (Mexico)",
+  "name_short": "Español",
   "version": "0.0.1",
   "language_code": "fa",
   "locale_code": "es-MX",
   "locale_flag": "🇲🇽",
   "meta": {
-    "anki": { "model_id": 23111643, "deck_id": 23111643 },
+    "anki_id": 23111643,
     "azure": {
       "translation_locale": "es-MX",
       "locale_code": "es-MX",

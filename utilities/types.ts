@@ -36,15 +36,14 @@ export type SourceFile = {
 export type LanguageFile = SourceFile & {
   version: string
   name: string
+  name_en: string
+  name_short?: string
   locale_code: string
   language_code: string
   locale_flag: string
   pronunciation_key?: string
   meta: {
-    anki: {
-      model_id: number
-      deck_id: number
-    }
+    anki_id: number
     deepl?: {
       language_code: string
       locale_code?: string

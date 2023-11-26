@@ -24,6 +24,7 @@ const baseSourceFile: SourceFile = Object.freeze({
 const emptyTarget: LanguageFile = Object.freeze({
   version: '0.1.1',
   name: 'UWU lang',
+  name_en: 'UWU lang',
   language_code: 'uwu',
   locale_code: 'uwu-UWU',
   locale_flag: '🏳️‍🌈',
@@ -31,7 +32,7 @@ const emptyTarget: LanguageFile = Object.freeze({
   columns: [],
   data: {},
   meta: {
-    anki: { deck_id: 1, model_id: 1 },
+    anki_id: 1,
     deepl: { language_code: 'uwu' },
   },
 })

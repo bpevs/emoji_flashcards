@@ -1,12 +1,13 @@
 {
   "name": "Português (Brasil)",
   "name_en": "Portuguese (Brazil)",
+  "name_short": "Português",
   "version": "0.0.1",
   "language_code": "pt",
   "locale_code": "pt-BR",
   "locale_flag": "🇧🇷",
   "meta": {
-    "anki": { "model_id": 23111623, "deck_id": 23111623 },
+    "anki_id": 23111623,
     "azure": {
       "locale_code": "pt-BR",
       "voice_id": "pt-BR-ElzaNeural"

@@ -1,12 +1,13 @@
 {
   "name": "中文（台灣）",
   "name_en": "Chinese (Taiwan)",
+  "name_short": "中文",
   "version": "0.0.1",
   "language_code": "zh",
   "locale_code": "zh-TW",
   "locale_flag": "🇹🇼",
   "meta": {
-    "anki": { "model_id": 23111633, "deck_id": 23111633 },
+    "anki_id": 23111633,
     "azure": {
       "locale_code": "zh-TW",
       "voice_id": "zh-TW-YunJheNeural"

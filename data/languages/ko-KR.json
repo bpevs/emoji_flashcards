@@ -6,7 +6,7 @@
   "locale_code": "ko-KR",
   "locale_flag": "🇰🇷",
   "meta": {
-    "anki": { "model_id": 23111617, "deck_id": 23111617 },
+    "anki_id": 23111617,
     "azure": {
       "locale_code": "ko-KR",
       "voice_id": "ko-KR-HyunsuNeural"

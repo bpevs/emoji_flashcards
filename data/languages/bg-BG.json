@@ -6,7 +6,7 @@
   "locale_code": "bg-BG",
   "locale_flag": "🇧🇬",
   "meta": {
-    "anki": { "model_id": 23111601, "deck_id": 23111601 },
+    "anki_id": 23111601,
     "azure": {
       "locale_code": "bg-BG",
       "voice_id": "bg-BG-KalinaNeural"

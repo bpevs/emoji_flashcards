@@ -6,7 +6,7 @@
   "locale_code": "lt-LT",
   "locale_flag": "🇱🇹",
   "meta": {
-    "anki": { "model_id": 23111618, "deck_id": 23111618 },
+    "anki_id": 23111618,
     "azure": {
       "locale_code": "lt-LT",
       "voice_id": "lt-LT-OnaNeural"

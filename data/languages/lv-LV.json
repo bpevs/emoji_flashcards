@@ -6,7 +6,7 @@
   "locale_code": "lv-LV",
   "locale_flag": "🇱🇻",
   "meta": {
-    "anki": { "model_id": 23111619, "deck_id": 23111619 },
+    "anki_id": 23111619,
     "azure": {
       "locale_code": "lv-LV",
       "voice_id": "lv-LV-NilsNeural"

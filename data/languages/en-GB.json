@@ -1,12 +1,13 @@
 {
   "name": "English (British)",
   "name_en": "English (British)",
+  "name_short": "English",
   "version": "0.0.1",
   "language_code": "en",
   "locale_code": "en-GB",
   "locale_flag": "🇬🇧",
   "meta": {
-    "anki": { "model_id": 23111606, "deck_id": 23111606 },
+    "anki_id": 23111606,
     "azure": {
       "locale_code": "en-GB",
       "voice_id": "en-GB-OliviaNeural"
