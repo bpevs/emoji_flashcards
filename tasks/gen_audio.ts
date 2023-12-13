@@ -28,39 +28,47 @@ if (!locale_code) {
   }).map((langData) => langData.locale_code)
   console.log(needFetch)
 
+  for (const localeCode of needFetch) {
+    await genAudio(localeCode)
+  }
+
   console.log('COMPLETE')
+  Deno.exit(0)
+} else {
+  await genAudio(locale_code)
+  console.log('COMPLETE!')
   Deno.exit(0)
 }
 
-await ensureDir('./tmp/audio')
+async function genAudio(locale_code: string) {
+  await ensureDir('./tmp/audio')
 
-const { emojisByCategory, voice_id, pronunciationKeyIndex } =
-  await findMissingAudioFiles(locale_code)
+  const { emojisByCategory, voice_id, pronunciationKeyIndex } =
+    await findMissingAudioFiles(locale_code)
 
-console.log(locale_code, voice_id, Object.keys(emojisByCategory))
+  console.log(locale_code, voice_id, Object.keys(emojisByCategory))
 
-const ttsResults = await ttsByCategory(
-  emojisByCategory,
-  voice_id,
-  pronunciationKeyIndex,
-)
+  const ttsResults = await ttsByCategory(
+    locale_code,
+    emojisByCategory,
+    voice_id,
+    pronunciationKeyIndex,
+  )
 
-console.log('source audio id: ', JSON.stringify(ttsResults))
+  console.log('source audio id: ', JSON.stringify(ttsResults))
 
-for (const idx in ttsResults) {
-  const { categoryId, fileName } = ttsResults[idx]
-  if (!fileName) {
-    console.warn(`Skipping category "${categoryId}": no fileName`)
-    continue
+  for (const idx in ttsResults) {
+    const { categoryId, fileName } = ttsResults[idx]
+    if (!fileName) {
+      console.warn(`Skipping category "${categoryId}": no fileName`)
+      continue
+    }
+    const emojis = emojisByCategory[categoryId]
+    console.log('source audio saved: ', fileName)
+    const tempAudio = join('./tmp/audio', fileName)
+    await writeTranslationAudioFiles(tempAudio, locale_code, emojis)
   }
-  const emojis = emojisByCategory[categoryId]
-  console.log('source audio saved: ', fileName)
-  const tempAudio = join('./tmp/audio', fileName)
-  await writeTranslationAudioFiles(tempAudio, locale_code, emojis)
 }
-
-console.log('COMPLETE!')
-Deno.exit(0)
 
 async function findMissingAudioFiles(locale_code: string) {
   const lang = await readLanguageFile(locale_code, true)
@@ -93,6 +101,7 @@ async function findMissingAudioFiles(locale_code: string) {
 }
 
 async function ttsByCategory(
+  locale_code: string,
   emojisByCategory: { [category: string]: { [emojiKey: string]: string[] } },
   voice_id: string,
   pronunciationKeyIndex: number,
