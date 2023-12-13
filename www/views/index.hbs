@@ -1,11 +1,11 @@
 <div class="content">
   <div class="title">
-    <h1>{{strings.title}}</h1>
+    <h1 id="title">{{strings.title}}</h1>
     <div class="description">
       <form action="/" method="GET">
         <input type="hidden" name="user" value="{{userLangCode}}" />
-        <label for="card">{{strings.description}}</label>
-        <select name="card" id="note-lang">
+        <label id="description" for="card">{{strings.description}}</label>
+        <select name="card" id="note-lang-selector">
           {{#select noteLangCode}}
             {{#each locales}}
               <option value="{{this.locale_code}}">
@@ -25,7 +25,7 @@
     <div class="note-wrapper">
       <div class="note">
         <noscript>
-          <div class="no-script-message">
+          <div id="no-js" class="no-script-message">
             {{strings.no-js}}
           </div>
         </noscript>
@@ -35,13 +35,13 @@
 
   <h2 class="download">
     <a id="download-link" download href="https://static.bpev.me/flashcards/{{noteLangCode}}/emoji-flashcards-{{noteLangCode}}.apkg">
-      <span><span class="flag-icon">{{flag}}</span> {{strings.download}}</span>
+      <span id="download"><span class="flag-icon">{{flag}}</span> {{strings.download}}</span>
     </a>
   </h2>
 
-  <a id="learn-more">
+  <a>
     <div class="learn-more">
-      <p>{{strings.learn-more}}</p>
+      <p id="learn-more">{{strings.learn-more}}</p>
       <svg
         fill="#000000"
         height="20px"
@@ -68,9 +68,9 @@
       </a>
     </p>
 
-    <h1>{{strings.about-help-title}}</h1>
-    <p>{{strings.about-help-description-1}}</p>
-    <p>{{strings.about-help-description-2}}</p>
+    <h1 id="about-help-title">{{strings.about-help-title}}</h1>
+    <p id="about-help-description-1">{{strings.about-help-description-1}}</p>
+    <p id="about-help-description-2">{{strings.about-help-description-2}}</p>
 
     <p class="about-links">
       <a href="https://github.com/bpevs/emoji_flashcards/tree/main/data">
@@ -83,8 +83,8 @@
       </a>
     </p>
 
-    <h1>{{strings.about-sponsor-title}}</h1>
-    <p>{{strings.about-sponsor-description}}</p>
+    <h1 id="about-sponsor-title">{{strings.about-sponsor-title}}</h1>
+    <p id="about-sponsor-description">{{strings.about-sponsor-description}}</p>
     <p class="about-links">
       <a href="https://github.com/sponsors/bpevs">
         <img src="/icons/github-mark.png" height="25px" />

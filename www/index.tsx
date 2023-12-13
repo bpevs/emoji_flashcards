@@ -35,7 +35,7 @@ function setParam(key: string, value: string) {
   window.history.replaceState(null, '', goto)
 }
 
-const noteSelector = document.getElementById('note-lang')
+const noteSelector = document.getElementById('note-lang-selector')
 if (noteSelector) {
   noteSelector.onchange = function () {
     const selector = (this as HTMLSelectElement).value
@@ -43,7 +43,7 @@ if (noteSelector) {
   }
 }
 
-const userSelector = document.getElementById('user-lang')
+const userSelector = document.getElementById('user-lang-selector')
 if (userSelector) {
   userSelector.onchange = function () {
     const selector = (this as HTMLSelectElement).value
