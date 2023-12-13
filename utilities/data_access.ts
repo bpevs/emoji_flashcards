@@ -72,19 +72,33 @@ export async function readSourceFile(): Promise<SourceFile> {
 }
 
 export async function writeLanguageFile(
+  locales: string[],
   locale: string,
   languageFile: LanguageFile,
 ): Promise<void> {
   // Hackery for consistent category name write-order
   const data = languageFile.data
-  const keys = Object.keys(data).sort()
   const newData: {
     [category: string]: {
       [emoji: string]: string[]
     }
   } = {}
-  keys.forEach((key: string) => newData[key] = data[key])
+  Object.keys(data).sort().forEach((key: string) => newData[key] = data[key])
   languageFile.data = newData
+
+  // Same for strings
+  const strings = languageFile.strings
+  const newStrings: { [name: string]: string } = {}
+  Object.keys(strings).sort((a, b) => {
+    const aIsLocale = locales.indexOf(a) === -1
+    const bIsLocale = locales.indexOf(b) === -1
+    if (aIsLocale && !bIsLocale) return -1
+    if (!aIsLocale && bIsLocale) return 1
+    if (a < b) return -1
+    if (a > b) return 1
+    return 0
+  }).forEach((key: string) => newStrings[key] = strings[key])
+  languageFile.strings = newStrings
 
   await Deno.writeTextFile(
     `${LANGUAGES_DIR}/${locale}.json`,

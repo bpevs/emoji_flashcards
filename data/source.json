@@ -3,12 +3,9 @@
   "strings": {
     "title": "Emoji Flashcards",
     "description": "Downloadable Anki flashcards for",
-    "switch-language": "Switch Language",
-    "open-source": "Emoji Flashcards is free and open-source",
     "download": "Download flashcards",
     "next": "next",
     "no-js": "This demo requires Javascript, but you can still download the flashcards for Anki",
-    "use-keys": "Use your keys to navigate:",
     "show-answer": "show answer",
     "help-translate": "Help us improve our translations!",
     "back": "back",

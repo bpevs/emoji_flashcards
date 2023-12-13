@@ -84,6 +84,12 @@ async function generateAllTranslations() {
       }
     }
 
+    for (const stringKey in languageFile.strings) {
+      if (!sourceFile.strings[stringKey]) {
+        delete languageFile.strings[stringKey]
+      }
+    }
+
     let plugin = plugins[locale_code] || plugins[language_code]
     if (!plugin) {
       console.warn(`No plugin for ${language_code}; using default`)
@@ -92,7 +98,7 @@ async function generateAllTranslations() {
 
     const rows = await plugin.getLanguageFileRows(sourceFile, languageFile)
     const [columns, data] = getDataAndColumns(rows)
-    await writeLanguageFile(locale_code, {
+    await writeLanguageFile(localeCodes, locale_code, {
       ...languageFile,
       columns,
       data,
