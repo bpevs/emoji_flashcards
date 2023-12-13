@@ -1,5 +1,5 @@
 {
-  "version": "3",
+  "version": "2",
   "packages": {
     "specifiers": {
       "npm:@types/node": "npm:@types/node@18.16.19",

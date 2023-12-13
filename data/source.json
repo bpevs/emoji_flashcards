@@ -2,7 +2,8 @@
   "version": "0.0.1",
   "strings": {
     "title": "Emoji Flashcards",
-    "description": "Downloadable Anki flashcards for",
+    "description": "Downloadable Anki flashcards for learning languages",
+    "card-selector-label": "Downloadable Anki flashcards for",
     "download": "Download flashcards",
     "next": "next",
     "no-js": "This demo requires Javascript, but you can still download the flashcards for Anki",

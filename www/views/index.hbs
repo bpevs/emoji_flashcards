@@ -4,7 +4,7 @@
     <div class="description">
       <form action="/" method="GET">
         <input type="hidden" name="user" value="{{userLangCode}}" />
-        <label id="description" for="card">{{strings.description}}</label>
+        <label id="card-selector-label" for="card">{{strings.card-selector-label}}</label>
         <select name="card" id="note-lang-selector">
           {{#select noteLangCode}}
             {{#each locales}}

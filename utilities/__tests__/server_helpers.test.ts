@@ -42,8 +42,8 @@ it('should render non-demo strings', async () => {
   const title = dom.getElementById('title')
   assertEquals(title?.innerText, enUS.strings.title)
 
-  const description = dom.getElementById('description')
-  assertEquals(description?.innerText, enUS.strings.description)
+  const cardLabel = dom.getElementById('card-selector-label')
+  assertEquals(cardLabel?.innerText, enUS.strings['card-selector-label'])
 
   const learnMore = dom.getElementById('learn-more')
   assertEquals(learnMore?.innerText, enUS.strings['learn-more'])
@@ -80,8 +80,8 @@ it('should render non-demo strings in user-lang', async () => {
   const title = dom.getElementById('title')
   assertEquals(title?.innerText, esES.strings.title)
 
-  const description = dom.getElementById('description')
-  assertEquals(description?.innerText, esES.strings.description)
+  const cardLabel = dom.getElementById('card-selector-label')
+  assertEquals(cardLabel?.innerText, esES.strings['card-selector-label'])
 
   const learnMore = dom.getElementById('learn-more')
   assertEquals(learnMore?.innerText, esES.strings['learn-more'])
