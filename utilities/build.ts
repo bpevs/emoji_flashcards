@@ -5,13 +5,14 @@ import { resolve } from 'std/path/mod.ts'
 
 const solid = { solid: { moduleName: 'npm:solid-js/web' } }
 
-export default async function build(shouldWrite) {
+export default async function build(shouldWrite: boolean) {
   const [denoResolver, denoLoader] = [...denoPlugins({
     nodeModulesDir: true,
     configPath: resolve('./deno.client.json'),
   })]
 
   const result = await esbuild.build({
+    // @ts-ignore plugin issues
     plugins: [denoResolver, solidPlugin(solid), denoLoader],
     entryPoints: ['./www/index.tsx'],
     outfile: './www/index.js',

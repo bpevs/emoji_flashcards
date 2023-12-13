@@ -67,7 +67,12 @@ const initialIndex = parseInt(params.get('i') || '0')
 const [data] = createResource(
   () => [userLangCode(), noteLangCode()],
   async ([userLang, noteLang]) => {
-    const response = await fetch(`/api/user/${userLang}/note/${noteLang}`)
+    const response = await fetch(
+      '/api/data?' + new URLSearchParams({
+        [USER_PARAM]: userLang,
+        [NOTE_PARAM]: noteLang,
+      }),
+    )
     return response.json()
   },
   { initialValue: { strings: {}, notes: [] } },
