@@ -11,7 +11,7 @@
       "locale_code": "it-IT",
       "voice_id": "it-IT-DiegoNeural"
     },
-    "deepl": { "language_code": "it" }
+    "deepl": {"language_code": "it"}
   },
   "strings": {
     "about": "Informazioni su",
@@ -163,7 +163,8 @@
       "🧭🗺️⬇️": ["sud"],
       "🧭🗺️➡️": ["est"],
       "🧭🗺️⬅️": ["ovest"],
-      "🧭🗺️⬆️⬇️⬅️➡️": ["direzione"]
+      "🧭🗺️⬆️⬇️⬅️➡️": ["direzione"],
+      "🗺️❓": ["Dove?"]
     },
     "drink": {
       "🍺": ["birra"],
@@ -201,7 +202,7 @@
       "🍖": ["carne"],
       "🐄🥩": ["manzo"],
       "🐖🥓": ["maiale"],
-      "🐓🍗": ["pollame"],
+      "🐓🍗": ["pollo"],
       "🐟🐙🦐🍽️": ["frutti di mare"],
       "🦐": ["gamberi"],
       "🥗": ["insalata"],
@@ -253,7 +254,7 @@
       "💳": ["carta di credito"],
       "💰 (🚫💳)": ["contanti"],
       "💰🤑💰": ["ricco"],
-      "🚫💰": ["povero, al verde"],
+      "🚫💰": ["povero"],
       "💸": ["pagare"],
       "💸🛍️": ["comprare"],
       "💸👐": ["costoso"],
@@ -273,12 +274,12 @@
       "🌨️❄️": ["neve"],
       "☁️✈️☀️🦅": ["cielo"],
       "🌳": ["albero"],
-      "🍃": ["foglia"],
+      "🍃🍁🍂🍀": ["foglia"],
       "🌸": ["fiore"],
       "🌱": ["pianta"],
       "🌱🫚": ["radice"],
       "🌳🌳🌳": ["foresta"],
-      "🌍": ["terra / mondo"],
+      "🌍": ["terra, mondo"],
       "🌊🐳": ["oceano"],
       "⭐": ["stella"],
       "💨💨": ["vento"],
@@ -363,12 +364,11 @@
       "🛏️": ["letto"],
       "📒": ["taccuino"],
       "⏰": ["sveglia"],
-      "🔑": ["chiave"],
       "💡": ["lampadina"],
       "📦": ["scatola"],
       "🗓️": ["calendario"],
       "⚽": ["pallone da calcio"],
-      "🌐🛜": ["internet / wifi"],
+      "🌐🛜": ["internet, wifi"],
       "🤖": ["robot"],
       "📱💻🖥️": ["tecnologia"],
       "🛂": ["passaporto"],
@@ -378,6 +378,7 @@
       "🚪": ["porta"],
       "📝": ["biglietto"],
       "🧻": ["carta igienica"],
+      "🔑": ["chiave"],
       "🔒🔓": ["serratura"],
       "🎁": ["regalo"],
       "💍": ["anello"],
@@ -404,13 +405,12 @@
       "🏋️‍♂️🥦": ["sano"],
       "🧼✨": ["pulito"],
       "🚫🧼✨": ["sporco"],
-      "💦": ["bagnato"],
-      "🚫💦": ["asciutto"],
+      "💦☔️": ["bagnato"],
+      "🚫💦☔️": ["secco"],
       "🆕": ["nuovo"],
       "🚫🆕": ["vecchio"],
       "🪫": ["vuoto"],
-      "🔋": ["pieno"],
-      "🤕": ["ferito"]
+      "🔋": ["pieno"]
     },
     "other-nouns": {
       "🎼🎻🎷": ["musica"],
@@ -419,7 +419,8 @@
       "💊💉": ["medicina"],
       "🔊": ["suono"],
       "✅🙆‍♀️": ["sì"],
-      "❌🙅": ["no"]
+      "❌🙅": ["no"],
+      "🤕🩹": ["lesioni"]
     },
     "people": {
       "👤": ["persona"],
@@ -446,8 +447,8 @@
       "👷‍♀️👷‍♂️": ["operaio edile"],
       "👩‍🔬👨‍🔬": ["scienziato"],
       "🧑‍🎓👩‍🎓": ["studente"],
-      "👱‍♂️💼 / 👩💼": ["uomo d'affari / donna d'affari"],
-      "🙂🎭🎬": ["attore / attrice"],
+      "👱‍♂️💼 / 👩💼": ["uomo d'affari, donna d'affari"],
+      "🙂🎭🎬": ["attore, attrice"],
       "🙂🚴‍♂️🏋️‍♂️⛹️‍♂️": ["atleta"],
       "🙂✍️": ["scrittore"],
       "🙂🎒✈️": ["viaggiatore"],
@@ -474,7 +475,7 @@
       "💍👰🤵": ["matrimonio"]
     },
     "people.pronouns": {
-      "🙋": ["Io / me"],
+      "🙋": ["Io, me"],
       "🙋🙋🙋": ["noi"],
       "🫵": ["tu"],
       "👉👨": ["lui"],
@@ -503,7 +504,7 @@
       "🏙️": ["città"],
       "🏠": ["casa"],
       "🌉": ["ponte"],
-      "🛣️": ["strada"],
+      "🛣️": ["strada, strada"],
       "🏘️": ["città"],
       "🏥": ["ospedale"],
       "🏦": ["banca"],
