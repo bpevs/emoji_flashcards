@@ -19,14 +19,30 @@ userSelector.onchange = function () {
 }
 ;(async function () {
   let index = initialIndex
-  const dataURL = '/api/data?' + new URLSearchParams({
-    user: userLangCode,
-    note: noteLangCode,
-  })
-  const data = await (await fetch(dataURL)).json()
   let audioEl, answerEl
   const noteEl = document.getElementById('note-stack')
+  const noteSelectorWrapperEl = document.getElementById('note-selector-wrapper')
+
+  const data = await (await fetch(
+    '/api/data?' + new URLSearchParams({
+      user: userLangCode,
+      note: noteLangCode,
+    }),
+  )).json()
+
   setCard()
+  setSelector()
+
+  noteEl.onclick = () => {
+    if (answerEl.className.includes('hidden')) {
+      answerEl.className = 'answer'
+      audioEl.play()
+    } else {
+      setParam('i', ++index, 'replace')
+      setCard()
+      setSelector()
+    }
+  }
 
   function setCard() {
     const [emoji, _translation, text] = data.notes[index]
@@ -45,13 +61,28 @@ userSelector.onchange = function () {
     answerEl = document.getElementById('answer')
   }
 
-  noteEl.onclick = () => {
-    if (answerEl.className.includes('hidden')) {
-      answerEl.className = 'answer'
-      audioEl.play()
-    } else {
-      setParam('i', ++index, 'replace')
-      setCard()
+  function setSelector() {
+    const categories = data.categories.map((category) => {
+      const options = data.notes
+        .map((row, i) => ({ row, index: i }))
+        .filter(({ row }) => (row[1] === category))
+        .map((d) => {
+          const selected = (d.index == index) ? 'selected' : ''
+          return `<option value="${d.index}" ${selected}>${d.row[0]}</option>`
+        })
+      return `<optgroup label="${category}">${options}</optgroup>`
+    })
+    noteSelectorWrapperEl.innerHTML =
+      `<select id="note-selector" name='current-note'>${categories}</select>`
+
+    document.getElementById('note-selector').onchange = (e) => {
+      const nextIndex = parseInt(e.currentTarget.value)
+      if (nextIndex >= 0 && nextIndex < data.notes.length) {
+        index = nextIndex
+        setParam('i', nextIndex, 'replace')
+        setCard()
+        setSelector()
+      }
     }
   }
 })()

@@ -11,7 +11,7 @@ import locales from '@/data/locales.js'
 export default function Html({ data }: { data: UserLanguageMeta }) {
   return html`
     <!DOCTYPE html>
-    <html lang="${data.userLangCode}">
+    <html lang="${data.userLangCode}" ${data.rtl ? raw('dir="rtl"') : ''}>
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

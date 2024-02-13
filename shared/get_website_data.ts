@@ -6,7 +6,7 @@ export default async function getWebsiteData(
   userLangCode: string,
   noteLangCode: string,
 ): Promise<UserLanguageMeta> {
-  const { strings } = await readLanguageFile(userLangCode, false)
+  const { rtl, strings } = await readLanguageFile(userLangCode, false)
   const { data, locale_flag } = await readLanguageFile(noteLangCode, true)
   const categories = Object.keys(data).sort()
   const notes = categories.map((category: string) =>
@@ -21,6 +21,7 @@ export default async function getWebsiteData(
     flag: locale_flag,
     strings,
     notes,
+    rtl: rtl ? true : false,
     locales: locales
       .map((localeData) => localeData)
       .sort((a, b) => {

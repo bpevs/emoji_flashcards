@@ -42,6 +42,7 @@ export type LanguageFile = SourceFile & {
   language_code: string
   locale_flag: string
   pronunciation_key?: string
+  rtl?: boolean
   meta: {
     anki_id: number
     deepl?: {
@@ -77,6 +78,7 @@ export interface UserLanguageMeta {
   userLangCode: string
   noteLangCode: string
   flag: string
+  rtl: boolean
   strings: { [name: string]: string }
   notes: string[][]
   locales: Array<{

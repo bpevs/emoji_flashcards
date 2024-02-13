@@ -26,6 +26,9 @@ export default function App(
             </noscript>
           </div>
         </div>
+        <div style='text-align: center; padding: 10px;'>
+          <div id='note-selector-wrapper' />
+        </div>
       </div>
 
       <div class='row my-5'>
