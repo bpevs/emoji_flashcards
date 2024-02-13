@@ -1,12 +1,7 @@
 import { join } from 'std/path/mod.ts'
-import type { ExtensionFile, LanguageFile, SourceFile } from '../types.ts'
-import { prettyPrintCompactFile } from '../utilities/data_access_utilities.ts'
-import {
-  EXTENSIONS_DIR,
-  GEN_DIR,
-  LANGUAGES_DIR,
-  SOURCE_FILE,
-} from './constants_server.ts'
+import type { ExtensionFile, LanguageFile, SourceFile } from '@/shared/types.ts'
+import { prettyPrintCompactFile } from '@/shared/data_access_helpers.ts'
+import { EXTENSIONS_DIR, GEN_DIR, LANGUAGES_DIR, SOURCE_FILE } from './paths.ts'
 
 const LANGUAGE_FILE_REGEX = /^[a-z]{2,3}(-[A-Z]{2})?\.json$/
 const AUDIO_FILE_REGEX = /.*\.mp3$/

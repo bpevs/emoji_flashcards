@@ -1,14 +1,15 @@
-import { GEN_DIR } from '../utilities/constants_server.ts'
-import { LanguageData } from '../types.ts'
 import { ensureDir, existsSync } from 'std/fs/mod.ts'
-import { listLanguages, readLanguageFile } from '../utilities/data_access.ts'
 import { join } from 'std/path/mod.ts'
-import { ankiHash, Deck, Model, Package } from '../utilities/genanki/mod.ts'
-import templates from '../data/templates/mod.ts'
+
+import { GEN_DIR } from '@/shared/paths.ts'
+import { LanguageData } from '@/shared/types.ts'
+import { listLanguages, readLanguageFile } from '@/shared/data_access.ts'
+import { ankiHash, Deck, Model, Package } from '@/shared/genanki/mod.ts'
+import templates from '@/data/templates/mod.ts'
 import {
   getAudioFilename,
   getLanguageDataMap,
-} from '../utilities/data_access_utilities.ts'
+} from '@/shared/data_access_helpers.ts'
 
 listLanguages().forEach(async (langCode: string) => {
   const lang = await readLanguageFile(langCode, true)

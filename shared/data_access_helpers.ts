@@ -5,7 +5,7 @@ import type {
   LanguageFileData,
   SourceDataMap,
   SourceFile,
-} from '../types.ts'
+} from '@/shared/types.ts'
 
 const illegalRe = /[\/\?<>\\:\*\|"]/g
 // deno-lint-ignore no-control-regex

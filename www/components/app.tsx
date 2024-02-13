@@ -1,7 +1,7 @@
 /** @jsx jsx **/
 import { jsx } from 'hono/middleware.ts'
 import NoteLanguageSelector from './note_language_selector.tsx'
-import type { UserLanguageMeta } from '../types.ts'
+import type { UserLanguageMeta } from '@/shared/types.ts'
 
 export default function App(
   props: UserLanguageMeta,
@@ -17,13 +17,14 @@ export default function App(
       </div>
 
       <div id='app' class='row container mx-auto'>
-        <div style='max-width: 20rem; height: 300px;'>
-          <noscript>
-            <div id='no-js' class='no-script-message'>
-              {strings['no-js']}
-            </div>
-          </noscript>
-          <div id='note-stack'></div>
+        <div class='note-wrapper'>
+          <div id='note-stack' class='note'>
+            <noscript>
+              <div id='no-js' class='no-script-message'>
+                {strings['no-js']}
+              </div>
+            </noscript>
+          </div>
         </div>
       </div>
 

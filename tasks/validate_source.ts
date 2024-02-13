@@ -1,5 +1,5 @@
 // Validate that there are no duplicate keys in source.json
-import { readSourceFile } from '../utilities/data_access.ts'
+import { readSourceFile } from '@/shared/data_access.ts'
 
 const { data } = await readSourceFile()
 

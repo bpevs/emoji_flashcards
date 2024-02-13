@@ -1,6 +1,6 @@
 import { join } from 'std/path/mod.ts'
-import { DATA_DIR } from '../utilities/constants_server.ts'
-import { listLanguages, readLanguageFile } from '../utilities/data_access.ts'
+import { DATA_DIR } from '@/shared/paths.ts'
+import { listLanguages, readLanguageFile } from '@/shared/data_access.ts'
 
 const locales = await listLanguages()
 

@@ -1,6 +1,6 @@
 /** @jsx jsx **/
 import { jsx } from 'hono/middleware.ts'
-import type { UserLanguageMeta } from '../types.ts'
+import type { UserLanguageMeta } from '@/shared/types.ts'
 
 export default function UserLanguageSelector(
   { locales, noteLangCode, userLangCode }: UserLanguageMeta,

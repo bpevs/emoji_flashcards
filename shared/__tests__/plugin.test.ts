@@ -6,8 +6,8 @@ import {
 } from 'std/testing/mock.ts'
 import { assertEquals } from 'std/assert/mod.ts'
 import { afterEach, beforeEach, it } from 'std/testing/bdd.ts'
-import { LanguageFile, SourceFile } from '../../types.ts'
-import { _internals } from '../translate.ts'
+import { LanguageFile, SourceFile } from '@/shared/types.ts'
+import { _internals } from '@/shared/translate.ts'
 import Plugin, { ProcessingTargetRow, SourceRow, TargetRow } from '../plugin.ts'
 
 const baseSourceFile: SourceFile = Object.freeze({

@@ -19,11 +19,11 @@ import {
   readLanguageFile,
   readSourceFile,
   writeLanguageFile,
-} from '../utilities/data_access.ts'
-import { getDataAndColumns } from '../utilities/data_access_utilities.ts'
-import { API, translate } from '../utilities/translate.ts'
-import plugins from '../data/plugins/mod.ts'
-import Plugin from '../utilities/plugin.ts'
+} from '@/shared/data_access.ts'
+import { getDataAndColumns } from '@/shared/data_access_helpers.ts'
+import { API, translate } from '@/shared/translate.ts'
+import plugins from '@/data/plugins/mod.ts'
+import Plugin from '@/shared/plugin.ts'
 
 const [input_locale_code] = Deno.args
 

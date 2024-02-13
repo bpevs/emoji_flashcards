@@ -1,6 +1,6 @@
-import { UserLanguageMeta } from '../types.ts'
-import { readLanguageFile } from './data_access.ts'
-import locales from '../data/locales.js'
+import { UserLanguageMeta } from '@/shared/types.ts'
+import { readLanguageFile } from '@/shared/data_access.ts'
+import locales from '@/data/locales.js'
 
 export default async function getWebsiteData(
   userLangCode: string,

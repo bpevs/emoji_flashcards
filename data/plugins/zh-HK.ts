@@ -1,4 +1,4 @@
-import Plugin, { TargetRow } from '../../utilities/plugin.ts'
+import Plugin, { TargetRow } from '@/shared/plugin.ts'
 import CantoJpMin from './utilities/cantojpmin/mod.ts'
 
 const cantoJpMin = new CantoJpMin()

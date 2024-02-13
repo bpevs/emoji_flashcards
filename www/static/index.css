@@ -179,3 +179,7 @@ button {
 .about-links span {
   padding-left: 3px;
 }
+
+.hidden {
+  opacity: 0;
+}

@@ -1,4 +1,4 @@
-import { Template } from '../../utilities/genanki/mod.ts'
+import { Template } from '@/shared/genanki/mod.ts'
 import { nohint } from './default.js'
 
 import es from './es.ts'

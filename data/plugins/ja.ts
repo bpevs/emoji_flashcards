@@ -1,6 +1,6 @@
 import Kuroshiro from 'kuroshiro'
 import KuromojiAnalyzer from 'kuroshiro-analyzer-kuromoji'
-import Plugin, { TargetRow } from '../../utilities/plugin.ts'
+import Plugin, { TargetRow } from '@/shared/plugin.ts'
 
 const kuroshiro = new (Kuroshiro.default)()
 await kuroshiro.init(new KuromojiAnalyzer())

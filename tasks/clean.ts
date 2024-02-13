@@ -1,12 +1,12 @@
+import { ensureDir } from 'std/fs/mod.ts'
+import { join } from 'std/path/mod.ts'
 import {
   listAudioFiles,
   listLanguages,
   readLanguageFile,
-} from '../utilities/data_access.ts'
-import { getAudioFilename } from '../utilities/data_access_utilities.ts'
-import { GEN_DIR } from '../utilities/constants_server.ts'
-import { ensureDir } from 'std/fs/mod.ts'
-import { join } from 'std/path/mod.ts'
+} from '@/shared/data_access.ts'
+import { getAudioFilename } from '@/shared/data_access_helpers.ts'
+import { GEN_DIR } from '@/shared/paths.ts'
 
 // Remote tmp
 await Deno.remove('./tmp/audio', { recursive: true })

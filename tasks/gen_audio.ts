@@ -1,13 +1,16 @@
 import { ensureDir } from 'std/fs/mod.ts'
+import { load } from 'std/dotenv/mod.ts'
+import { writeAll } from 'std/streams/write_all.ts'
+import { join } from 'std/path/mod.ts'
 import {
   listAudioFiles,
   listLanguages,
   readLanguageFile,
-} from '../utilities/data_access.ts'
-import { getAudioFilename } from '../utilities/data_access_utilities.ts'
-import { GEN_DIR } from '../utilities/constants_server.ts'
-import { join } from 'std/path/mod.ts'
-import { tts } from '../utilities/tts.ts'
+} from '@/shared/data_access.ts'
+import { getAudioFilename } from '@/shared/data_access_helpers.ts'
+import { GEN_DIR } from '@/shared/paths.ts'
+
+const env = await load()
 
 const MAX_NOISE_LEVEL = -40
 const SILENCE_SPLIT = 1
@@ -117,7 +120,12 @@ async function ttsByCategory(
             if (pronunciationKeyIndex >= 0) return emoji[pronunciationKeyIndex]
             return emoji[0]
           })
-        const fileName = await tts(texts, voice_id, locale_code, categoryId)
+        const fileName = await ttsAzure(
+          texts,
+          voice_id,
+          locale_code,
+          categoryId,
+        )
         return { categoryId, fileName }
       }),
   )
@@ -199,4 +207,42 @@ async function writeTranslationAudioFiles(
   await convert.output()
 
   console.log(names.length, count)
+}
+
+async function ttsAzure(
+  texts: string[],
+  voice_id: string,
+  locale_code: string,
+  category_id: string,
+): Promise<string | null> {
+  const SILENCE_REQUEST = 2
+  const region = env['AZURE_SPEECH_REGION']
+  const url = `https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Ocp-Apim-Subscription-Key': env['AZURE_SPEECH_KEY'],
+      'Content-Type': 'application/ssml+xml',
+      'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3',
+      'User-Agent': 'curl',
+    },
+    body: `
+      <speak version='1.0' xml:lang='${locale_code}'>
+        <voice name='${voice_id}' xml:lang='${locale_code}'>
+          ${texts.join(`, <break time="${SILENCE_REQUEST}s"/> `)}
+        </voice>
+      </speak>
+    `,
+  })
+  if (response.status > 399) {
+    console.warn(response)
+    return null
+  }
+  const fileName = `${locale_code}_${category_id}.mp3`
+  const filePath = join('./tmp/audio', fileName)
+  const file = await Deno.open(filePath, { create: true, write: true })
+  const arrayBuffer = new Uint8Array(await response.arrayBuffer())
+  await writeAll(file, arrayBuffer)
+  return fileName
 }

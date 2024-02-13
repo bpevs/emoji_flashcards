@@ -1,5 +1,5 @@
 import pinyin from 'chinese-to-pinyin'
-import Plugin, { TargetRow } from '../../utilities/plugin.ts'
+import Plugin, { TargetRow } from '@/shared/plugin.ts'
 
 export default new Plugin({
   post(

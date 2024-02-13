@@ -6,10 +6,10 @@ import { assertSnapshot } from 'std/testing/snapshot.ts'
 import { it } from 'std/testing/bdd.ts'
 import { DOMParser } from 'deno-dom'
 
-import getWebsiteData from '../get_website_data.ts'
-import Html from '../../components/html.tsx'
-import enUS from '../../data/languages/en-US.json' with { type: 'json' }
-import esES from '../../data/languages/es-ES.json' with { type: 'json' }
+import getWebsiteData from '@/shared/get_website_data.ts'
+import Html from '@/www/components/html.tsx'
+import enUS from '@/data/languages/en-US.json' with { type: 'json' }
+import esES from '@/data/languages/es-ES.json' with { type: 'json' }
 
 async function getDOM(urlStr: string) {
   const params = (new URL(urlStr)).searchParams

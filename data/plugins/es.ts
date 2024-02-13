@@ -2,7 +2,7 @@ import Plugin, {
   ProcessingTargetRow,
   SourceRow,
   TargetRow,
-} from '../../utilities/plugin.ts'
+} from '@/shared/plugin.ts'
 
 export default new Plugin({
   pre(

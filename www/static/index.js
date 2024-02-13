@@ -1,7 +1,12 @@
 const params = (new URL(document.location.toString())).searchParams
-const index = parseInt(params.get('i') || '0')
+const initialIndex = parseInt(params.get('i') || '0')
 const userLangCode = params.get('user') || browserLang()?.locale_code || 'en-US'
 const noteLangCode = params.get('note') || randomLang().locale_code
+
+if (!params.get('user') || !params.get('note')) {
+  setParam('user', userLangCode, 'replace')
+  setParam('note', noteLangCode, 'assign')
+}
 
 const noteSelector = document.getElementById('note-lang-selector')
 noteSelector.onchange = function () {
@@ -13,35 +18,54 @@ userSelector.onchange = function () {
   setParam('user', this.value, 'assign')
 }
 ;(async function () {
+  let index = initialIndex
   const dataURL = '/api/data?' + new URLSearchParams({
     user: userLangCode,
     note: noteLangCode,
   })
   const data = await (await fetch(dataURL)).json()
-  const [emoji, _translation, text] = data.notes[index]
-  const filename = getAudioFilename(noteLangCode, emoji, text)
-  const audioURL =
-    `https://static.bpev.me/flashcards/${noteLangCode}/audio/${filename}`
-  document.getElementById('note-stack').innerHTML = `
-    <h1>${emoji}</h1>
-    <h2>${text}</h2>
-    <audio class="note-audio" autoplay controls src="${audioURL}"></audio>
-    <button class="note-next">
-      next
-    </button>
-  `
-  document.getElementsByClassName('note-audio')[0].play()
-  document.getElementsByClassName('note-next')[0].onclick = function () {
-    setParam('i', index + 1, 'assign')
+  let audioEl, answerEl
+  const noteEl = document.getElementById('note-stack')
+  setCard()
+
+  function setCard() {
+    const [emoji, _translation, text] = data.notes[index]
+    const filename = getAudioFilename(noteLangCode, emoji, text)
+    const audioURL =
+      `https://static.bpev.me/flashcards/${noteLangCode}/audio/${filename}`
+
+    noteEl.innerHTML = `
+      <h1 id="question" class="question">${emoji}</h1>
+      <h2 id="answer" class="answer hidden">
+        ${text}
+        <audio id="note-audio" src="${audioURL}">
+      </h2>
+    `
+    audioEl = document.getElementById('note-audio')
+    answerEl = document.getElementById('answer')
+  }
+
+  noteEl.onclick = () => {
+    if (answerEl.className.includes('hidden')) {
+      answerEl.className = 'answer'
+      audioEl.play()
+    } else {
+      setParam('i', ++index, 'replace')
+      setCard()
+    }
   }
 })()
 
 function browserLang() {
-  return locales.find((locale) => locale.locale_code === navigator.language)
+  return window.locales.find((locale) =>
+    locale.locale_code === navigator.language
+  )
 }
 
 function randomLang() {
-  const noUserLang = locales.filter((l) => l.locale_code !== userLangCode)
+  const noUserLang = window.locales.filter((l) =>
+    l.locale_code !== userLangCode
+  )
   return noUserLang[Math.floor(Math.random() * noUserLang.length)]
 }
 

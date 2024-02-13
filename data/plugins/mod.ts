@@ -1,4 +1,4 @@
-import Plugin from '../../utilities/plugin.ts'
+import Plugin from '@/shared/plugin.ts'
 
 import en from './en.ts'
 import es from './es.ts'
