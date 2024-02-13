@@ -11,7 +11,7 @@
       "locale_code": "sk-SK",
       "voice_id": "sk-SK-LukasNeural"
     },
-    "deepl": {"language_code": "sk"}
+    "deepl": { "language_code": "sk" }
   },
   "strings": {
     "about": "O stránke",

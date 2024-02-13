@@ -11,7 +11,7 @@
       "locale_code": "lv-LV",
       "voice_id": "lv-LV-NilsNeural"
     },
-    "deepl": {"language_code": "lv"}
+    "deepl": { "language_code": "lv" }
   },
   "strings": {
     "about": "Par",

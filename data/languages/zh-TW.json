@@ -12,7 +12,7 @@
       "locale_code": "zh-TW",
       "voice_id": "zh-TW-YunJheNeural"
     },
-    "deepl": {"language_code": "zh"}
+    "deepl": { "language_code": "zh" }
   },
   "strings": {
     "about": "關于 Emoji",

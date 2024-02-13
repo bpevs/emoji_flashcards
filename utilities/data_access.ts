@@ -1,9 +1,5 @@
 import { join } from 'std/path/mod.ts'
-import type {
-  ExtensionFile,
-  LanguageFile,
-  SourceFile,
-} from '../utilities/types.ts'
+import type { ExtensionFile, LanguageFile, SourceFile } from '../types.ts'
 import { prettyPrintCompactFile } from '../utilities/data_access_utilities.ts'
 import {
   EXTENSIONS_DIR,

@@ -11,7 +11,7 @@
       "locale_code": "da-DK",
       "voice_id": "da-DK-JeppeNeural"
     },
-    "deepl": {"language_code": "da"}
+    "deepl": { "language_code": "da" }
   },
   "strings": {
     "about": "Om projektet",

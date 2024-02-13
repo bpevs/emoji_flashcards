@@ -11,7 +11,7 @@
       "locale_code": "tr-TR",
       "voice_id": "tr-TR-AhmetNeural"
     },
-    "deepl": {"language_code": "tr"}
+    "deepl": { "language_code": "tr" }
   },
   "strings": {
     "about": "Hakkında",

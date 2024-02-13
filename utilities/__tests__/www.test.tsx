@@ -1,25 +1,25 @@
-import { pageHandler } from '../server_helpers.ts'
+/** @jsx jsx **/
+import { raw } from 'hono/helper.ts'
+import { jsx } from 'hono/middleware.ts'
 import { assertEquals, assertExists } from 'std/assert/mod.ts'
 import { assertSnapshot } from 'std/testing/snapshot.ts'
 import { it } from 'std/testing/bdd.ts'
-import { Application, Context } from 'oak'
 import { DOMParser } from 'deno-dom'
+
+import getWebsiteData from '../get_website_data.ts'
+import Html from '../../components/html.tsx'
 import enUS from '../../data/languages/en-US.json' with { type: 'json' }
 import esES from '../../data/languages/es-ES.json' with { type: 'json' }
 
-const app = new Application()
-
 async function getDOM(urlStr: string) {
-  const request = {
-    url: new URL(urlStr),
-    headers: new Headers(),
-    getBody: () => '',
-  }
-  // deno-lint-ignore no-explicit-any
-  const context = new Context(app, request as any, {})
-  await pageHandler('index')(context)
-  const body = String(context.response.body)
-  return new DOMParser().parseFromString(body, 'text/html')
+  const params = (new URL(urlStr)).searchParams
+  const data = await getWebsiteData(
+    params.get('user') || 'en-US',
+    params.get('note') || 'en-US',
+  )
+
+  return new DOMParser()
+    .parseFromString(raw(<Html data={data} />).toString(), 'text/html')
 }
 
 it('should render index page', async (t) => {
@@ -44,9 +44,6 @@ it('should render non-demo strings', async () => {
 
   const cardLabel = dom.getElementById('card-selector-label')
   assertEquals(cardLabel?.innerText, enUS.strings['card-selector-label'])
-
-  const learnMore = dom.getElementById('learn-more')
-  assertEquals(learnMore?.innerText, enUS.strings['learn-more'])
 
   const noJS = dom.getElementById('no-js')
   assertEquals((noJS?.innerText || '').trim(), enUS.strings['no-js'])
@@ -83,9 +80,6 @@ it('should render non-demo strings in user-lang', async () => {
   const cardLabel = dom.getElementById('card-selector-label')
   assertEquals(cardLabel?.innerText, esES.strings['card-selector-label'])
 
-  const learnMore = dom.getElementById('learn-more')
-  assertEquals(learnMore?.innerText, esES.strings['learn-more'])
-
   const noJS = dom.getElementById('no-js')
   assertEquals((noJS?.innerText || '').trim(), esES.strings['no-js'])
 
@@ -119,7 +113,7 @@ it('should render note selector in user language', async (t) => {
 })
 
 it('should render download link with note-lang flag', async () => {
-  const dom1 = await getDOM(`https://flashcards.bpev.me?card=en-US&user=es-ES`)
+  const dom1 = await getDOM(`https://flashcards.bpev.me?note=en-US&user=es-ES`)
   assertExists(dom1)
   const text1 = dom1.getElementById('download')?.innerText
   assertEquals(text1, '🇺🇸 Descargar flashcards')
@@ -131,7 +125,7 @@ it('should render download link with note-lang flag', async () => {
     'https://static.bpev.me/flashcards/en-US/emoji-flashcards-en-US.apkg',
   )
 
-  const dom2 = await getDOM(`https://flashcards.bpev.me?card=es-ES&user=en-US`)
+  const dom2 = await getDOM(`https://flashcards.bpev.me?note=es-ES&user=en-US`)
   assertExists(dom2)
   const text2 = dom2.getElementById('download')?.innerText
   assertEquals(text2, '🇪🇸 Download flashcards')

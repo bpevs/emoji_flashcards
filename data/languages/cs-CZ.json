@@ -11,7 +11,7 @@
       "locale_code": "cs-CZ",
       "voice_id": "cs-CZ-VlastaNeural"
     },
-    "deepl": {"language_code": "cs"}
+    "deepl": { "language_code": "cs" }
   },
   "strings": {
     "about": "O stránkách",

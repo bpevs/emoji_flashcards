@@ -12,7 +12,7 @@
       "locale_code": "es-ES",
       "voice_id": "es-ES-AlvaroNeural"
     },
-    "deepl": {"language_code": "es"}
+    "deepl": { "language_code": "es" }
   },
   "strings": {
     "about": "Acerca de",

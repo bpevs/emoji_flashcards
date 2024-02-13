@@ -1,5 +1,5 @@
 import { API, translate } from './translate.ts'
-import { LanguageFile, SourceDataMap, SourceFile } from './types.ts'
+import { LanguageFile, SourceDataMap, SourceFile } from '../types.ts'
 import {
   getLanguageDataMap,
   getSourceDataMap,

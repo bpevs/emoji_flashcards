@@ -11,7 +11,7 @@
       "locale_code": "nl-NL",
       "voice_id": "nl-NL-FennaNeural"
     },
-    "deepl": {"language_code": "nl"}
+    "deepl": { "language_code": "nl" }
   },
   "strings": {
     "about": "Over",

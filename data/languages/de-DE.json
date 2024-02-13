@@ -11,7 +11,7 @@
       "locale_code": "de-DE",
       "voice_id": "de-DE-KillianNeural"
     },
-    "deepl": {"language_code": "de"}
+    "deepl": { "language_code": "de" }
   },
   "strings": {
     "about": "Über",

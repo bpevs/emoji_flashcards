@@ -11,7 +11,7 @@
       "locale_code": "sl-SI",
       "voice_id": "sl-SI-RokNeural"
     },
-    "deepl": {"language_code": "sl"}
+    "deepl": { "language_code": "sl" }
   },
   "strings": {
     "about": "O spletni strani",

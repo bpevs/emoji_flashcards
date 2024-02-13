@@ -11,7 +11,7 @@
       "locale_code": "ru-RU",
       "voice_id": "ru-RU-SvetlanaNeural"
     },
-    "deepl": {"language_code": "ru"}
+    "deepl": { "language_code": "ru" }
   },
   "strings": {
     "about": "О сайте",

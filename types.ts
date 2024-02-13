@@ -71,3 +71,18 @@ export type ExtensionFile = {
     }
   }
 }
+
+export interface UserLanguageMeta {
+  categories: string[]
+  userLangCode: string
+  noteLangCode: string
+  flag: string
+  strings: { [name: string]: string }
+  notes: string[][]
+  locales: Array<{
+    language_code: string
+    locale_code: string
+    native_name: string
+    locale_flag: string
+  }>
+}

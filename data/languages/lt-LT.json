@@ -11,7 +11,7 @@
       "locale_code": "lt-LT",
       "voice_id": "lt-LT-OnaNeural"
     },
-    "deepl": {"language_code": "lt"}
+    "deepl": { "language_code": "lt" }
   },
   "strings": {
     "about": "Apie",

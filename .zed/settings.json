@@ -1,4 +1,0 @@
-{
-  // Avoid formatting data json files, because the scripts compress
-  "format_on_save": "off"
-}

@@ -12,7 +12,7 @@
       "locale_code": "pt-BR",
       "voice_id": "pt-BR-ElzaNeural"
     },
-    "deepl": {"language_code": "pt", "locale_code": "pt-BR"}
+    "deepl": { "language_code": "pt", "locale_code": "pt-BR" }
   },
   "strings": {
     "about": "Sobre o",

@@ -12,7 +12,7 @@
       "locale_code": "en-US",
       "voice_id": "en-US-DavisNeural"
     },
-    "deepl": {"language_code": "en", "locale_code": "en-US"}
+    "deepl": { "language_code": "en", "locale_code": "en-US" }
   },
   "strings": {
     "about": "About",

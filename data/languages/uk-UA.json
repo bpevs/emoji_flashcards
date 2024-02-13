@@ -11,7 +11,7 @@
       "locale_code": "uk-UA",
       "voice_id": "uk-UA-PolinaNeural"
     },
-    "deepl": {"language_code": "uk"}
+    "deepl": { "language_code": "uk" }
   },
   "strings": {
     "about": "Про проект",

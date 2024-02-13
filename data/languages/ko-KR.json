@@ -11,7 +11,7 @@
       "locale_code": "ko-KR",
       "voice_id": "ko-KR-HyunsuNeural"
     },
-    "deepl": {"language_code": "ko"}
+    "deepl": { "language_code": "ko" }
   },
   "strings": {
     "about": "소개",

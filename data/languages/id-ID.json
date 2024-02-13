@@ -11,7 +11,7 @@
       "locale_code": "id-ID",
       "voice_id": "id-ID-GadisNeural"
     },
-    "deepl": {"language_code": "id"}
+    "deepl": { "language_code": "id" }
   },
   "strings": {
     "about": "Tentang",

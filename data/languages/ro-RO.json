@@ -11,7 +11,7 @@
       "locale_code": "ro-RO",
       "voice_id": "ro-RO-AlinaNeural"
     },
-    "deepl": {"language_code": "ro"}
+    "deepl": { "language_code": "ro" }
   },
   "strings": {
     "about": "Despre",

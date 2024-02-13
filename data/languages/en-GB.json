@@ -12,7 +12,7 @@
       "locale_code": "en-GB",
       "voice_id": "en-GB-OliviaNeural"
     },
-    "deepl": {"language_code": "en", "locale_code": "en-GB"}
+    "deepl": { "language_code": "en", "locale_code": "en-GB" }
   },
   "strings": {
     "about": "About",

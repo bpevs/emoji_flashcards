@@ -11,7 +11,7 @@
       "locale_code": "et-EE",
       "voice_id": "et-EE-AnuNeural"
     },
-    "deepl": {"language_code": "et"}
+    "deepl": { "language_code": "et" }
   },
   "strings": {
     "about": "Umbes",

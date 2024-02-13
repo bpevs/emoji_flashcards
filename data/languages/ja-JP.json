@@ -11,7 +11,7 @@
       "locale_code": "ja-JP",
       "voice_id": "ja-JP-NanamiNeural"
     },
-    "deepl": {"language_code": "ja"}
+    "deepl": { "language_code": "ja" }
   },
   "strings": {
     "about": "絵文字フラッシュカードについて",

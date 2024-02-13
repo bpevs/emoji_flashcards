@@ -1,5 +1,5 @@
 import { GEN_DIR } from '../utilities/constants_server.ts'
-import { LanguageData } from '../utilities/types.ts'
+import { LanguageData } from '../types.ts'
 import { ensureDir, existsSync } from 'std/fs/mod.ts'
 import { listLanguages, readLanguageFile } from '../utilities/data_access.ts'
 import { join } from 'std/path/mod.ts'

@@ -11,7 +11,7 @@
       "locale_code": "el-GR",
       "voice_id": "el-GR-AthinaNeural"
     },
-    "deepl": {"language_code": "el"}
+    "deepl": { "language_code": "el" }
   },
   "strings": {
     "about": "Σχετικά με το",

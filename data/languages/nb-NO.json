@@ -11,7 +11,7 @@
       "locale_code": "nb-NO",
       "voice_id": "nb-NO-FinnNeural"
     },
-    "deepl": {"language_code": "nb"}
+    "deepl": { "language_code": "nb" }
   },
   "strings": {
     "about": "Om Anki",

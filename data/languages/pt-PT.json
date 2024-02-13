@@ -12,7 +12,7 @@
       "locale_code": "pt-PT",
       "voice_id": "pt-PT-FernandaNeural"
     },
-    "deepl": {"language_code": "pt", "locale_code": "pt-PT"}
+    "deepl": { "language_code": "pt", "locale_code": "pt-PT" }
   },
   "strings": {
     "about": "Sobre o",

@@ -12,7 +12,7 @@
       "locale_code": "zh-CN",
       "voice_id": "zh-CN-XiaoxiaoNeural"
     },
-    "deepl": {"language_code": "zh"}
+    "deepl": { "language_code": "zh" }
   },
   "strings": {
     "about": "关于 Emoji",

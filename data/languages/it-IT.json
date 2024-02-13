@@ -11,7 +11,7 @@
       "locale_code": "it-IT",
       "voice_id": "it-IT-DiegoNeural"
     },
-    "deepl": {"language_code": "it"}
+    "deepl": { "language_code": "it" }
   },
   "strings": {
     "about": "Informazioni su",

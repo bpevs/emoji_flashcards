@@ -11,7 +11,7 @@
       "locale_code": "pl-PL",
       "voice_id": "pl-PL-MarekNeural"
     },
-    "deepl": {"language_code": "pl"}
+    "deepl": { "language_code": "pl" }
   },
   "strings": {
     "about": "O",

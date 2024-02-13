@@ -11,7 +11,7 @@
       "locale_code": "fr-FR",
       "voice_id": "fr-FR-HenriNeural"
     },
-    "deepl": {"language_code": "fr"}
+    "deepl": { "language_code": "fr" }
   },
   "strings": {
     "about": "A propos de",

@@ -11,7 +11,7 @@
       "locale_code": "sv-SE",
       "voice_id": "sv-SE-MattiasNeural"
     },
-    "deepl": {"language_code": "sv"}
+    "deepl": { "language_code": "sv" }
   },
   "strings": {
     "about": "Om projektet",

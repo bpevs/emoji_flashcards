@@ -11,7 +11,7 @@
       "locale_code": "hu-HU",
       "voice_id": "hu-HU-TamasNeural"
     },
-    "deepl": {"language_code": "hu"}
+    "deepl": { "language_code": "hu" }
   },
   "strings": {
     "about": "A  oldalról",
