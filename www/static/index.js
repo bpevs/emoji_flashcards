@@ -45,17 +45,18 @@ userSelector.onchange = function () {
   }
 
   function setCard() {
-    const [emoji, _translation, text] = data.notes[index]
+    const [emoji, _translation, text, hint] = data.notes[index]
     const filename = getAudioFilename(noteLangCode, emoji, text)
     const audioURL =
       `https://static.bpev.me/flashcards/${noteLangCode}/audio/${filename}`
 
     noteEl.innerHTML = `
       <h1 id="question" class="question">${emoji}</h1>
-      <h2 id="answer" class="answer hidden">
-        ${text}
-        <audio id="note-audio" src="${audioURL}">
-      </h2>
+      <div id="answer" class="answer hidden">
+        <h2>${text}</h2>
+        ${hint ? '<p>' + hint + '</p>' : ''}
+        <audio id="note-audio" src="${audioURL}" />
+      </div>
     `
     audioEl = document.getElementById('note-audio')
     answerEl = document.getElementById('answer')
