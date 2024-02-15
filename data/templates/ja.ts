@@ -7,19 +7,16 @@ export default [
   {
     name: 'Listening',
     qfmt: `{{Audio}}<br>${romajiButton}${romajiDisplay}`,
-    afmt:
-      `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Text}} ({{Romaji}})`,
+    afmt: `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Text}} ({{Romaji}})`,
   },
   {
     name: 'Reading',
     qfmt: `{{Text}}`,
-    afmt:
-      `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Audio}}<br>{{Romaji}}`,
+    afmt: `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Audio}}<br>{{Romaji}}`,
   },
   {
     name: 'Speaking',
     qfmt: `<h1>{{Emoji}}</h1>`,
-    afmt:
-      `{{FrontSide}}<hr id=answer>{{Audio}}<br>${romajiButton}<br>{{Text}} ({{Romaji}})`,
+    afmt: `{{FrontSide}}<hr id=answer>{{Audio}}<br>${romajiButton}<br>{{Text}} ({{Romaji}})`,
   },
 ]

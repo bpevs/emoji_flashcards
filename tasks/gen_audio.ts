@@ -2,11 +2,7 @@ import { ensureDir } from 'std/fs/mod.ts'
 import { load } from 'std/dotenv/mod.ts'
 import { writeAll } from 'std/streams/write_all.ts'
 import { join } from 'std/path/mod.ts'
-import {
-  listAudioFiles,
-  listLanguages,
-  readLanguageFile,
-} from '@/shared/data_access.ts'
+import { listAudioFiles, listLanguages, readLanguageFile } from '@/shared/data_access.ts'
 import { getAudioFilename } from '@/shared/data_access_helpers.ts'
 import { GEN_DIR } from '@/shared/paths.ts'
 
@@ -46,8 +42,9 @@ if (!locale_code) {
 async function genAudio(locale_code: string) {
   await ensureDir('./tmp/audio')
 
-  const { emojisByCategory, voice_id, pronunciationKeyIndex } =
-    await findMissingAudioFiles(locale_code)
+  const { emojisByCategory, voice_id, pronunciationKeyIndex } = await findMissingAudioFiles(
+    locale_code,
+  )
 
   console.log(locale_code, voice_id, Object.keys(emojisByCategory))
 
@@ -79,9 +76,7 @@ async function findMissingAudioFiles(locale_code: string) {
   const voice_id = lang?.meta?.azure?.voice_id
   if (!voice_id) throw new Error(`${locale_code} does not have a voice_id`)
 
-  const pronunciationKeyIndex = (pronunciation_key != null)
-    ? columns.indexOf(pronunciation_key)
-    : -1
+  const pronunciationKeyIndex = (pronunciation_key != null) ? columns.indexOf(pronunciation_key) : -1
 
   const emojisByCategory = lang.data
   await ensureDir(join(GEN_DIR, locale_code, 'audio'))

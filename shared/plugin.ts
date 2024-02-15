@@ -1,9 +1,6 @@
 import { API, translate } from '@/shared/translate.ts'
 import { LanguageFile, SourceDataMap, SourceFile } from '@/shared/types.ts'
-import {
-  getLanguageDataMap,
-  getSourceDataMap,
-} from '@/shared/data_access_helpers.ts'
+import { getLanguageDataMap, getSourceDataMap } from '@/shared/data_access_helpers.ts'
 
 export type SourceRow = {
   category: string

@@ -1,11 +1,6 @@
 import initSqlJs from 'sql.js'
 import JSZip, { OutputType } from 'jszip'
-import {
-  DeckProps,
-  defaultConf,
-  defaultDeck,
-  defaultDeckConf,
-} from './constants.ts'
+import { DeckProps, defaultConf, defaultDeck, defaultDeckConf } from './constants.ts'
 import { ModelProps } from './model.ts'
 import { Deck } from './deck.ts'
 

@@ -37,19 +37,16 @@ export const hint = [
   {
     name: 'Listening',
     qfmt: `{{Audio}}<br>${hintButton}${hintDisplay}`,
-    afmt:
-      `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Text}} ({{Hint}})`,
+    afmt: `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Text}} ({{Hint}})`,
   },
   {
     name: 'Reading',
     qfmt: `{{Text}}`,
-    afmt:
-      `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Audio}}<br>{{Hint}}`,
+    afmt: `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Audio}}<br>{{Hint}}`,
   },
   {
     name: 'Speaking',
     qfmt: `<h1>{{Emoji}}</h1>`,
-    afmt:
-      `{{FrontSide}}<hr id=answer>{{Audio}}<br>${hintButton}<br>{{Text}} ({{Hint}})`,
+    afmt: `{{FrontSide}}<hr id=answer>{{Audio}}<br>${hintButton}<br>{{Text}} ({{Hint}})`,
   },
 ]

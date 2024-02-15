@@ -1,10 +1,6 @@
 import { ensureDir } from 'std/fs/mod.ts'
 import { join } from 'std/path/mod.ts'
-import {
-  listAudioFiles,
-  listLanguages,
-  readLanguageFile,
-} from '@/shared/data_access.ts'
+import { listAudioFiles, listLanguages, readLanguageFile } from '@/shared/data_access.ts'
 import { getAudioFilename } from '@/shared/data_access_helpers.ts'
 import { GEN_DIR } from '@/shared/paths.ts'
 

@@ -1,11 +1,5 @@
 import stringify from 'npm:json-stringify-pretty-compact'
-import type {
-  LanguageDataMap,
-  LanguageFile,
-  LanguageFileData,
-  SourceDataMap,
-  SourceFile,
-} from '@/shared/types.ts'
+import type { LanguageDataMap, LanguageFile, LanguageFileData, SourceDataMap, SourceFile } from '@/shared/types.ts'
 
 const illegalRe = /[\/\?<>\\:\*\|"]/g
 // deno-lint-ignore no-control-regex

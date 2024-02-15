@@ -1,9 +1,4 @@
-import {
-  assertSpyCallAsync,
-  assertSpyCalls,
-  Stub,
-  stub,
-} from 'std/testing/mock.ts'
+import { assertSpyCallAsync, assertSpyCalls, Stub, stub } from 'std/testing/mock.ts'
 import { assertEquals } from 'std/assert/mod.ts'
 import { afterEach, beforeEach, it } from 'std/testing/bdd.ts'
 import { LanguageFile, SourceFile } from '@/shared/types.ts'

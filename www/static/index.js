@@ -47,8 +47,7 @@ userSelector.onchange = function () {
   function setCard() {
     const [emoji, _translation, text, hint] = data.notes[index]
     const filename = getAudioFilename(noteLangCode, emoji, text)
-    const audioURL =
-      `https://static.bpev.me/flashcards/${noteLangCode}/audio/${filename}`
+    const audioURL = `https://static.bpev.me/flashcards/${noteLangCode}/audio/${filename}`
 
     noteEl.innerHTML = `
       <h1 id="question" class="question">${emoji}</h1>
@@ -73,8 +72,7 @@ userSelector.onchange = function () {
         })
       return `<optgroup label="${category}">${options}</optgroup>`
     })
-    noteSelectorWrapperEl.innerHTML =
-      `<select id="note-selector" name='current-note'>${categories}</select>`
+    noteSelectorWrapperEl.innerHTML = `<select id="note-selector" name='current-note'>${categories}</select>`
 
     document.getElementById('note-selector').onchange = (e) => {
       const nextIndex = parseInt(e.currentTarget.value)
@@ -89,15 +87,11 @@ userSelector.onchange = function () {
 })()
 
 function browserLang() {
-  return window.locales.find((locale) =>
-    locale.locale_code === navigator.language
-  )
+  return window.locales.find((locale) => locale.locale_code === navigator.language)
 }
 
 function randomLang() {
-  const noUserLang = window.locales.filter((l) =>
-    l.locale_code !== userLangCode
-  )
+  const noUserLang = window.locales.filter((l) => l.locale_code !== userLangCode)
   return noUserLang[Math.floor(Math.random() * noUserLang.length)]
 }
 

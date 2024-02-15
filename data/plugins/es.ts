@@ -1,8 +1,4 @@
-import Plugin, {
-  ProcessingTargetRow,
-  SourceRow,
-  TargetRow,
-} from '@/shared/plugin.ts'
+import Plugin, { ProcessingTargetRow, SourceRow, TargetRow } from '@/shared/plugin.ts'
 
 export default new Plugin({
   pre(

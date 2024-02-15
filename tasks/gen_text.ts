@@ -14,12 +14,7 @@
  *      If a translation does not exist, translate via API
  *      If key does not exist in en_US, delete
  */
-import {
-  listLanguages,
-  readLanguageFile,
-  readSourceFile,
-  writeLanguageFile,
-} from '@/shared/data_access.ts'
+import { listLanguages, readLanguageFile, readSourceFile, writeLanguageFile } from '@/shared/data_access.ts'
 import { getDataAndColumns } from '@/shared/data_access_helpers.ts'
 import { API, translate } from '@/shared/translate.ts'
 import plugins from '@/data/plugins/mod.ts'

@@ -2,7 +2,8 @@
   "fmt": {
     "proseWrap": "never",
     "singleQuote": true,
-    "semiColons": false
+    "semiColons": false,
+    "lineWidth": 120
   },
   "compilerOptions": {
     "lib": ["esnext", "dom", "deno.window"]
