@@ -15,7 +15,7 @@ const MATCH_SILENCE = /silence_start: ([\w\.]+)[\s\S]+?silence_end: ([\w\.]+)/g
 
 const [locale_code, inputCategoryId] = Deno.args
 if (!locale_code) {
-  console.log('No language_code; These languages are missing files...')
+  console.log('No lang_code; These languages are missing files...')
   const data = await Promise.all(listLanguages().map(findMissingAudioFiles))
   const needFetch = data.filter((langData) => {
     for (const key in langData.emojisByCategory) {

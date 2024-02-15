@@ -12,7 +12,7 @@
     "std/": "https://deno.land/std@0.200.0/",
     "hono": "https://deno.land/x/hono/mod.ts",
     "hono/": "https://deno.land/x/hono/",
-    "emoji_flashcards/": "https://raw.githubusercontent.com/bpevs/language_flashcards/main/",
+    "language_flashcards/": "https://raw.githubusercontent.com/bpevs/language_flashcards/main/",
     "@/": "./",
 
     "kuroshiro": "npm:kuroshiro",
@@ -36,7 +36,7 @@
     "gen:text": "deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read tasks/gen_text.ts",
     "gen:anki": "deno run --allow-sys --allow-write=data --allow-read tasks/gen_anki.ts",
     "gen:audio": "deno run --allow-net --allow-env --allow-read --allow-write --allow-run tasks/gen_audio.ts",
-    "gen:locales": "deno run --allow-read --allow-write tasks/gen_locales.ts",
+    "gen:www": "deno run --allow-env --allow-net --allow-read --allow-write tasks/gen_www.ts",
     "dev": "deno run --allow-write --allow-net --allow-read --allow-run --allow-env --watch www.tsx",
     "test": "deno fmt && deno lint && deno task check && deno test -A",
     "validate:source": "deno run --allow-read tasks/validate_source.ts"

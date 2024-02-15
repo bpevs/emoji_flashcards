@@ -17,18 +17,23 @@ const userSelector = document.getElementById('user-lang-selector')
 userSelector.onchange = function () {
   setParam('user', this.value, 'assign')
 }
+let categories = []
 ;(async function () {
   let index = initialIndex
   let audioEl, answerEl
   const noteEl = document.getElementById('note-stack')
   const noteSelectorWrapperEl = document.getElementById('note-selector-wrapper')
 
-  const data = await (await fetch(
+  const { data } = await (await fetch(
     '/api/data?' + new URLSearchParams({
       user: userLangCode,
       note: noteLangCode,
     }),
   )).json()
+  const { notes } = data
+  const categoriesSet = new Set()
+  notes.forEach(([category]) => categoriesSet.add(category))
+  categories = Array.from(categoriesSet)
 
   setCard()
   setSelector()
@@ -45,7 +50,7 @@ userSelector.onchange = function () {
   }
 
   function setCard() {
-    const [emoji, _translation, text, hint] = data.notes[index]
+    const [_category, emoji, text, hint] = notes[index]
     const filename = getAudioFilename(noteLangCode, emoji, text)
     const audioURL = `https://static.bpev.me/flashcards/${noteLangCode}/audio/${filename}`
 
@@ -62,21 +67,21 @@ userSelector.onchange = function () {
   }
 
   function setSelector() {
-    const categories = data.categories.map((category) => {
-      const options = data.notes
-        .map((row, i) => ({ row, index: i }))
-        .filter(({ row }) => (row[1] === category))
+    const categoryEls = categories.map((category) => {
+      const options = notes
+        .map((row, i) => ({ row, index: i })) // Save index pre-filtering
+        .filter(({ row }) => (row[0] === category))
         .map((d) => {
           const selected = (d.index == index) ? 'selected' : ''
-          return `<option value="${d.index}" ${selected}>${d.row[0]}</option>`
+          return `<option value="${d.index}" ${selected}>${d.row[1]}</option>`
         })
       return `<optgroup label="${category}">${options}</optgroup>`
     })
-    noteSelectorWrapperEl.innerHTML = `<select id="note-selector" name='current-note'>${categories}</select>`
+    noteSelectorWrapperEl.innerHTML = `<select id="note-selector" name='current-note'>${categoryEls}</select>`
 
     document.getElementById('note-selector').onchange = (e) => {
       const nextIndex = parseInt(e.currentTarget.value)
-      if (nextIndex >= 0 && nextIndex < data.notes.length) {
+      if (nextIndex >= 0 && nextIndex < notes.length) {
         index = nextIndex
         setParam('i', nextIndex, 'replace')
         setCard()

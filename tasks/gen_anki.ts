@@ -38,7 +38,7 @@ listLanguages().forEach(async (langCode: string) => {
     did: lang.meta.anki_id,
     flds: fields,
     req,
-    tmpls: templates[lang.language_code] || templates.nohint,
+    tmpls: templates[lang.lang_code] || templates.nohint,
   })
 
   const deck = new Deck(

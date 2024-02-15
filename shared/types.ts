@@ -39,14 +39,14 @@ export type LanguageFile = SourceFile & {
   name_en: string
   name_short?: string
   locale_code: string
-  language_code: string
+  lang_code: string
   locale_flag: string
   pronunciation_key?: string
   rtl?: boolean
   meta: {
     anki_id: number
     deepl?: {
-      language_code: string
+      lang_code: string
       locale_code?: string
     }
     azure?: {
@@ -74,17 +74,34 @@ export type ExtensionFile = {
 }
 
 export interface UserLanguageMeta {
-  categories: string[]
   userLangCode: string
   noteLangCode: string
-  flag: string
-  rtl: boolean
-  strings: { [name: string]: string }
-  notes: string[][]
+  rtl: boolean // based on user-locale
+  strings: { [name: string]: string } // based on user-locale
+
   locales: Array<{
-    language_code: string
+    lang_code: string
     locale_code: string
     native_name: string
     locale_flag: string
   }>
+
+  // based on note-language
+  data: {
+    name: string
+    meta: {
+      name_en: string
+      name_short?: string
+      lang_code: string
+      locale_code: string
+      locale_code_azure?: string
+      locale_code_deepl?: string
+      locale_flag: string
+      rtl?: boolean
+      voice_id_azure: string
+    }
+    key: string
+    columns: string[]
+    notes: Array<string[]>
+  }
 }

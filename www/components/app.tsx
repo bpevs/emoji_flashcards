@@ -3,10 +3,8 @@ import { jsx } from 'hono/middleware.ts'
 import NoteLanguageSelector from './note_language_selector.tsx'
 import type { UserLanguageMeta } from '@/shared/types.ts'
 
-export default function App(
-  props: UserLanguageMeta,
-) {
-  const { flag, noteLangCode, strings } = props
+export default function App(props: UserLanguageMeta) {
+  const { data, noteLangCode, strings } = props
   return (
     <div class='container text-center min-vh-100 d-flex flex-column justify-content-center'>
       <div class='row my-5'>
@@ -39,7 +37,7 @@ export default function App(
             href={`https://static.bpev.me/flashcards/${noteLangCode}/emoji-flashcards-${noteLangCode}.apkg`}
           >
             <span id='download'>
-              <span class='flag-icon'>{flag}</span> {strings.download}
+              <span class='flag-icon'>{data.meta.locale_flag}</span> {strings.download}
             </span>
           </a>
         </h2>

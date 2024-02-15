@@ -38,7 +38,7 @@ async function generateAllTranslations() {
       continue
     }
 
-    const { locale_code, language_code, strings } = languageFile
+    const { locale_code, lang_code, strings } = languageFile
 
     console.info(`Language (${locale_code}):`)
 
@@ -57,9 +57,9 @@ async function generateAllTranslations() {
       const { azure, deepl } = languageFile?.meta || {}
       let translationAPI = API.AZURE
       let translationCode = azure?.translation_locale
-      if (deepl?.language_code) {
+      if (deepl?.lang_code) {
         translationAPI = API.DEEPL
-        translationCode = deepl?.language_code
+        translationCode = deepl?.lang_code
       }
 
       if (!translationCode) throw new Error('No locale to translate')
@@ -85,9 +85,9 @@ async function generateAllTranslations() {
       }
     }
 
-    let plugin = plugins[locale_code] || plugins[language_code]
+    let plugin = plugins[locale_code] || plugins[lang_code]
     if (!plugin) {
-      console.warn(`No plugin for ${language_code}; using default`)
+      console.warn(`No plugin for ${lang_code}; using default`)
       plugin = new Plugin()
     }
 

@@ -60,9 +60,9 @@ export default class Plugin {
     const { azure, deepl } = languageFile?.meta || {}
     let translationAPI = API.AZURE
     let translationCode = azure?.translation_locale
-    if (deepl?.language_code) {
+    if (deepl?.lang_code) {
       translationAPI = API.DEEPL
-      translationCode = deepl?.language_code
+      translationCode = deepl?.lang_code
     }
     if (!translationCode) throw new Error('No locale to translate')
     await this.resolveTranslations(translationCode, translationAPI)

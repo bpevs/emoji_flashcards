@@ -5,7 +5,7 @@ import es from './es.ts'
 import ja from './ja.ts'
 import zh from './zh.ts'
 
-const templates: { [language_code: string]: Template[] } = {
+const templates: { [lang_code: string]: Template[] } = {
   nohint,
   es,
   ja,
