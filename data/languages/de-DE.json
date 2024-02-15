@@ -8,8 +8,9 @@
     "name_en": "German",
     "voice_id_azure": "de-DE-KillianNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["Hund"],
       "🐈": ["Katze"],

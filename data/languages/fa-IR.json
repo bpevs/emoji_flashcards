@@ -8,8 +8,9 @@
     "rtl": true,
     "voice_id_azure": "fa-IR-DilaraNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["سگ"],
       "🐈": ["گربه"],

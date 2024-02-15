@@ -8,8 +8,9 @@
     "name_en": "Czech",
     "voice_id_azure": "cs-CZ-VlastaNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["pes"],
       "🐈": ["kočka"],

@@ -9,8 +9,9 @@
     "name_en": "Bulgarian",
     "voice_id_azure": "bg-BG-KalinaNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["куче"],
       "🐈": ["котка"],

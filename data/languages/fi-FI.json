@@ -8,8 +8,9 @@
     "name_en": "Finnish",
     "voice_id_azure": "fi-FI-SelmaNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["koira"],
       "🐈": ["kissa"],

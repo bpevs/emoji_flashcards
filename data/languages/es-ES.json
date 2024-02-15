@@ -9,8 +9,9 @@
     "name_short": "Español",
     "voice_id_azure": "es-ES-AlvaroNeural"
   },
-  "columns": ["text", "hint"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text", "hint"],
+  "notes": {
     "animal": {
       "🐶": ["el perro", ""],
       "🐈": ["el gato", ""],

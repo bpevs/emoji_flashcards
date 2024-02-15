@@ -8,8 +8,9 @@
     "name_en": "Polish",
     "voice_id_azure": "pl-PL-MarekNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["pies"],
       "🐈": ["kot"],

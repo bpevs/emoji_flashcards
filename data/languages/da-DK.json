@@ -8,8 +8,9 @@
     "name_en": "Danish",
     "voice_id_azure": "da-DK-JeppeNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["hund"],
       "🐈": ["kat"],

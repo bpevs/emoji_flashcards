@@ -8,8 +8,9 @@
     "locale_code_deepl": "ro",
     "voice_id_azure": "ro-RO-AlinaNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["câine"],
       "🐈": ["pisică"],

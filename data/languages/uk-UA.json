@@ -8,8 +8,9 @@
     "name_en": "Ukranian",
     "voice_id_azure": "uk-UA-PolinaNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["собака"],
       "🐈": ["кішка"],

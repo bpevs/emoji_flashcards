@@ -8,8 +8,9 @@
     "name_en": "Hindi",
     "voice_id_azure": "hi-IN-SwaraNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["कुत्ता"],
       "🐈": ["बिल्ली"],

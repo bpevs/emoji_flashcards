@@ -63,7 +63,7 @@
     "zh-TW": "Chinese (Taiwan)"
   },
   "columns": ["text_en", "pos"],
-  "data": {
+  "notes": {
     "animal": {
       "🐶": ["dog", "noun"],
       "🐈": ["cat", "noun"],

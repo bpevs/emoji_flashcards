@@ -8,8 +8,9 @@
     "name_en": "Slovenian",
     "voice_id_azure": "sl-SI-RokNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["pes"],
       "🐈": ["mačka"],

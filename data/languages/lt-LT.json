@@ -8,8 +8,9 @@
     "name_en": "Lithuanian",
     "voice_id_azure": "lt-LT-OnaNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["šuo"],
       "🐈": ["katė"],

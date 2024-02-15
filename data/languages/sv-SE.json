@@ -8,8 +8,9 @@
     "name_en": "Swedish",
     "voice_id_azure": "sv-SE-MattiasNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["hund"],
       "🐈": ["katt"],

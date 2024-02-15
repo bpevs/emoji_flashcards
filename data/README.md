@@ -78,9 +78,10 @@ If a key exists in source.json, but not the language file, it will be translated
     "ch-ZH": "中文 （台灣）"
   },
 
-  "columns": ["text", "pinyin"],
+  "key": "emoji",
+  "columns": ["emoji", "text", "pinyin"],
 
-  "data": {
+  "notes": {
     "animal": {
       "🐶": ["狗", "gǒu"]
     }
@@ -94,7 +95,7 @@ Extension files inherit the strings and columns of their parents.
 
 ```jsonc
 {
-  "data": {
+  "notes": {
     "phrases": {
       /* Extension files inherit the column definitions of their parent */
       "👋": ["你好", "nĭ hăo"]
@@ -106,7 +107,7 @@ Extension files inherit the strings and columns of their parents.
     "formal": {
       "name": "Formal Modifications",
       "description": "Use more formal versions of words",
-      "data": {
+      "notes": {
         /* If applied, this named extension would override the `你好` above */
         "👋": ["您好", "nín hăo"]
       }
@@ -117,7 +118,7 @@ Extension files inherit the strings and columns of their parents.
 
 ```jsonc
 {
-  "data": {
+  "notes": {
     "beverages": {
       "🍺": ["cervesa", ""]
     }
@@ -127,7 +128,7 @@ Extension files inherit the strings and columns of their parents.
     "gender-extension": {
       "name": "Modify with gender",
       "description": "Adds definite articles",
-      "data": {
+      "notes": {
         "beverages": {
           "🍺": ["una cervesa", ""]
         }
@@ -137,7 +138,7 @@ Extension files inherit the strings and columns of their parents.
     "subject-extension": {
       "name": "Add Subjects to verbs",
       "description": "Adds verb subjects",
-      "data": {
+      "notes": {
         "verbs": {
           "😮🍔 (🙋)": ["como"],
           "😮🍔 (🫵)": ["comes"],

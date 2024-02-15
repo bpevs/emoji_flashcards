@@ -8,8 +8,9 @@
     "name_short": "Español",
     "voice_id_azure": "es-MX-JorgeNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["perro"],
       "🐈": ["gato"],

@@ -8,8 +8,9 @@
     "name_en": "Norwegian",
     "voice_id_azure": "nb-NO-FinnNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["hund"],
       "🐈": ["katt"],

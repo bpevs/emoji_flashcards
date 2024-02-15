@@ -8,8 +8,9 @@
     "rtl": true,
     "voice_id_azure": "ur-PK-AsadNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["کتا"],
       "🐈": ["بلی"],

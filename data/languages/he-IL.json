@@ -8,8 +8,9 @@
     "rtl": true,
     "voice_id_azure": "he-IL-AvriNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["כלב"],
       "🐈": ["חתול"],

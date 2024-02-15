@@ -8,8 +8,9 @@
     "name_en": "Indonesian",
     "voice_id_azure": "id-ID-GadisNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["anjing"],
       "🐈": ["kucing"],

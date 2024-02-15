@@ -9,8 +9,9 @@
     "name_short": "English",
     "voice_id_azure": "en-GB-OliviaNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["dog"],
       "🐈": ["cat"],

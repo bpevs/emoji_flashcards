@@ -8,8 +8,9 @@
     "name_en": "Hungarian",
     "voice_id_azure": "hu-HU-TamasNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["kutya"],
       "🐈": ["macska"],

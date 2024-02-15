@@ -8,8 +8,9 @@
     "locale_flag": "🇬🇷",
     "voice_id_azure": "el-GR-AthinaNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["σκύλος"],
       "🐈": ["γάτα"],

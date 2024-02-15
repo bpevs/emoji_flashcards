@@ -8,8 +8,9 @@
     "name_en": "Italian",
     "voice_id_azure": "it-IT-DiegoNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["cane"],
       "🐈": ["gatto"],

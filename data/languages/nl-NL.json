@@ -8,8 +8,9 @@
     "name_en": "Dutch",
     "voice_id_azure": "nl-NL-FennaNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["hond"],
       "🐈": ["kat"],

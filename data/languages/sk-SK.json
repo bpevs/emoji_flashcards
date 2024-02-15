@@ -8,8 +8,9 @@
     "locale_code_deepl": "sk",
     "voice_id_azure": "sk-SK-LukasNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["pes"],
       "🐈": ["mačka"],

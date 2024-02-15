@@ -8,8 +8,9 @@
     "name_en": "Japanese",
     "voice_id_azure": "ja-JP-NanamiNeural"
   },
-  "columns": ["text", "romaji"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text", "romaji"],
+  "notes": {
     "animal": {
       "🐶": ["犬", "inu"],
       "🐈": ["猫", "neko"],

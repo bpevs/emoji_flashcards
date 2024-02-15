@@ -7,8 +7,9 @@
     "name_en": "Vietnamese",
     "voice_id_azure": "vi-VN-HoaiMyNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["chó"],
       "🐈": ["mèo"],

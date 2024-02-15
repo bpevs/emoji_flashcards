@@ -8,8 +8,9 @@
     "name_en": "Korean",
     "voice_id_azure": "ko-KR-HyunsuNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["개"],
       "🐈": ["고양이"],

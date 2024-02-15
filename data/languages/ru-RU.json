@@ -8,8 +8,9 @@
     "name_en": "Russian",
     "voice_id_azure": "ru-RU-SvetlanaNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["собака"],
       "🐈": ["кошка"],

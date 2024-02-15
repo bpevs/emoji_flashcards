@@ -8,8 +8,9 @@
     "name_en": "Turkish",
     "voice_id_azure": "tr-TR-AhmetNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["köpek"],
       "🐈": ["kedi"],

@@ -8,8 +8,9 @@
     "name_short": "中文",
     "voice_id_azure": "zh-HK-WanLungNeural"
   },
-  "columns": ["text", "jyutping"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text", "jyutping"],
+  "notes": {
     "animal": {
       "🐶": ["狗", "gau2"],
       "🐈": ["貓", "maau1"],

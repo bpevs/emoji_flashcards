@@ -8,8 +8,9 @@
     "name_en": "Latvian",
     "voice_id_azure": "lv-LV-NilsNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["suns"],
       "🐈": ["kaķis"],

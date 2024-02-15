@@ -10,8 +10,9 @@
     "rtl": true,
     "voice_id_azure": "ar-EG-ShakirNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["كلب"],
       "🐈": ["قط"],

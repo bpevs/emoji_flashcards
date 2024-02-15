@@ -7,8 +7,9 @@
     "name_en": "Thai",
     "voice_id_azure": "th-TH-NiwatNeural"
   },
-  "columns": ["text"],
-  "data": {
+  "key": "emoji",
+  "columns": ["emoji", "text"],
+  "notes": {
     "animal": {
       "🐶": ["หมา"],
       "🐈": ["แมว"],
