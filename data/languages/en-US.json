@@ -11,12 +11,10 @@
     "name_short": "English",
     "voice_id_azure": "en-US-DavisNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "cat"],
+    ["animal", "🐛🐞🐝", "bugs"],
     ["animal", "🐟", "fish"],
     ["animal", "🐦", "bird"],
     ["animal", "🐭", "mouse"],
@@ -550,7 +548,6 @@
     ["verbs", "🚶‍♂️🚶‍♀️", "walk"],
     ["verbs", "🛫", "leave"],
     ["verbs", "🛬", "arrive"],
-    ["verbs", "🟢🚦", "go"],
-    ["animal", "🐛🐞🐝", "bugs"]
+    ["verbs", "🟢🚦", "go"]
   ]
 }

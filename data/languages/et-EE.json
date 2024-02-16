@@ -10,10 +10,7 @@
     "name_en": "Estonian",
     "voice_id_azure": "et-EE-AnuNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "kass"],
     ["animal", "🐛🐞🐝", "putukad"],

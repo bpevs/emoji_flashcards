@@ -10,10 +10,7 @@
     "name_en": "Danish",
     "voice_id_azure": "da-DK-JeppeNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "kat"],
     ["animal", "🐛🐞🐝", "insekter"],

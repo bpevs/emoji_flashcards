@@ -10,10 +10,7 @@
     "name_en": "German",
     "voice_id_azure": "de-DE-KillianNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "Katze"],
     ["animal", "🐛🐞🐝", "Wanzen"],

@@ -9,10 +9,7 @@
     "name_en": "Thai",
     "voice_id_azure": "th-TH-NiwatNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "แมว"],
     ["animal", "🐛🐞🐝", "ข้อ บกพร่อง"],

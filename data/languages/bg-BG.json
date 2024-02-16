@@ -10,10 +10,7 @@
     "name_en": "Bulgarian",
     "voice_id_azure": "bg-BG-KalinaNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "котка"],
     ["animal", "🐛🐞🐝", "буболечки"],

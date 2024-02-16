@@ -12,7 +12,7 @@
     "voice_id_azure": "zh-CN-XiaoxiaoNeural"
   },
   "content": {
-    "fields": ["category", "emoji", "pinyin"],
+    "fields": ["category", "emoji", "text", "pinyin"],
     "watch": ["emoji"]
   },
   "notes": [

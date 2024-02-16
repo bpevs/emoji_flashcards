@@ -10,10 +10,7 @@
     "rtl": true,
     "voice_id_azure": "ur-PK-AsadNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "بلی"],
     ["animal", "🐛🐞🐝", "کیڑے"],

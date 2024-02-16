@@ -10,10 +10,7 @@
     "name_en": "Ukranian",
     "voice_id_azure": "uk-UA-PolinaNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "кішка"],
     ["animal", "🐛🐞🐝", "жуки"],

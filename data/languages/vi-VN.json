@@ -9,10 +9,7 @@
     "name_en": "Vietnamese",
     "voice_id_azure": "vi-VN-HoaiMyNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "mèo"],
     ["animal", "🐛🐞🐝", "Lỗi"],

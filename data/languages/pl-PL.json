@@ -10,10 +10,7 @@
     "name_en": "Polish",
     "voice_id_azure": "pl-PL-MarekNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "kot"],
     ["animal", "🐛🐞🐝", "robaki"],

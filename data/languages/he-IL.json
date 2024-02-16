@@ -10,10 +10,7 @@
     "rtl": true,
     "voice_id_azure": "he-IL-AvriNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "חתול"],
     ["animal", "🐛🐞🐝", "באגים"],

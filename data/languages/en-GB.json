@@ -11,10 +11,7 @@
     "name_short": "English",
     "voice_id_azure": "en-GB-OliviaNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "cat"],
     ["animal", "🐛🐞🐝", "bugs"],

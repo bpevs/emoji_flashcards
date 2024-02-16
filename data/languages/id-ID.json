@@ -10,10 +10,7 @@
     "name_en": "Indonesian",
     "voice_id_azure": "id-ID-GadisNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "kucing"],
     ["animal", "🐛🐞🐝", "serangga"],

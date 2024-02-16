@@ -9,10 +9,7 @@
     "name_en": "Catalan",
     "voice_id_azure": "ca-ES-EnricNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "gat"],
     ["animal", "🐛🐞🐝", "Errors"],

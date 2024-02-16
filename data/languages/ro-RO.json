@@ -10,10 +10,7 @@
     "name_en": "Romanian",
     "voice_id_azure": "ro-RO-AlinaNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "pisică"],
     ["animal", "🐛🐞🐝", "gândaci"],

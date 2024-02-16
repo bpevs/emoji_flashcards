@@ -10,10 +10,7 @@
     "rtl": true,
     "voice_id_azure": "fa-IR-DilaraNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "گربه"],
     ["animal", "🐛🐞🐝", "اشکالات"],

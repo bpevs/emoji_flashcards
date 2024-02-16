@@ -10,10 +10,7 @@
     "name_en": "French",
     "voice_id_azure": "fr-FR-HenriNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "chat"],
     ["animal", "🐛🐞🐝", "insectes"],

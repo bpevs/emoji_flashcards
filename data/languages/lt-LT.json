@@ -10,10 +10,7 @@
     "name_en": "Lithuanian",
     "voice_id_azure": "lt-LT-OnaNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "katė"],
     ["animal", "🐛🐞🐝", "vabalai"],

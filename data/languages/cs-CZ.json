@@ -10,10 +10,7 @@
     "name_en": "Czech",
     "voice_id_azure": "cs-CZ-VlastaNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "kočka"],
     ["animal", "🐛🐞🐝", "brouci"],

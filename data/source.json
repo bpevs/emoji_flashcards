@@ -1,5 +1,5 @@
 {
-  "columns": ["text_en", "pos"],
+  "fields": ["text_en", "pos"],
   "notes": {
     "animal": {
       "🐶": ["dog", "noun"],

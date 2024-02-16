@@ -10,10 +10,7 @@
     "name_en": "Turkish",
     "voice_id_azure": "tr-TR-AhmetNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "kedi"],
     ["animal", "🐛🐞🐝", "böcekler"],

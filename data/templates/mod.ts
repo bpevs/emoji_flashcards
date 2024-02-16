@@ -1,4 +1,4 @@
-import { Template } from '@/shared/genanki/mod.ts'
+import Template from 'flashcards/models/template.ts'
 import { nohint } from './default.js'
 
 import es from './es.ts'

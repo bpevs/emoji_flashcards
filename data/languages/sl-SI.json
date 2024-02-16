@@ -10,10 +10,7 @@
     "name_en": "Slovenian",
     "voice_id_azure": "sl-SI-RokNeural"
   },
-  "content": {
-    "fields": ["category", "emoji", "text"],
-    "watch": ["emoji"]
-  },
+  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
   "notes": [
     ["animal", "🐈", "mačka"],
     ["animal", "🐛🐞🐝", "hrošči"],
