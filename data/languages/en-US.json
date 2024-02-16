@@ -15,7 +15,6 @@
   "columns": ["category", "emoji", "text"],
   "notes": [
     ["animal", "🐈", "cat"],
-    ["animal", "🐞🐛🐝", "bugs"],
     ["animal", "🐟", "fish"],
     ["animal", "🐦", "bird"],
     ["animal", "🐭", "mouse"],
@@ -549,6 +548,7 @@
     ["verbs", "🚶‍♂️🚶‍♀️", "walk"],
     ["verbs", "🛫", "leave"],
     ["verbs", "🛬", "arrive"],
-    ["verbs", "🟢🚦", "go"]
+    ["verbs", "🟢🚦", "go"],
+    ["animal", "🐛🐞🐝", "bugs"]
   ]
 }
