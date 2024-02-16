@@ -10,7 +10,7 @@
     "voice_id_azure": "af-ZA-AdriNeural"
   },
   "key": "emoji",
-  "columns": ["category", "category", "emoji", "text"],
+  "columns": ["category", "emoji", "text"],
   "notes": [
     ["animal", "🐶", "Hond"],
     ["animal", "🐈", "Kat"],

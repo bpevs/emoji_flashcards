@@ -12,7 +12,7 @@
     "std/": "https://deno.land/std@0.200.0/",
     "hono": "https://deno.land/x/hono/mod.ts",
     "hono/": "https://deno.land/x/hono/",
-    "language_flashcards/": "https://raw.githubusercontent.com/bpevs/language_flashcards/main/",
+    "flashcards/": "https://raw.githubusercontent.com/bpevs/flashcards/main/",
     "@/": "./",
 
     "kuroshiro": "npm:kuroshiro",
