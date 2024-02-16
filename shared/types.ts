@@ -6,7 +6,7 @@ export type LanguageFileData = {
 
 export type SourceFile = {
   version: string
-  columns: string[]
+  fields: string[]
   notes: {
     [category: string]: {
       [emoji: string]: string[]
@@ -54,7 +54,7 @@ export interface UserLanguageMeta {
       voice_id_azure: string
     }
     key: string
-    columns: string[]
+    fields: string[]
     notes: Array<string[]>
   }
 }

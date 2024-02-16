@@ -2,41 +2,20 @@ import { ensureDir, existsSync } from 'std/fs/mod.ts'
 import { join } from 'std/path/mod.ts'
 import fromJSON from 'flashcards/adapters/from_json.ts'
 import toAPKG from 'flashcards/adapters/to_apkg.ts'
-import Template from 'flashcards/models/template.ts'
+import templates from '@/data/templates/mod.ts'
 
 import { GEN_DIR, LANGUAGES_DIR } from '@/shared/paths.ts'
 import { getAudioFilename, listLanguages } from '@/shared/data_access.ts'
 
-// [[2, 'all', [0]], [1, 'all', [0]]]
-// if (hasAudioDir) req.push([0, 'all', [0]])
-// const guid = ankiHash([langCode, key])
-
-const reading = new Template(
-  'reading',
-  '<h1>{{emoji}}</h1>',
-  '{{FrontSide}}\n{{text}}{{audio}}',
-)
-
-const speaking = new Template(
-  'speaking',
-  '<h1>{{text}}</h1>',
-  '{{FrontSide}}\n{{emoji}}{{audio}}',
-)
-
-const listening = new Template(
-  'listening',
-  '<h1>{{audio}}</h1>',
-  '{{FrontSide}}\n{{emoji}}{{text}}',
-)
-
 listLanguages().map(async (locale: string) => {
-  const langFileLocation = `${LANGUAGES_DIR}/${locale}.json`
-  const deck = fromJSON(await Deno.readTextFile(langFileLocation))
+  const langFile = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale}.json`)
+  const deck = fromJSON(langFile, { sortField: 'emoji' })
+  const notesArr = Object.values(deck.notes)
 
-  deck.notes.forEach((note) => {
-    note.templates.push(reading)
-    note.templates.push(speaking)
-    note.templates.push(listening)
+  notesArr.forEach((note) => {
+    if (deck.meta?.lang_code && templates[deck.meta.lang_code]) {
+      note.templates = templates[deck.meta?.lang_code] || templates.nohint
+    } else note.templates = templates.nohint
   })
 
   const media: Array<{ name: string; data: Blob }> = []
@@ -46,7 +25,9 @@ listLanguages().map(async (locale: string) => {
   })
 
   if (hasAudioDir) {
-    await Promise.all(deck.notes.map(async (note) => {
+    deck.content.fields.push('audio')
+
+    await Promise.all(notesArr.map(async (note) => {
       const { emoji, text } = note.content
       const audioFilename = getAudioFilename(locale, emoji, text)
       const audioLocation = join(GEN_DIR, locale, 'audio', audioFilename)
@@ -65,5 +46,8 @@ listLanguages().map(async (locale: string) => {
   await ensureDir(join(GEN_DIR, locale))
   const outputFileName = `emoji-flashcards-${locale}.apkg`
   const outputFilePath = join(GEN_DIR, locale, outputFileName)
-  await Deno.writeFile(outputFilePath, await toAPKG(deck, media))
+  await Deno.writeFile(
+    outputFilePath,
+    await toAPKG(deck, { media, sortField: 'emoji' }),
+  )
 })

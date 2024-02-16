@@ -12,7 +12,7 @@ type Rows = Array<{ [key: string]: string }>
 
 const baseSourceFile: SourceFile = Object.freeze({
   version: '0.1.1',
-  columns: ['text', 'hint'],
+  fields: ['text', 'hint'],
   notes: {
     animal: { '🐶': ['dog', 'noun'], '🐈': ['cat', 'noun'] },
     body: { '🦷': ['tooth', 'noun'], '🧠': ['brain', 'noun'] },
@@ -25,7 +25,9 @@ function createEmptyDeck(): Deck {
     id: 'uwu-UWU_🏳️‍🌈',
     name: 'UWU lang',
     desc: 'The UWU Language',
-    key: 'emoji',
+    content: {
+      fields: ['emoji', 'category', 'text'],
+    },
     meta: {
       name_en: 'UWU lang',
       lang_code: 'uwu',
@@ -33,6 +35,7 @@ function createEmptyDeck(): Deck {
       locale_code_deepl: 'uwu',
       locale_flag: '🏳️‍🌈',
     },
+    notes: {},
   })
 }
 
@@ -49,7 +52,7 @@ afterEach(() => translateStub.restore())
 it('Runs with default pre/post', async () => {
   const plugin = new Plugin()
   const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
-  const rows: Rows = deck.notes.map(({ content }) => content)
+  const rows: Rows = Object.values(deck.notes).map(({ content }) => content)
 
   assertEquals(rows, [
     { emoji: '🐶', category: 'animal', text: 'dog-uwu' },
@@ -101,7 +104,7 @@ it('Runs with custom pre plugin', async () => {
   })
 
   const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
-  const rows: Rows = deck.notes.map(({ content }) => content)
+  const rows: Rows = Object.values(deck.notes).map(({ content }) => content)
 
   assertEquals(rows, [
     { emoji: '🐶', category: 'animal', text: 'dog-uwu', hint: '' },
@@ -141,7 +144,7 @@ it('Runs with custom post plugin', async () => {
   })
 
   const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
-  const rows: Rows = deck.notes.map(({ content }) => content)
+  const rows: Rows = Object.values(deck.notes).map(({ content }) => content)
 
   assertEquals(rows, [
     { emoji: '🐶', category: 'animal', text: 'dog-uwu', hint: 'dog-uwu UWU' },

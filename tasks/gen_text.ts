@@ -32,26 +32,29 @@ console.info('locale_codes: ', locales)
 for (const locale of locales) {
   try {
     const deckLocation = `${LANGUAGES_DIR}/${locale}.json`
-    const deck = fromJSON(await Deno.readTextFile(deckLocation))
+    const deck = fromJSON(
+      await Deno.readTextFile(deckLocation),
+      { sortField: 'emoji' },
+    )
     const { locale_code, lang_code } = deck.meta || {}
 
     console.info(`Language (${locale_code}):`)
     if (!locale_code) throw new Error(`invalid locale: ${locale_code}`)
 
     // Remote notes that are no longer in source.json
-    deck.notes = deck.notes.filter((note) => {
-      const { category, emoji } = note.content
+    for (const id in deck.notes) {
+      const { category, emoji } = deck.notes[id].content
       // @todo: fix Deck.meta typing
       // deno-lint-ignore no-explicit-any
-      return sourceFile.notes[category][emoji as any]
-    })
+      if (!sourceFile.notes[category][emoji as any]) {
+        delete deck.notes[id]
+      }
+    }
 
     const plugin = plugins[locale_code] || plugins[lang_code] || new Plugin()
 
-    await Deno.writeTextFile(
-      deckLocation,
-      toJSON(await plugin.getTranslations(sourceFile, deck)),
-    )
+    const nextDeck = await plugin.getTranslations(sourceFile, deck)
+    await Deno.writeTextFile(deckLocation, toJSON(nextDeck))
   } catch (e) {
     console.warn('Failed to translate locale: ', locale)
     console.error(e)

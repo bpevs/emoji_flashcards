@@ -43,7 +43,7 @@ await Promise.all(stringsResults)
 const localesResults = locales
   .map(async (locale_code: string) => {
     const text = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale_code}.json`)
-    const languageFile = fromJSON(text)
+    const languageFile = fromJSON(text, { sortField: 'emoji' })
 
     return {
       lang_code: languageFile.meta.lang_code,

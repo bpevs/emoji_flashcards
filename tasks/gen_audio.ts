@@ -76,12 +76,14 @@ async function findMissingAudioFiles(locale: string) {
   const existingAudioFiles = listAudioFiles(locale)
 
   const byCategory: { [category: string]: { [emojiKey: string]: Note } } = {}
-  deck.notes.forEach((note) => {
-    const { emoji, text } = note.content
+  for (const id in deck.notes) {
+    const note = deck.notes[id]
+    const { category, emoji, text } = note.content
     const fileName = getAudioFilename(locale, emoji, text)
     const exists = existingAudioFiles.has(fileName)
-    if (!exists) byCategory[note.content.category][note.content.emoji] = note
-  })
+    if (!byCategory[category]) byCategory[category] = {}
+    if (!exists) byCategory[category][emoji] = note
+  }
 
   return { byCategory, locale, voiceId }
 }

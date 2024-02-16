@@ -1,5 +1,5 @@
 import { join } from 'std/path/mod.ts'
-import fromObj from 'flashcards/adapters/from_json.ts'
+import fromJSON from 'flashcards/adapters/from_json.ts'
 import Deck from 'flashcards/models/deck.ts'
 import Note from 'flashcards/models/note.ts'
 import type { ExtensionFile, SourceFile } from '@/shared/types.ts'
@@ -32,9 +32,8 @@ export async function readDeck(
   includedExtNames: string[] = [],
 ): Promise<Deck> {
   const deckLocation = `${LANGUAGES_DIR}/${locale}.json`
-  const deckObj = JSON.parse(await Deno.readTextFile(deckLocation))
-  const deck = fromObj(deckObj)
-  const columns: string[] = deckObj.columns
+  const deck = fromJSON(await Deno.readTextFile(deckLocation), { sortField: 'emoji' })
+  const fields: string[] = deck.content.fields
 
   if (includeExtensions) {
     try {
@@ -48,14 +47,8 @@ export async function readDeck(
           const emoji = row[1]
           const id = `${deck.id}_${emoji}`
           const content: { [key: string]: string } = {}
-          columns.forEach((column, index) => content[column] = row[index])
-          const note = new Note({ id, content })
-
-          // @todo add deck.addNote()
-          const existingIndex = deck.notes
-            .findIndex((note: Note) => note.id === id)
-          if (existingIndex != -1) deck.notes[existingIndex] = note
-          else deck.notes.push(note)
+          fields.forEach((field, index) => content[field] = row[index])
+          deck.addNote(new Note({ id, content }))
         })
       })
     } catch { /* No extension file */ }

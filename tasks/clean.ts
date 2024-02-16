@@ -11,7 +11,7 @@ for (const locale of await Promise.all(listLanguages())) {
   const deck = await readDeck(locale, true)
   const expectedNames = new Set()
 
-  deck.notes.forEach((note) => {
+  Object.values(deck.notes).forEach((note) => {
     expectedNames.add(getAudioFilename(locale, note.emoji, note.text))
   })
 

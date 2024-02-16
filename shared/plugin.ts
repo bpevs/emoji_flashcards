@@ -41,8 +41,7 @@ export default class Plugin {
     const rows: TargetRow[] = [] // All rows, with inserted promises for translation
 
     for (const key in sourceRowsMap) {
-      const note = deck.notes.find((note: Note) => note.content.emoji === key)
-      rows.push(this.pre(key, sourceRowsMap[key], note))
+      rows.push(this.pre(key, sourceRowsMap[key], deck.notes[key]))
     }
 
     const { locale_code, locale_code_azure, locale_code_deepl } = deck?.meta || {}
@@ -52,7 +51,7 @@ export default class Plugin {
 
     if (
       !translationCode ||
-      typeof translationCode !== 'string' // @todo: fix Deck.meta typing
+      typeof translationCode !== 'string'
     ) throw new Error('No locale to translate')
     await this.resolveTranslations(translationCode, translationAPI)
 
@@ -65,13 +64,7 @@ export default class Plugin {
       for (const otherKey in other) {
         content[otherKey] = await other[otherKey]
       }
-      const noteId = `${deck.id}_${emoji}`
-      const nextNote = await this.post(new Note({ id: noteId, content }), prev)
-
-      const existingIndex = deck.notes
-        .findIndex((note: Note) => note.content.emoji === nextNote.content.emoji)
-      if (existingIndex != -1) deck.notes[existingIndex] = nextNote
-      else deck.notes.push(nextNote)
+      deck.addNote(await this.post(new Note({ id: emoji, content }), prev))
     }
 
     return deck
