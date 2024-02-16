@@ -10,7 +10,7 @@
       "🐷": ["pig", "noun"],
       "🐭": ["mouse", "noun"],
       "🐴": ["horse", "noun"],
-      "🐞🐛🐝": ["bugs", "noun"],
+      "🐛🐞🐝": ["bugs", "noun"],
       "🪽": ["wing", "noun"],
       "🦊🐰🐶🐷": ["animal", "noun"]
     },
