@@ -66,7 +66,7 @@ export default [
     'native_name': 'Español (España)',
   },
   {
-    'lang_code': 'fa',
+    'lang_code': 'es',
     'locale_code': 'es-MX',
     'locale_flag': '🇲🇽',
     'native_name': 'Español (México)',
