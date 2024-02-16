@@ -65,7 +65,6 @@ export default class Plugin {
       for (const otherKey in other) {
         content[otherKey] = await other[otherKey]
       }
-
       const noteId = `${deck.id}_${emoji}`
       const nextNote = await this.post(new Note({ id: noteId, content }), prev)
 
@@ -74,13 +73,26 @@ export default class Plugin {
       if (existingIndex != -1) deck.notes[existingIndex] = nextNote
       else deck.notes.push(nextNote)
     }
+
     return deck
   }
 
   queueTranslation(text_en: string): Promise<string> {
-    return new Promise((resolve) => {
-      this.toTranslate[text_en] = resolve
-    })
+    let timer: number | null
+    return Promise.race<string>([
+      new Promise((resolve) => {
+        this.toTranslate[text_en] = (text: string) => {
+          if (timer) clearTimeout(timer)
+          resolve(text)
+        }
+      }),
+      new Promise((resolve) => {
+        timer = setTimeout(() => {
+          console.warn('Translation timed out!', text_en)
+          resolve('')
+        }, 5000)
+      }),
+    ])
   }
 
   async resolveTranslations(
@@ -97,7 +109,6 @@ export default class Plugin {
     )
 
     translated.forEach((text: string, index: number) => {
-      console.info(resolves[index], text)
       const key = resolves[index]
       if (this.toTranslate[key]) this.toTranslate[key](text)
       else console.warn(`Missing translate resolver for ${text}`)
@@ -107,7 +118,7 @@ export default class Plugin {
   // Runs prior to translation; this is for if we want to modify the text
   // that will be translated.
   pre(emoji: string, source: SourceRow, prev?: Note): TargetRow {
-    if (prev?.content?.text && prev?.content?.category) {
+    if (prev?.content?.text) {
       return {
         prev,
         props: {

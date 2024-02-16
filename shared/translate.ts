@@ -44,7 +44,6 @@ async function translateDeepl(
   target_lang: string,
 ): Promise<string[]> {
   const combinedText = texts.join('\n')
-  console.log(combinedText)
   const text = encodeURIComponent(combinedText)
 
   const response = await fetch(DEEPL_API_ENDPOINT, {
@@ -54,7 +53,7 @@ async function translateDeepl(
   })
 
   const result = await response.json()
-  console.log(result)
+  console.log(result.translations[0].text.split('\n'))
   return result.translations[0].text.split('\n')
 }
 
