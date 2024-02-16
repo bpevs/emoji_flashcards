@@ -10,8 +10,10 @@
     "name_en": "Latvian",
     "voice_id_azure": "lv-LV-NilsNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "kaķis"],
     ["animal", "🐛🐞🐝", "kukaiņi"],

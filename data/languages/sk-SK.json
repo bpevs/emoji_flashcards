@@ -10,8 +10,10 @@
     "name_en": "Slovak",
     "voice_id_azure": "sk-SK-LukasNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "mačka"],
     ["animal", "🐛🐞🐝", "chrobáky"],

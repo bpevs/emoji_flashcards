@@ -10,8 +10,10 @@
     "name_en": "Russian",
     "voice_id_azure": "ru-RU-SvetlanaNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "кошка"],
     ["animal", "🐛🐞🐝", "жуки"],

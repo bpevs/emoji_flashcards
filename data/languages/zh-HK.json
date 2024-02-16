@@ -10,8 +10,10 @@
     "name_short": "中文",
     "voice_id_azure": "zh-HK-WanLungNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text", "jyutping"],
+  "content": {
+    "fields": ["category", "emoji", "text", "jyutping"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "貓", "maau1"],
     ["animal", "🐛🐞🐝", "錯誤", "co3 ng6"],

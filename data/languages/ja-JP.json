@@ -10,8 +10,10 @@
     "name_en": "Japanese",
     "voice_id_azure": "ja-JP-NanamiNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text", "romaji"],
+  "content": {
+    "fields": ["category", "emoji", "text", "romaji"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "猫", "neko"],
     ["animal", "🐛🐞🐝", "バグ", "bagu"],

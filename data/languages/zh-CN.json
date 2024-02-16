@@ -11,8 +11,10 @@
     "name_short": "中文",
     "voice_id_azure": "zh-CN-XiaoxiaoNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text", "pinyin"],
+  "content": {
+    "fields": ["category", "emoji", "pinyin"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "猫", "māo"],
     ["animal", "🐛🐞🐝", "虫", "chóng"],

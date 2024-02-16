@@ -10,8 +10,10 @@
     "name_en": "Korean",
     "voice_id_azure": "ko-KR-HyunsuNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "고양이"],
     ["animal", "🐛🐞🐝", "벌레들"],

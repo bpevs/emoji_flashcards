@@ -10,8 +10,10 @@
     "name_en": "Hindi",
     "voice_id_azure": "hi-IN-SwaraNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "बिल्ली"],
     ["animal", "🐛🐞🐝", "कीड़े"],

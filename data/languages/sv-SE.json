@@ -10,8 +10,10 @@
     "name_en": "Swedish",
     "voice_id_azure": "sv-SE-MattiasNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "katt"],
     ["animal", "🐛🐞🐝", "Insekter"],

@@ -10,8 +10,10 @@
     "name_en": "Dutch",
     "voice_id_azure": "nl-NL-FennaNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "kat"],
     ["animal", "🐛🐞🐝", "insecten"],

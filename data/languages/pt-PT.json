@@ -11,8 +11,10 @@
     "name_short": "Português",
     "voice_id_azure": "pt-PT-FernandaNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "gato"],
     ["animal", "🐛🐞🐝", "insectos"],

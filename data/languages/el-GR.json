@@ -10,8 +10,10 @@
     "name_en": "Greek",
     "voice_id_azure": "el-GR-AthinaNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "γάτα"],
     ["animal", "🐛🐞🐝", "σφάλματα"],

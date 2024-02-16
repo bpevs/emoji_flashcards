@@ -11,8 +11,10 @@
     "name_short": "English",
     "voice_id_azure": "en-GB-OliviaNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "cat"],
     ["animal", "🐛🐞🐝", "bugs"],

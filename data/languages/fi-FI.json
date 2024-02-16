@@ -10,8 +10,10 @@
     "name_en": "Finnish",
     "voice_id_azure": "fi-FI-SelmaNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "kissa"],
     ["animal", "🐛🐞🐝", "ötökät"],

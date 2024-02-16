@@ -9,8 +9,10 @@
     "name_en": "Afrikaans",
     "voice_id_azure": "af-ZA-AdriNeural"
   },
-  "key": "emoji",
-  "columns": ["category", "emoji", "text"],
+  "content": {
+    "fields": ["category", "emoji", "text"],
+    "watch": ["emoji"]
+  },
   "notes": [
     ["animal", "🐈", "Kat"],
     ["animal", "🐛🐞🐝", "Foute"],
