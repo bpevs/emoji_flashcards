@@ -14,89 +14,40 @@
  *      If a translation does not exist, translate via API
  *      If key does not exist in en_US, delete
  */
-import { listLanguages, readLanguageFile, readSourceFile, writeLanguageFile } from '@/shared/data_access.ts'
-import { getDataAndColumns } from '@/shared/data_access_helpers.ts'
-import { API, translate } from '@/shared/translate.ts'
+import fromJSON from 'flashcards/adapters/from_json.ts'
+import toJSON from 'flashcards/adapters/to_json.ts'
+
+import { listLanguages, readSourceFile } from '@/shared/data_access.ts'
+import { LANGUAGES_DIR } from '@/shared/paths.ts'
 import plugins from '@/data/plugins/mod.ts'
 import Plugin from '@/shared/plugin.ts'
 
 const [input_locale_code] = Deno.args
 
-await generateAllTranslations()
-Deno.exit(0)
+const sourceFile = await readSourceFile()
+const locales = input_locale_code ? [input_locale_code] : listLanguages()
 
-async function generateAllTranslations() {
-  const sourceFile = await readSourceFile()
-  const localeCodes = input_locale_code ? [input_locale_code] : listLanguages()
+console.info('locale_codes: ', locales)
 
-  console.info('locale_codes: ', localeCodes)
+for (const locale of locales) {
+  const deckLocation = `${LANGUAGES_DIR}/${locale}.json`
+  const deck = fromJSON(await Deno.readTextFile(deckLocation))
+  const { locale_code, lang_code } = deck.meta
 
-  for (const localeCode of localeCodes) {
-    const languageFile = await readLanguageFile(localeCode)
-    if (!languageFile) {
-      console.warn(`no language file for ${localeCode}`)
-      continue
-    }
+  console.info(`Language (${locale_code}):`)
 
-    const { locale_code, lang_code, strings } = languageFile
+  // Remote notes that are no longer in source.json
+  deck.notes = deck.notes.filter((note) => {
+    const { category, emoji } = note.content
+    return sourceFile.notes[category][emoji]
+  })
 
-    console.info(`Language (${locale_code}):`)
+  let plugin = plugins[locale_code] || plugins[lang_code] || new Plugin()
 
-    const stringsToTranslate = []
-
-    for (const stringKey in sourceFile.strings) {
-      if (!strings[stringKey]) {
-        stringsToTranslate.push(sourceFile.strings[stringKey])
-      }
-    }
-
-    console.info(`Website Strings to translate:`)
-    console.info(stringsToTranslate)
-
-    if (stringsToTranslate.length) {
-      const { azure, deepl } = languageFile?.meta || {}
-      let translationAPI = API.AZURE
-      let translationCode = azure?.translation_locale
-      if (deepl?.lang_code) {
-        translationAPI = API.DEEPL
-        translationCode = deepl?.lang_code
-      }
-
-      if (!translationCode) throw new Error('No locale to translate')
-
-      const translatedStrings = await translate(
-        stringsToTranslate,
-        translationCode,
-        translationAPI,
-      )
-
-      let index = 0
-      for (const [stringKey] of Object.entries(sourceFile.strings)) {
-        if (!languageFile.strings[stringKey]) {
-          languageFile.strings[stringKey] = translatedStrings[index]
-          index++
-        }
-      }
-    }
-
-    for (const stringKey in languageFile.strings) {
-      if (!sourceFile.strings[stringKey]) {
-        delete languageFile.strings[stringKey]
-      }
-    }
-
-    let plugin = plugins[locale_code] || plugins[lang_code]
-    if (!plugin) {
-      console.warn(`No plugin for ${lang_code}; using default`)
-      plugin = new Plugin()
-    }
-
-    const rows = await plugin.getLanguageFileRows(sourceFile, languageFile)
-    const [columns, data] = getDataAndColumns(rows)
-    await writeLanguageFile(localeCodes, locale_code, {
-      ...languageFile,
-      columns,
-      data,
-    })
-  }
+  await Deno.writeTextFile(
+    deckLocation,
+    toJSON(await plugin.getTranslations(sourceFile, deck)),
+  )
 }
+
+Deno.exit(0)

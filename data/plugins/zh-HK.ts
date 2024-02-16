@@ -1,21 +1,12 @@
-import Plugin, { TargetRow } from '@/shared/plugin.ts'
+import Note from 'flashcards/models/note.ts'
+import Plugin from '@/shared/plugin.ts'
 import CantoJpMin from './utilities/cantojpmin/mod.ts'
 
 const cantoJpMin = new CantoJpMin()
 
 export default new Plugin({
-  post(
-    this: Plugin,
-    key: string,
-    { category, text }: TargetRow,
-    prev: TargetRow,
-  ): TargetRow {
-    if (prev) return prev
-    return {
-      key,
-      text,
-      category,
-      jyutping: cantoJpMin.toJyutping(text) || '',
-    }
+  post(next: Note, prev: Note): Note {
+    next.content.jyutping = cantoJpMin.toJyutping(text) || ''
+    return next
   },
 })

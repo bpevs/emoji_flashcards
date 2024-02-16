@@ -1,27 +1,29 @@
-import Plugin, { ProcessingTargetRow, SourceRow, TargetRow } from '@/shared/plugin.ts'
+import Note from 'flashcards/models/note.ts'
+import Plugin, { SourceRow, TargetRow } from '@/shared/plugin.ts'
 
 export default new Plugin({
   pre(
     this: Plugin,
-    key: string,
+    emoji: string,
     { category, text_en, pos }: SourceRow,
-    prev: TargetRow,
-  ): ProcessingTargetRow {
-    if (prev?.text) return { key, ...prev }
+    prev: Note,
+  ): TargetRow {
+    if (prev?.content?.text) return { emoji, prev, ...prev.content }
 
     if (pos === 'verb') {
       return {
-        key,
+        emoji,
         category,
-        hint: this
-          .queueTranslation(`I ${text_en}, you ${text_en}, he ${text_en}`),
         text: this
           .queueTranslation(`(to) ${text_en}`)
           .then((text: string) => text.replace(/\(.*\)\s/, '')),
+        hint: this
+          .queueTranslation(`I ${text_en}, you ${text_en}, he ${text_en}`),
+        prev,
       }
-    } else {
-      const text = this.queueTranslation(text_en)
-      return { key, text, category, hint: '' }
     }
+
+    const text = this.queueTranslation(text_en)
+    return { emoji, text, category, hint: '', prev }
   },
 })

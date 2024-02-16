@@ -26,15 +26,15 @@ export function getAudioFilename(
 }
 
 export function getSourceDataMap(
-  { data }: SourceFile,
+  { notes }: SourceFile,
 ): SourceDataMap {
   const emojiMap: SourceDataMap = {}
-  Object.keys(data).forEach((category) => {
-    Object.keys(data[category]).forEach((emojiKey) => {
+  Object.keys(notes).forEach((category) => {
+    Object.keys(notes[category]).forEach((emojiKey) => {
       emojiMap[emojiKey] = {
         category,
-        text_en: data[category][emojiKey][0],
-        pos: data[category][emojiKey][1],
+        text_en: notes[category][emojiKey][0],
+        pos: notes[category][emojiKey][1],
       }
     })
   })

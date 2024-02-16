@@ -358,6 +358,7 @@
     "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/from_json.ts": "39457a5d734be7ebdace2fa076318284a98c1c7e0d06665c6d32287e961eeba3",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/from_obj.ts": "6a13ab3d06cee086339dad0573d7814ae8e4c4f8800be6b74bf16ee376921d11",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/to_apkg.ts": "11ef9444ba4fcd0bba8e953a7cc3205e47decdace3235314cf952cf73648fe49",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/to_json.ts": "bc8ccf31dda4dd80796046c7d00f4b519dfe34cb31b193c08ec9b7bbe74b2e41",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/to_obj.ts": "2f6e3c828f25af826ffd7b0d154278f542267bcfef898052158cfb87d4b7fe75",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/models/card.ts": "188efc932eea3694f6edaa5168b98666605aca016bfe59b4967083726fa461b8",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/models/deck.ts": "e66dcc6a9e795545e12c2532e2a2a97a2a1430b1fe22db18d795f855e93d12ea",

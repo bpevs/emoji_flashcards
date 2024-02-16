@@ -10,7 +10,7 @@
       "🐷": ["pig", "noun"],
       "🐭": ["mouse", "noun"],
       "🐴": ["horse", "noun"],
-      "🐛🐞🐝": ["bugs", "noun"],
+      "🐞🐛🐝": ["bugs", "noun"],
       "🪽": ["wing", "noun"],
       "🦊🐰🐶🐷": ["animal", "noun"]
     },
@@ -316,7 +316,7 @@
       "💩": ["poop", "noun"],
       "🗺️": ["map", "noun"]
     },
-    "other-adjectives": {
+    "other_adjectives": {
       "👸😻": ["beautiful", "adjective"],
       "🚫👂🙉": ["deaf", "adjective"],
       "🚫👁️🙈": ["blind", "adjective"],
@@ -340,7 +340,7 @@
       "🪫": ["empty", "adjective"],
       "🔋": ["full", "adjective"]
     },
-    "other-nouns": {
+    "other_nouns": {
       "🎼🎻🎷": ["music", "noun"],
       "🎼🎨🧑‍🎨💃": ["art", "noun"],
       "🧪🔬🧬": ["science", "noun"],
@@ -358,7 +358,7 @@
       "👦": ["boy", "noun"],
       "👧": ["girl", "noun"]
     },
-    "people.pronouns": {
+    "people_pronouns": {
       "🙋": ["I, me", "noun"],
       "🙋🙋🙋": ["we", "noun"],
       "🫵": ["you", "noun"],
@@ -368,7 +368,7 @@
       "👉🪨": ["it", "noun"],
       "❓👤": ["who", "noun"]
     },
-    "people.family": {
+    "people_family": {
       "👩‍👧(👩+👧)": ["mother and daughter", "noun"],
       "👨‍👦(👨+👦)": ["father and son", "noun"],
       "👩‍👦(👩+👦)": ["mother and son", "noun"],
@@ -383,7 +383,7 @@
       "👨‍👩‍👦": ["family", "noun"],
       "💍👰🤵": ["marriage", "noun"]
     },
-    "people.descriptors": {
+    "people_descriptors": {
       "👩‍🏫👨‍🏫": ["teacher", "noun"],
       "📐👩‍🏭": ["engineer", "noun"],
       "👮‍♀️👮‍♂️": ["police", "noun"],
