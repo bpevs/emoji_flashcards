@@ -5,8 +5,7 @@ import toAPKG from 'flashcards/adapters/to_apkg.ts'
 import Template from 'flashcards/models/template.ts'
 
 import { GEN_DIR, LANGUAGES_DIR } from '@/shared/paths.ts'
-import { listLanguages } from '@/shared/data_access.ts'
-import { getAudioFilename } from '@/shared/data_access_helpers.ts'
+import { getAudioFilename, listLanguages } from '@/shared/data_access.ts'
 
 // [[2, 'all', [0]], [1, 'all', [0]]]
 // if (hasAudioDir) req.push([0, 'all', [0]])
@@ -40,7 +39,7 @@ listLanguages().map(async (locale: string) => {
     note.templates.push(listening)
   })
 
-  const media = []
+  const media: Array<{ name: string; data: Blob }> = []
   const hasAudioDir = existsSync(join(GEN_DIR, locale, 'audio'), {
     isReadable: true,
     isDirectory: true,

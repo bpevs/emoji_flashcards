@@ -2,10 +2,11 @@
 import { Hono } from 'hono'
 import { jsx, logger, poweredBy, serveStatic } from 'hono/middleware.ts'
 import locales from '@/data/locales.js'
-import { DEFAULT_LANG } from '@/shared/constants.ts'
 import { LANGUAGES_DIR, STRINGS_DIR } from '@/shared/paths.ts'
 import { UserLanguageMeta } from '@/shared/types.ts'
 import Html from '@/www/components/html.tsx'
+
+const DEFAULT_LANG = 'en-US'
 
 const app = new Hono()
 

@@ -1,12 +1,8 @@
 {
-  "notes": {
-    "money": {
-      "💵": ["dollar"]
-    },
-    "measure": {
-      "📏🦶": ["foot"],
-      "📏🐜": ["inch"],
-      "📏⛽️": ["gallon"]
-    }
-  }
+  "notes": [
+    ["money", "💵", "dollar"],
+    ["measure", "📏🦶", "foot"],
+    ["measure", "📏🐜", "inch"],
+    ["measure", "📏⛽️", "gallon"]
+  ]
 }

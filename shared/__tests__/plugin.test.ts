@@ -1,34 +1,29 @@
 import { assertSpyCallAsync, assertSpyCalls, Stub, stub } from 'std/testing/mock.ts'
 import { assertEquals } from 'std/assert/mod.ts'
 import { afterEach, beforeEach, it } from 'std/testing/bdd.ts'
-import { LanguageFile, SourceFile } from '@/shared/types.ts'
+import { SourceFile } from '@/shared/types.ts'
 import { _internals } from '@/shared/translate.ts'
-import Plugin, { ProcessingTargetRow, SourceRow, TargetRow } from '../plugin.ts'
+import Plugin, { SourceRow, TargetRow } from '../plugin.ts'
+import Deck from 'flashcards/models/deck.ts'
 
 const baseSourceFile: SourceFile = Object.freeze({
   version: '0.1.1',
-  strings: {},
   columns: ['text', 'hint'],
-  data: {
+  notes: {
     animal: { '🐶': ['dog', 'noun'], '🐈': ['cat', 'noun'] },
     body: { '🦷': ['tooth', 'noun'], '🧠': ['brain', 'noun'] },
     verbs: { '🏃‍♂️🏃‍♀️': ['run', 'verb'] },
   },
 })
 
-const emptyTarget: LanguageFile = Object.freeze({
-  version: '0.1.1',
+const emptyDeck: Deck = new Deck({
   name: 'UWU lang',
-  name_en: 'UWU lang',
-  lang_code: 'uwu',
-  locale_code: 'uwu-UWU',
-  locale_flag: '🏳️‍🌈',
-  strings: {},
-  columns: [],
-  data: {},
   meta: {
-    anki_id: 1,
-    deepl: { lang_code: 'uwu' },
+    name_en: 'UWU lang',
+    lang_code: 'uwu',
+    locale_code: 'uwu-UWU',
+    locale_code_deepl: 'uwu',
+    locale_flag: '🏳️‍🌈',
   },
 })
 
@@ -44,7 +39,7 @@ afterEach(() => translateStub.restore())
 
 it('Runs with default pre/post', async () => {
   const plugin = new Plugin()
-  const rows = await plugin.getLanguageFileRows(baseSourceFile, emptyTarget)
+  const rows = await plugin.getTranslations(baseSourceFile, emptyDeck)
 
   assertEquals(rows, {
     '🐶': { category: 'animal', text: 'dog-uwu' },
@@ -66,30 +61,36 @@ it('Runs with custom pre plugin', async () => {
   const plugin = new Plugin({
     pre(
       this: Plugin,
-      key: string,
+      emoji: string,
       { category, text_en, pos }: SourceRow,
-      prev: TargetRow,
-    ): ProcessingTargetRow {
-      if (prev?.text) return { key, ...prev }
+      prev: Note,
+    ): TargetRow {
+      if (prev?.content?.text) {
+        const { text, category, hint } = prev.content
+        return { prev, props: { emoji, text, category, hint } }
+      }
 
       if (pos === 'verb') {
         return {
-          key,
-          category,
-          hint: this
-            .queueTranslation(`I ${text_en}, you ${text_en}, he ${text_en}`),
-          text: this
-            .queueTranslation(`(to) ${text_en}`)
-            .then((text: string) => text.replace(/\(.*\)\s/, '')),
+          prev,
+          props: {
+            emoji,
+            category,
+            hint: this
+              .queueTranslation(`I ${text_en}, you ${text_en}, he ${text_en}`),
+            text: this
+              .queueTranslation(`(to) ${text_en}`)
+              .then((text: string) => text.replace(/\(.*\)\s/, '')),
+          },
         }
       } else {
         const text = this.queueTranslation(text_en)
-        return { key, text, category, hint: '' }
+        return { prev, props: { emoji, text, category, hint: '' } }
       }
     },
   })
 
-  const rows = await plugin.getLanguageFileRows(baseSourceFile, emptyTarget)
+  const rows = await plugin.getTranslations(baseSourceFile, emptyDeck)
   assertEquals(rows, {
     '🐶': { category: 'animal', text: 'dog-uwu', hint: '' },
     '🐈': { category: 'animal', text: 'cat-uwu', hint: '' },
@@ -135,7 +136,7 @@ it('Runs with custom post plugin', async () => {
     },
   })
 
-  const rows = await plugin.getLanguageFileRows(baseSourceFile, emptyTarget)
+  const rows = await plugin.getTranslations(baseSourceFile, emptyDeck)
 
   assertEquals(rows, {
     '🐶': { category: 'animal', text: 'dog-uwu', hint: '🐶 UWU' },

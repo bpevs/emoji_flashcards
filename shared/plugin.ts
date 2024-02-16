@@ -1,20 +1,26 @@
 import Deck from 'flashcards/models/deck.ts'
 import Note from 'flashcards/models/note.ts'
 import { API, translate } from '@/shared/translate.ts'
-import { SourceDataMap, SourceFile } from '@/shared/types.ts'
-import { getLanguageDataMap, getSourceDataMap } from '@/shared/data_access_helpers.ts'
+import type { SourceFile } from '@/shared/types.ts'
 
-export type SourceRow = {
+export interface SourceRow {
   category: string
   text_en: string
   pos: string
 }
 
-export type TargetRow = {
-  key: string
-  category: string
-  text: string | Promise<string>
-  [name: string]: string | Promise<string>
+export interface TargetRow {
+  prev?: Note
+  props: {
+    emoji: string
+    category: string
+    text: string | Promise<string>
+    [name: string]: string | Promise<string>
+  }
+}
+
+type SourceDataMap = {
+  [emojiKey: string]: SourceRow
 }
 
 // Helps build language files
@@ -23,7 +29,7 @@ export default class Plugin {
 
   constructor(props?: {
     pre?: (key: string, source: SourceRow, prev: Note) => TargetRow
-    post?: (note: Note, prev: Note) => Note | Promise<Note>
+    post?: (note: Note, prev?: Note) => Note | Promise<Note>
   }) {
     if (props?.pre) this.pre = props.pre
     if (props?.post) this.post = props.post
@@ -35,23 +41,26 @@ export default class Plugin {
     const rows: TargetRow[] = [] // All rows, with inserted promises for translation
 
     for (const key in sourceRowsMap) {
-      const note = deck.notes.find((note) => note.content.emoji === key)
+      const note = deck.notes.find((note: Note) => note.content.emoji === key)
       rows.push(this.pre(key, sourceRowsMap[key], note))
     }
-    console.log(rows)
 
     const { locale_code, locale_code_azure, locale_code_deepl } = deck?.meta || {}
 
     const translationAPI = locale_code_deepl ? API.DEEPL : API.AZURE
     const translationCode = locale_code_deepl ?? locale_code_azure ?? locale_code
 
-    if (!translationCode) throw new Error('No locale to translate')
+    if (
+      !translationCode ||
+      typeof translationCode !== 'string' // @todo: fix Deck.meta typing
+    ) throw new Error('No locale to translate')
     await this.resolveTranslations(translationCode, translationAPI)
 
     for (const index in rows) {
-      const { prev, emoji, category, text, ...other } = rows[index]
+      const { prev, props } = rows[index]
+      const { emoji, category, text, ...other } = props
 
-      const content = { category, emoji, text: await text }
+      const content: Record<string, string> = { category, emoji, text: await text }
 
       for (const otherKey in other) {
         content[otherKey] = await other[otherKey]
@@ -60,9 +69,8 @@ export default class Plugin {
       const noteId = `${deck.id}_${emoji}`
       const nextNote = await this.post(new Note({ id: noteId, content }), prev)
 
-      // deck.addNote(nextNote)
-      const findNote = (note) => note.content.emoji === nextNote.content.emoji
-      const existingIndex = deck.notes.findIndex(findNote)
+      const existingIndex = deck.notes
+        .findIndex((note: Note) => note.content.emoji === nextNote.content.emoji)
       if (existingIndex != -1) deck.notes[existingIndex] = nextNote
       else deck.notes.push(nextNote)
     }
@@ -99,18 +107,45 @@ export default class Plugin {
   // Runs prior to translation; this is for if we want to modify the text
   // that will be translated.
   pre(emoji: string, source: SourceRow, prev?: Note): TargetRow {
-    if (prev?.content?.text) return { emoji, prev, ...prev.content }
+    if (prev?.content?.text && prev?.content?.category) {
+      return {
+        prev,
+        props: {
+          emoji,
+          category: prev.content.category,
+          text: prev.content.text,
+        },
+      }
+    }
     return {
-      emoji,
-      category: source.category,
-      text: this.queueTranslation(source.text_en),
       prev,
+      props: {
+        emoji,
+        category: source.category,
+        text: this.queueTranslation(source.text_en),
+      },
     }
   }
 
   // For plugins that require the translated text to generate;
   // Basically, for creating hints.
-  post(note: Note, _prev: Note): Note | Promise<Note> {
+  post(note: Note, _prev?: Note): Note | Promise<Note> {
     return note
   }
+}
+
+function getSourceDataMap({ notes }: SourceFile): SourceDataMap {
+  const emojiMap: SourceDataMap = {}
+  Object.keys(notes).forEach((category) => {
+    // @todo: fix Deck.meta typing
+    // deno-lint-ignore no-explicit-any
+    Object.keys(notes[category]).forEach((key: any) => {
+      emojiMap[key] = {
+        category,
+        text_en: notes[category][key][0],
+        pos: notes[category][key][1],
+      }
+    })
+  })
+  return emojiMap
 }

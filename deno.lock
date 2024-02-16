@@ -364,6 +364,7 @@
     "https://raw.githubusercontent.com/bpevs/flashcards/main/models/deck.ts": "e66dcc6a9e795545e12c2532e2a2a97a2a1430b1fe22db18d795f855e93d12ea",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/models/note.ts": "c5dec6521f0cdddeb27284f1f20b6323259c1490c13de810e4d11fe482221dab",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/models/template.ts": "7ccbef8fe9d36163bcccd1187e44ccf8cf6d384b58e5d29c18d2324769b3f394",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/models/types.ts": "d1019d2d1d2641df5e1b1af6764a596c32aaa5d2865ea111ecfe3b7ef52fc6ab",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/schedulers/sm2.ts": "8d3a3a93a1180cac9b7990b5588a6ec25663cb736a7e3e6d65d65697c8b5166e",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/utils/sort_by_columns.ts": "a440329fff2427a4b8b1c87a0e1e6a6675c8605ae3e548002ae2e84937aa7f6a",
     "https://raw.githubusercontent.com/bpevs/language_flashcards/main/gen/from_json.ts": "39457a5d734be7ebdace2fa076318284a98c1c7e0d06665c6d32287e961eeba3",

@@ -7,8 +7,8 @@ const kuroshiro = new (Kuroshiro.default)()
 await kuroshiro.init(new KuromojiAnalyzer())
 
 export default new Plugin({
-  async post(next: Note, prev: Note) {
-    const romaji = await kuroshiro.convert(source.text, { to: 'romaji' })
+  async post(next: Note) {
+    const romaji = await kuroshiro.convert(next.content.text, { to: 'romaji' })
     next.content.romaji = romaji || ''
     return next
   },
