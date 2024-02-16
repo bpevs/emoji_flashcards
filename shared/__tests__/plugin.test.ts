@@ -1,10 +1,14 @@
+import Deck from 'flashcards/models/deck.ts'
+import Note from 'flashcards/models/note.ts'
+
 import { assertSpyCallAsync, assertSpyCalls, Stub, stub } from 'std/testing/mock.ts'
 import { assertEquals } from 'std/assert/mod.ts'
 import { afterEach, beforeEach, it } from 'std/testing/bdd.ts'
 import { SourceFile } from '@/shared/types.ts'
 import { _internals } from '@/shared/translate.ts'
 import Plugin, { SourceRow, TargetRow } from '../plugin.ts'
-import Deck from 'flashcards/models/deck.ts'
+
+type Rows = Array<{ [key: string]: string }>
 
 const baseSourceFile: SourceFile = Object.freeze({
   version: '0.1.1',
@@ -16,16 +20,21 @@ const baseSourceFile: SourceFile = Object.freeze({
   },
 })
 
-const emptyDeck: Deck = new Deck({
-  name: 'UWU lang',
-  meta: {
-    name_en: 'UWU lang',
-    lang_code: 'uwu',
-    locale_code: 'uwu-UWU',
-    locale_code_deepl: 'uwu',
-    locale_flag: '🏳️‍🌈',
-  },
-})
+function createEmptyDeck(): Deck {
+  return new Deck({
+    id: 'uwu-UWU_🏳️‍🌈',
+    name: 'UWU lang',
+    desc: 'The UWU Language',
+    key: 'emoji',
+    meta: {
+      name_en: 'UWU lang',
+      lang_code: 'uwu',
+      locale_code: 'uwu-UWU',
+      locale_code_deepl: 'uwu',
+      locale_flag: '🏳️‍🌈',
+    },
+  })
+}
 
 let translateStub: Stub
 
@@ -39,15 +48,16 @@ afterEach(() => translateStub.restore())
 
 it('Runs with default pre/post', async () => {
   const plugin = new Plugin()
-  const rows = await plugin.getTranslations(baseSourceFile, emptyDeck)
+  const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
+  const rows: Rows = deck.notes.map(({ content }) => content)
 
-  assertEquals(rows, {
-    '🐶': { category: 'animal', text: 'dog-uwu' },
-    '🐈': { category: 'animal', text: 'cat-uwu' },
-    '🦷': { category: 'body', text: 'tooth-uwu' },
-    '🧠': { category: 'body', text: 'brain-uwu' },
-    '🏃‍♂️🏃‍♀️': { category: 'verbs', text: 'run-uwu' },
-  })
+  assertEquals(rows, [
+    { emoji: '🐶', category: 'animal', text: 'dog-uwu' },
+    { emoji: '🐈', category: 'animal', text: 'cat-uwu' },
+    { emoji: '🦷', category: 'body', text: 'tooth-uwu' },
+    { emoji: '🧠', category: 'body', text: 'brain-uwu' },
+    { emoji: '🏃‍♂️🏃‍♀️', category: 'verbs', text: 'run-uwu' },
+  ])
   const textEn: string[] = ['dog', 'cat', 'tooth', 'brain', 'run']
 
   assertSpyCallAsync(translateStub, 0, {
@@ -90,18 +100,16 @@ it('Runs with custom pre plugin', async () => {
     },
   })
 
-  const rows = await plugin.getTranslations(baseSourceFile, emptyDeck)
-  assertEquals(rows, {
-    '🐶': { category: 'animal', text: 'dog-uwu', hint: '' },
-    '🐈': { category: 'animal', text: 'cat-uwu', hint: '' },
-    '🦷': { category: 'body', text: 'tooth-uwu', hint: '' },
-    '🧠': { category: 'body', text: 'brain-uwu', hint: '' },
-    '🏃‍♂️🏃‍♀️': {
-      category: 'verbs',
-      text: 'run-uwu',
-      hint: 'I run, you run, he run-uwu',
-    },
-  })
+  const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
+  const rows: Rows = deck.notes.map(({ content }) => content)
+
+  assertEquals(rows, [
+    { emoji: '🐶', category: 'animal', text: 'dog-uwu', hint: '' },
+    { emoji: '🐈', category: 'animal', text: 'cat-uwu', hint: '' },
+    { emoji: '🦷', category: 'body', text: 'tooth-uwu', hint: '' },
+    { emoji: '🧠', category: 'body', text: 'brain-uwu', hint: '' },
+    { emoji: '🏃‍♂️🏃‍♀️', category: 'verbs', text: 'run-uwu', hint: 'I run, you run, he run-uwu' },
+  ])
 
   const untranslated = [
     'dog',
@@ -125,26 +133,23 @@ it('Runs with custom post plugin', async () => {
   }
 
   const plugin = new Plugin({
-    async post(
-      this: Plugin,
-      key: string,
-      { category, text }: TargetRow,
-      prev: TargetRow,
-    ) {
+    async post(next: Note, prev?: Note) {
       if (prev) return prev
-      return { key, text, category, hint: await createHintUwu(key) }
+      next.content.hint = await createHintUwu(next.content.text)
+      return next
     },
   })
 
-  const rows = await plugin.getTranslations(baseSourceFile, emptyDeck)
+  const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
+  const rows: Rows = deck.notes.map(({ content }) => content)
 
-  assertEquals(rows, {
-    '🐶': { category: 'animal', text: 'dog-uwu', hint: '🐶 UWU' },
-    '🐈': { category: 'animal', text: 'cat-uwu', hint: '🐈 UWU' },
-    '🦷': { category: 'body', text: 'tooth-uwu', hint: '🦷 UWU' },
-    '🧠': { category: 'body', text: 'brain-uwu', hint: '🧠 UWU' },
-    '🏃‍♂️🏃‍♀️': { category: 'verbs', text: 'run-uwu', hint: '🏃‍♂️🏃‍♀️ UWU' },
-  })
+  assertEquals(rows, [
+    { emoji: '🐶', category: 'animal', text: 'dog-uwu', hint: 'dog-uwu UWU' },
+    { emoji: '🐈', category: 'animal', text: 'cat-uwu', hint: 'cat-uwu UWU' },
+    { emoji: '🦷', category: 'body', text: 'tooth-uwu', hint: 'tooth-uwu UWU' },
+    { emoji: '🧠', category: 'body', text: 'brain-uwu', hint: 'brain-uwu UWU' },
+    { emoji: '🏃‍♂️🏃‍♀️', category: 'verbs', text: 'run-uwu', hint: 'run-uwu UWU' },
+  ])
 
   const textEn: string[] = ['dog', 'cat', 'tooth', 'brain', 'run']
 

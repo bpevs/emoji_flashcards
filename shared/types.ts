@@ -7,7 +7,11 @@ export type LanguageFileData = {
 export type SourceFile = {
   version: string
   columns: string[]
-  notes: { [key: string]: string }
+  notes: {
+    [category: string]: {
+      [emoji: string]: string[]
+    }
+  }
 }
 
 export type ExtensionFile = {
