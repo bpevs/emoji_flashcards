@@ -8,8 +8,7 @@ export enum API {
 }
 
 const DEEPL_API_ENDPOINT = 'https://api-free.deepl.com/v2/translate'
-const AZURE_API_ENDPOINT =
-  'https://api.cognitive.microsofttranslator.com/translate'
+const AZURE_API_ENDPOINT = 'https://api.cognitive.microsofttranslator.com/translate'
 
 async function translateAzure(
   texts: string[],
@@ -45,19 +44,16 @@ async function translateDeepl(
   target_lang: string,
 ): Promise<string[]> {
   const combinedText = texts.join('\n')
-  console.log(combinedText)
   const text = encodeURIComponent(combinedText)
 
   const response = await fetch(DEEPL_API_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `auth_key=${
-      env['DEEPL_API_KEY']
-    }&text=${text}&target_lang=${target_lang}`,
+    body: `auth_key=${env['DEEPL_API_KEY']}&text=${text}&target_lang=${target_lang}`,
   })
 
   const result = await response.json()
-  console.log(result)
+  console.log(result.translations[0].text.split('\n'))
   return result.translations[0].text.split('\n')
 }
 

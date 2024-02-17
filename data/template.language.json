@@ -1,16 +1,12 @@
 {
   "name": "",
-  "name_en": "Template For New Language",
-  "version": "0.0.1",
-  "language_code": "xx",
-  "locale_code": "xx-XX",
-  "locale_flag": "🏳️‍🌈",
   "meta": {
-    "anki": {
-      "id": 23111642
-    }
+    "name_en": "Template For New Language",
+    "lang_code": "xx",
+    "locale_code": "xx-XX",
+    "locale_flag": "🏳️‍🌈"
   },
-  "strings": {},
-  "columns": [],
-  "data": {}
+  "key": "emoji",
+  "fields": [],
+  "notes": {}
 }

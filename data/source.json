@@ -1,69 +1,6 @@
 {
-  "version": "0.0.2",
-  "strings": {
-    "title": "Emoji Flashcards",
-    "description": "Downloadable Anki flashcards for learning languages",
-    "card-selector-label": "Downloadable Anki flashcards for",
-    "download": "Download flashcards",
-    "next": "next",
-    "no-js": "This demo requires Javascript, but you can still download the flashcards for Anki",
-    "show-answer": "show answer",
-    "help-translate": "Help us improve our translations!",
-    "back": "back",
-    "learn-more": "Learn More",
-    "about": "About",
-    "about-about-description": "Emoji Flashcards is an open-source project for generating Anki Flashcards. My goal has been to create a set of free flashcards that can be used across many languages. This way, we will have an easy place for beginners to start becoming aquainted to new vocabulary. I think pictographic flashcards are especially cool because you can learn new words without using your native language! Since emojis are a set of pictographic characters that are used mostly everywhere, it seemed like a natural way to go about this!",
-    "about-help-title": "Help us Translate",
-    "about-help-description-1": "We use robots to help create our initial translations and transcriptions, so there are a lot of mistakes! If you help us fix our mistakes, our flashcards can be even more useful for everyone!",
-    "about-help-description-2": "For translation errors, we'd love it if you could correct our translations on Github. If you don't have a Github account, want to help fix audio errors, or just want to hang out, you can join us on Discord!",
-    "about-sponsor-title": "Sponsor Us",
-    "about-sponsor-description": "Emoji Flashcards is a relatively low-cost project, so I think it should be feasible to stay free-of-charge forever. However, it does take time and energy to maintain, so if you want to help support this project, you can do so via Github Sponsors.",
-    "af-ZA": "Afrikaans",
-    "ar-EG": "Arabic",
-    "bg-BG": "Bulgarian",
-    "ca-ES": "Catalan",
-    "cs-CZ": "Czech",
-    "da-DK": "Danish",
-    "de-DE": "German",
-    "el-GR": "Greek",
-    "en-GB": "English (British)",
-    "en-US": "English (American)",
-    "es-ES": "Spanish (Spain)",
-    "es-MX": "Spanish (Mexico)",
-    "et-EE": "Estonian",
-    "fa-IR": "Persian",
-    "fi-FI": "Finnish",
-    "fr-FR": "French",
-    "he-IL": "Hebrew",
-    "hu-HU": "Hungarian",
-    "hi-IN": "Hindi",
-    "id-ID": "Indonesian",
-    "it-IT": "Italian",
-    "ja-JP": "Japanese",
-    "ko-KR": "Korean",
-    "lt-LT": "Lithuanian",
-    "lv-LV": "Latvian",
-    "nb-NO": "Norwegian",
-    "nl-NL": "Dutch",
-    "pl-PL": "Polish",
-    "pt-BR": "Portuguese (Brazil)",
-    "pt-PT": "Portuguese (Portugal)",
-    "ro-RO": "Romanian",
-    "ru-RU": "Russian",
-    "sk-SK": "Slovak",
-    "sl-SI": "Slovenian",
-    "sv-SE": "Swedish",
-    "th-TH": "Thai",
-    "tr-TR": "Turkish",
-    "uk-UA": "Ukranian",
-    "ur-PK": "Urdu",
-    "vi-VN": "Vietnamese",
-    "zh-CN": "Chinese (Mandarin)",
-    "zh-HK": "Chinese (Cantonese)",
-    "zh-TW": "Chinese (Taiwan)"
-  },
-  "columns": ["text_en", "pos"],
-  "data": {
+  "fields": ["text_en", "pos"],
+  "notes": {
     "animal": {
       "🐶": ["dog", "noun"],
       "🐈": ["cat", "noun"],
@@ -379,7 +316,7 @@
       "💩": ["poop", "noun"],
       "🗺️": ["map", "noun"]
     },
-    "other-adjectives": {
+    "other_adjectives": {
       "👸😻": ["beautiful", "adjective"],
       "🚫👂🙉": ["deaf", "adjective"],
       "🚫👁️🙈": ["blind", "adjective"],
@@ -403,7 +340,7 @@
       "🪫": ["empty", "adjective"],
       "🔋": ["full", "adjective"]
     },
-    "other-nouns": {
+    "other_nouns": {
       "🎼🎻🎷": ["music", "noun"],
       "🎼🎨🧑‍🎨💃": ["art", "noun"],
       "🧪🔬🧬": ["science", "noun"],
@@ -421,7 +358,7 @@
       "👦": ["boy", "noun"],
       "👧": ["girl", "noun"]
     },
-    "people.pronouns": {
+    "people_pronouns": {
       "🙋": ["I, me", "noun"],
       "🙋🙋🙋": ["we", "noun"],
       "🫵": ["you", "noun"],
@@ -431,7 +368,7 @@
       "👉🪨": ["it", "noun"],
       "❓👤": ["who", "noun"]
     },
-    "people.family": {
+    "people_family": {
       "👩‍👧(👩+👧)": ["mother and daughter", "noun"],
       "👨‍👦(👨+👦)": ["father and son", "noun"],
       "👩‍👦(👩+👦)": ["mother and son", "noun"],
@@ -446,7 +383,7 @@
       "👨‍👩‍👦": ["family", "noun"],
       "💍👰🤵": ["marriage", "noun"]
     },
-    "people.descriptors": {
+    "people_descriptors": {
       "👩‍🏫👨‍🏫": ["teacher", "noun"],
       "📐👩‍🏭": ["engineer", "noun"],
       "👮‍♀️👮‍♂️": ["police", "noun"],

@@ -1,3 +1,5 @@
+import Template from 'flashcards/models/template.ts'
+
 export const hintButton = `
 <button class="button" type="button"  onclick="
 if
@@ -11,45 +13,42 @@ Hint
 
 export const hintDisplay = `
 <span class="hint" id="HINT" style="display:none">
-{{Hint}}
+{{hint}}
 </span>
 `
 
 export const nohint = [
-  {
-    name: 'Listening',
-    qfmt: `{{Audio}}`,
-    afmt: `{{FrontSide}}\n<hr id=answer>\n<h1>{{Emoji}}</h1>\n<br>\n{{Text}}`,
-  },
-  {
-    name: 'Reading',
-    qfmt: `{{Text}}`,
-    afmt: `{{FrontSide}}\n<hr id=answer>\n<h1>{{Emoji}}</h1>\n<br>\n{{Audio}}`,
-  },
-  {
-    name: 'Speaking',
-    qfmt: `<h1>{{Emoji}}</h1>`,
-    afmt: `{{FrontSide}}\n<hr id=answer>\n{{Audio}}\n<br>\n{{Text}}`,
-  },
+  new Template(
+    'Listening',
+    `{{audio}}`,
+    `{{FrontSide}}\n<hr id=answer>\n<h1>{{emoji}}</h1>\n<br>\n{{text}}`,
+  ),
+  new Template(
+    'Reading',
+    `{{text}}`,
+    `{{FrontSide}}\n<hr id=answer>\n<h1>{{emoji}}</h1>\n<br>\n{{audio}}`,
+  ),
+  new Template(
+    'Speaking',
+    `<h1>{{emoji}}</h1>`,
+    `{{FrontSide}}\n<hr id=answer>\n{{audio}}\n<br>\n{{text}}`,
+  ),
 ]
 
 export const hint = [
-  {
-    name: 'Listening',
-    qfmt: `{{Audio}}<br>${hintButton}${hintDisplay}`,
-    afmt:
-      `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Text}} ({{Hint}})`,
-  },
-  {
-    name: 'Reading',
-    qfmt: `{{Text}}`,
-    afmt:
-      `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Audio}}<br>{{Hint}}`,
-  },
-  {
-    name: 'Speaking',
-    qfmt: `<h1>{{Emoji}}</h1>`,
-    afmt:
-      `{{FrontSide}}<hr id=answer>{{Audio}}<br>${hintButton}<br>{{Text}} ({{Hint}})`,
-  },
+  new Template(
+    'Listening',
+    `{{audio}}<br>${hintButton}${hintDisplay}`,
+    `{{FrontSide}}<hr id=answer><h1>{{emoji}}</h1><br>{{text}} ({{hint}})`,
+  ),
+  new Template(
+    'Reading',
+    `{{text}}`,
+    `{{FrontSide}}<hr id=answer><h1>{{emoji}}</h1><br>{{audio}}<br>{{hint}}`,
+  ),
+  new Template(
+    'Speaking',
+    `<h1>{{emoji}}</h1>`,
+    `{{FrontSide}}<hr id=answer>{{audio}}<br>${hintButton}<br>{{text}} ({{hint}})`,
+  ),
 ]

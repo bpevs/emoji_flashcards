@@ -1,14 +1,13 @@
 import { join } from 'std/path/mod.ts'
-import type { ExtensionFile, LanguageFile, SourceFile } from '@/shared/types.ts'
-import { prettyPrintCompactFile } from '@/shared/data_access_helpers.ts'
+import fromJSON from 'flashcards/adapters/from_json.ts'
+import Deck from 'flashcards/models/deck.ts'
+import Note from 'flashcards/models/note.ts'
+import type { ExtensionFile, SourceFile } from '@/shared/types.ts'
 import { EXTENSIONS_DIR, GEN_DIR, LANGUAGES_DIR, SOURCE_FILE } from './paths.ts'
 
 const LANGUAGE_FILE_REGEX = /^[a-z]{2,3}(-[A-Z]{2})?\.json$/
 const AUDIO_FILE_REGEX = /.*\.mp3$/
 
-/**
- * For use in server and tasks, get and set data
- */
 export function listLanguages(): string[] {
   try {
     return Array.from(Deno.readDirSync(LANGUAGES_DIR))
@@ -27,33 +26,34 @@ export function listAudioFiles(language: string): Set<string> {
   return items
 }
 
-export async function readLanguageFile(
+export async function readDeck(
   locale: string,
   includeExtensions = false,
-  extensionCodes: string[] = [],
-): Promise<LanguageFile> {
-  const text = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale}.json`)
-  const languageFile: LanguageFile = JSON.parse(text)
+  includedExtNames: string[] = [],
+): Promise<Deck> {
+  const deckLocation = `${LANGUAGES_DIR}/${locale}.json`
+  const deck = fromJSON(await Deno.readTextFile(deckLocation), { sortField: 'emoji' })
+  const fields: string[] = deck.content.fields
+
   if (includeExtensions) {
     try {
       const text = await Deno.readTextFile(`${EXTENSIONS_DIR}/${locale}.json`)
       const extensionFile: ExtensionFile = JSON.parse(text)
-      const extensions = [extensionFile.data]
-        .concat(extensionCodes.map((n) => extensionFile.extensions[n].data))
+      const extensions = [extensionFile.notes]
+        .concat(includedExtNames.map((n) => extensionFile.extensions[n].notes))
 
-      extensions.forEach((extension) => {
-        Object.keys(extension).forEach((categoryName) => {
-          Object.keys(extensionFile.data[categoryName]).forEach((key) => {
-            if (!languageFile.data[categoryName]) {
-              languageFile.data[categoryName] = {}
-            }
-            languageFile.data[categoryName][key] = extension[categoryName][key]
-          })
+      extensions.forEach((extension: Array<string[]>) => {
+        extension.forEach((row) => {
+          const emoji = row[1]
+          const id = `${deck.id}_${emoji}`
+          const content: { [key: string]: string } = {}
+          fields.forEach((field, index) => content[field] = row[index])
+          deck.addNote(new Note({ id, content }))
         })
       })
     } catch { /* No extension file */ }
   }
-  return languageFile
+  return deck
 }
 
 export async function readSourceFile(): Promise<SourceFile> {
@@ -62,37 +62,26 @@ export async function readSourceFile(): Promise<SourceFile> {
   return sourceFile
 }
 
-export async function writeLanguageFile(
-  locales: string[],
-  locale: string,
-  languageFile: LanguageFile,
-): Promise<void> {
-  // Hackery for consistent category name write-order
-  const data = languageFile.data
-  const newData: {
-    [category: string]: {
-      [emoji: string]: string[]
-    }
-  } = {}
-  Object.keys(data).sort().forEach((key: string) => newData[key] = data[key])
-  languageFile.data = newData
+const illegalRe = /[\/\?<>\\:\*\|"]/g
+// deno-lint-ignore no-control-regex
+const controlRe = /[\x00-\x1f\x80-\x9f]/g
+const reservedRe = /^\.+$/
+const windowsReservedRe = /^(con|prn|aux|nul|com[0-9]|lpt[0-9])(\..*)?$/i
+const windowsTrailingRe = /[\. ]+$/
 
-  // Same for strings
-  const strings = languageFile.strings
-  const newStrings: { [name: string]: string } = {}
-  Object.keys(strings).sort((a, b) => {
-    const aIsLocale = locales.indexOf(a) === -1
-    const bIsLocale = locales.indexOf(b) === -1
-    if (aIsLocale && !bIsLocale) return -1
-    if (!aIsLocale && bIsLocale) return 1
-    if (a < b) return -1
-    if (a > b) return 1
-    return 0
-  }).forEach((key: string) => newStrings[key] = strings[key])
-  languageFile.strings = newStrings
-
-  await Deno.writeTextFile(
-    `${LANGUAGES_DIR}/${locale}.json`,
-    prettyPrintCompactFile(languageFile),
-  )
+export function getAudioFilename(
+  language: string,
+  emoji: string,
+  text: string,
+) {
+  const replacement = ''
+  return `${language}_${emoji}_${text}.mp3`
+    .toLowerCase()
+    .normalize('NFC')
+    .replace(illegalRe, replacement)
+    .replace(controlRe, replacement)
+    .replace(reservedRe, replacement)
+    .replace(windowsReservedRe, replacement)
+    .replace(windowsTrailingRe, replacement)
+    .replace(/(\,|\;|\:|\s|\(|\))+/g, '-')
 }

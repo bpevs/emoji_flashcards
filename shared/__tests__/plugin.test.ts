@@ -1,41 +1,43 @@
-import {
-  assertSpyCallAsync,
-  assertSpyCalls,
-  Stub,
-  stub,
-} from 'std/testing/mock.ts'
+import Deck from 'flashcards/models/deck.ts'
+import Note from 'flashcards/models/note.ts'
+
+import { assertSpyCallAsync, assertSpyCalls, Stub, stub } from 'std/testing/mock.ts'
 import { assertEquals } from 'std/assert/mod.ts'
 import { afterEach, beforeEach, it } from 'std/testing/bdd.ts'
-import { LanguageFile, SourceFile } from '@/shared/types.ts'
+import { SourceFile } from '@/shared/types.ts'
 import { _internals } from '@/shared/translate.ts'
-import Plugin, { ProcessingTargetRow, SourceRow, TargetRow } from '../plugin.ts'
+import Plugin, { SourceRow, TargetRow } from '../plugin.ts'
+
+type Rows = Array<{ [key: string]: string }>
 
 const baseSourceFile: SourceFile = Object.freeze({
   version: '0.1.1',
-  strings: {},
-  columns: ['text', 'hint'],
-  data: {
+  fields: ['text', 'hint'],
+  notes: {
     animal: { '🐶': ['dog', 'noun'], '🐈': ['cat', 'noun'] },
     body: { '🦷': ['tooth', 'noun'], '🧠': ['brain', 'noun'] },
     verbs: { '🏃‍♂️🏃‍♀️': ['run', 'verb'] },
   },
 })
 
-const emptyTarget: LanguageFile = Object.freeze({
-  version: '0.1.1',
-  name: 'UWU lang',
-  name_en: 'UWU lang',
-  language_code: 'uwu',
-  locale_code: 'uwu-UWU',
-  locale_flag: '🏳️‍🌈',
-  strings: {},
-  columns: [],
-  data: {},
-  meta: {
-    anki_id: 1,
-    deepl: { language_code: 'uwu' },
-  },
-})
+function createEmptyDeck(): Deck {
+  return new Deck({
+    id: 'uwu-UWU_🏳️‍🌈',
+    name: 'UWU lang',
+    desc: 'The UWU Language',
+    content: {
+      fields: ['emoji', 'category', 'text'],
+    },
+    meta: {
+      name_en: 'UWU lang',
+      lang_code: 'uwu',
+      locale_code: 'uwu-UWU',
+      locale_code_deepl: 'uwu',
+      locale_flag: '🏳️‍🌈',
+    },
+    notes: {},
+  })
+}
 
 let translateStub: Stub
 
@@ -49,15 +51,16 @@ afterEach(() => translateStub.restore())
 
 it('Runs with default pre/post', async () => {
   const plugin = new Plugin()
-  const rows = await plugin.getLanguageFileRows(baseSourceFile, emptyTarget)
+  const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
+  const rows: Rows = Object.values(deck.notes).map(({ content }) => content)
 
-  assertEquals(rows, {
-    '🐶': { category: 'animal', text: 'dog-uwu' },
-    '🐈': { category: 'animal', text: 'cat-uwu' },
-    '🦷': { category: 'body', text: 'tooth-uwu' },
-    '🧠': { category: 'body', text: 'brain-uwu' },
-    '🏃‍♂️🏃‍♀️': { category: 'verbs', text: 'run-uwu' },
-  })
+  assertEquals(rows, [
+    { emoji: '🐶', category: 'animal', text: 'dog-uwu' },
+    { emoji: '🐈', category: 'animal', text: 'cat-uwu' },
+    { emoji: '🦷', category: 'body', text: 'tooth-uwu' },
+    { emoji: '🧠', category: 'body', text: 'brain-uwu' },
+    { emoji: '🏃‍♂️🏃‍♀️', category: 'verbs', text: 'run-uwu' },
+  ])
   const textEn: string[] = ['dog', 'cat', 'tooth', 'brain', 'run']
 
   assertSpyCallAsync(translateStub, 0, {
@@ -71,41 +74,45 @@ it('Runs with custom pre plugin', async () => {
   const plugin = new Plugin({
     pre(
       this: Plugin,
-      key: string,
+      emoji: string,
       { category, text_en, pos }: SourceRow,
-      prev: TargetRow,
-    ): ProcessingTargetRow {
-      if (prev?.text) return { key, ...prev }
+      prev: Note,
+    ): TargetRow {
+      if (prev?.content?.text) {
+        const { text, category, hint } = prev.content
+        return { prev, props: { emoji, text, category, hint } }
+      }
 
       if (pos === 'verb') {
         return {
-          key,
-          category,
-          hint: this
-            .queueTranslation(`I ${text_en}, you ${text_en}, he ${text_en}`),
-          text: this
-            .queueTranslation(`(to) ${text_en}`)
-            .then((text: string) => text.replace(/\(.*\)\s/, '')),
+          prev,
+          props: {
+            emoji,
+            category,
+            hint: this
+              .queueTranslation(`I ${text_en}, you ${text_en}, he ${text_en}`),
+            text: this
+              .queueTranslation(`(to) ${text_en}`)
+              .then((text: string) => text.replace(/\(.*\)\s/, '')),
+          },
         }
       } else {
         const text = this.queueTranslation(text_en)
-        return { key, text, category, hint: '' }
+        return { prev, props: { emoji, text, category, hint: '' } }
       }
     },
   })
 
-  const rows = await plugin.getLanguageFileRows(baseSourceFile, emptyTarget)
-  assertEquals(rows, {
-    '🐶': { category: 'animal', text: 'dog-uwu', hint: '' },
-    '🐈': { category: 'animal', text: 'cat-uwu', hint: '' },
-    '🦷': { category: 'body', text: 'tooth-uwu', hint: '' },
-    '🧠': { category: 'body', text: 'brain-uwu', hint: '' },
-    '🏃‍♂️🏃‍♀️': {
-      category: 'verbs',
-      text: 'run-uwu',
-      hint: 'I run, you run, he run-uwu',
-    },
-  })
+  const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
+  const rows: Rows = Object.values(deck.notes).map(({ content }) => content)
+
+  assertEquals(rows, [
+    { emoji: '🐶', category: 'animal', text: 'dog-uwu', hint: '' },
+    { emoji: '🐈', category: 'animal', text: 'cat-uwu', hint: '' },
+    { emoji: '🦷', category: 'body', text: 'tooth-uwu', hint: '' },
+    { emoji: '🧠', category: 'body', text: 'brain-uwu', hint: '' },
+    { emoji: '🏃‍♂️🏃‍♀️', category: 'verbs', text: 'run-uwu', hint: 'I run, you run, he run-uwu' },
+  ])
 
   const untranslated = [
     'dog',
@@ -129,26 +136,23 @@ it('Runs with custom post plugin', async () => {
   }
 
   const plugin = new Plugin({
-    async post(
-      this: Plugin,
-      key: string,
-      { category, text }: TargetRow,
-      prev: TargetRow,
-    ) {
+    async post(next: Note, prev?: Note) {
       if (prev) return prev
-      return { key, text, category, hint: await createHintUwu(key) }
+      next.content.hint = await createHintUwu(next.content.text)
+      return next
     },
   })
 
-  const rows = await plugin.getLanguageFileRows(baseSourceFile, emptyTarget)
+  const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
+  const rows: Rows = Object.values(deck.notes).map(({ content }) => content)
 
-  assertEquals(rows, {
-    '🐶': { category: 'animal', text: 'dog-uwu', hint: '🐶 UWU' },
-    '🐈': { category: 'animal', text: 'cat-uwu', hint: '🐈 UWU' },
-    '🦷': { category: 'body', text: 'tooth-uwu', hint: '🦷 UWU' },
-    '🧠': { category: 'body', text: 'brain-uwu', hint: '🧠 UWU' },
-    '🏃‍♂️🏃‍♀️': { category: 'verbs', text: 'run-uwu', hint: '🏃‍♂️🏃‍♀️ UWU' },
-  })
+  assertEquals(rows, [
+    { emoji: '🐶', category: 'animal', text: 'dog-uwu', hint: 'dog-uwu UWU' },
+    { emoji: '🐈', category: 'animal', text: 'cat-uwu', hint: 'cat-uwu UWU' },
+    { emoji: '🦷', category: 'body', text: 'tooth-uwu', hint: 'tooth-uwu UWU' },
+    { emoji: '🧠', category: 'body', text: 'brain-uwu', hint: 'brain-uwu UWU' },
+    { emoji: '🏃‍♂️🏃‍♀️', category: 'verbs', text: 'run-uwu', hint: 'run-uwu UWU' },
+  ])
 
   const textEn: string[] = ['dog', 'cat', 'tooth', 'brain', 'run']
 

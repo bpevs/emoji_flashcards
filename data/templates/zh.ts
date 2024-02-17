@@ -1,25 +1,23 @@
+import Template from 'flashcards/models/template.ts'
 import { hintButton, hintDisplay } from './default.js'
 
-const pinyinButton = hintButton.replace(/{{Hint}}/g, '{{Pinyin}}')
-const pinyinDisplay = hintDisplay.replace(/{{Hint}}/g, '{{Pinyin}}')
+const pinyinButton = hintButton.replace(/{{hint}}/g, '{{pinyin}}')
+const pinyinDisplay = hintDisplay.replace(/{{hint}}/g, '{{pinyin}}')
 
 export default [
-  {
-    name: 'Listening',
-    qfmt: `{{Audio}}<br>${pinyinButton}${pinyinDisplay}`,
-    afmt:
-      `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Text}} ({{Pinyin}})`,
-  },
-  {
-    name: 'Reading',
-    qfmt: `{{Text}}`,
-    afmt:
-      `{{FrontSide}}<hr id=answer><h1>{{Emoji}}</h1><br>{{Audio}}<br>{{Pinyin}}`,
-  },
-  {
-    name: 'Speaking',
-    qfmt: `<h1>{{Emoji}}</h1>`,
-    afmt:
-      `{{FrontSide}}<hr id=answer>{{Audio}}<br>${pinyinButton}<br>{{Text}} ({{Pinyin}})`,
-  },
+  new Template(
+    'Listening',
+    `{{audio}}<br>${pinyinButton}${pinyinDisplay}`,
+    `{{FrontSide}}<hr id=answer><h1>{{emoji}}</h1><br>{{text}} ({{pinyin}})`,
+  ),
+  new Template(
+    'Reading',
+    `{{text}}`,
+    `{{FrontSide}}<hr id=answer><h1>{{emoji}}</h1><br>{{audio}}<br>{{pinyin}}`,
+  ),
+  new Template(
+    'Speaking',
+    `<h1>{{emoji}}</h1>`,
+    `{{FrontSide}}<hr id=answer>{{audio}}<br>${pinyinButton}<br>{{text}} ({{pinyin}})`,
+  ),
 ]

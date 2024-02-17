@@ -2,6 +2,7 @@
   "version": "3",
   "packages": {
     "specifiers": {
+      "jsr:@std/collections": "jsr:@std/collections@0.216.0",
       "npm:chinese-to-pinyin": "npm:chinese-to-pinyin@1.3.1",
       "npm:json-stringify-pretty-compact": "npm:json-stringify-pretty-compact@4.0.0",
       "npm:jszip": "npm:jszip@3.10.1",
@@ -354,7 +355,21 @@
     "https://deno.land/x/hono@v4.0.1/utils/types.ts": "47426b7de99a75aa39305a21868c8d8e8d1316d24136a2d35fdf24e15f72970c",
     "https://deno.land/x/hono@v4.0.1/utils/url.ts": "d9d307a495e7dfc6e916fbcfa74c2d8d23e8e685bddc5e6ebc9c0f784345a01a",
     "https://deno.land/x/hono@v4.0.1/validator/index.ts": "6c986e8b91dcf857ecc8164a506ae8eea8665792a4ff7215471df669c632ae7c",
-    "https://deno.land/x/hono@v4.0.1/validator/validator.ts": "1a7b524292662e5219fd61a9872c2586aa23a2328800211a8fdc268b089f75f1"
+    "https://deno.land/x/hono@v4.0.1/validator/validator.ts": "1a7b524292662e5219fd61a9872c2586aa23a2328800211a8fdc268b089f75f1",
+    "https://jsr.io/@std/collections/0.216.0/_utils.ts": "fc59674548a4dd9f5c3cc4f99f9c264aa521a52c1a4ff56b0263713e57e79206",
+    "https://jsr.io/@std/collections/0.216.0/intersect.ts": "58d8ae4602f119e465a3084cc982f1b91ea7cb864d519fe9b86f3ca6872f6962",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/from_json.ts": "b232e6f72e5cb846e7bc90369ef000bea077339705f733cb4c62dd892d1036cc",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/from_obj.ts": "5aaa79c83eeae24aaf0c8ed6038df1738b29739fc028988a0aeb67c8e489ab3b",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/to_apkg.ts": "e30c762be33d1161e1c9c0a9827e4581f357e8528fe56c4cdeb8b7418051398e",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/to_json.ts": "bc8ccf31dda4dd80796046c7d00f4b519dfe34cb31b193c08ec9b7bbe74b2e41",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/to_obj.ts": "4ab11a0ebc454543b385106e2ba9a46771ed595b5eff34be5b78729e4c75cce7",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/models/card.ts": "188efc932eea3694f6edaa5168b98666605aca016bfe59b4967083726fa461b8",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/models/deck.ts": "b919b058344cc6adaa639669f2cc31547f127a2ba7a7ef3218e6d92c146157a5",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/models/note.ts": "c5dec6521f0cdddeb27284f1f20b6323259c1490c13de810e4d11fe482221dab",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/models/template.ts": "7ccbef8fe9d36163bcccd1187e44ccf8cf6d384b58e5d29c18d2324769b3f394",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/models/types.ts": "d1019d2d1d2641df5e1b1af6764a596c32aaa5d2865ea111ecfe3b7ef52fc6ab",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/schedulers/sm2.ts": "8d3a3a93a1180cac9b7990b5588a6ec25663cb736a7e3e6d65d65697c8b5166e",
+    "https://raw.githubusercontent.com/bpevs/flashcards/main/utils/sort_by_columns.ts": "a440329fff2427a4b8b1c87a0e1e6a6675c8605ae3e548002ae2e84937aa7f6a"
   },
   "workspace": {
     "dependencies": [

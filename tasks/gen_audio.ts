@@ -1,13 +1,9 @@
+import Note from 'flashcards/models/note.ts'
 import { ensureDir } from 'std/fs/mod.ts'
 import { load } from 'std/dotenv/mod.ts'
 import { writeAll } from 'std/streams/write_all.ts'
 import { join } from 'std/path/mod.ts'
-import {
-  listAudioFiles,
-  listLanguages,
-  readLanguageFile,
-} from '@/shared/data_access.ts'
-import { getAudioFilename } from '@/shared/data_access_helpers.ts'
+import { getAudioFilename, listAudioFiles, listLanguages, readDeck } from '@/shared/data_access.ts'
 import { GEN_DIR } from '@/shared/paths.ts'
 
 const env = await load()
@@ -19,16 +15,16 @@ const MATCH_SILENCE = /silence_start: ([\w\.]+)[\s\S]+?silence_end: ([\w\.]+)/g
 
 const [locale_code, inputCategoryId] = Deno.args
 if (!locale_code) {
-  console.log('No language_code; These languages are missing files...')
+  console.log('No lang_code; These languages are missing files...')
   const data = await Promise.all(listLanguages().map(findMissingAudioFiles))
   const needFetch = data.filter((langData) => {
-    for (const key in langData.emojisByCategory) {
+    for (const key in langData.byCategory) {
       if (
-        Object.prototype.hasOwnProperty.call(langData.emojisByCategory, key)
+        Object.prototype.hasOwnProperty.call(langData.byCategory, key)
       ) return true
     }
     return false
-  }).map((langData) => langData.locale_code)
+  }).map((langData) => langData.locale)
   console.log(needFetch)
 
   for (const localeCode of needFetch) {
@@ -43,19 +39,17 @@ if (!locale_code) {
   Deno.exit(0)
 }
 
-async function genAudio(locale_code: string) {
+async function genAudio(locale: string) {
   await ensureDir('./tmp/audio')
 
-  const { emojisByCategory, voice_id, pronunciationKeyIndex } =
-    await findMissingAudioFiles(locale_code)
+  const { byCategory, voiceId } = await findMissingAudioFiles(locale)
 
-  console.log(locale_code, voice_id, Object.keys(emojisByCategory))
+  console.log(locale, voiceId, Object.keys(byCategory))
 
   const ttsResults = await ttsByCategory(
-    locale_code,
-    emojisByCategory,
-    voice_id,
-    pronunciationKeyIndex,
+    locale,
+    byCategory,
+    voiceId,
   )
 
   console.log('source audio id: ', JSON.stringify(ttsResults))
@@ -66,66 +60,51 @@ async function genAudio(locale_code: string) {
       console.warn(`Skipping category "${categoryId}": no fileName`)
       continue
     }
-    const emojis = emojisByCategory[categoryId]
+    const category = byCategory[categoryId]
     console.log('source audio saved: ', fileName)
     const tempAudio = join('./tmp/audio', fileName)
-    await writeTranslationAudioFiles(tempAudio, locale_code, emojis)
+    if (Object.keys(category).length) {
+      await writeTranslationAudioFiles(tempAudio, locale, category)
+    }
   }
 }
 
-async function findMissingAudioFiles(locale_code: string) {
-  const lang = await readLanguageFile(locale_code, true)
-  const { columns, pronunciation_key } = lang
-  const voice_id = lang?.meta?.azure?.voice_id
-  if (!voice_id) throw new Error(`${locale_code} does not have a voice_id`)
+async function findMissingAudioFiles(locale: string) {
+  const deck = await readDeck(locale, true)
+  const voiceId = deck?.meta?.voice_id_azure as string
+  if (!voiceId) throw new Error(`${locale} does not have a voiceId`)
 
-  const pronunciationKeyIndex = (pronunciation_key != null)
-    ? columns.indexOf(pronunciation_key)
-    : -1
+  await ensureDir(join(GEN_DIR, locale, 'audio'))
+  const existingAudioFiles = listAudioFiles(locale)
 
-  const emojisByCategory = lang.data
-  await ensureDir(join(GEN_DIR, locale_code, 'audio'))
-  const existingAudioFiles = listAudioFiles(locale_code)
-
-  Object.keys(emojisByCategory).forEach((category) => {
-    Object.keys(emojisByCategory[category])
-      .forEach((key) => {
-        const text = emojisByCategory[category][key][0]
-        const fileName = getAudioFilename(locale_code, key, text)
-        const alreadyExists = existingAudioFiles.has(fileName)
-        if (alreadyExists) delete emojisByCategory[category][key]
-      })
-    if (!Object.keys(emojisByCategory[category]).length) {
-      delete emojisByCategory[category]
+  const byCategory: { [category: string]: { [emojiKey: string]: Note } } = {}
+  for (const id in deck.notes) {
+    const note = deck.notes[id]
+    const { category, emoji, text } = note.content
+    const fileName = getAudioFilename(locale, emoji, text)
+    const exists = existingAudioFiles.has(fileName)
+    if (!exists) {
+      if (!byCategory[category]) byCategory[category] = {}
+      byCategory[category][emoji] = note
     }
-  })
+  }
 
-  return { emojisByCategory, locale_code, pronunciationKeyIndex, voice_id }
+  return { byCategory, locale, voiceId }
 }
 
 async function ttsByCategory(
-  locale_code: string,
-  emojisByCategory: { [category: string]: { [emojiKey: string]: string[] } },
-  voice_id: string,
-  pronunciationKeyIndex: number,
+  locale: string,
+  byCategory: { [category: string]: { [emojiKey: string]: Note } },
+  voiceId: string,
 ): Promise<{ categoryId: string; fileName: string | null }[]> {
   // todo: pool the tts requests
   return await Promise.all(
-    Object.keys(emojisByCategory)
+    Object.keys(byCategory)
       .filter((catId) => !inputCategoryId || (catId === inputCategoryId))
       .map(async (categoryId) => {
-        const texts = Object.keys(emojisByCategory[categoryId])
-          .map((emojiId: string) => {
-            const emoji = emojisByCategory[categoryId][emojiId]
-            if (pronunciationKeyIndex >= 0) return emoji[pronunciationKeyIndex]
-            return emoji[0]
-          })
-        const fileName = await ttsAzure(
-          texts,
-          voice_id,
-          locale_code,
-          categoryId,
-        )
+        const texts = Object.keys(byCategory[categoryId])
+          .map((emoji: string) => byCategory[categoryId][emoji].content.text)
+        const fileName = await ttsAzure(texts, voiceId, locale, categoryId)
         return { categoryId, fileName }
       }),
   )
@@ -138,10 +117,10 @@ async function ttsByCategory(
 async function writeTranslationAudioFiles(
   sourceURL: string,
   locale_code: string,
-  emojis: { [emojiKey: string]: string[] },
+  category: { [emojiKey: string]: Note },
 ) {
-  const names = Object.keys(emojis)
-    .map((key) => [key, emojis[key][0]])
+  const names = Object.keys(category)
+    .map((key) => [key, category[key].content.text])
   const audioDirLocation = join(GEN_DIR, locale_code, 'audio')
 
   try {
@@ -211,9 +190,9 @@ async function writeTranslationAudioFiles(
 
 async function ttsAzure(
   texts: string[],
-  voice_id: string,
-  locale_code: string,
-  category_id: string,
+  voiceId: string,
+  locale: string,
+  categoryId: string,
 ): Promise<string | null> {
   const SILENCE_REQUEST = 2
   const region = env['AZURE_SPEECH_REGION']
@@ -228,8 +207,8 @@ async function ttsAzure(
       'User-Agent': 'curl',
     },
     body: `
-      <speak version='1.0' xml:lang='${locale_code}'>
-        <voice name='${voice_id}' xml:lang='${locale_code}'>
+      <speak version='1.0' xml:lang='${locale}'>
+        <voice name='${voiceId}' xml:lang='${locale}'>
           ${texts.join(`, <break time="${SILENCE_REQUEST}s"/> `)}
         </voice>
       </speak>
@@ -239,7 +218,7 @@ async function ttsAzure(
     console.warn(response)
     return null
   }
-  const fileName = `${locale_code}_${category_id}.mp3`
+  const fileName = `${locale}_${categoryId}.mp3`
   const filePath = join('./tmp/audio', fileName)
   const file = await Deno.open(filePath, { create: true, write: true })
   const arrayBuffer = new Uint8Array(await response.arrayBuffer())

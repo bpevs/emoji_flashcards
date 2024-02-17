@@ -22,9 +22,7 @@ export default class CantoJpMin {
       const jp_string = data[original]
 
       // Split by 1st Delimiter ("/") and 2nd Delimiter (".")
-      const jyutpings = jp_string != undefined
-        ? jp_string.split(/[\/\.]/g)
-        : undefined
+      const jyutpings = jp_string != undefined ? jp_string.split(/[\/\.]/g) : undefined
 
       array.push({ original, jyutpings })
     }

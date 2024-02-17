@@ -14,94 +14,51 @@
  *      If a translation does not exist, translate via API
  *      If key does not exist in en_US, delete
  */
-import {
-  listLanguages,
-  readLanguageFile,
-  readSourceFile,
-  writeLanguageFile,
-} from '@/shared/data_access.ts'
-import { getDataAndColumns } from '@/shared/data_access_helpers.ts'
-import { API, translate } from '@/shared/translate.ts'
+import fromJSON from 'flashcards/adapters/from_json.ts'
+import toJSON from 'flashcards/adapters/to_json.ts'
+
+import { listLanguages, readSourceFile } from '@/shared/data_access.ts'
+import { LANGUAGES_DIR } from '@/shared/paths.ts'
 import plugins from '@/data/plugins/mod.ts'
 import Plugin from '@/shared/plugin.ts'
 
 const [input_locale_code] = Deno.args
 
-await generateAllTranslations()
-Deno.exit(0)
+const sourceFile = await readSourceFile()
+const locales = input_locale_code ? [input_locale_code] : listLanguages()
 
-async function generateAllTranslations() {
-  const sourceFile = await readSourceFile()
-  const localeCodes = input_locale_code ? [input_locale_code] : listLanguages()
+console.info('locale_codes: ', locales)
 
-  console.info('locale_codes: ', localeCodes)
-
-  for (const localeCode of localeCodes) {
-    const languageFile = await readLanguageFile(localeCode)
-    if (!languageFile) {
-      console.warn(`no language file for ${localeCode}`)
-      continue
-    }
-
-    const { locale_code, language_code, strings } = languageFile
+for (const locale of locales) {
+  try {
+    const deckLocation = `${LANGUAGES_DIR}/${locale}.json`
+    const deck = fromJSON(
+      await Deno.readTextFile(deckLocation),
+      { sortField: 'emoji' },
+    )
+    const { locale_code, lang_code } = deck.meta || {}
 
     console.info(`Language (${locale_code}):`)
+    if (!locale_code) throw new Error(`invalid locale: ${locale_code}`)
 
-    const stringsToTranslate = []
-
-    for (const stringKey in sourceFile.strings) {
-      if (!strings[stringKey]) {
-        stringsToTranslate.push(sourceFile.strings[stringKey])
+    // Remote notes that are no longer in source.json
+    for (const id in deck.notes) {
+      const { category, emoji } = deck.notes[id].content
+      // @todo: fix Deck.meta typing
+      // deno-lint-ignore no-explicit-any
+      if (!sourceFile.notes[category][emoji as any]) {
+        delete deck.notes[id]
       }
     }
 
-    console.info(`Website Strings to translate:`)
-    console.info(stringsToTranslate)
+    const plugin = plugins[locale_code] || plugins[lang_code] || new Plugin()
 
-    if (stringsToTranslate.length) {
-      const { azure, deepl } = languageFile?.meta || {}
-      let translationAPI = API.AZURE
-      let translationCode = azure?.translation_locale
-      if (deepl?.language_code) {
-        translationAPI = API.DEEPL
-        translationCode = deepl?.language_code
-      }
-
-      if (!translationCode) throw new Error('No locale to translate')
-
-      const translatedStrings = await translate(
-        stringsToTranslate,
-        translationCode,
-        translationAPI,
-      )
-
-      let index = 0
-      for (const [stringKey] of Object.entries(sourceFile.strings)) {
-        if (!languageFile.strings[stringKey]) {
-          languageFile.strings[stringKey] = translatedStrings[index]
-          index++
-        }
-      }
-    }
-
-    for (const stringKey in languageFile.strings) {
-      if (!sourceFile.strings[stringKey]) {
-        delete languageFile.strings[stringKey]
-      }
-    }
-
-    let plugin = plugins[locale_code] || plugins[language_code]
-    if (!plugin) {
-      console.warn(`No plugin for ${language_code}; using default`)
-      plugin = new Plugin()
-    }
-
-    const rows = await plugin.getLanguageFileRows(sourceFile, languageFile)
-    const [columns, data] = getDataAndColumns(rows)
-    await writeLanguageFile(localeCodes, locale_code, {
-      ...languageFile,
-      columns,
-      data,
-    })
+    const nextDeck = await plugin.getTranslations(sourceFile, deck)
+    await Deno.writeTextFile(deckLocation, toJSON(nextDeck))
+  } catch (e) {
+    console.warn('Failed to translate locale: ', locale)
+    console.error(e)
   }
 }
+
+Deno.exit(0)

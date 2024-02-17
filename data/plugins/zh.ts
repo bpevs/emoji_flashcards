@@ -1,14 +1,10 @@
+import Note from 'flashcards/models/note.ts'
 import pinyin from 'chinese-to-pinyin'
-import Plugin, { TargetRow } from '@/shared/plugin.ts'
+import Plugin from '@/shared/plugin.ts'
 
 export default new Plugin({
-  post(
-    this: Plugin,
-    key: string,
-    { category, text }: TargetRow,
-    prev: TargetRow,
-  ): TargetRow {
-    if (prev) return prev
-    return { key, text, category, pinyin: pinyin(text) || '' }
+  post(next: Note): Note {
+    next.content.pinyin = pinyin(next.content.text) || ''
+    return next
   },
 })
