@@ -1,14 +1,15 @@
 {
   "id": "cs-CZ",
   "idNum": 23111602,
-  "name": "Čeština",
-  "desc": "Čeština 🇨🇿 - Emoji Flashcards",
+  "name": "Čeština 🇨🇿 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Čeština",
   "meta": {
     "lang_code": "cs",
     "locale_code": "cs-CZ",
     "locale_code_deepl": "cs",
     "locale_flag": "🇨🇿",
     "name_en": "Czech",
+    "name_native": "Čeština",
     "voice_id_azure": "cs-CZ-VlastaNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

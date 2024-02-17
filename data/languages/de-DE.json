@@ -1,14 +1,15 @@
 {
   "id": "de-DE",
   "idNum": 23111604,
-  "name": "Deutsch",
-  "desc": "Deutsch 🇩🇪 - Emoji Flashcards",
+  "name": "Deutsch 🇩🇪 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Deutsch",
   "meta": {
     "lang_code": "de",
     "locale_code": "de-DE",
     "locale_code_deepl": "de",
     "locale_flag": "🇩🇪",
     "name_en": "German",
+    "name_native": "Deutsch",
     "voice_id_azure": "de-DE-KillianNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

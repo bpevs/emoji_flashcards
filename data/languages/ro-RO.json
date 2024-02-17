@@ -1,14 +1,15 @@
 {
   "id": "ro-RO",
   "idNum": 23111625,
-  "name": "Română",
-  "desc": "Română 🇷🇴 - Emoji Flashcards",
+  "name": "Română 🇷🇴 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Română",
   "meta": {
     "lang_code": "ro",
     "locale_code": "ro-RO",
     "locale_code_deepl": "ro",
     "locale_flag": "🇷🇴",
     "name_en": "Romanian",
+    "name_native": "Română",
     "voice_id_azure": "ro-RO-AlinaNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

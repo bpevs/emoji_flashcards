@@ -1,14 +1,15 @@
 {
   "id": "et-EE",
   "idNum": 23111609,
-  "name": "Eesti",
-  "desc": "Eesti 🇪🇪 - Emoji Flashcards",
+  "name": "Eesti 🇪🇪 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Eesti",
   "meta": {
     "lang_code": "et",
     "locale_code": "et-EE",
     "locale_code_deepl": "et",
     "locale_flag": "🇪🇪",
     "name_en": "Estonian",
+    "name_native": "Eesti",
     "voice_id_azure": "et-EE-AnuNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

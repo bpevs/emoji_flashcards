@@ -1,13 +1,14 @@
 {
   "id": "th-TH",
   "idNum": 23111638,
-  "name": "ไทย",
-  "desc": "ไทย 🇹🇭 - Emoji Flashcards",
+  "name": "ไทย 🇹🇭 - Emoji Flashcards",
+  "desc": "Emoji flashcards for ไทย",
   "meta": {
     "lang_code": "th",
     "locale_code": "th-TH",
     "locale_flag": "🇹🇭",
     "name_en": "Thai",
+    "name_native": "ไทย",
     "voice_id_azure": "th-TH-NiwatNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

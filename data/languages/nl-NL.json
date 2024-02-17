@@ -1,14 +1,15 @@
 {
   "id": "nl-NL",
   "idNum": 23111621,
-  "name": "Nederlands",
-  "desc": "Nederlands 🇳🇱 - Emoji Flashcards",
+  "name": "Nederlands 🇳🇱 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Nederlands",
   "meta": {
     "lang_code": "nl",
     "locale_code": "nl-NL",
     "locale_code_deepl": "nl",
     "locale_flag": "🇳🇱",
     "name_en": "Dutch",
+    "name_native": "Nederlands",
     "voice_id_azure": "nl-NL-FennaNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

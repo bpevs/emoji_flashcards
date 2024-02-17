@@ -1,14 +1,15 @@
 {
   "id": "ko-KR",
   "idNum": 23111617,
-  "name": "한국어",
-  "desc": "한국어 🇰🇷 - Emoji Flashcards",
+  "name": "한국어 🇰🇷 - Emoji Flashcards",
+  "desc": "Emoji flashcards for 한국어",
   "meta": {
     "lang_code": "ko",
     "locale_code": "ko-KR",
     "locale_code_deepl": "ko",
     "locale_flag": "🇰🇷",
     "name_en": "Korean",
+    "name_native": "한국어",
     "voice_id_azure": "ko-KR-HyunsuNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

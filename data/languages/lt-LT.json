@@ -1,14 +1,15 @@
 {
   "id": "lt-LT",
   "idNum": 23111618,
-  "name": "Lietuvių",
-  "desc": "Lietuvių 🇱🇹 - Emoji Flashcards",
+  "name": "Lietuvių 🇱🇹 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Lietuvių",
   "meta": {
     "lang_code": "lt",
     "locale_code": "lt-LT",
     "locale_code_deepl": "lt",
     "locale_flag": "🇱🇹",
     "name_en": "Lithuanian",
+    "name_native": "Lietuvių",
     "voice_id_azure": "lt-LT-OnaNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

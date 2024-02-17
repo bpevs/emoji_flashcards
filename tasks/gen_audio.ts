@@ -60,10 +60,12 @@ async function genAudio(locale: string) {
       console.warn(`Skipping category "${categoryId}": no fileName`)
       continue
     }
-    const emojis = byCategory[categoryId]
+    const category = byCategory[categoryId]
     console.log('source audio saved: ', fileName)
     const tempAudio = join('./tmp/audio', fileName)
-    await writeTranslationAudioFiles(tempAudio, locale, emojis)
+    if (Object.keys(category).length) {
+      await writeTranslationAudioFiles(tempAudio, locale, category)
+    }
   }
 }
 
@@ -81,8 +83,10 @@ async function findMissingAudioFiles(locale: string) {
     const { category, emoji, text } = note.content
     const fileName = getAudioFilename(locale, emoji, text)
     const exists = existingAudioFiles.has(fileName)
-    if (!byCategory[category]) byCategory[category] = {}
-    if (!exists) byCategory[category][emoji] = note
+    if (!exists) {
+      if (!byCategory[category]) byCategory[category] = {}
+      byCategory[category][emoji] = note
+    }
   }
 
   return { byCategory, locale, voiceId }
@@ -113,10 +117,10 @@ async function ttsByCategory(
 async function writeTranslationAudioFiles(
   sourceURL: string,
   locale_code: string,
-  emojis: { [emojiKey: string]: Note },
+  category: { [emojiKey: string]: Note },
 ) {
-  const names = Object.keys(emojis)
-    .map((key) => [key, emojis[key].content.text])
+  const names = Object.keys(category)
+    .map((key) => [key, category[key].content.text])
   const audioDirLocation = join(GEN_DIR, locale_code, 'audio')
 
   try {

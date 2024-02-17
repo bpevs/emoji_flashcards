@@ -1,14 +1,15 @@
 {
   "id": "sk-SK",
   "idNum": 23111627,
-  "name": "Slovinčina",
-  "desc": "Slovinčina 🇸🇰 - Emoji Flashcards",
+  "name": "Slovinčina 🇸🇰 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Slovinčina",
   "meta": {
     "lang_code": "sk",
     "locale_code": "sk-SK",
     "locale_code_deepl": "sk",
     "locale_flag": "🇸🇰",
     "name_en": "Slovak",
+    "name_native": "Slovinčina",
     "voice_id_azure": "sk-SK-LukasNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

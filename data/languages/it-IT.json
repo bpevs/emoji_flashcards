@@ -1,14 +1,15 @@
 {
   "id": "it-IT",
   "idNum": 23111614,
-  "name": "Italiano",
-  "desc": "Italiano 🇮🇹 - Emoji Flashcards",
+  "name": "Italiano 🇮🇹 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Italiano",
   "meta": {
     "lang_code": "id",
     "locale_code": "it-IT",
     "locale_code_deepl": "it",
     "locale_flag": "🇮🇹",
     "name_en": "Italian",
+    "name_native": "Italiano",
     "voice_id_azure": "it-IT-DiegoNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

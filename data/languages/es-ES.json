@@ -1,14 +1,15 @@
 {
   "id": "es-ES",
   "idNum": 23111608,
-  "name": "Español (España)",
-  "desc": "Español 🇪🇸 - Emoji Flashcards",
+  "name": "Español 🇪🇸 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Español (España)",
   "meta": {
     "lang_code": "es",
     "locale_code": "es-ES",
     "locale_code_deepl": "es",
     "locale_flag": "🇪🇸",
     "name_en": "Spanish (Spain)",
+    "name_native": "Español (España)",
     "name_short": "Español",
     "voice_id_azure": "es-ES-AlvaroNeural"
   },

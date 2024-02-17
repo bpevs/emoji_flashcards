@@ -1,14 +1,15 @@
 {
   "id": "pt-PT",
   "idNum": 23111624,
-  "name": "Português (Portugal)",
-  "desc": "Português 🇵🇹 - Emoji Flashcards",
+  "name": "Português 🇵🇹 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Português (Portugal)",
   "meta": {
     "lang_code": "pt",
     "locale_code": "pt-PT",
     "locale_code_deepl": "pt",
     "locale_flag": "🇵🇹",
     "name_en": "Portuguese (Portugal)",
+    "name_native": "Português (Portugal)",
     "name_short": "Português",
     "voice_id_azure": "pt-PT-FernandaNeural"
   },

@@ -1,14 +1,15 @@
 {
   "id": "da-DK",
   "idNum": 23111603,
-  "name": "Dansk",
-  "desc": "Dansk 🇩🇰 - Emoji Flashcards",
+  "name": "Dansk 🇩🇰 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Dansk",
   "meta": {
     "lang_code": "da",
     "locale_code": "da-DK",
     "locale_code_deepl": "da",
     "locale_flag": "🇩🇰",
     "name_en": "Danish",
+    "name_native": "Dansk",
     "voice_id_azure": "da-DK-JeppeNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

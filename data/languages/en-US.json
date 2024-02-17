@@ -1,14 +1,15 @@
 {
   "id": "en-US",
   "idNum": 23111607,
-  "name": "English (American)",
-  "desc": "English 🇺🇸 - Emoji Flashcards",
+  "name": "English 🇺🇸 - Emoji Flashcards",
+  "desc": "Emoji flashcards for English (American)",
   "meta": {
     "lang_code": "en",
     "locale_code": "en-US",
     "locale_code_deepl": "en",
     "locale_flag": "🇺🇸",
     "name_en": "English (American)",
+    "name_native": "English (American)",
     "name_short": "English",
     "voice_id_azure": "en-US-DavisNeural"
   },

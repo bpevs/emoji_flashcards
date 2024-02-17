@@ -1,13 +1,14 @@
 {
   "id": "es-MX",
   "idNum": 23111643,
-  "name": "Español (México)",
-  "desc": "Español 🇲🇽 - Emoji Flashcards",
+  "name": "Español 🇲🇽 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Español (México)",
   "meta": {
     "lang_code": "es",
     "locale_code": "es-MX",
     "locale_flag": "🇲🇽",
     "name_en": "Spanish (Mexico)",
+    "name_native": "Español (México)",
     "name_short": "Español",
     "voice_id_azure": "es-MX-JorgeNeural"
   },
@@ -370,7 +371,7 @@
     ["people_family", "👨‍👦(👨+👦)", "Padre e hijo"],
     ["people_family", "👨‍👧(👨+👧)", "Padre e hija"],
     ["people_family", "👨‍👩‍👦", "familia"],
-    ["people_family", "👨💍", "marido"],
+    ["people_family", "👨💍", "esposo"],
     ["people_family", "👩‍👦(👩+👦)", "Madre e hijo"],
     ["people_family", "👩‍👧(👩+👧)", "Madre e hija"],
     ["people_family", "👩💍", "esposa"],

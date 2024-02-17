@@ -1,13 +1,14 @@
 {
   "id": "vi-VN",
   "idNum": 23111634,
-  "name": "Tiếng Việt",
-  "desc": "Tiếng Việt 🇻🇳 - Emoji Flashcards",
+  "name": "Tiếng Việt 🇻🇳 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Tiếng Việt",
   "meta": {
     "lang_code": "vi",
     "locale_code": "vi-VN",
     "locale_flag": "🇻🇳",
     "name_en": "Vietnamese",
+    "name_native": "Tiếng Việt",
     "voice_id_azure": "vi-VN-HoaiMyNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

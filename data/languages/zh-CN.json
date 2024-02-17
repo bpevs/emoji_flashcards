@@ -1,14 +1,15 @@
 {
   "id": "zh-CN",
   "idNum": 23111632,
-  "name": "中文（普通话）",
-  "desc": "中文（普通话） 🇨🇳 - Emoji Flashcards",
+  "name": "中文（普通话） 🇨🇳 - Emoji Flashcards",
+  "desc": "Emoji flashcards for 中文（普通话）",
   "meta": {
     "lang_code": "zh",
     "locale_code": "zh-CN",
     "locale_code_deepl": "zh",
     "locale_flag": "🇨🇳",
     "name_en": "Chinese (Mandarin)",
+    "name_native": "中文（普通话）",
     "name_short": "中文",
     "voice_id_azure": "zh-CN-XiaoxiaoNeural"
   },

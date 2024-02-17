@@ -1,14 +1,15 @@
 {
   "id": "lv-LV",
   "idNum": 23111619,
-  "name": "Latviešu",
-  "desc": "Latviešu 🇱🇻 - Emoji Flashcards",
+  "name": "Latviešu 🇱🇻 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Latviešu",
   "meta": {
     "lang_code": "lv",
     "locale_code": "lv-LV",
     "locale_code_deepl": "lv",
     "locale_flag": "🇱🇻",
     "name_en": "Latvian",
+    "name_native": "Latviešu",
     "voice_id_azure": "lv-LV-NilsNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

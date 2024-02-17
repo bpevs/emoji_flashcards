@@ -1,14 +1,15 @@
 {
   "id": "pl-PL",
   "idNum": 23111622,
-  "name": "Polski",
-  "desc": "Polski 🇵🇱 - Emoji Flashcards",
+  "name": "Polski 🇵🇱 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Polski",
   "meta": {
     "lang_code": "pl",
     "locale_code": "pl-PL",
     "locale_code_deepl": "pl",
     "locale_flag": "🇵🇱",
     "name_en": "Polish",
+    "name_native": "Polski",
     "voice_id_azure": "pl-PL-MarekNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

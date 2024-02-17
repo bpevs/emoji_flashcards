@@ -1,14 +1,15 @@
 {
   "id": "sl-SI",
   "idNum": 23111628,
-  "name": "Slovenski",
-  "desc": "Slovenski 🇸🇮 - Emoji Flashcards",
+  "name": "Slovenski 🇸🇮 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Slovenski",
   "meta": {
     "lang_code": "sl",
     "locale_code": "sl-SI",
     "locale_code_deepl": "sl",
     "locale_flag": "🇸🇮",
     "name_en": "Slovenian",
+    "name_native": "Slovenski",
     "voice_id_azure": "sl-SI-RokNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

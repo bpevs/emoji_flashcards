@@ -1,14 +1,15 @@
 {
   "id": "fi-FI",
   "idNum": 23111610,
-  "name": "Suomi",
-  "desc": "Suomi 🇫🇮 - Emoji Flashcards",
+  "name": "Suomi 🇫🇮 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Suomi",
   "meta": {
     "lang_code": "fi",
     "locale_code": "fi-FI",
     "locale_code_deepl": "fi",
     "locale_flag": "🇫🇮",
     "name_en": "Finnish",
+    "name_native": "Suomi",
     "voice_id_azure": "fi-FI-SelmaNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

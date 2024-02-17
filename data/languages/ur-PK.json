@@ -1,13 +1,14 @@
 {
   "id": "ur-PK",
   "idNum": 23111641,
-  "name": "اردو",
-  "desc": "اردو 🇵🇰 - Emoji Flashcards",
+  "name": "اردو 🇵🇰 - Emoji Flashcards",
+  "desc": "Emoji flashcards for اردو",
   "meta": {
     "lang_code": "ur",
     "locale_code": "ur-PK",
     "locale_flag": "🇵🇰",
     "name_en": "Urdu",
+    "name_native": "اردو",
     "rtl": true,
     "voice_id_azure": "ur-PK-AsadNeural"
   },

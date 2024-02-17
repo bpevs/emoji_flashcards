@@ -1,14 +1,15 @@
 {
   "id": "id-ID",
   "idNum": 23111613,
-  "name": "Bahasa Indonesia",
-  "desc": "Bahasa Indonesia 🇮🇩 - Emoji Flashcards",
+  "name": "Bahasa Indonesia 🇮🇩 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Bahasa Indonesia",
   "meta": {
     "lang_code": "id",
     "locale_code": "id-ID",
     "locale_code_deepl": "id",
     "locale_flag": "🇮🇩",
     "name_en": "Indonesian",
+    "name_native": "Bahasa Indonesia",
     "voice_id_azure": "id-ID-GadisNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

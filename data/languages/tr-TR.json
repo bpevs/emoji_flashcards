@@ -1,14 +1,15 @@
 {
   "id": "tr-TR",
   "idNum": 23111630,
-  "name": "Turkiska",
-  "desc": "Turkiska 🇹🇷 - Emoji Flashcards",
+  "name": "Turkiska 🇹🇷 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Turkiska",
   "meta": {
     "lang_code": "tr",
     "locale_code": "tr-TR",
     "locale_code_deepl": "tr",
     "locale_flag": "🇹🇷",
     "name_en": "Turkish",
+    "name_native": "Turkiska",
     "voice_id_azure": "tr-TR-AhmetNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

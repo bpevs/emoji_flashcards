@@ -1,14 +1,15 @@
 {
   "id": "uk-UA",
   "idNum": 23111631,
-  "name": "Українська",
-  "desc": "Українська 🇺🇦 - Emoji Flashcards",
+  "name": "Українська 🇺🇦 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Українська",
   "meta": {
     "lang_code": "uk",
     "locale_code": "uk-UA",
     "locale_code_deepl": "uk",
     "locale_flag": "🇺🇦",
     "name_en": "Ukranian",
+    "name_native": "Українська",
     "voice_id_azure": "uk-UA-PolinaNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

@@ -1,13 +1,14 @@
 {
   "id": "he-IL",
   "idNum": 23111643,
-  "name": "עברית",
-  "desc": "עברית 🇮🇱 - Emoji Flashcards",
+  "name": "עברית 🇮🇱 - Emoji Flashcards",
+  "desc": "Emoji flashcards for עברית",
   "meta": {
     "lang_code": "fa",
     "locale_code": "he-IL",
     "locale_flag": "🇮🇱",
     "name_en": "Hebrew",
+    "name_native": "עברית",
     "rtl": true,
     "voice_id_azure": "he-IL-AvriNeural"
   },

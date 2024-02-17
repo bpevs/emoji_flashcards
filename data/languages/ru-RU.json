@@ -1,14 +1,15 @@
 {
   "id": "ru-RU",
   "idNum": 23111626,
-  "name": "Русский",
-  "desc": "Русский 🇷🇺 - Emoji Flashcards",
+  "name": "Русский 🇷🇺 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Русский",
   "meta": {
     "lang_code": "ru",
     "locale_code": "ru-RU",
     "locale_code_deepl": "ru",
     "locale_flag": "🇷🇺",
     "name_en": "Russian",
+    "name_native": "Русский",
     "voice_id_azure": "ru-RU-SvetlanaNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

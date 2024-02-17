@@ -1,14 +1,15 @@
 {
   "id": "hi-IN",
   "idNum": 23111637,
-  "name": "हिंदी",
-  "desc": "हिंदी 🇮🇳 - Emoji Flashcards",
+  "name": "हिंदी 🇮🇳 - Emoji Flashcards",
+  "desc": "Emoji flashcards for हिंदी",
   "meta": {
     "lang_code": "hi",
     "locale_code": "hi-IN",
     "locale_code_azure": "hi-HI",
     "locale_flag": "🇮🇳",
     "name_en": "Hindi",
+    "name_native": "हिंदी",
     "voice_id_azure": "hi-IN-SwaraNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

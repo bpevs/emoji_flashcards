@@ -1,14 +1,15 @@
 {
   "id": "nb-NO",
   "idNum": 23111620,
-  "name": "Norsk",
-  "desc": "Norsk 🇳🇴 - Emoji Flashcards",
+  "name": "Norsk 🇳🇴 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Norsk",
   "meta": {
     "lang_code": "nb",
     "locale_code": "nb-NO",
     "locale_code_deepl": "nb",
     "locale_flag": "🇳🇴",
     "name_en": "Norwegian",
+    "name_native": "Norsk",
     "voice_id_azure": "nb-NO-FinnNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

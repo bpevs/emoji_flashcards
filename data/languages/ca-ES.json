@@ -1,13 +1,14 @@
 {
   "id": "ca-ES",
   "idNum": 23111636,
-  "name": "Català",
-  "desc": "Català 🇪🇸 - Emoji Flashcards",
+  "name": "Català 🇪🇸 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Català",
   "meta": {
     "lang_code": "ca",
     "locale_code": "ca-ES",
     "locale_flag": "🇪🇸",
     "name_en": "Catalan",
+    "name_native": "Català",
     "voice_id_azure": "ca-ES-EnricNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

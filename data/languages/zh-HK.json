@@ -1,13 +1,14 @@
 {
   "id": "zh-HK",
   "idNum": 23111641,
-  "name": "中文（粵語）",
-  "desc": "中文（粵語） 🇭🇰 - Emoji Flashcards",
+  "name": "中文（粵語） 🇭🇰 - Emoji Flashcards",
+  "desc": "Emoji flashcards for 中文（粵語）",
   "meta": {
     "lang_code": "zh",
     "locale_code": "zh-HK",
     "locale_flag": "🇭🇰",
     "name_en": "Chinese (Cantonese)",
+    "name_native": "中文（粵語）",
     "name_short": "中文",
     "voice_id_azure": "zh-HK-WanLungNeural"
   },

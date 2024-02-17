@@ -1,14 +1,15 @@
 {
   "id": "bg-BG",
   "idNum": 23111601,
-  "name": "Български",
-  "desc": "Български 🇧🇬 - Emoji Flashcards",
+  "name": "Български 🇧🇬 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Български",
   "meta": {
     "lang_code": "bg",
     "locale_code": "bg-BG",
     "locale_code_deepl": "bg",
     "locale_flag": "🇧🇬",
     "name_en": "Bulgarian",
+    "name_native": "Български",
     "voice_id_azure": "bg-BG-KalinaNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

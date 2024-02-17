@@ -1,14 +1,15 @@
 {
   "id": "hu-HU",
   "idNum": 23111612,
-  "name": "Magyar",
-  "desc": "Magyar 🇭🇺 - Emoji Flashcards",
+  "name": "Magyar 🇭🇺 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Magyar",
   "meta": {
     "lang_code": "hu",
     "locale_code": "hu-HU",
     "locale_code_deepl": "hu",
     "locale_flag": "🇭🇺",
     "name_en": "Hungarian",
+    "name_native": "Magyar",
     "voice_id_azure": "hu-HU-TamasNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

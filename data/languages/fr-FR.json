@@ -1,14 +1,15 @@
 {
   "id": "fr-FR",
   "idNum": 23111611,
-  "name": "Français",
-  "desc": "Français 🇫🇷 - Emoji Flashcards",
+  "name": "Français 🇫🇷 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Français",
   "meta": {
     "lang_code": "fr",
     "locale_code": "fr-FR",
     "locale_code_deepl": "fr",
     "locale_flag": "🇫🇷",
     "name_en": "French",
+    "name_native": "Français",
     "voice_id_azure": "fr-FR-HenriNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },

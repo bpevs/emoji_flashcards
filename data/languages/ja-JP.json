@@ -1,14 +1,15 @@
 {
   "id": "ja-JP",
   "idNum": 23111615,
-  "name": "日本語",
-  "desc": "日本語 🇯🇵 - Emoji Flashcards",
+  "name": "日本語 🇯🇵 - Emoji Flashcards",
+  "desc": "Emoji flashcards for 日本語",
   "meta": {
     "lang_code": "ja",
     "locale_code": "ja-JP",
     "locale_code_deepl": "ja",
     "locale_flag": "🇯🇵",
     "name_en": "Japanese",
+    "name_native": "日本語",
     "voice_id_azure": "ja-JP-NanamiNeural"
   },
   "content": {

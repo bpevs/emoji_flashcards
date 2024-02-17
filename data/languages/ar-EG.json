@@ -1,13 +1,14 @@
 {
   "id": "ar-EG",
   "idNum": 23111639,
-  "name": "الأفريقانية",
-  "desc": "الأفريقانية 🇪🇬 - Emoji Flashcards",
+  "name": "الأفريقانية 🇪🇬 - Emoji Flashcards",
+  "desc": "Emoji flashcards for الأفريقانية",
   "meta": {
     "lang_code": "ar",
     "locale_code": "ar-EG",
     "locale_flag": "🇪🇬",
     "name_en": "Arabic",
+    "name_native": "الأفريقانية",
     "rtl": true,
     "voice_id_azure": "ar-EG-ShakirNeural"
   },

@@ -49,7 +49,7 @@ const localesResults = locales
       lang_code: languageFile.meta.lang_code,
       locale_code: languageFile.meta.locale_code,
       locale_flag: languageFile.meta.locale_flag,
-      native_name: languageFile.name,
+      native_name: languageFile.meta.name_native,
     }
   })
 

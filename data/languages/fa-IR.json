@@ -1,13 +1,14 @@
 {
   "id": "fa-IR",
   "idNum": 23111642,
-  "name": "فارسی",
-  "desc": "فارسی 🇮🇷 - Emoji Flashcards",
+  "name": "فارسی 🇮🇷 - Emoji Flashcards",
+  "desc": "Emoji flashcards for فارسی",
   "meta": {
     "lang_code": "fa",
     "locale_code": "fa-IR",
     "locale_flag": "🇮🇷",
     "name_en": "Persian",
+    "name_native": "فارسی",
     "rtl": true,
     "voice_id_azure": "fa-IR-DilaraNeural"
   },

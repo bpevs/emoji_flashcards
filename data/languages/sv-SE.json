@@ -1,14 +1,15 @@
 {
   "id": "sv-SE",
   "idNum": 23111629,
-  "name": "Svenska",
-  "desc": "Svenska 🇸🇪 - Emoji Flashcards",
+  "name": "Svenska 🇸🇪 - Emoji Flashcards",
+  "desc": "Emoji flashcards for Svenska",
   "meta": {
     "lang_code": "sv",
     "locale_code": "sv-SE",
     "locale_code_deepl": "sv",
     "locale_flag": "🇸🇪",
     "name_en": "Swedish",
+    "name_native": "Svenska",
     "voice_id_azure": "sv-SE-MattiasNeural"
   },
   "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
