@@ -1,15 +1,15 @@
 // Validate that there are no duplicate keys in source.json
 import { readSourceFile } from '@/shared/data_access.ts'
 
-const { data } = await readSourceFile()
+const { notes } = await readSourceFile()
 
 const emojisSet = new Set<string>()
 const textsSet = new Set<string>()
 const duplicates = new Set<string>()
 
-Object.keys(data).forEach((category) => {
-  Object.keys(data[category]).forEach((emojiKey) => {
-    const text = data[category][emojiKey][0]
+Object.keys(notes).forEach((category) => {
+  Object.keys(notes[category]).forEach((emojiKey) => {
+    const text = notes[category][emojiKey][0]
     if (emojisSet.has(emojiKey)) {
       console.log(`duplicate emoji: ${emojiKey}`, text)
       duplicates.add(emojiKey)

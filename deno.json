@@ -39,6 +39,6 @@
     "gen:www": "deno run --allow-env --allow-net --allow-read --allow-write tasks/gen_www.ts",
     "dev": "deno run --allow-write --allow-net --allow-read --allow-run --allow-env --watch www.tsx",
     "test": "deno fmt && deno lint && deno task check && deno test -A",
-    "validate:source": "deno run --allow-read tasks/validate_source.ts"
+    "validate": "deno run --allow-read tasks/validate_source.ts"
   }
 }

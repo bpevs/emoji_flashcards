@@ -5,7 +5,7 @@ import { DATA_DIR, LANGUAGES_DIR, STRINGS_DIR } from '@/shared/paths.ts'
 import { listLanguages } from '@/shared/data_access.ts'
 import { API, translate } from '@/shared/translate.ts'
 
-const locales = (await listLanguages()).sort()
+const locales = listLanguages().sort()
 
 /**
  * Generates /data/strings files
@@ -44,6 +44,7 @@ const localesResults = locales
   .map(async (locale_code: string) => {
     const text = await Deno.readTextFile(`${LANGUAGES_DIR}/${locale_code}.json`)
     const languageFile = fromJSON(text, { sortField: 'emoji' })
+    if (!languageFile?.meta) throw new Error(`Bad lang file: ${locale_code}`)
 
     return {
       lang_code: languageFile.meta.lang_code,
