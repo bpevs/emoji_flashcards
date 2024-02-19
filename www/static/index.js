@@ -1,25 +1,33 @@
 const params = (new URL(document.location.toString())).searchParams
-const initialIndex = parseInt(params.get('i') || '0')
-const userLangCode = params.get('user') || browserLang()?.locale_code || 'en-US'
-const noteLangCode = params.get('note') || randomLang().locale_code
 
-if (!params.get('user') || !params.get('note')) {
-  setParam('user', userLangCode, 'replace')
+let userLangCode = params.get('user')
+let noteLangCode = params.get('note')
+
+if (!noteLangCode) {
+  const notUserLangs = window.locales.filter((l) => l.locale_code !== userLangCode)
+  const randomLang = notUserLangs[Math.floor(Math.random() * notUserLangs.length)]
+  noteLangCode = randomLang?.locale_code
   setParam('note', noteLangCode, 'assign')
 }
 
-const noteSelector = document.getElementById('note-lang-selector')
-noteSelector.onchange = function () {
+if (!userLangCode) {
+  const browserLang = window.locales
+    .find((l) => l.locale_code === navigator.language)?.locale_code
+  userLangCode = browserLang || 'en-US'
+  setParam('user', userLangCode, 'replace')
+}
+
+document.getElementById('note-lang-selector').onchange = function () {
   setParam('note', this.value, 'assign')
 }
 
-const userSelector = document.getElementById('user-lang-selector')
-userSelector.onchange = function () {
+document.getElementById('user-lang-selector').onchange = function () {
   setParam('user', this.value, 'assign')
 }
+
 let categories = []
 ;(async function () {
-  let index = initialIndex
+  let index = parseInt(params.get('i') || '0')
   let audioEl, answerEl
   const noteEl = document.getElementById('note-stack')
   const noteSelectorWrapperEl = document.getElementById('note-selector-wrapper')
@@ -90,15 +98,6 @@ let categories = []
     }
   }
 })()
-
-function browserLang() {
-  return window.locales.find((locale) => locale.locale_code === navigator.language)
-}
-
-function randomLang() {
-  const noUserLang = window.locales.filter((l) => l.locale_code !== userLangCode)
-  return noUserLang[Math.floor(Math.random() * noUserLang.length)]
-}
 
 function setParam(key, value, method) {
   if (!value) return
