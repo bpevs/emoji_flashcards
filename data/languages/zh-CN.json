@@ -1,7 +1,7 @@
 {
   "id": "zh-CN",
   "idNum": 23111632,
-  "name": "中文（普通话） 🇨🇳 - Emoji Flashcards",
+  "name": "中文 🇨🇳 - Emoji Flashcards",
   "desc": "Emoji flashcards for 中文（普通话）",
   "meta": {
     "lang_code": "zh",
@@ -206,7 +206,6 @@
     ["nature", "🏖️🏜️⏳", "沙", "shā"],
     ["nature", "💎", "钻石", "zuàn shí"],
     ["nature", "💨", "风", "fēng"],
-    ["nature", "💨💨", "风", "fēng"],
     ["nature", "🔥", "火", "huǒ"],
     ["nature", "🗿🪨", "石头", "shí tou"],
     ["nature", "🥃🪟🔎", "玻璃", "bō lí"],

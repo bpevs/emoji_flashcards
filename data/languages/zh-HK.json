@@ -1,7 +1,7 @@
 {
   "id": "zh-HK",
   "idNum": 23111641,
-  "name": "中文（粵語） 🇭🇰 - Emoji Flashcards",
+  "name": "中文 🇭🇰 - Emoji Flashcards",
   "desc": "Emoji flashcards for 中文（粵語）",
   "meta": {
     "lang_code": "zh",
@@ -205,7 +205,6 @@
     ["nature", "🏖️🏜️⏳", "沙", "saa1"],
     ["nature", "💎", "鑽石", "zyun3 sek6"],
     ["nature", "💨", "空氣", "hung1 hei3"],
-    ["nature", "💨💨", "風", "fung1"],
     ["nature", "🔥", "火災", "fo2 zoi1"],
     ["nature", "🗿🪨", "石頭", "sek6 tau4"],
     ["nature", "🥃🪟🔎", "玻璃", "bo1 lei4"],
