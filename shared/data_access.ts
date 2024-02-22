@@ -1,7 +1,6 @@
+import { Deck } from '@flashcard/core'
+import { fromJSON } from '@flashcard/adapters'
 import { join } from 'std/path/mod.ts'
-import fromJSON from 'flashcards/adapters/from_json.ts'
-import Deck from 'flashcards/models/deck.ts'
-import Note from 'flashcards/models/note.ts'
 import type { ExtensionFile, SourceFile } from '@/shared/types.ts'
 import { EXTENSIONS_DIR, GEN_DIR, LANGUAGES_DIR, SOURCE_FILE } from './paths.ts'
 
@@ -33,7 +32,7 @@ export async function readDeck(
 ): Promise<Deck> {
   const deckLocation = `${LANGUAGES_DIR}/${locale}.json`
   const deck = fromJSON(await Deno.readTextFile(deckLocation), { sortField: 'emoji' })
-  const fields: string[] = deck.content.fields
+  const fields: string[] = deck.fields
 
   if (includeExtensions) {
     try {
@@ -48,7 +47,7 @@ export async function readDeck(
           const id = `${deck.id}_${emoji}`
           const content: { [key: string]: string } = {}
           fields.forEach((field, index) => content[field] = row[index])
-          deck.addNote(new Note({ id, content }))
+          deck.addNote(id, content)
         })
       })
     } catch { /* No extension file */ }

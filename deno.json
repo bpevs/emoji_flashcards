@@ -12,7 +12,8 @@
     "std/": "https://deno.land/std@0.200.0/",
     "hono": "https://deno.land/x/hono/mod.ts",
     "hono/": "https://deno.land/x/hono/",
-    "flashcards/": "https://raw.githubusercontent.com/bpevs/flashcards/main/",
+    "@flashcard/adapters": "jsr:@flashcard/adapters@0.0.2",
+    "@flashcard/core": "jsr:@flashcard/core@0.0.2",
     "@/": "./",
 
     "kuroshiro": "npm:kuroshiro",

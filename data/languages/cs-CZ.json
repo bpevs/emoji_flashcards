@@ -12,7 +12,8 @@
     "name_native": "Čeština",
     "voice_id_azure": "cs-CZ-VlastaNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "kočka"],
     ["animal", "🐛🐞🐝", "brouci"],

@@ -12,7 +12,8 @@
     "name_native": "Ελληνικά",
     "voice_id_azure": "el-GR-AthinaNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "γάτα"],
     ["animal", "🐛🐞🐝", "σφάλματα"],

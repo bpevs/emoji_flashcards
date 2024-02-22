@@ -12,7 +12,8 @@
     "name_native": "हिंदी",
     "voice_id_azure": "hi-IN-SwaraNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "बिल्ली"],
     ["animal", "🐛🐞🐝", "कीड़े"],

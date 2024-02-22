@@ -12,7 +12,8 @@
     "name_native": "Latviešu",
     "voice_id_azure": "lv-LV-NilsNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "kaķis"],
     ["animal", "🐛🐞🐝", "kukaiņi"],

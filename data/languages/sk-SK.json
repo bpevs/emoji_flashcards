@@ -12,7 +12,8 @@
     "name_native": "Slovinčina",
     "voice_id_azure": "sk-SK-LukasNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "mačka"],
     ["animal", "🐛🐞🐝", "chrobáky"],

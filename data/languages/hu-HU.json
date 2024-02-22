@@ -12,7 +12,8 @@
     "name_native": "Magyar",
     "voice_id_azure": "hu-HU-TamasNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "macska"],
     ["animal", "🐛🐞🐝", "bogarak"],

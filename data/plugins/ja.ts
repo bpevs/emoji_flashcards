@@ -1,4 +1,4 @@
-import Note from 'flashcards/models/note.ts'
+import { Note } from '@flashcard/core'
 import Kuroshiro from 'kuroshiro'
 import KuromojiAnalyzer from 'kuroshiro-analyzer-kuromoji'
 import Plugin from '@/shared/plugin.ts'

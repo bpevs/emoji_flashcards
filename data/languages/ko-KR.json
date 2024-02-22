@@ -12,7 +12,8 @@
     "name_native": "한국어",
     "voice_id_azure": "ko-KR-HyunsuNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "고양이"],
     ["animal", "🐛🐞🐝", "벌레들"],

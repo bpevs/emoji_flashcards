@@ -1,5 +1,4 @@
-import Deck from 'flashcards/models/deck.ts'
-import Note from 'flashcards/models/note.ts'
+import { Deck, Note } from '@flashcard/core'
 import { API, translate } from '@/shared/translate.ts'
 import type { SourceFile } from '@/shared/types.ts'
 
@@ -64,7 +63,7 @@ export default class Plugin {
       for (const otherKey in other) {
         content[otherKey] = await other[otherKey]
       }
-      deck.addNote(await this.post(new Note({ id: emoji, content }), prev))
+      deck.notes[emoji] = await this.post(new Note(emoji, content), prev)
     }
 
     return deck
@@ -116,8 +115,8 @@ export default class Plugin {
         prev,
         props: {
           emoji,
-          category: prev.content.category,
-          text: prev.content.text,
+          category: String(prev.content.category),
+          text: String(prev.content.text),
         },
       }
     }

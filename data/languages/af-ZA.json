@@ -11,7 +11,8 @@
     "name_native": "Afrikaans",
     "voice_id_azure": "af-ZA-AdriNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "Kat"],
     ["animal", "🐛🐞🐝", "Foute"],

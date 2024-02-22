@@ -1,4 +1,4 @@
-import Template from 'flashcards/models/template.ts'
+import { Template } from '@flashcard/core'
 import { hintButton, hintDisplay } from './default.js'
 
 const romajiButton = hintButton.replace(/{{hint}}/g, '{{romaji}}')

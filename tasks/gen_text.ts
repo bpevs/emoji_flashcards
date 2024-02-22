@@ -14,9 +14,7 @@
  *      If a translation does not exist, translate via API
  *      If key does not exist in en_US, delete
  */
-import fromJSON from 'flashcards/adapters/from_json.ts'
-import toJSON from 'flashcards/adapters/to_json.ts'
-
+import { fromJSON, toJSON } from '@flashcard/adapters'
 import { listLanguages, readSourceFile } from '@/shared/data_access.ts'
 import { LANGUAGES_DIR } from '@/shared/paths.ts'
 import plugins from '@/data/plugins/mod.ts'

@@ -12,7 +12,8 @@
     "name_native": "Bahasa Indonesia",
     "voice_id_azure": "id-ID-GadisNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "kucing"],
     ["animal", "🐛🐞🐝", "serangga"],

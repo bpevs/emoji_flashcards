@@ -1,4 +1,4 @@
-import Template from 'flashcards/models/template.ts'
+import { Template } from '@flashcard/core'
 import { hintButton, hintDisplay } from './default.js'
 
 const pinyinButton = hintButton.replace(/{{hint}}/g, '{{pinyin}}')

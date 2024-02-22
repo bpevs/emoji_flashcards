@@ -12,7 +12,8 @@
     "name_native": "Eesti",
     "voice_id_azure": "et-EE-AnuNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "kass"],
     ["animal", "🐛🐞🐝", "putukad"],

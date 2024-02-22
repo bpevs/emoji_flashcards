@@ -12,7 +12,8 @@
     "name_short": "Español",
     "voice_id_azure": "es-MX-JorgeNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "gato"],
     ["animal", "🐛🐞🐝", "bugs"],

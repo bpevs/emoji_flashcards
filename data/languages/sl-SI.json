@@ -12,7 +12,8 @@
     "name_native": "Slovenski",
     "voice_id_azure": "sl-SI-RokNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "mačka"],
     ["animal", "🐛🐞🐝", "hrošči"],

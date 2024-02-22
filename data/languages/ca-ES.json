@@ -11,7 +11,8 @@
     "name_native": "Català",
     "voice_id_azure": "ca-ES-EnricNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "gat"],
     ["animal", "🐛🐞🐝", "Errors"],

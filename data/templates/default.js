@@ -1,4 +1,4 @@
-import Template from 'flashcards/models/template.ts'
+import { Template } from '@flashcard/core'
 
 export const hintButton = `
 <button class="button" type="button"  onclick="

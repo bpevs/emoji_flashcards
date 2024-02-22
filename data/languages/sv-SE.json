@@ -12,7 +12,8 @@
     "name_native": "Svenska",
     "voice_id_azure": "sv-SE-MattiasNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "katt"],
     ["animal", "🐛🐞🐝", "Insekter"],

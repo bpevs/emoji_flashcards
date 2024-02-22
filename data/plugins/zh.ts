@@ -1,4 +1,4 @@
-import Note from 'flashcards/models/note.ts'
+import { Note } from '@flashcard/core'
 import pinyin from 'chinese-to-pinyin'
 import Plugin from '@/shared/plugin.ts'
 

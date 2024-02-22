@@ -12,7 +12,8 @@
     "name_native": "Русский",
     "voice_id_azure": "ru-RU-SvetlanaNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "кошка"],
     ["animal", "🐛🐞🐝", "жуки"],

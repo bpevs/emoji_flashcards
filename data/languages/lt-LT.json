@@ -12,7 +12,8 @@
     "name_native": "Lietuvių",
     "voice_id_azure": "lt-LT-OnaNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "katė"],
     ["animal", "🐛🐞🐝", "vabalai"],

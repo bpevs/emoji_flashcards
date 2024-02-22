@@ -1,6 +1,4 @@
-import Deck from 'flashcards/models/deck.ts'
-import Note from 'flashcards/models/note.ts'
-
+import { Deck, Note } from '@flashcard/core'
 import { assertSpyCallAsync, assertSpyCalls, Stub, stub } from 'std/testing/mock.ts'
 import { assertEquals } from 'std/assert/mod.ts'
 import { afterEach, beforeEach, it } from 'std/testing/bdd.ts'
@@ -8,7 +6,7 @@ import { SourceFile } from '@/shared/types.ts'
 import { _internals } from '@/shared/translate.ts'
 import Plugin, { SourceRow, TargetRow } from '../plugin.ts'
 
-type Rows = Array<{ [key: string]: string }>
+type Rows = Array<{ [key: string]: string | number }>
 
 const baseSourceFile: SourceFile = Object.freeze({
   version: '0.1.1',
@@ -21,13 +19,10 @@ const baseSourceFile: SourceFile = Object.freeze({
 })
 
 function createEmptyDeck(): Deck {
-  return new Deck({
-    id: 'uwu-UWU_🏳️‍🌈',
+  return new Deck('uwu-UWU_🏳️‍🌈', {
     name: 'UWU lang',
     desc: 'The UWU Language',
-    content: {
-      fields: ['emoji', 'category', 'text'],
-    },
+    fields: ['emoji', 'category', 'text'],
     meta: {
       name_en: 'UWU lang',
       lang_code: 'uwu',
@@ -78,7 +73,11 @@ it('Runs with custom pre plugin', async () => {
       { category, text_en, pos }: SourceRow,
       prev: Note,
     ): TargetRow {
-      if (prev?.content?.text) {
+      if (
+        typeof prev?.content?.text === 'string' &&
+        typeof prev?.content?.category === 'string' &&
+        typeof prev?.content?.hint === 'string'
+      ) {
         const { text, category, hint } = prev.content
         return { prev, props: { emoji, text, category, hint } }
       }
@@ -138,7 +137,7 @@ it('Runs with custom post plugin', async () => {
   const plugin = new Plugin({
     async post(next: Note, prev?: Note) {
       if (prev) return prev
-      next.content.hint = await createHintUwu(next.content.text)
+      next.content.hint = await createHintUwu(String(next.content.text))
       return next
     },
   })

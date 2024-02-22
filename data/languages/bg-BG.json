@@ -12,7 +12,8 @@
     "name_native": "Български",
     "voice_id_azure": "bg-BG-KalinaNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "котка"],
     ["animal", "🐛🐞🐝", "буболечки"],

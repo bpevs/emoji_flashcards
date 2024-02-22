@@ -12,7 +12,8 @@
     "name_native": "Українська",
     "voice_id_azure": "uk-UA-PolinaNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "кішка"],
     ["animal", "🐛🐞🐝", "жуки"],

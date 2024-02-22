@@ -13,7 +13,8 @@
     "name_short": "English",
     "voice_id_azure": "en-US-DavisNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "cat"],
     ["animal", "🐛🐞🐝", "bugs"],

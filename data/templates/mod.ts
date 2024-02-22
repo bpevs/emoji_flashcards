@@ -1,4 +1,4 @@
-import Template from 'flashcards/models/template.ts'
+import { Template } from '@flashcard/core'
 import { nohint } from './default.js'
 
 import es from './es.ts'

@@ -12,7 +12,8 @@
     "name_native": "Italiano",
     "voice_id_azure": "it-IT-DiegoNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "gatto"],
     ["animal", "🐛🐞🐝", "insetti"],

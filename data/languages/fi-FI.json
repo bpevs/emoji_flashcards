@@ -12,7 +12,8 @@
     "name_native": "Suomi",
     "voice_id_azure": "fi-FI-SelmaNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "kissa"],
     ["animal", "🐛🐞🐝", "ötökät"],

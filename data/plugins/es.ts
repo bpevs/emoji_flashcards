@@ -1,4 +1,4 @@
-import Note from 'flashcards/models/note.ts'
+import { Note } from '@flashcard/core'
 import Plugin, { SourceRow, TargetRow } from '@/shared/plugin.ts'
 
 export default new Plugin({
@@ -12,8 +12,8 @@ export default new Plugin({
       return {
         prev,
         props: {
-          emoji,
-          category,
+          emoji: String(emoji),
+          category: String(category),
           text: this
             .queueTranslation(`(to) ${text_en}`)
             .then((text: string) => text.replace(/\(.*\)\s/, '')),
@@ -28,9 +28,9 @@ export default new Plugin({
         prev,
         props: {
           emoji,
-          category: prev.content.category,
-          text: prev.content.text,
-          hint: prev.content.hint || '',
+          category: String(prev.content.category),
+          text: String(prev.content.text),
+          hint: String(prev.content.hint || ''),
         },
       }
     }

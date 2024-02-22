@@ -12,7 +12,8 @@
     "name_native": "Nederlands",
     "voice_id_azure": "nl-NL-FennaNeural"
   },
-  "content": { "fields": ["category", "emoji", "text"], "watch": ["emoji"] },
+  "fields": ["category", "emoji", "text"],
+  "watch": ["emoji"],
   "notes": [
     ["animal", "🐈", "kat"],
     ["animal", "🐛🐞🐝", "insecten"],

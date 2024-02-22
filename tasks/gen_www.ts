@@ -1,6 +1,6 @@
 import stringify from 'npm:json-stringify-pretty-compact'
 import { join } from 'std/path/mod.ts'
-import fromJSON from 'flashcards/adapters/from_json.ts'
+import { fromJSON } from '@flashcard/adapters'
 import { DATA_DIR, LANGUAGES_DIR, STRINGS_DIR } from '@/shared/paths.ts'
 import { listLanguages } from '@/shared/data_access.ts'
 import { API, translate } from '@/shared/translate.ts'

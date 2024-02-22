@@ -1,4 +1,4 @@
-import Note from 'flashcards/models/note.ts'
+import { Note } from '@flashcard/core'
 import { ensureDir } from 'std/fs/mod.ts'
 import { load } from 'std/dotenv/mod.ts'
 import { writeAll } from 'std/streams/write_all.ts'
@@ -81,7 +81,7 @@ async function findMissingAudioFiles(locale: string) {
   for (const id in deck.notes) {
     const note = deck.notes[id]
     const { category, emoji, text } = note.content
-    const fileName = getAudioFilename(locale, emoji, text)
+    const fileName = getAudioFilename(locale, String(emoji), String(text))
     const exists = existingAudioFiles.has(fileName)
     if (!exists) {
       if (!byCategory[category]) byCategory[category] = {}
@@ -103,7 +103,7 @@ async function ttsByCategory(
       .filter((catId) => !inputCategoryId || (catId === inputCategoryId))
       .map(async (categoryId) => {
         const texts = Object.keys(byCategory[categoryId])
-          .map((emoji: string) => byCategory[categoryId][emoji].content.text)
+          .map((emoji: string) => String(byCategory[categoryId][emoji].content.text))
         const fileName = await ttsAzure(texts, voiceId, locale, categoryId)
         return { categoryId, fileName }
       }),
@@ -150,7 +150,7 @@ async function writeTranslationAudioFiles(
 
     const [key, text] = names[count]
 
-    const name = getAudioFilename(locale_code, key, text)
+    const name = getAudioFilename(locale_code, String(key), String(text))
     count = count + 1
 
     const outFile = join(audioDirLocation, name)
@@ -174,7 +174,7 @@ async function writeTranslationAudioFiles(
     console.warn(`Careful about mismatching: ${sourceURL}`)
     return
   }
-  const name = getAudioFilename(locale_code, key, text)
+  const name = getAudioFilename(locale_code, String(key), String(text))
   count = count + 1
 
   const outFile = join(audioDirLocation, name)

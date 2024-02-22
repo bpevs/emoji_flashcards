@@ -2,16 +2,41 @@
   "version": "3",
   "packages": {
     "specifiers": {
+      "jsr:@flashcard/adapters@0.0.2": "jsr:@flashcard/adapters@0.0.2",
+      "jsr:@flashcard/core@0.0.2": "jsr:@flashcard/core@0.0.2",
+      "jsr:@std/assert@^0.216.0": "jsr:@std/assert@0.216.0",
       "jsr:@std/collections": "jsr:@std/collections@0.216.0",
+      "jsr:@std/crypto@0.216": "jsr:@std/crypto@0.216.0",
+      "jsr:@std/encoding@^0.216.0": "jsr:@std/encoding@0.216.0",
       "npm:chinese-to-pinyin": "npm:chinese-to-pinyin@1.3.1",
       "npm:json-stringify-pretty-compact": "npm:json-stringify-pretty-compact@4.0.0",
+      "npm:json-stringify-pretty-compact@4.0.0": "npm:json-stringify-pretty-compact@4.0.0",
       "npm:jszip": "npm:jszip@3.10.1",
+      "npm:jszip@3.10.1": "npm:jszip@3.10.1",
       "npm:kuroshiro": "npm:kuroshiro@1.2.0",
       "npm:kuroshiro-analyzer-kuromoji": "npm:kuroshiro-analyzer-kuromoji@1.1.0",
-      "npm:sql.js": "npm:sql.js@1.10.2"
+      "npm:sql.js": "npm:sql.js@1.10.2",
+      "npm:sql.js@1.10.2": "npm:sql.js@1.10.2"
     },
     "jsr": {
-      "@std/collections@0.216.0": {}
+      "@flashcard/adapters@0.0.2": {
+        "dependencies": [
+          "jsr:@std/crypto@0.216",
+          "npm:json-stringify-pretty-compact@4.0.0",
+          "npm:jszip@3.10.1",
+          "npm:sql.js@1.10.2"
+        ]
+      },
+      "@flashcard/core@0.0.2": {},
+      "@std/assert@0.216.0": {},
+      "@std/collections@0.216.0": {},
+      "@std/crypto@0.216.0": {
+        "dependencies": [
+          "jsr:@std/assert@^0.216.0",
+          "jsr:@std/encoding@^0.216.0"
+        ]
+      },
+      "@std/encoding@0.216.0": {}
     },
     "npm": {
       "@babel/runtime@7.23.9": {
@@ -359,8 +384,38 @@
     "https://deno.land/x/hono@v4.0.1/utils/url.ts": "d9d307a495e7dfc6e916fbcfa74c2d8d23e8e685bddc5e6ebc9c0f784345a01a",
     "https://deno.land/x/hono@v4.0.1/validator/index.ts": "6c986e8b91dcf857ecc8164a506ae8eea8665792a4ff7215471df669c632ae7c",
     "https://deno.land/x/hono@v4.0.1/validator/validator.ts": "1a7b524292662e5219fd61a9872c2586aa23a2328800211a8fdc268b089f75f1",
+    "https://jsr.io/@flashcard/adapters/0.0.2/from_json.ts": "5a75cfcf3643bf335dfd81206ce173050c1f1dafc331cbdb9cabac8b24a3f4b4",
+    "https://jsr.io/@flashcard/adapters/0.0.2/from_obj.ts": "1a308d29bf9ce276b3ff53af311552b9434ef1af0643f424aaf7067d10becd6d",
+    "https://jsr.io/@flashcard/adapters/0.0.2/from_tsv.ts": "4b4ee17659d195fe98c7fa8ff59447afd2e506cea8ee149283b64dade91c4c23",
+    "https://jsr.io/@flashcard/adapters/0.0.2/mod.ts": "998d172f098f98d358cb2bfdc7877217ac8f6b7b907dcac7158f3e36d895891d",
+    "https://jsr.io/@flashcard/adapters/0.0.2/to_apkg.ts": "dd89255f1fca4f13dea90763e882b42be31b1c1169703e33806f63d1bbabbd60",
+    "https://jsr.io/@flashcard/adapters/0.0.2/to_json.ts": "b90584abc0c37479d0e8384a19b31d94dad2bb3688cd0ab675c89d1ac4b15a78",
+    "https://jsr.io/@flashcard/adapters/0.0.2/to_obj.ts": "b9ec33de7f90da97340f5b0598c762d332cdbdac34f67233d25912732dfbd8a8",
+    "https://jsr.io/@flashcard/adapters/0.0.2/to_tsv.ts": "4246efdf2452a6478ac4d3e8f2b2032833ea5a6228ea23193e70f1dbedc126e8",
+    "https://jsr.io/@flashcard/adapters/0.0.2/types.ts": "9c701b7a2f152f15a1ef124a5659228d650485d097f8acfca4247eecd0329a4c",
+    "https://jsr.io/@flashcard/core/0.0.2/card.ts": "c9b7b5bc7e54625fd7369255598bde9fe93a645bfc42c077fa29d6baf8d65937",
+    "https://jsr.io/@flashcard/core/0.0.2/deck.ts": "f3a34f3dea13bcf45d463a2aa2185975e5da0780cb83c24fc73fbebdc93a514e",
+    "https://jsr.io/@flashcard/core/0.0.2/mod.ts": "de9be4e0e3a0b86bc2a79b1f07d334275e10c1ddc62bf9846e8e392d4d33b641",
+    "https://jsr.io/@flashcard/core/0.0.2/note.ts": "0b0352595b777f3d1d1240ab9816fc81cc871c66580db1013b5778d8c7afec51",
+    "https://jsr.io/@flashcard/core/0.0.2/scheduler.ts": "b5ded4588114054ba0c70df9714f301cacbb7ceb44386bf6d9764a9207459267",
+    "https://jsr.io/@flashcard/core/0.0.2/template.ts": "90e5eba5693507be11f6a0a3b7d70f9fa509ded9416fc36cf3ae16755a8825c3",
+    "https://jsr.io/@std/assert/0.216.0/assert.ts": "501b416473ec27c71885aaf819e363c8df617f89ce68ae57fec7acf9d62743b2",
+    "https://jsr.io/@std/assert/0.216.0/assertion_error.ts": "dd027fb33707dbff22cd2ef9b55fdb70e2095876caf3c68ecfbb811505ecc022",
     "https://jsr.io/@std/collections/0.216.0/_utils.ts": "fc59674548a4dd9f5c3cc4f99f9c264aa521a52c1a4ff56b0263713e57e79206",
     "https://jsr.io/@std/collections/0.216.0/intersect.ts": "58d8ae4602f119e465a3084cc982f1b91ea7cb864d519fe9b86f3ca6872f6962",
+    "https://jsr.io/@std/crypto/0.216.0/_fnv/fnv32.ts": "ba2c5ef976b9f047d7ce2d33dfe18671afc75154bcf20ef89d932b2fe8820535",
+    "https://jsr.io/@std/crypto/0.216.0/_fnv/fnv64.ts": "580cadfe2ff333fe253d15df450f927c8ac7e408b704547be26aab41b5772558",
+    "https://jsr.io/@std/crypto/0.216.0/_fnv/mod.ts": "8dbb60f062a6e77b82f7a62ac11fabfba52c3cd408c21916b130d8f57a880f96",
+    "https://jsr.io/@std/crypto/0.216.0/_fnv/util.ts": "27b36ce3440d0a180af6bf1cfc2c326f68823288540a354dc1d636b781b9b75f",
+    "https://jsr.io/@std/crypto/0.216.0/_wasm/lib/deno_std_wasm_crypto.generated.mjs": "76c727912539737def4549bb62a96897f37eb334b979f49c57b8af7a1617635e",
+    "https://jsr.io/@std/crypto/0.216.0/_wasm/mod.ts": "c55f91473846827f077dfd7e5fc6e2726dee5003b6a5747610707cdc638a22ba",
+    "https://jsr.io/@std/crypto/0.216.0/crypto.ts": "2a326b02c5440bf37837a3339445dcad161de9eddf8a3702430513e7405c2f6a",
+    "https://jsr.io/@std/crypto/0.216.0/mod.ts": "7e7971e8abd90addbb02640e43c124e28d10b07e88b61851049c40fc2b5eb04b",
+    "https://jsr.io/@std/crypto/0.216.0/timing_safe_equal.ts": "de7d8522c1eac898b92c804fe78b6d707b1a4085a704eea0024a1696abdb99a9",
+    "https://jsr.io/@std/crypto/0.216.0/unstable_keystack.ts": "d4b34153be688de8408e205241588a7e3d6507bf5a2b69d00f23794255408632",
+    "https://jsr.io/@std/encoding/0.216.0/_util.ts": "beacef316c1255da9bc8e95afb1fa56ed69baef919c88dc06ae6cb7a6103d376",
+    "https://jsr.io/@std/encoding/0.216.0/base64.ts": "4b3bde3c0d699cc0fae6e5bd119ab3a8b9b05293e0053140faa340a30b01e4bc",
+    "https://jsr.io/@std/encoding/0.216.0/base64url.ts": "10e7bf34757d64a77b2592c37f5ab279ea96c3971199ee1d113113597d2123b0",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/from_json.ts": "b46425d045a651fa36cde36e97955c10921f0504b91905fd89b50476dfd9dba2",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/from_obj.ts": "652f692731dffca19438fbca7da200a2fcadec72be26b8d7c247e3af6bfc69bf",
     "https://raw.githubusercontent.com/bpevs/flashcards/main/adapters/to_apkg.ts": "87822fafd57c7126bb6dae7a28e2eb531172aeaa8610ebc67ee5dd4c39183e2d",
@@ -376,6 +431,8 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@flashcard/adapters@0.0.2",
+      "jsr:@flashcard/core@0.0.2",
       "npm:chinese-to-pinyin",
       "npm:jszip",
       "npm:kuroshiro",
