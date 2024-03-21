@@ -42,6 +42,8 @@ if (!locale_code) {
 async function genAudio(locale: string) {
   await ensureDir('./tmp/audio')
 
+  const deck = await readDeck(locale, true)
+  const ttsColumn = deck.meta.tts_source_column || 'text'
   const { byCategory, voiceId } = await findMissingAudioFiles(locale)
 
   console.log(locale, voiceId, Object.keys(byCategory))
@@ -50,6 +52,7 @@ async function genAudio(locale: string) {
     locale,
     byCategory,
     voiceId,
+    ttsColumn,
   )
 
   console.log('source audio id: ', JSON.stringify(ttsResults))
@@ -96,6 +99,7 @@ async function ttsByCategory(
   locale: string,
   byCategory: { [category: string]: { [emojiKey: string]: Note } },
   voiceId: string,
+  ttsColumn: string,
 ): Promise<{ categoryId: string; fileName: string | null }[]> {
   // todo: pool the tts requests
   return await Promise.all(
@@ -103,7 +107,7 @@ async function ttsByCategory(
       .filter((catId) => !inputCategoryId || (catId === inputCategoryId))
       .map(async (categoryId) => {
         const texts = Object.keys(byCategory[categoryId])
-          .map((emoji: string) => String(byCategory[categoryId][emoji].content.text))
+          .map((emoji: string) => String(byCategory[categoryId][emoji].content[ttsColumn]))
         const fileName = await ttsAzure(texts, voiceId, locale, categoryId)
         return { categoryId, fileName }
       }),

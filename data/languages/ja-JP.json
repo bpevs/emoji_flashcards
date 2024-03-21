@@ -10,7 +10,8 @@
     "locale_flag": "🇯🇵",
     "name_en": "Japanese",
     "name_native": "日本語",
-    "voice_id_azure": "ja-JP-NanamiNeural"
+    "voice_id_azure": "ja-JP-NanamiNeural",
+    "tts_source_column": "hiragana"
   },
   "fields": ["category", "emoji", "text", "hiragana"],
   "watch": ["emoji"],
