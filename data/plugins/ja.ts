@@ -8,8 +8,8 @@ await kuroshiro.init(new KuromojiAnalyzer())
 
 export default new Plugin({
   async post(next: Note) {
-    const romaji = await kuroshiro.convert(next.content.text, { to: 'romaji' })
-    next.content.romaji = romaji || ''
+    const hiragana = await kuroshiro.convert(next.content.text, { to: 'hiragana' })
+    next.content.hiragana = hiragana || ''
     return next
   },
 })

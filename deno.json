@@ -34,7 +34,7 @@
     "check:www": "deno check tasks/www.tsx",
     "clean": "deno run --allow-read --allow-write tasks/clean.ts",
     "coverage": "deno coverage tmp/cov_profile --lcov --output=tmp/cov.lcov",
-    "gen:text": "deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read tasks/gen_text.ts",
+    "gen:text": "deno run --node-modules-dir --allow-env --allow-net --allow-write=data --allow-read tasks/gen_text.ts && deno fmt",
     "gen:anki": "deno run --allow-sys --allow-write=data --allow-read tasks/gen_anki.ts",
     "gen:audio": "deno run --allow-net --allow-env --allow-read --allow-write --allow-run tasks/gen_audio.ts",
     "gen:www": "deno run --allow-env --allow-net --allow-read --allow-write tasks/gen_www.ts",
