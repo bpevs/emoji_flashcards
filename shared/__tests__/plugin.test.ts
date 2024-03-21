@@ -47,7 +47,8 @@ afterEach(() => translateStub.restore())
 it('Runs with default pre/post', async () => {
   const plugin = new Plugin()
   const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
-  const rows: Rows = Object.values(deck.notes).map(({ content }) => content)
+  // deno-lint-ignore no-explicit-any
+  const rows: Rows = Object.values(deck.notes).map(({ content }: any) => content)
 
   assertEquals(rows, [
     { emoji: '🐶', category: 'animal', text: 'dog-uwu' },
@@ -103,7 +104,8 @@ it('Runs with custom pre plugin', async () => {
   })
 
   const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
-  const rows: Rows = Object.values(deck.notes).map(({ content }) => content)
+  // deno-lint-ignore no-explicit-any
+  const rows: Rows = Object.values(deck.notes).map(({ content }: any) => content)
 
   assertEquals(rows, [
     { emoji: '🐶', category: 'animal', text: 'dog-uwu', hint: '' },
@@ -143,7 +145,8 @@ it('Runs with custom post plugin', async () => {
   })
 
   const deck = await plugin.getTranslations(baseSourceFile, createEmptyDeck())
-  const rows: Rows = Object.values(deck.notes).map(({ content }) => content)
+  // deno-lint-ignore no-explicit-any
+  const rows: Rows = Object.values(deck.notes).map(({ content }: any) => content)
 
   assertEquals(rows, [
     { emoji: '🐶', category: 'animal', text: 'dog-uwu', hint: 'dog-uwu UWU' },

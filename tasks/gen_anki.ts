@@ -1,6 +1,7 @@
 import { ensureDir, existsSync } from 'std/fs/mod.ts'
 import { join } from 'std/path/mod.ts'
 import { fromJSON, toAPKG } from '@flashcard/adapters'
+import { Note } from '@flashcard/core'
 import templates from '@/data/templates/mod.ts'
 
 import { GEN_DIR, LANGUAGES_DIR } from '@/shared/paths.ts'
@@ -25,7 +26,7 @@ listLanguages().map(async (locale: string) => {
     deck.fields.push('audio')
 
     await Promise.all(
-      Object.values(deck.notes).map(async (note) => {
+      Object.values(deck.notes).map(async (note: Note) => {
         const { emoji, text } = note.content
         const audioFilename = getAudioFilename(locale, String(emoji), String(text))
         const audioLocation = join(GEN_DIR, locale, 'audio', audioFilename)
