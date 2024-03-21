@@ -65,8 +65,8 @@ let categories = []
     noteEl.innerHTML = `
       <h1 id="question" class="question">${emoji}</h1>
       <div id="answer" class="answer hidden">
-        <h2>${text}</h2>
         ${hint ? '<p>' + hint + '</p>' : ''}
+        <h2>${text}</h2>
         <audio id="note-audio" src="${audioURL}" />
       </div>
     `

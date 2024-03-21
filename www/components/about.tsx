@@ -40,10 +40,6 @@ export default function About(
             <img src='/static/icons/github-mark.png' height='25px' />
             <span>Github</span>
           </a>
-          <a href='https://discord.gg/m9WGM2QWBK'>
-            <img src='/static/icons/discord-mark-black.png' height='20px' />
-            <span>Discord</span>
-          </a>
         </p>
       </div>
       <div class='card m-3' style='max-width: 800px;'>

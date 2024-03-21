@@ -26,13 +26,22 @@ const stringsResults = locales.map(async (locale_code: string) => {
   console.info(toTranslate)
   if (toTranslate.length) {
     const translated = await translate(toTranslate, locale_code, API.AZURE)
-
     let index = 0
     for (const [stringKey] of Object.entries(source)) {
       if (!target[stringKey]) target[stringKey] = translated[index++]
     }
-    await Deno.writeTextFile(targetPath, stringify(target))
   }
+  for (const key in target) {
+    if (!source[key]) delete target[key]
+  }
+
+  // Hacky way to sort the obj into the same order as soruce.js
+  const sortedTarget = {}
+  for (const key in source) {
+    sortedTarget[key] = target[key]
+  }
+
+  await Deno.writeTextFile(targetPath, stringify(sortedTarget))
 })
 
 await Promise.all(stringsResults)
