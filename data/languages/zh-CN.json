@@ -11,7 +11,8 @@
     "name_en": "Chinese (Mandarin)",
     "name_native": "中文（普通话）",
     "name_short": "中文",
-    "voice_id_azure": "zh-CN-XiaoxiaoNeural"
+    "voice_id_azure": "zh-CN-XiaoxiaoNeural",
+    "tts_source_column": "pinyin"
   },
   "fields": ["category", "emoji", "text", "pinyin"],
   "watch": ["emoji"],
